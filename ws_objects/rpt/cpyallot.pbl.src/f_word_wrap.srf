@@ -1,0 +1,63 @@
+﻿$PBExportHeader$f_word_wrap.srf
+$PBExportComments$Create Library/Cards File - wraps text for cards
+global type f_word_wrap from function_object
+end type
+
+forward prototypes
+global subroutine f_word_wrap (string as_input, ref string as_output[], integer ai_length, ref integer ai_lines)
+end prototypes
+
+global subroutine f_word_wrap (string as_input, ref string as_output[], integer ai_length, ref integer ai_lines);// function to word wrap strings
+
+string ls_output[]
+long ll_count, ll_current
+string ls_char, ls_word, ls_line
+
+ls_line = ''
+ls_word = ''
+ll_current = 1
+for ll_count = 1 to len(as_input)
+	ls_char = mid(as_input, ll_count, 1)
+	if ls_char = ' ' then
+		// just ended a word
+		if len(ls_word) + len(ls_line) + 1 > ai_length then
+			// this word would make the line too long so wrap
+			ls_output[ll_current] = ls_line
+			ll_current++
+			ls_line = ls_word + ' '
+			ls_word = ''
+		else
+			// not too long, so add it to line
+			ls_line = ls_line +  ls_word + ' '
+			ls_word = ''
+		end if
+		
+	else
+		// still in a word
+		ls_word = ls_word + ls_char
+	end if
+	
+next
+
+if len(ls_word) + len(ls_line) + 1 > ai_length then
+			// this word would make the line too long so wrap
+	ls_output[ll_current] = ls_line
+	ll_current++
+	ls_line = ls_word + ' '
+	ls_word = ''
+else
+			// not too long, so add it to line
+	ls_line = ls_line + ls_word + ' '
+	ls_word = ''
+end if
+
+ls_output[ll_current] = ls_line
+
+as_output[] = ls_output
+
+ai_lines = ll_current
+			
+return
+
+end subroutine
+

@@ -1,0 +1,123 @@
+﻿$PBExportHeader$d_distribution_schedule_null-10292008.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=148 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=cntr1 dbname="prod.cntr1" )
+ column=(type=datetime updatewhereclause=yes name=cabdt dbname="mchar.cabdt" )
+ column=(type=char(7) updatewhereclause=yes name=cntr2 dbname="prod.cntr2" )
+ column=(type=datetime updatewhereclause=yes name=assigndt dbname="prod.assigndt" )
+ column=(type=char(1) updatewhereclause=yes name=include1 dbname="include1" values="	Y/	N" )
+ column=(type=char(1) updatewhereclause=yes name=cntrtype dbname="cntrtype" )
+ column=(type=datetime updatewhereclause=yes name=dsdt dbname="mchar.dsdt" )
+ column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ column=(type=char(1) updatewhereclause=yes name=cascd dbname="mchar.cascd" )
+ column=(type=char(1) updatewhereclause=yes name=dsflag dbname="mchar.dsflag" )
+ column=(type=char(1) updatewhereclause=yes name=repeat dbname="repeat" )
+ column=(type=char(1) updatewhereclause=yes name=del dbname="del" )
+ retrieve="SELECT DISTINCT a.bkseq, a.bkmed, a.cntr cntr1, c.cabdt, b.cntr cntr2,
+                b.assigndt, 'Y' include1, 'T' cntrtype, c.dsdt, c.conno,
+                c.cascd, c.dsflag, 'N' repeat, 'N' del
+           FROM prod a, prod b, mchar c
+          WHERE a.bkseq = b.bkseq
+            AND a.bkmed = b.bkmed
+            AND a.cntr = b.cntr
+            AND a.prodstage IN ('MA', 'PU', 'AB')
+            AND b.prodstage IN ('DU', 'PR', 'PB')
+            AND a.bkseq = c.bkseq
+            AND a.bkmed = c.bkmed
+            AND c.dsdt IS NULL
+            AND c.cascd = 'P'
+UNION
+SELECT DISTINCT a.bkseq, b.bkmed, a.cntr cntr1, c.cabdt, b.cntr cntr2,
+                b.assigndt, 'Y' include1, 'T' cntrtype, c.dsdt, c.conno,
+                c.cascd, c.dsflag, 'N' repeat, 'N' del
+           FROM prod a, prod b, mchar c
+          WHERE a.bkseq = b.bkseq
+            AND a.cntr = b.cntr
+            AND a.prodstage IN ('MA', 'AB')
+            AND b.prodstage IN ('FC')
+            AND a.bkseq = c.bkseq
+            AND b.bkmed = c.bkmed
+            AND c.dsdt IS NULL
+            AND c.cascd = 'P'
+UNION
+SELECT DISTINCT a.bkseq, a.bkmed, a.cntr cntr1, c.cabdt, b.cntr cntr2,
+                b.assigndt, 'Y' include1, 'X' cntrtype, c.dsdt, c.conno,
+                c.cascd, c.dsflag, 'N' repeat, 'N' del
+           FROM prod a, prod b, mchar c
+          WHERE a.bkseq = b.bkseq
+            AND a.bkmed = b.bkmed
+            AND a.cntr <> b.cntr
+            AND a.prodstage IN ('MA', 'PU', 'AB')
+            AND b.prodstage IN ('DU', 'PR', 'PB')
+            AND a.bkseq = c.bkseq
+            AND a.bkmed = c.bkmed
+            AND c.dsdt IS NULL
+            AND c.cascd = 'P'
+UNION
+SELECT DISTINCT a.bkseq, a.bkmed, a.cntr cntr1, b.cabdt, '       ' cntr2,
+                a.assigndt, 'Y' include1, c.cntrtype, b.dsdt, b.conno,
+                b.cascd, b.dsflag, 'N' repeat, 'N' del
+           FROM prod a, mchar b, ancntr c
+          WHERE a.bkseq = b.bkseq
+            AND a.bkmed = b.bkmed
+            AND a.cntr = c.cntr
+            AND a.prodstage IN ('MA', 'PU', 'AB')
+            AND c.cntrtype IN ('M')
+            AND b.dsdt IS NULL
+            AND b.cascd = 'P'
+UNION
+SELECT DISTINCT a.bkseq, a.bkmed, '       ' cntr1, b.cabdt, a.cntr cntr2,
+                a.assigndt, 'Y' include1, c.cntrtype, b.dsdt, b.conno,
+                b.cascd, b.dsflag, 'N' repeat, 'N' del
+           FROM prod a, mchar b, ancntr c
+          WHERE a.bkseq = b.bkseq
+            AND a.bkmed = b.bkmed
+            AND a.cntr = c.cntr
+            AND c.cntrtype IN ('D', 'P')
+            AND b.dsdt IS NULL
+            AND b.cascd = 'P'
+       ORDER BY 1, 2
+"  sort="bkseq A bkmed A cntr2 A " )
+text(band=header alignment="0" text="ControlNumber" border="0" color="0" x="3502" y="76" height="20" width="23" html.valueishtml="0"  name=t_8 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="CASCD" border="0" color="0" x="3355" y="80" height="20" width="23" html.valueishtml="0"  name=t_9 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Dsflag" border="0" color="0" x="3397" y="80" height="20" width="23" html.valueishtml="0"  name=t_10 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="DSDT" border="0" color="0" x="3429" y="76" height="20" width="23" html.valueishtml="0"  name=t_7 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="CntrType" border="0" color="0" x="3465" y="80" height="20" width="23" html.valueishtml="0"  name=t_6 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Book Number" border="0" color="0" x="169" y="76" height="64" width="393" html.valueishtml="0"  name=t_bkno visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="DuplicationAssign Date" border="0" color="0" x="2062" y="12" height="128" width="384" html.valueishtml="0"  name=t_assigndt visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="Repeat?" border="0" color="0" x="2560" y="76" height="64" width="251" html.valueishtml="0"  name=t_repeat visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="DuplicationContract" border="0" color="0" x="1650" y="12" height="128" width="329" html.valueishtml="0"  name=t_dupcode visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="MasteringContract" border="0" color="0" x="1294" y="12" height="128" width="297" html.valueishtml="0"  name=t_cntr visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="CABDT" border="0" color="0" x="978" y="76" height="64" width="247" html.valueishtml="0"  name=t_cabdt visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="Include?" border="0" color="0" x="622" y="76" height="64" width="251" html.valueishtml="0"  name=t_include visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3497" y="4" height="20" width="23" format="[general]" html.valueishtml="0"  name=conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="3351" y="8" height="20" width="18" format="[general]" html.valueishtml="0"  name=cascd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="0" x="3392" y="8" height="20" width="23" format="[general]" html.valueishtml="0"  name=dsflag visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3429" y="4" height="20" width="23" format="[general]" html.valueishtml="0"  name=dsdt visible="1~t0" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3461" y="4" height="20" width="23" format="[general]" html.valueishtml="0"  name=cntrtype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="151" y="4" height="64" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="293" y="4" height="64" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2651" y="4" height="60" width="69" format="[general]" html.valueishtml="0"  name=repeat visible="1" edit.limit=0 edit.case=upper edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2062" y="4" height="64" width="329" format="mm/dd/yyyy" html.valueishtml="0"  name=assigndt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1650" y="4" height="64" width="338" format="[general]" html.valueishtml="0"  name=cntr2 visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1294" y="4" height="64" width="288" format="[general]" html.valueishtml="0"  name=cntr1 visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="928" y="4" height="64" width="329" format="[general]" html.valueishtml="0"  name=cabdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=7 alignment="0" tabsequence=10 border="5" color="0" x="704" y="4" height="60" width="73" format="[general]" html.valueishtml="0"  name=include1 visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes criteria.override_edit=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="2967" y="4" height="60" width="82" format="[general]" html.valueishtml="0"  name=del visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

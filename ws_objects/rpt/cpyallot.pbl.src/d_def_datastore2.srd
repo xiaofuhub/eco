@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_def_datastore2.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=libcd dbname="def.libcd" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=med dbname="def.med" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=casub dbname="def.casub" )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=priority dbname="def.priority" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=defqty dbname="def.defqty" )
+ column=(type=datetime update=yes updatewhereclause=yes name=defdt dbname="def.defdt" )
+ retrieve="  SELECT def.libcd,  
+         def.med,   
+         def.casub,   
+         def.priority,   
+         def.defqty,   
+         def.defdt 
+ 
+    FROM def  
+" update="def" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Med" border="0" color="0" x="343" y="4" height="64" width="128" html.valueishtml="0"  name=med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Casub" border="0" color="0" x="475" y="4" height="64" width="178" html.valueishtml="0"  name=casub_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defqty" border="0" color="0" x="658" y="4" height="64" width="389" html.valueishtml="0"  name=defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defdt" border="0" color="0" x="1051" y="4" height="64" width="384" html.valueishtml="0"  name=defdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Libcd" border="0" color="0" x="5" y="4" height="64" width="302" html.valueishtml="0"  name=libcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="343" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="475" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="0" color="0" x="1051" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=defdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1435" y="0" height="64" width="32" format="[general]" html.valueishtml="0"  name=priority visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=40 border="0" color="0" x="658" y="4" height="76" width="389" format="[general]" html.valueishtml="0"  name=defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="302" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

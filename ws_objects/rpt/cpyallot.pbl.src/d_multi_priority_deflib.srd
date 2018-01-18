@@ -1,0 +1,60 @@
+﻿$PBExportHeader$d_multi_priority_deflib.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=140 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=120 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=libcd dbname="def.libcd" )
+ column=(type=char(3) updatewhereclause=yes name=def_med dbname="def.med" )
+ column=(type=char(3) updatewhereclause=yes name=def_casub dbname="def.casub" )
+ column=(type=char(1) updatewhereclause=yes name=def_priority dbname="def.priority" )
+ column=(type=long updatewhereclause=yes name=def_n_defqty dbname="def.defqty" )
+ column=(type=date updatewhereclause=yes name=def_defdt dbname="def.defdt" )
+ column=(type=char(4) updatewhereclause=yes name=def_libcd dbname="def.libcd" )
+ column=(type=char(3) updatewhereclause=yes name=def_med dbname="def.med" )
+ column=(type=char(3) updatewhereclause=yes name=def_casub dbname="def.casub" )
+ column=(type=char(1) updatewhereclause=yes name=def_priority dbname="def.priority" )
+ column=(type=long updatewhereclause=yes name=def_p_defqty dbname="def.defqty" )
+ column=(type=date updatewhereclause=yes name=def_defdt dbname="def.defdt" )
+ column=(type=char(4) updatewhereclause=yes name=def_libcd dbname="def.libcd" )
+ column=(type=char(3) updatewhereclause=yes name=def_med dbname="def.med" )
+ column=(type=char(3) updatewhereclause=yes name=def_casub dbname="def.casub" )
+ column=(type=char(1) updatewhereclause=yes name=def_priority dbname="def.priority" )
+ column=(type=long updatewhereclause=yes name=def_r_defqty dbname="def.defqty" )
+ column=(type=date updatewhereclause=yes name=def_defdt dbname="def.defdt" )
+ retrieve="  SELECT distinct a.libcd,   
+         a.med,   
+         a.casub,   
+         a.priority,   
+         a.defqty,   
+         a.defdt,  
+			b.libcd,   
+         b.med,   
+         b.casub,   
+         b.priority,   
+         b.defqty,   
+         b.defdt,  
+			c.libcd,   
+         c.med,   
+         c.casub,   
+         c.priority,   
+         c.defqty,   
+         c.defdt  
+    FROM def a,def b,def c
+	WHERE a.priority = 'N'
+	AND	b.priority = 'P'
+	AND	c.priority = 'R'
+   AND   a.priority <> b.priority
+   AND   b.priority <> c.priority
+   AND   a.priority <> c.priority
+order by 1
+" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="55" y="20" height="76" width="343" format="[general]"  name=libcd edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="430" y="24" height="64" width="361"  name=def_med  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="837" y="24" height="64" width="357"  name=def_casub  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="0" x="1248" y="24" height="64" width="379"  name=def_n_defqty  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=0 border="0" color="0" x="1673" y="24" height="64" width="393"  name=def_p_defqty  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=0 border="0" color="0" x="2098" y="24" height="64" width="384"  name=def_r_defqty  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

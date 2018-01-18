@@ -1,0 +1,98 @@
+﻿$PBExportHeader$d_voucher_addate_cntrno.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(15) update=yes updatewhereclause=yes name=voucher_vno dbname="voucher.vno" validationmsg="~"Voucher Number is Required please enter data.~"" )
+ column=(type=datetime update=yes updatewhereclause=yes name=voucher_vdt dbname="voucher.vdt" )
+ column=(type=char(7) updatewhereclause=yes name=magcntr_cntr dbname="magcntr.cntr" )
+ column=(type=char(4) updatewhereclause=yes name=magcntr_prdr dbname="magcntr.prdr" )
+ column=(type=char(25) updatewhereclause=yes name=magcntr_cntrlc dbname="magcntr.cntrlc" )
+ column=(type=datetime updatewhereclause=yes name=maginv_pcsdt dbname="maginv.pcsdt" )
+ column=(type=datetime updatewhereclause=yes name=maginv_admdt dbname="maginv.admdt" )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=voucher_cntr dbname="voucher.cntr" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=voucher_pcsdt dbname="voucher.pcsdt" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=voucher_admdt dbname="voucher.admdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pdf_created_date dbname="voucher.pdf_created_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=pdf_created_by dbname="voucher.pdf_created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=created_date dbname="voucher.created_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=created_by dbname="voucher.created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=modified_date dbname="voucher.modified_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=modified_by dbname="voucher.modified_by" )
+ column=(type=char(15) updatewhereclause=yes name=vno_old dbname="voucher.vno_old" )
+ retrieve="SELECT DISTINCT voucher.vno, voucher.vdt, magcntr.cntr, magcntr.prdr, magcntr.cntrlc,
+                maginv.pcsdt, maginv.admdt, voucher.cntr, voucher.pcsdt,voucher.admdt,pdf_created_date,pdf_created_by,
+		  voucher.created_date,voucher.created_by,voucher.modified_date,voucher.modified_by,voucher.vno vno_old
+           FROM magcntr, maginv, voucher
+          WHERE (magcntr.fy = maginv.fy)
+            AND (magcntr.cntr = maginv.cntr)
+            AND (maginv.cntr = voucher.cntr(+))
+	     AND (maginv.pcsdt =  (SELECT MAX (maginv.pcsdt)
+									FROM maginv maginv2
+									 WHERE maginv2.cntr = maginv.cntr
+									 AND maginv2.magcd = maginv.magcd
+									 AND maginv2.issdt = maginv.issdt
+									 AND maginv2.invno = maginv.invno))
+            AND (maginv.pcsdt = voucher.pcsdt(+))
+            AND (maginv.admdt = voucher.admdt(+))
+            AND (TRUNC(maginv.pcsdt)  = :ld_pcsdt)
+            AND (magcntr.cntr = :ls_contract)
+            AND (TRUNC(maginv.admdt) = :ld_admdt)
+UNION ALL
+SELECT DISTINCT voucher.vno, voucher.vdt, inv.cntr, ancntr.prdr, ancntr.cntrlc,
+		  inv.pcsdt, inv.admdt, voucher.cntr, voucher.pcsdt, voucher.admdt, pdf_created_date,pdf_created_by,
+		  voucher.created_date,voucher.created_by,voucher.modified_date,voucher.modified_by,voucher.vno vno_old
+           FROM ancntr, inv, voucher
+          WHERE (ancntr.cntr = inv.cntr)
+            AND (inv.cntr = voucher.cntr(+))
+  	    AND (inv.pcsdt =  (SELECT MAX (inv.pcsdt)
+             						FROM inv inv2
+           						 WHERE inv2.cntr = inv.cntr
+             						 AND inv2.bkseq = inv.bkseq
+					              AND inv2.bkmed = inv.bkmed
+					              AND inv2.prodstage = inv.prodstage))
+            AND (inv.pcsdt = voucher.pcsdt(+))
+            AND (inv.admdt = voucher.admdt(+))
+            AND (TRUNC(inv.pcsdt)  = :ld_pcsdt)
+            AND (ancntr.cntr = :ls_contract)
+            AND (TRUNC(inv.admdt) = :ld_admdt)
+       ORDER BY 4, 8, 9
+" update="voucher" updatewhere=0 updatekeyinplace=no arguments=(("ld_admdt", date),("ls_contract", string),("ld_pcsdt", date)) )
+text(band=header alignment="2" text="Voucher No" border="0" color="0" x="110" y="4" height="64" width="462" html.valueishtml="0"  name=voucher_vno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Voucher Date" border="0" color="0" x="590" y="4" height="64" width="375" html.valueishtml="0"  name=voucher_vdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contract" border="0" color="0" x="1042" y="4" height="64" width="224" html.valueishtml="0"  name=magcntr_cntr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Producer" border="0" color="0" x="1847" y="4" height="64" width="251" html.valueishtml="0"  name=magcntr_prdr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="PCS Date" border="0" color="0" x="2135" y="4" height="64" width="270" html.valueishtml="0"  name=maginv_pcsdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Admin Date" border="0" color="0" x="2523" y="4" height="64" width="320" html.valueishtml="0"  name=maginv_admdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="LC Contract" border="0" color="0" x="1417" y="4" height="64" width="311" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="PDF Created Date/By" border="0" color="0" x="2926" y="4" height="64" width="594" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="142" y="4" height="76" width="411" format="[general]" html.valueishtml="0"  name=voucher_vno  tag="Please enter valid voucher number" pointer="" visible="1" edit.limit=15 edit.case=upper edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="590" y="4" height="76" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=voucher_vdt  tag="Please enter valid voucher date" visible="1" editmask.required=yes editmask.autoskip=yes editmask.mask="mm/dd/yyyy" editmask.spinrange="~~" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1376" y="4" height="76" width="453" format="[general]" html.valueishtml="0"  name=magcntr_cntrlc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1874" y="4" height="76" width="160" format="[general]" html.valueishtml="0"  name=magcntr_prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=20 border="5" color="0" x="1015" y="4" height="76" width="325" format="[general]" html.valueishtml="0"  name=voucher_cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="2514" y="4" height="76" width="393" format="[general]" html.valueishtml="0"  name=voucher_admdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="2089" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=voucher_pcsdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="0" x="3305" y="4" height="76" width="201" format="[general]" html.valueishtml="0"  name=pdf_created_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="2953" y="4" height="76" width="320" format="[shortdate] [time]" html.valueishtml="0"  name=pdf_created_date visible="1" editmask.mask="mm/dd/yy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="3557" y="8" height="64" width="87" format="[shortdate] [time]" html.valueishtml="0"  name=created_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3671" y="8" height="64" width="91" format="[general]" html.valueishtml="0"  name=created_by visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="3785" y="8" height="64" width="110" format="[shortdate] [time]" html.valueishtml="0"  name=modified_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="3918" y="8" height="64" width="101" format="[general]" html.valueishtml="0"  name=modified_by visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="4046" y="8" height="76" width="69" format="[general]" html.valueishtml="0"  name=magcntr_cntr  tag="Please double click here to see the details of contract" visible="0" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4128" y="8" height="76" width="78" format="mm/dd/yyyy" html.valueishtml="0"  name=maginv_pcsdt visible="0" editmask.autoskip=yes editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4233" y="8" height="76" width="64" format="mm/dd/yyyy" html.valueishtml="0"  name=maginv_admdt visible="0" editmask.autoskip=yes editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=17 alignment="0" tabsequence=30 border="0" color="0" x="4329" y="16" height="64" width="128" html.valueishtml="0"  name=vno_old visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

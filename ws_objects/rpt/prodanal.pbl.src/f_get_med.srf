@@ -1,0 +1,16 @@
+﻿$PBExportHeader$f_get_med.srf
+global type f_get_med from function_object
+end type
+
+forward prototypes
+global function string f_get_med ()
+end prototypes
+
+global function string f_get_med ();string Lmed
+
+IF IsValid(w_pa_assigning_books) THEN
+	Lmed = w_pa_assigning_books.dw_pa_ancntr_data.object.cntrmed[1]
+END IF
+return Lmed
+end function
+

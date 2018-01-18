@@ -1,0 +1,79 @@
+﻿$PBExportHeader$d_qa_prod_recv_by_autotest_rejected_bkseq.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=208 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="553648127" height.autosize=yes )
+table(column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" dbalias=".bkmed" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" dbalias=".med" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_len dbname="mchar.len" dbalias=".len" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" dbalias=".conno" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" dbalias=".ttl" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_vols dbname="mchar.vols" dbalias=".vols" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_minlastside dbname="mchar.minlastside" dbalias=".minlastside" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_qnty dbname="mchar.qnty" dbalias=".qnty" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_units dbname="prod.units" dbalias=".units" )
+ column=(type=decimal(0) updatewhereclause=yes name=qastg_bkseq dbname="qastg.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=qastg_bkmed dbname="qastg.bkmed" dbalias=".bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=qastg_cntr dbname="qastg.cntr" dbalias=".cntr" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_qastg dbname="qastg.qastg" dbalias=".qastg" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_qastatcd dbname="qastg.qastatcd" dbalias=".qastatcd" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt dbname="qacompdt" )
+ column=(type=char(8) updatewhereclause=yes name=qastg_qarejcd dbname="qastg.qarejcd" dbalias=".qarejcd" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" dbalias=".prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" dbalias=".cntr" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" dbalias=".bkmed" )
+ column=(type=datetime updatewhereclause=yes name=qastg_qarecdt dbname="qarecdt" )
+ column=(type=char(70) updatewhereclause=yes name=narrname dbname="narrname" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" dbalias=".prdr" )
+ retrieve="SELECT mchar.bkseq, mchar.bkmed, mchar.med, mchar.len, mchar.conno,
+       ttlinit.ttl, mchar.vols, mchar.minlastside, mchar.qnty, prod.units,
+       qastg.bkseq, qastg.bkmed, qastg.cntr,
+       qastg.qastg, qastg.qastatcd,ROUND(qastg.qacompdt) qacompdt, qastg.qarejcd,
+       prod.prodstage, prod.cntr, prod.bkseq, prod.bkmed,ROUND(qastg.qarecdt) qarecdt,
+	  rtrim(narr) || ', ' || rtrim(narrfn) narrname,
+	ancntr.prdr
+  FROM mchar, prod, qastg, ttlinit, narr, ancntr
+ WHERE qastg.bkseq = :bkseq
+  AND 	QASTG.QASTATCD = 'R'
+  AND 	QASTG.QASTg = '0'
+   AND mchar.chno = ttlinit.chno
+   AND prod.bkseq = mchar.bkseq
+
+   AND prod.prodstage IN ('PU', 'MA', 'AB')
+   AND mchar.bkseq = qastg.bkseq(+)
+   AND mchar.bkmed = qastg.bkmed(+) 
+    AND narr.bkseq(+) =mchar.bkseq
+  AND narr.bkmed(+) = mchar.bkmed
+ AND ancntr.cntr = qastg.cntr
+" arguments=(("bkseq", number)) )
+text(band=header alignment="2" text="Book Number" border="6" color="0" x="9" y="96" height="104" width="366" html.valueishtml="0"  name=mchar_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Books that failed Autotest" border="0" color="33554432" x="14" y="4" height="52" width="1499" html.valueishtml="0"  name=t_7 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="TotalMinutes" border="6" color="0" x="1545" y="96" height="104" width="315" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Narrator" border="6" color="0" x="1883" y="96" height="104" width="722" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Producer" border="6" color="0" x="2629" y="96" height="104" width="219" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Rejected" border="6" color="0" x="2866" y="96" height="104" width="338" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reason" border="6" color="0" x="3218" y="96" height="104" width="581" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Book Title" border="6" color="0" x="393" y="96" height="104" width="1129" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="0" x="5" y="4" height="64" width="224" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="247" y="4" height="64" width="128" format="[general]" html.valueishtml="0" protect="0~t1"  name=mchar_bkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="0" x="1545" y="4" height="64" width="315" format="[general]" html.valueishtml="0"  name=mchar_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="134217750~tif(isnull(qastg_qastg),if(isnull(ttlinit_ttl),rgb(192,192,192),if(mchar_bkmed=~"BR~",rgb(255,255,255),if(mchar_bkmed=~"RC~" or mchar_bkmed=~"DB~",rgb(255,255,255),rgb(192,192,192)))),rgb(192,192,192))" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="5" color="0" x="1879" y="4" height="64" width="722" format="[general]" html.valueishtml="0"  name=narrname visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="5" color="0" x="2624" y="4" height="64" width="219" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="0" x="2866" y="4" height="64" width="338" format="[shortdate] [time]" html.valueishtml="0"  name=qacompdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="5" color="0" x="3218" y="4" height="64" width="581" format="[general]" html.valueishtml="0"  name=qastg_qarejcd visible="1" dddw.name=dddw_ref_qa_rejection_codes dddw.displaycolumn=reject_code_name dddw.datacolumn=reject_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="393" y="4" height="64" width="1129" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

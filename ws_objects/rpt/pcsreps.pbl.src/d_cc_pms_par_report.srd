@@ -1,0 +1,217 @@
+﻿$PBExportHeader$d_cc_pms_par_report.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="PC PAR.EC" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no pointer="Size!" )
+summary(height=10 color="536870912" )
+footer(height=135 color="536870912" )
+detail(height=8937 color="553648127"  height.autosize=yes)
+table(column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(6) updatewhereclause=yes name=mchar_chno dbname="mchar.chno" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_vols dbname="mchar.vols" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_applen dbname="mchar.applen" )
+ column=(type=char(2) updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" values="(Rerecord)	RR/(Reissue)	RI/" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_len dbname="mchar.len" )
+ column=(type=datetime updatewhereclause=yes name=cpmissdt dbname="mchar.pmissdt" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_andigcd dbname="mchar.andigcd" initial="X" )
+ column=(type=char(60) updatewhereclause=yes name=cseqnote dbname="ttlinit.seqnote" )
+ column=(type=char(40) updatewhereclause=yes name=crname dbname="ttlinit.crname" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=char(5) updatewhereclause=yes name=ttlinit_ahonorific dbname="ttlinit.ahonorific" )
+ column=(type=char(5) updatewhereclause=yes name=ttlinit_ttlart dbname="ttlinit.ttlart" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(14) updatewhereclause=yes name=ttlinit_b_ttl1 dbname="ttlinit.b_ttl1" )
+ column=(type=char(14) updatewhereclause=yes name=ttlinit_b_ttl2 dbname="ttlinit.b_ttl2" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_b_auth dbname="ttlinit.b_auth" )
+ column=(type=char(30) updatewhereclause=yes name=cnote dbname="ttlinit.note" )
+ column=(type=char(60) updatewhereclause=yes name=ttlinit_oneliner dbname="ttlinit.oneliner" )
+ column=(type=char(1) updatewhereclause=yes name=ttlinit_aepcd dbname="ttlinit.aepcd" )
+ column=(type=char(2) updatewhereclause=yes name=ttlinit_ajyfn dbname="ttlinit.ajyfn" values="White	AF/Salmon	AN/Pink	JF/Blue	JN/White	YF/Salmon	YN/" )
+ column=(type=char(4) updatewhereclause=yes name=ttlinit_dewey dbname="ttlinit.dewey" )
+ column=(type=char(1) updatewhereclause=yes name=ttlinit_specattn dbname="ttlinit.specattn" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_cdinit dbname="ttlinit.casub" )
+ column=(type=char(8) updatewhereclause=yes name=ttlinit_annoinit dbname="ttlinit.annoinit" )
+ column=(type=char(8) updatewhereclause=yes name=ttlinit_pminit dbname="ttlinit.pminit" )
+ column=(type=char(8) updatewhereclause=yes name=ttlinit_cdinit dbname="ttlinit.cdinit" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_pmsub1 dbname="ttlinit.pmsub1" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_pmsub2 dbname="ttlinit.pmsub2" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_pmsub3 dbname="ttlinit.pmsub3" )
+ column=(type=datetime updatewhereclause=yes name=ttlinit_cdedt dbname="ttlinit.cdedt" )
+ column=(type=datetime updatewhereclause=yes name=ttlinit_pmedt dbname="ttlinit.pmedt" )
+ column=(type=decimal(0) updatewhereclause=yes name=canyr dbname="ttlinit.anyr" )
+ column=(type=decimal(0) updatewhereclause=yes name=ttlinit_cryr dbname="ttlinit.cryr" )
+ column=(type=decimal(0) updatewhereclause=yes name=ttlinit_alg dbname="ttlinit.alg" )
+ column=(type=datetime updatewhereclause=yes name=cccdt dbname="ttlinit.ccdt" )
+ column=(type=char(70) updatewhereclause=yes name=cserttl dbname="ttlinit.serttl" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=datetime updatewhereclause=yes name=prod_schenddt dbname="prod.schenddt" )
+ column=(type=datetime updatewhereclause=yes name=prod_schstdt dbname="prod.schstdt" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_units dbname="prod.units" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" )
+ column=(type=decimal(0) updatewhereclause=yes name=acquist_pbpage dbname="acquist.pbpage" )
+ column=(type=char(34) updatewhereclause=yes name=compute_0048 dbname="compute_0048" )
+ column=(type=char(34) updatewhereclause=yes name=compute_0049 dbname="compute_0049" )
+ column=(type=char(34) updatewhereclause=yes name=compute_0050 dbname="compute_0050" )
+ column=(type=char(34) updatewhereclause=yes name=compute_0051 dbname="compute_0051" )
+ column=(type=decimal(0) updatewhereclause=yes name=cprevbkseq dbname="ri.prevbkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prevbkmed dbname="ri.prevbkmed" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ column=(type=char(7) updatewhereclause=yes name=ancntr_cntr dbname="ancntr.cntr" )
+ column=(type=char(1) updatewhereclause=yes name=cntrtype dbname="ancntr.cntrtype" )
+ column=(type=char(1) updatewhereclause=yes name=cntrcvcd dbname="ancntr.cntrcvcd" )
+ column=(type=decimal(0) updatewhereclause=yes name=c4 dbname="trkstbl.c4" )
+ column=(type=decimal(0) updatewhereclause=yes name=c6 dbname="trkstbl.c6" )
+ column=(type=char(4000) updatewhereclause=yes name=annotation_anno dbname="annotation.anno" )
+ retrieve="  SELECT mchar.conno,   
+         mchar.chno,   
+         mchar.med,   
+         mchar.vols,   
+         mchar.applen,   
+         mchar.ricd,   
+         mchar.len,   
+         mchar.pmissdt,   
+         mchar.andigcd,   
+         ttlinit.seqnote,   
+         ttlinit.crname,   
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.ahonorific,   
+         ttlinit.ttlart,   
+         ttlinit.ttl,   
+         ttlinit.b_ttl1,   
+         ttlinit.b_ttl2,   
+         ttlinit.b_auth,   
+         ttlinit.note,   
+         ttlinit.oneliner,   
+         ttlinit.aepcd,   
+         ttlinit.ajyfn,   
+         ttlinit.dewey,   
+         ttlinit.specattn,   
+         ttlinit.casub,   
+         ttlinit.annoinit,   
+         ttlinit.pminit,   
+         ttlinit.cdinit,   
+         ttlinit.pmsub1,   
+         ttlinit.pmsub2,   
+         ttlinit.pmsub3,   
+         ttlinit.cdedt,   
+         ttlinit.pmedt,   
+         ttlinit.anyr,   
+         ttlinit.cryr,   
+         ttlinit.alg,   
+         ttlinit.ccdt,   
+         ttlinit.serttl,   
+         prod.bkseq,   
+         prod.bkmed,   
+         prod.schenddt,   
+         prod.schstdt,   
+         prod.actenddt,   
+         prod.units,   
+         prod.prodstage,   
+         acquist.pbpage,   
+         Trim(narr.narr),   
+         Trim(narr.narrfn),   
+         Trim(prvnarr.prvnarrln),   
+         Trim(prvnarr.prvnarrfn),   
+         ri.prevbkseq,   
+         ri.prevbkmed,   
+         ancntr.prdr,   
+         ancntr.cntr,   
+         ancntr.cntrtype,   
+         ancntr.cntrcvcd,   
+         trkstbl.c4,   
+         trkstbl.c6,   
+         annotation.anno  
+    FROM mchar ,
+			 ri , 
+			prod  ,
+		   narr  , 
+			ttlinit  ,
+		   annotation  ,   
+         prvnarr,   
+         trkstbl,   
+         acquist,   
+         ancntr  
+   WHERE ( ttlinit.chno = mchar.chno ) and  
+         ( ttlinit.chno = acquist.chno ) and  
+         ( mchar.bkseq = prod.bkseq ) and  
+         ( mchar.bkmed = prod.bkmed ) and
+			( mchar.conno = ri.conno (+) ) and
+			( prod.bkseq = narr.bkseq(+) ) AND 
+			( prod.bkmed = narr.bkmed(+) ) and
+         ( ancntr.cntr = prod.cntr ) and 
+			 ( mchar.vols=trkstbl.vols(+)  ) and  
+         (mchar.len=trkstbl.trks(+) ) and   
+         ( mchar.conno = prvnarr.conno(+) ) and 
+			(ttlinit.chno = annotation.chno(+) ) and
+         ( prod.prodstage IN ('MA', 'PU','AB')) AND  
+         ( ttlinit.chno = :lchno )" arguments=(("lchno", string)) )
+rectangle(band=detail x="5916" y="4573" height="666" width="10"  name=r_1 visible="1" brush.hatch="6" brush.color="0" pen.style="5" pen.width="10" pen.color="553648127"  background.mode="2" background.color="0" )
+compute(band=detail alignment="0" expression="f_change_pipe_udln (  annotation_anno  )"border="0" color="0" x="416" y="2729" height="1958" width="4093" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="416" y="854" height="145" width="500" format="" html.valueishtml="0"  name=ttlinit_ajyfn visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="3156" y="1052" height="125" width="583" format="[general]" html.valueishtml="0"  name=ttlinit_cryr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="4250" y="833" height="145" width="666" format="[general]" html.valueishtml="0"  name=ttlinit_dewey visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="6770" y="1198" height="145" width="416" format="[general]" html.valueishtml="0"  name=ttlinit_aepcd visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="6895" y="1437" height="145" width="916" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=41 alignment="0" tabsequence=32766 border="0" color="0" x="6041" y="1437" height="145" width="416" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_combine_auth_authfn( ttlinit_auth , ttlinit_authfn ,  ttlinit_ahonorific  )"border="0" color="0" x="739" y="2521" height="145" width="3218" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="1218" y="4750" height="145" width="1166" format="[general]" html.valueishtml="0"  name=cpmissdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="3916" y="4750" height="145" width="1083" format="[general]" html.valueishtml="0"  name=canyr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=52 alignment="0" tabsequence=32766 border="0" color="0" x="2406" y="4750" height="145" width="750" format="[general]" html.valueishtml="0"  name=cprevbkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="0" x="2208" y="5250" height="145" width="583" format="[general]" html.valueishtml="0"  name=ttlinit_pmsub2 visible="1" edit.limit=6 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="0" x="2791" y="5250" height="145" width="583" format="[general]" html.valueishtml="0"  name=ttlinit_pmsub3 visible="1" edit.limit=6 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="0" x="1625" y="5250" height="145" width="583" format="[general]" html.valueishtml="0"  name=ttlinit_pmsub1 visible="1" edit.limit=6 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="6104" y="5416" height="145" width="1468" format="[general]" html.valueishtml="0"  name=ttlinit_oneliner visible="1~t0" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="1260" y="7750" height="145" width="6000" format="[general]" html.valueishtml="0"  name=cnote visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="0" x="2322" y="8208" height="145" width="1166" format="[general]" html.valueishtml="0"  name=cccdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="today()"border="0" color="0" x="1572" y="8708" height="145" width="1000" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="6541" y="8708" height="145" width="916" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="6541" y="4927" height="145" width="833" format="[general]" html.valueishtml="0"  name=ttlinit_cdinit visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="6541" y="5104" height="145" width="916" format="[general]" html.valueishtml="0"  name=ttlinit_pminit visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="6541" y="4750" height="145" width="1000" format="[general]" html.valueishtml="0"  name=ttlinit_annoinit visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_change_pipe_udln(ttlinit_oneliner )"border="0" color="0" x="1354" y="5771" height="135" width="6354" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_change_pipe_udln(cseqnote )"border="0" color="0" x="1354" y="6271" height="135" width="6354" format="[general]" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_change_pipe_udln( ttlinit_b_auth )"border="0" color="0" x="1354" y="6771" height="135" width="6354" format="[general]" html.valueishtml="0"  name=compute_6 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="427" y="1094" height="156" width="333" format="[general]" html.valueishtml="0"  name=ttlinit_ttlart visible="1~t0" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_change_pipe_udln ( ttlinit_ttlart )"border="0" color="0" x="447" y="1427" height="135" width="447" format="[general]" html.valueishtml="0"  name=ttlart_comp visible="1"  resizeable=1  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_change_pipe_udln ( ttlinit_ttl )"border="0" color="0" x="916" y="1427" height="843" width="4166" format="[general]" html.valueishtml="0"  name=compute_7 visible="1~tif (IsNull( ttlinit_ttlart ), 0, 1)"  moveable=1  slideleft=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127"  height.autosize=yes)
+compute(band=detail alignment="0" expression="f_change_pipe_udln( ttlinit_ttl)"border="0" color="0" x="447" y="1427" height="812" width="4114" format="[general]" html.valueishtml="0"  name=compute_8 visible="1~tif (IsNull(ttlinit_ttlart), 1, 0)"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127"  height.autosize=yes)
+column(band=detail id=48 alignment="0" tabsequence=32766 border="0" color="0" x="5041" y="135" height="135" width="260" format="[general]" html.valueishtml="0"  name=compute_0048 visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=49 alignment="0" tabsequence=32766 border="0" color="0" x="5968" y="156" height="135" width="354" format="[general]" html.valueishtml="0"  name=compute_0049 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=50 alignment="0" tabsequence=32766 border="0" color="0" x="5520" y="135" height="135" width="302" format="[general]" html.valueishtml="0"  name=compute_0050 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=53 alignment="0" tabsequence=32766 border="0" color="0" x="6468" y="156" height="135" width="250" format="[general]" html.valueishtml="0"  name=prevbkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=56 alignment="0" tabsequence=32766 border="0" color="0" x="5479" y="656" height="135" width="83" format="[general]" html.valueishtml="0"  name=cntrtype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=57 alignment="0" tabsequence=32766 border="0" color="0" x="5739" y="698" height="135" width="83" format="[general]" html.valueishtml="0"  name=cntrcvcd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=58 alignment="0" tabsequence=32766 border="0" color="0" x="6812" y="156" height="135" width="187" format="[general]" html.valueishtml="0"  name=c4 visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=59 alignment="0" tabsequence=32766 border="0" color="0" x="5979" y="656" height="135" width="218" format="[general]" html.valueishtml="0"  name=c6 visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3937" y="1041" height="135" width="3322" format="[general]" html.valueishtml="0"  name=crname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=51 alignment="0" tabsequence=32766 border="0" color="0" x="4302" y="385" height="135" width="447" format="[general]" html.valueishtml="0"  name=compute_0051 visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="4843" y="479" height="177" width="322" format="[general]" html.valueishtml="0"  name=cserttl visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="National Library Service
+for the Blind and 
+ Physically Handicapped" border="0" color="0" x="427" y="104" height="135" width="6770" html.valueishtml="0"  name=t_1 visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Initials" border="0" color="0" x="6083" y="4531" height="135" width="833" html.valueishtml="0"  name=ttlinit_b_ttl1_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Copyright Information for Label" border="0" color="0" x="3156" y="1187" height="135" width="3229" html.valueishtml="0"  name=ttlinit_crname_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Dewey Number:" border="0" color="0" x="3156" y="833" height="135" width="1354" html.valueishtml="0"  name=ttlinit_dewey_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Production Author:" border="0" color="0" x="5500" y="1198" height="135" width="1875" html.valueishtml="0"  name=ttlinit_aepcd_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Format:" border="0" color="0" x="5500" y="1437" height="135" width="729" html.valueishtml="0"  name=mchar_ricd_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Bkn:" border="0" color="0" x="6552" y="1437" height="135" width="416" html.valueishtml="0"  name=mchar_bkseq_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="By:" border="0" color="0" x="416" y="2521" height="135" width="312" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Reissue of:" border="0" color="0" x="416" y="4750" height="135" width="1145" html.valueishtml="0"  name=ri_prevbkseq_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Year:" border="0" color="0" x="3500" y="4750" height="135" width="520" html.valueishtml="0"  name=t_2 visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Subject Category:" border="0" color="0" x="416" y="5250" height="135" width="1770" html.valueishtml="0"  name=ttlinit_pmsub2_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Reviewer:" border="0" color="0" x="416" y="7250" height="135" width="937" html.valueishtml="0"  name=t_3 visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Comments:" border="0" color="0" x="416" y="7750" height="135" width="937" html.valueishtml="0"  name=t_4 visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Confirm Consideration Date:" border="0" color="0" x="416" y="8208" height="135" width="2812" html.valueishtml="0"  name=t_5 visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Form Generated:" border="0" color="0" x="416" y="8708" height="135" width="1562" html.valueishtml="0"  name=ttlinit_authfn_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Control Number:" border="0" color="0" x="5416" y="8708" height="135" width="1562" html.valueishtml="0"  name=mchar_conno_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="CDS:" border="0" color="0" x="6083" y="4750" height="135" width="416" html.valueishtml="0"  name=ttlinit_annoinit_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="PMS:" border="0" color="0" x="6083" y="5104" height="135" width="416" html.valueishtml="0"  name=ttlinit_pminit_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="One Liner:" border="0" color="0" x="187" y="5771" height="135" width="1041" html.valueishtml="0"  name=ttlinit_oneliner_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Sequel Note:" border="0" color="0" x="0" y="6260" height="135" width="1250" html.valueishtml="0"  name=t_6 visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Series Title:" border="0" color="0" x="416" y="6771" height="135" width="1354" html.valueishtml="0"  name=ttlinit_b_auth_t visible="1"  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="6489" y="0" height="125" width="1437" format="[general]" html.valueishtml="0"  name=compute_9 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

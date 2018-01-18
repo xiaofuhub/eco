@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_qa_report.srs
+global type str_qa_report from structure
+	date		ld_recdt
+	string		ls_bkmed
+	long		ln_bkseq
+	string		ls_qamode
+end type
+

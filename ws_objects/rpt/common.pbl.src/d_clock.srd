@@ -1,0 +1,10 @@
+﻿$PBExportHeader$d_clock.srd
+release 3;
+datawindow(units=0 timer_interval=1000 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 1 print.margin.right = 1 print.margin.top = 1 print.margin.bottom = 1 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=85 color="536870912")
+summary(height=1 color="536870912")
+footer(height=1 color="536870912")
+detail(height=9 color="536870912")
+table(column=(type=date name=x dbname="x" )
+ )
+compute(band=header color="0" alignment="0" border="0" x="23" y="16" height="53" width="755" format="mm/dd/yyyy h:mm:ss AM/PM" expression="today()" font.face="Arial" font.height="-9" font.weight="400" font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256")

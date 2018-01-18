@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_problem_books_header.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=char(4000) updatewhereclause=yes name=ttl dbname="ttl" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ retrieve="SELECT mchar.bkseq, mchar.bkmed, f_get_title(mchar.bkseq, mchar.bkmed) as ttl, ancntr.prdr
+  FROM mchar,  qastg, ancntr
+ WHERE 	qastg.bkseq = :bkseq 
+	AND QASTG.QASTATCD = 'R'
+  AND 	QASTG.QASTg = '0'
+   AND mchar.bkseq = qastg.bkseq(+)
+   AND mchar.bkmed = qastg.bkmed(+)
+AND ancntr.cntr = qastg.cntr " arguments=(("bkseq", number)) )
+text(band=detail alignment="0" text="Book Number" border="0" color="33554432" x="14" y="8" height="64" width="475" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554432" x="507" y="8" height="76" width="334" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Producer" border="0" color="33554432" x="3520" y="8" height="64" width="297" html.valueishtml="0"  name=t_3 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="3845" y="8" height="76" width="128" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=detail alignment="0" text="Book Title" border="0" color="33554432" x="887" y="8" height="64" width="297" html.valueishtml="0"  name=t_2 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554432" x="1216" y="4" height="76" width="2263" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

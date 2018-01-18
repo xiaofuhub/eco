@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_cdconsider_ace_report1.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=1000 color="536870912" )
+summary(height=416 color="536870912" )
+footer(height=145 color="536870912" )
+detail(height=187 color="553648127" )
+table(column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="TTL" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="AUTH" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="AUTHFN" )
+ column=(type=char(5) updatewhereclause=yes name=cahonorific dbname="AHONORIFIC" )
+ column=(type=char(2) updatewhereclause=yes name=ttlinit_cycle dbname="CYCLE" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_publisher dbname="PUBLISHER" )
+ column=(type=decimal(0) updatewhereclause=yes name=ttlinit_pubyr dbname="PUBYR" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="CONNO" )
+ retrieve="  SELECT	ttlinit.ttl,  
+         ttlinit.auth,   
+         ttlinit.authfn,
+			ttlinit.ahonorific,     
+         ttlinit.cycle,   
+         ttlinit.publisher,   
+         ttlinit.pubyr,   
+         mchar.conno  
+
+    FROM mchar,   
+         ttlinit  
+   WHERE ( ttlinit.chno = mchar.chno ) and  
+    		( ttlinit.chno between :ls_chno_start and :ls_chno_end )
+			ORDER BY ttlinit.ttl   
+" arguments=(("ls_chno_start", string),("ls_chno_end", string)) )
+text(band=header alignment="0" text="TITLES  FOR  CONSIDERATION " border="0" color="0" x="3927" y="218" height="166" width="2312" html.valueishtml="0"  name=ttlinit_authfn_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="AUTHOR NAME" border="0" color="0" x="4187" y="770" height="166" width="1093" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2947" y="208" height="135" width="364" format="[general]" html.valueishtml="0"  name=ttlinit_auth visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="4604" y="395" height="166" width="1093" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="TITLE" border="0" color="0" x="593" y="770" height="166" width="437" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="PUB. YEAR" border="0" color="0" x="9072" y="770" height="166" width="770" html.valueishtml="0"  name=ttlinit_pubyr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="PUBLISHER" border="0" color="0" x="7541" y="770" height="166" width="833" html.valueishtml="0"  name=ttlinit_publisher_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CYCLE" border="0" color="0" x="6895" y="770" height="166" width="479" html.valueishtml="0"  name=ttlinit_cycle_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CONNO" border="0" color="0" x="6197" y="770" height="166" width="531" html.valueishtml="0"  name=mchar_conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_combine_auth_authfn( ttlinit_auth , ttlinit_authfn, cahonorific  )"border="0" color="0" x="4166" y="0" height="156" width="1739" format="[general]" html.valueishtml="0"  name=auth visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression=" ttlinit_ttl"border="0" color="0" x="593" y="0" height="156" width="3447" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="7541" y="0" height="156" width="1270" format="[general]" html.valueishtml="0"  name=ttlinit_publisher visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0" x="6979" y="0" height="156" width="291" format="[general]" html.valueishtml="0"  name=ttlinit_cycle visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="6125" y="0" height="156" width="687" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="0" x="9072" y="0" height="156" width="833" format="[general]" html.valueishtml="0"  name=ttlinit_pubyr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="0" text="TOTAL TITLES:" border="0" color="0" x="583" y="270" height="135" width="1072" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="0" expression="count(ttlinit_ttl for all)"border="0" color="0" x="1760" y="270" height="135" width="333" format="[general]" html.valueishtml="0"  name=count_ttl visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="8760" y="0" height="135" width="1166" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

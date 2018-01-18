@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_par_coauthor.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=24 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(34) update=yes updatewhereclause=yes key=yes name=coauth dbname="coauth" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=coauthfn dbname="coauthfn" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=chonorific dbname="chonorific" )
+ column=(type=char(6) update=yes updatewhereclause=yes key=yes name=chno dbname="chno" )
+ retrieve="  SELECT coauth.coauth,   
+         coauth.coauthfn,   
+         coauth.chonorific,   
+         coauth.chno
+    FROM coauth  
+   WHERE (coauth.chno = :Lchno)    
+" update="coauth" updatewhere=1 updatekeyinplace=yes arguments=(("Lchno", string))  sort="coauth A " )
+data(null null null null ) 
+compute(band=detail alignment="0" expression="count( coauth for all )"border="0" color="0" x="1495" y="8" height="52" width="471" format="[general]" html.valueishtml="0"  name=row_count visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="and" border="0" color="0" x="9" y="4" height="52" width="82" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="12632256" x="1321" y="4" height="52" width="9" format="[general]" html.valueishtml="0"  name=chno visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="119" y="8" height="68" width="599" format="[general]" html.valueishtml="0"  name=coauth  tag="Enter Coauthor's Last name" visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="736" y="4" height="72" width="393" format="[general]" html.valueishtml="0"  name=coauthfn  tag="Enter Coauthor's First name" visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="1143" y="4" height="72" width="165" format="[general]" html.valueishtml="0"  name=chonorific  tag="Enter Coauthor's honorific" visible="1" edit.limit=5 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+
+sparse(names="chno")htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,90 @@
+﻿$PBExportHeader$d_magazine_maintenance.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=12632256 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="553648127"  height.autosize=yes)
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=mag_magcd dbname="mag.magcd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_freq dbname="mag.freq" initial="0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estiss dbname="mag.estiss" initial="0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estsubs dbname="mag.estsubs" initial="0" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=mag_estsz dbname="mag.estsz" initial=".0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estmin dbname="mag.estmin" initial="0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_ccd dbname="mag.ccd" initial="0" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=mag_magst dbname="mag.magst" initial="A" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mag_fy dbname="mag.fy" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=mag_cntr dbname="mag.cntr" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcso dbname="mag.cntcso" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsc dbname="mag.cntcsc" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsadjc dbname="mag.cntcsadjc" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucmast dbname="mag.ucmast" initial="0" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucdupl dbname="mag.ucdupl" initial="0" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucothr dbname="mag.ucothr" initial="0" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_estmail dbname="mag.estmail" initial="0" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_invamtc dbname="mag.invamtc" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=mag_firstissue dbname="mag.firstissue" )
+ column=(type=char(34) updatewhereclause=yes name=magttl_title dbname="magttl.title" )
+ retrieve="SELECT  mag.magcd ,
+           mag.freq ,
+           mag.estiss ,
+           mag.estsubs ,
+           mag.estsz ,
+           mag.estmin ,
+           mag.ccd ,
+           mag.magst ,
+           mag.fy ,
+           mag.cntr ,
+           mag.cntcso ,
+           mag.cntcsc ,
+           mag.cntcsadjc ,
+           mag.ucmast ,
+           mag.ucdupl ,
+           mag.ucothr ,
+           mag.estmail ,
+           mag.invamtc ,
+           mag.firstissue,
+           magttl.title              
+        FROM mag ,
+           magttl     
+        WHERE ( mag.magcd = magttl.magcd ) and       
+        		 ( mag.fy = :li_fy ) and         
+				 ( mag.cntr = :ls_contract )  " update="mag" updatewhere=1 updatekeyinplace=no arguments=(("li_fy", number),("ls_contract", string))  sort="magttl_title A " )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="891" y="8" height="64" width="265" format="[general]" html.valueishtml="0"  name=mag_freq  tag="Magazine Frequency" visible="1" editmask.mask="###" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="5" color="0" x="1166" y="8" height="64" width="251" format="[general]" html.valueishtml="0"  name=mag_estiss  tag="Estimated Issues" visible="1" editmask.mask="###" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="0" x="9" y="8" height="64" width="302" format="[general]" html.valueishtml="0"  name=mag_magcd  tag="Magazine Code" visible="1" dddw.name=ddw_magcd dddw.displaycolumn=magcd dddw.datacolumn=magcd dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=no dddw.case=upper dddw.nilisnull=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=50 border="5" color="0" x="1746" y="8" height="64" width="247" format="[general]" html.valueishtml="0"  name=mag_estsz  tag="Estimated Size" visible="1" editmask.mask="####.0" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=60 border="5" color="0" x="2002" y="8" height="64" width="256" format="[general]" html.valueishtml="0"  name=mag_estmin  tag="Estimated Minutes" visible="1" editmask.mask="####" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="2" tabsequence=80 border="5" color="0" x="2597" y="8" height="64" width="215" format="[general]" html.valueishtml="0"  name=mag_ccd  tag="Contract Calendar Days" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="2" tabsequence=40 border="5" color="0" x="1426" y="8" height="64" width="311" format="[general]" html.valueishtml="0"  name=mag_estsubs  tag="Estimated Subscribers" visible="1" editmask.mask="######" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="2821" y="8" height="64" width="197" format="[general]" html.valueishtml="0" protect="0~t1"  name=mag_magst  tag="Magazine Status" visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="5" color="0" x="320" y="8" height="64" width="562" format="[general]" html.valueishtml="0" protect="0~t1"  name=magttl_title  tag="Magazine Title" visible="1" height.autosize=yes edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.displayonly=yes  font.face="Small Fonts" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=19 alignment="0" tabsequence=70 border="5" color="0" x="2272" y="8" height="64" width="320" html.valueishtml="0"  name=mag_firstissue visible="1" editmask.autoskip=yes editmask.ddcalendar=yes editmask.mask="mm/dd/yy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Magazine
+Code" border="6" color="0" x="9" y="8" height="136" width="302" html.valueishtml="0"  name=mag_magcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est.
+Issues" border="6" color="0" x="1166" y="8" height="136" width="251" html.valueishtml="0"  name=mag_estiss_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est.
+Subscribers" border="6" color="0" x="1426" y="8" height="136" width="311" html.valueishtml="0"  name=mag_estsubs_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est.
+ Size" border="6" color="0" x="1746" y="8" height="136" width="247" html.valueishtml="0"  name=mag_estsz_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est.
+Minutes" border="6" color="0" x="2002" y="8" height="136" width="256" html.valueishtml="0"  name=mag_estmin_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CCD" border="6" color="0" x="2597" y="8" height="136" width="215" html.valueishtml="0"  name=mag_ccd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mag.
+Status" border="6" color="0" x="2821" y="8" height="136" width="197" html.valueishtml="0"  name=mag_magst_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title" border="6" color="0" x="320" y="8" height="136" width="562" html.valueishtml="0"  name=magttl_title_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mag.
+Freq." border="6" color="0" x="891" y="8" height="136" width="265" html.valueishtml="0"  name=mag_freq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="FirstIssue" border="6" color="0" x="2267" y="8" height="136" width="325" html.valueishtml="0"  name=mag_firstissue_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

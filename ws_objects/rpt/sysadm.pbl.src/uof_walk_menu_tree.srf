@@ -1,0 +1,34 @@
+﻿$PBExportHeader$uof_walk_menu_tree.srf
+global type uof_walk_menu_tree from function_object
+end type
+
+forward prototypes
+global subroutine uof_walk_menu_tree (ref str_menu menu_structure, menu menu_id, string menu_text, ref integer array_limit)
+end prototypes
+
+global subroutine uof_walk_menu_tree (ref str_menu menu_structure, menu menu_id, string menu_text, ref integer array_limit);int li_j,li_i
+string ls_menu_string
+
+li_j = Upperbound(menu_id.item[])
+
+FOR li_i = 1 TO li_j
+  ls_menu_string = menu_id.item[li_i].text
+  ls_menu_string = uof_strip_menu(ls_menu_string)
+  
+  
+  IF ls_menu_string <>''THEN
+	array_limit++
+	menu_structure.menu_array[array_limit] = menu_text+'.'+ls_menu_string
+	 	  
+	// Walk this branch and find its children
+	uof_walk_menu_tree(menu_structure,menu_id.item[li_i],&
+	   menu_structure.menu_array[array_limit],array_limit)
+
+  END IF
+   
+NEXT
+
+     
+		
+end subroutine
+

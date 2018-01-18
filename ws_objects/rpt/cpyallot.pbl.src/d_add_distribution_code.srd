@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_add_distribution_code.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=240 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes key=yes name=def_casub dbname="def.casub" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=def_med dbname="def.med" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=def_defqty dbname="def.defqty" )
+ column=(type=char(4) updatewhereclause=yes name=lib_libcd dbname="lib.libcd" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=def_libcd dbname="def.libcd" )
+ column=(type=datetime update=yes updatewhereclause=yes name=def_defdt dbname="def.defdt" )
+ retrieve="  SELECT def.casub,   
+         def.med,   
+         def.defqty,   
+         lib.libcd,   
+         def.libcd,   
+         def.defdt  
+
+    FROM lib,   
+         def  
+   WHERE ( lib.libcd = def.libcd ) and  
+         ( ( lib.libcd = :s_libcd ) )    
+" update="def" updatewhere=0 updatekeyinplace=no arguments=(("s_libcd", string)) )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="3355" y="432" height="76" width="384" format="[general]" html.valueishtml="0"  name=def_defdt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="0" text="Library Code" border="0" color="0" x="123" y="32" height="64" width="352" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="0" text="Subject category
+code" border="0" color="0" x="567" y="12" height="104" width="366" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="0" text="Medium" border="0" color="0" x="1093" y="68" height="52" width="169" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=30 border="5" color="0" x="997" y="144" height="76" width="384" format="[general]" html.valueishtml="0"  name=def_med  tag="Please select medium from dropdown listbox" visible="1" edit.limit=3 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="0" text="Default Quantity" border="0" color="0" x="1477" y="64" height="52" width="347" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="1" tabsequence=40 border="5" color="0" x="1454" y="144" height="76" width="384" format="[general]" html.valueishtml="0"  name=def_defqty  tag="Please enter default quantity" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1861" y="156" height="52" width="69" format="[general]" html.valueishtml="0"  name=def_libcd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=20 border="5" color="0" x="558" y="144" height="76" width="384" format="[general]" html.valueishtml="0"  name=def_casub  tag="Please select subject category code from dropdown listbox" visible="1" edit.limit=3 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="255" x="128" y="144" height="76" width="384" format="[general]" html.valueishtml="0"  name=lib_libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

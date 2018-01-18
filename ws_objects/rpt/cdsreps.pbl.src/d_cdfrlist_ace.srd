@@ -1,0 +1,70 @@
+﻿$PBExportHeader$d_cdfrlist_ace.srd
+release 10.5;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=927 color="536870912" )
+summary(height=354 color="536870912" )
+footer(height=135 color="536870912" )
+detail(height=187 color="553648127" height.autosize=yes )
+table(column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" dbalias=".ttl" )
+ column=(type=decimal(0) updatewhereclause=yes name=ccryr dbname="ttlinit.cryr" dbalias=".cryr" )
+ column=(type=char(80) updatewhereclause=yes name=crname dbname="ttlinit.crname" dbalias=".crname" )
+ column=(type=char(8) updatewhereclause=yes name=clcno dbname="ttlinit.lcno" dbalias=".lcno" )
+ column=(type=datetime updatewhereclause=yes name=ccrgdt dbname="cr.crgdt" dbalias=".crgdt" )
+ column=(type=datetime updatewhereclause=yes name=cpmedt dbname="ttlinit.pmedt" dbalias=".pmedt" )
+ column=(type=datetime updatewhereclause=yes name=mchar_fr dbname="mchar.fr" dbalias=".fr" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" dbalias=".conno" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" dbalias=".med" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" dbalias=".bkmed" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_flash_indicator dbname="mchar.flash_indicator" dbalias=".flash_indicator" )
+ retrieve="  SELECT ttlinit.ttl,   
+              ttlinit.cryr,
+			ttlinit.crname,
+			ttlinit.lcno,
+			cr.crgdt,
+			ttlinit.pmedt,
+			mchar.fr,
+  			mchar.conno,
+			mchar.med,
+              mchar.bkmed,
+              mchar.flash_indicator
+    FROM mchar,   
+         ttlinit,
+			cr		 
+   WHERE ( mchar.chno = ttlinit.chno ) and
+			( ttlinit.chno = cr.chno ) and
+			( mchar.fr = :ls_date )
+		" arguments=(("ls_date", datetime))  sort="ttl_no_pipe A " )
+text(band=header alignment="0" text="TITLES PASSING FINAL REVIEW" border="0" color="0" x="3385" y="197" height="166" width="2437" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="CONNO" border="0" color="0" x="2739" y="729" height="166" width="541" html.valueishtml="0"  name=mchar_conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="TITLE" border="0" color="0" x="145" y="729" height="166" width="447" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="MED" border="0" color="0" x="3604" y="729" height="166" width="375" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4010" y="375" height="166" width="1333" format="mm/dd/yyyy" html.valueishtml="0"  name=mchar_fr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression=" ttlinit_ttl "border="0" color="0" x="145" y="0" height="135" width="2531" format="[general]" html.valueishtml="0"  name=ttl_no_pipe visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="0" color="0" x="2666" y="0" height="135" width="822" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="2" tabsequence=32766 border="0" color="0" x="3500" y="0" height="135" width="343" format="[general]" html.valueishtml="0"  name=mchar_med visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=summary alignment="0" text="TOTAL CONTROL NUMBERS:" border="0" color="0" x="145" y="198" height="145" width="2010" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="count(  mchar_conno  for all )"border="0" color="0" x="2218" y="208" height="135" width="281" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="7864" y="0" height="135" width="1208" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="3854" y="0" height="135" width="239" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=0 border="0" color="0" x="4197" y="0" height="135" width="93" html.valueishtml="0"  name=mchar_flash_indicator visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="GC" border="0" color="0" x="7937" y="729" height="166" width="270" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="ED-ANNO" border="0" color="0" x="6760" y="729" height="166" width="677" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="COPYRIGHT LABEL" border="0" color="0" x="4572" y="729" height="166" width="1312" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="LCNO" border="0" color="0" x="8843" y="729" height="166" width="437" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="4541" y="0" height="135" width="447" format="[general]" html.valueishtml="0"  name=ccryr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="8697" y="0" height="135" width="1062" format="[general]" html.valueishtml="0"  name=clcno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0" x="7708" y="0" height="135" width="958" format="mm/dd/yyyy" html.valueishtml="0"  name=ccrgdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="6760" y="0" height="135" width="895" format="mm/dd/yyyy" html.valueishtml="0"  name=cpmedt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="5010" y="0" height="135" width="1739" format="[general]" html.valueishtml="0"  name=crname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Flash" border="0" color="0" x="4062" y="729" height="166" width="510" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

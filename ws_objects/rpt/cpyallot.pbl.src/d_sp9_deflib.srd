@@ -1,0 +1,61 @@
+﻿$PBExportHeader$d_sp9_deflib.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=136 color="79741120" )
+summary(height=100 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes key=yes name=libcd dbname="LIBCD" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=med dbname="MED" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=casub dbname="CASUB" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=casub_desc dbname="CASUB_DESC" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=curr_n_defqty dbname="CURR_N_DEFQTY" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sel_n_defqty dbname="SEL_N_DEFQTY" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=curr_p_defqty dbname="CURR_P_DEFQTY" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sel_p_defqty dbname="SEL_P_DEFQTY" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=curr_r_defqty dbname="CURR_R_DEFQTY" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sel_r_defqty dbname="SEL_R_DEFQTY" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=sent_flag dbname="SENT_FLAG" )
+ column=(type=datetime update=yes updatewhereclause=yes name=defdt dbname="DEFDT" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=status dbname="STATUS" )
+ retrieve="  SELECT LIBDEF.LIBCD,   
+         LIBDEF.MED,   
+         LIBDEF.CASUB,   
+         LIBDEF.CASUB_DESC,   
+         LIBDEF.CURR_N_DEFQTY,   
+         LIBDEF.SEL_N_DEFQTY,   
+         LIBDEF.CURR_P_DEFQTY,   
+         LIBDEF.SEL_P_DEFQTY,   
+         LIBDEF.CURR_R_DEFQTY,   
+         LIBDEF.SEL_R_DEFQTY,   
+         LIBDEF.SENT_FLAG,   
+         LIBDEF.DEFDT,   
+         LIBDEF.STATUS  
+    FROM LIBDEF@pic_link 
+WHERE LIBDEF.SENT_FLAG IS NULL 
+ORDER BY 1,2,3,4" update="libdef" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Media" border="0" color="0" x="9" y="8" height="128" width="201" html.valueishtml="0"  name=med_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="CASUB" border="0" color="0" x="219" y="8" height="128" width="238" html.valueishtml="0"  name=casub_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="OldNormal" border="0" color="0" x="1248" y="8" height="128" width="279" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="NewNormal" border="0" color="0" x="1536" y="8" height="128" width="229" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="OldPriority" border="0" color="0" x="1774" y="8" height="128" width="242" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="NewPriority" border="0" color="0" x="2025" y="8" height="128" width="251" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="OldRush" border="0" color="0" x="2286" y="8" height="128" width="174" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="NewRush" border="0" color="0" x="2469" y="8" height="128" width="210" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="CasubDescription" border="0" color="0" x="466" y="4" height="128" width="773" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="0" text="Libcd" border="0" color="0" x="2729" y="4" height="76" width="238" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="2" tabsequence=10 border="5" color="0" x="9" y="8" height="76" width="201" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=20 border="5" color="0" x="219" y="8" height="76" width="238" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="5" color="0" x="1248" y="8" height="76" width="279" format="[general]" html.valueishtml="0"  name=curr_n_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="255" x="1536" y="8" height="76" width="229" format="[general]" html.valueishtml="0"  name=sel_n_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="5" color="0" x="1774" y="8" height="76" width="242" format="[general]" html.valueishtml="0"  name=curr_p_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="5" color="255" x="2025" y="8" height="76" width="251" format="[general]" html.valueishtml="0"  name=sel_p_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="2" tabsequence=32766 border="5" color="0" x="2286" y="8" height="76" width="174" format="[general]" html.valueishtml="0"  name=curr_r_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="2" tabsequence=32766 border="5" color="255" x="2469" y="8" height="76" width="210" format="[general]" html.valueishtml="0"  name=sel_r_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="12632256" x="2688" y="8" height="76" width="5" format="[general]" html.valueishtml="0"  name=sent_flag visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=13 alignment="2" tabsequence=32766 border="0" color="12632256" x="2702" y="8" height="76" width="5" format="[general]" html.valueishtml="0"  name=status visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=12 alignment="2" tabsequence=32766 border="0" color="12632256" x="2715" y="8" height="76" width="5" format="[shortdate] [time]" html.valueishtml="0"  name=defdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="466" y="8" height="76" width="773" format="[general]" html.valueishtml="0"  name=casub_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2729" y="0" height="64" width="238" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

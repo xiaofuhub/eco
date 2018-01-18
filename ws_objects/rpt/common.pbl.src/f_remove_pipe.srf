@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_remove_pipe.srf
+global type f_remove_pipe from function_object
+end type
+
+forward prototypes
+global function string f_remove_pipe (string lanno)
+end prototypes
+
+global function string f_remove_pipe (string lanno);string 			ls_source
+n_cst_string 	inv_string
+
+ls_source = Lanno
+
+ls_source =  inv_string.of_GlobalReplace(ls_source, "|", "")
+
+RETURN ls_source
+
+end function
+

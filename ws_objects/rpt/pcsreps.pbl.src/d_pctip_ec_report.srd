@@ -1,0 +1,88 @@
+﻿$PBExportHeader$d_pctip_ec_report.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=1114 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=166 color="536870912" )
+detail(height=177 color="536870912" )
+table(column=(type=char(6) updatewhereclause=yes name=ttlinit_chno dbname="ttlinit.chno" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=char(5) updatewhereclause=yes name=ttlinit_ahonorific dbname="ttlinit.ahonorific" )
+ column=(type=char(2) updatewhereclause=yes name=ttlinit_cycle dbname="ttlinit.cycle" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_casub dbname="ttlinit.casub" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=datetime updatewhereclause=yes name=catalog_cat dbname="catalog.cat" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(2) updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=datetime updatewhereclause=yes name=prod_schstdt dbname="prod.schstdt" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ retrieve="  SELECT ttlinit.chno,   
+         ttlinit.ttl,   
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.ahonorific,   
+         ttlinit.cycle,   
+         ttlinit.casub,   
+         mchar.conno,   
+         mchar.med,   
+         catalog.cat,   
+         prod.bkseq,   
+         prod.bkmed,   
+         mchar.ricd,   
+         prod.actenddt,   
+         prod.schstdt,   
+         ancntr.prdr  
+    FROM mchar ,
+			catalog  ,   
+         ttlinit,   
+         prod,   
+         ancntr  
+   WHERE ( mchar.conno = catalog.conno(+) ) and  
+         ( mchar.bkseq = catalog.bkseq(+) ) and 
+			( mchar.bkmed = catalog.bkmed(+) ) and 
+         ( prod.bkseq = mchar.bkseq ) and  
+         ( prod.bkmed = mchar.bkmed ) and  
+         ( ancntr.cntr = prod.cntr ) and  
+         ( ttlinit.chno = mchar.chno ) and  
+         ( prod.schstdt > :ld_date )   
+ORDER BY ttlinit.ahonorific ASC   
+" arguments=(("ld_date", date)) )
+column(band=header id=10 alignment="0" tabsequence=32766 border="0" color="0" x="9104" y="270" height="156" width="1041" format="[general]" html.valueishtml="0"  name=catalog_cat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=4 alignment="0" tabsequence=32766 border="0" color="0" x="354" y="41" height="197" width="125" format="[general]" html.valueishtml="0"  name=ttlinit_authfn visible="1~t0" edit.limit=34 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="0" x="552" y="41" height="197" width="93" format="[general]" html.valueishtml="0"  name=ttlinit_ahonorific visible="1~t0" edit.limit=5 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="0" x="864" y="41" height="197" width="291" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1~t0" edit.limit=3 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="0" x="666" y="41" height="197" width="135" format="[general]" html.valueishtml="0"  name=ttlinit_auth visible="1~t0" edit.limit=34 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="5000" y="364" height="166" width="875" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="AS OF" border="0" color="0" x="4458" y="364" height="166" width="510" html.valueishtml="0"  name=ttlinit_ahonorific_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="TITLES IN PROCESS FOR MICROFISHE" border="0" color="0" x="3833" y="166" height="166" width="2906" html.valueishtml="0"  name=ttlinit_authfn_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1208" y="52" height="166" width="197" format="[general]" html.valueishtml="0"  name=ttlinit_chno visible="1~t0" edit.limit=6 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="TITLE" border="0" color="0" x="937" y="875" height="166" width="447" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CYCLE" border="0" color="0" x="6333" y="875" height="166" width="520" html.valueishtml="0"  name=ttlinit_cycle_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="PRDR" border="0" color="0" x="9739" y="875" height="166" width="458" html.valueishtml="0"  name=ancntr_cntrfy_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="SCHENDDT" border="0" color="0" x="8833" y="875" height="166" width="854" html.valueishtml="0"  name=prod_schstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="ACTENDDT" border="0" color="0" x="7927" y="875" height="166" width="854" html.valueishtml="0"  name=prod_actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CASUB" border="0" color="0" x="6895" y="875" height="166" width="541" html.valueishtml="0"  name=ttlinit_casub_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="RICD" border="0" color="0" x="7479" y="875" height="166" width="395" html.valueishtml="0"  name=mchar_ricd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="BOOK NO." border="0" color="0" x="5614" y="875" height="166" width="677" html.valueishtml="0"  name=prod_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="MED" border="0" color="0" x="5177" y="875" height="166" width="354" html.valueishtml="0"  name=mchar_med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CONNO" border="0" color="0" x="4479" y="875" height="166" width="562" html.valueishtml="0"  name=mchar_conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="AUTHOR" border="0" color="0" x="3031" y="875" height="166" width="687" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="2" tabsequence=32766 border="0" color="0" x="9822" y="0" height="145" width="291" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="2" tabsequence=32766 border="0" color="0" x="7583" y="0" height="145" width="218" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="0" x="7041" y="0" height="145" width="291" format="[general]" html.valueishtml="0"  name=ttlinit_casub visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="8833" y="0" height="145" width="791" format="mm/dd/yyyy" html.valueishtml="0"  name=prod_schstdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="7927" y="0" height="145" width="812" format="mm/dd/yyyy" html.valueishtml="0"  name=prod_actenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="5614" y="11" height="145" width="770" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="2" tabsequence=32766 border="0" color="0" x="5197" y="11" height="145" width="291" format="[general]" html.valueishtml="0"  name=mchar_med visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4479" y="11" height="145" width="677" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_combine_auth_authfn( ttlinit_auth , ttlinit_authfn , ttlinit_ahonorific )"border="0" color="0" x="2687" y="11" height="145" width="1739" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="52" y="11" height="145" width="2583" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="6468" y="11" height="145" width="218" format="[general]" html.valueishtml="0"  name=ttlinit_cycle visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="9031" y="0" height="135" width="1145" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

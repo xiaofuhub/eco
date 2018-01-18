@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_cat_initials.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=92 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1448 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes name=initials dbname="editinfo.initials" )
+ column=(type=datetime update=yes updatewhereclause=yes name=s2in dbname="editinfo.s2in" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=conno dbname="editinfo.conno" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=edit_info dbname="editinfo.edit_info" )
+ retrieve="  SELECT initials,
+			s2in,conno,
+			edit_info 
+	FROM editinfo ORDER BY s2in ASC
+" update="editinfo" updatewhere=0 updatekeyinplace=no )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="558" y="280" height="1140" width="2080" format="[general]" html.valueishtml="0"  name=edit_info visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes edit.hscrollbar=yes edit.imemode=0 edit.vscrollbar=yes edit.displayonly=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Cataloger Initials:" border="0" color="0" x="41" y="24" height="52" width="494" html.valueishtml="0"  name=bcs_cat_initals_initials_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Edit Info:" border="0" color="0" x="242" y="276" height="52" width="288" html.valueishtml="0"  name=bcs_edit_info_edit_info_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Control Number:" border="0" color="0" x="46" y="196" height="52" width="485" html.valueishtml="0"  name=bcs_edit_info_conno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="255" x="558" y="196" height="64" width="379" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Stage II date in:" border="0" color="0" x="37" y="108" height="52" width="494" html.valueishtml="0"  name=bcs_cat_initals_s2in_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="558" y="108" height="64" width="306" format="[general]" html.valueishtml="0"  name=s2in visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="558" y="20" height="64" width="219" format="[general]" html.valueishtml="0"  name=initials visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="0" expression="rowcount()"border="0" color="0" x="549" y="20" height="52" width="224" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="0" text="Total Rows:" border="0" color="0" x="133" y="20" height="52" width="361" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

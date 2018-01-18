@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_count_no_of_coauth.srf
+global type f_count_no_of_coauth from function_object
+end type
+
+forward prototypes
+global function integer f_count_no_of_coauth (string as_chno)
+end prototypes
+
+global function integer f_count_no_of_coauth (string as_chno);int li_count
+IF IsNull(as_chno)=FALSE THEN
+	select count(*) into :li_count
+	from coauth
+	where chno= :as_chno
+	Using SQLServerTrans;
+END IF
+return li_count
+end function
+

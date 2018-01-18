@@ -1,0 +1,293 @@
+﻿$PBExportHeader$f_export.srf
+global type f_export from function_object
+end type
+
+forward prototypes
+global function string f_export (str_pms_data_extract astr)
+end prototypes
+
+global function string f_export (str_pms_data_extract astr);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  f_export_to_xml
+//
+//	Description:
+//	export text to xml format
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			01/31/2008      002 PICS Modifications	 PICS PMS 2.0 Modifications
+//																			PMS B.2, PMS B.2.1
+//																Introduce flash books media DB
+//						03/13/2009 for all recorded books do hours and minutes #2159
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+string ls_export,ls_endfield_text,ls_endrec_text
+string ls_endfield, ls_smileyface, ls_endrecord
+string ls_temp
+
+ls_endfield_text='[ENDFIELD]'
+ls_endrec_text='[ENDRECORD]'
+
+ls_endfield =  '~h5c~h70~h61~h72~h0d~h0a~h7d~h7b~h5c~h70~h6c~h61~h69~h6e~h20'
+
+//ls_smileyface = '~h7D~h7B~h5C~h70~h6C~h61~h69~h6E~h20~h5C~h66~h31~h20~h7B~h5C~h66~h32~h20~h5C~h27~h32~h39~h7D~h7D~h7B~h5C~h70~h6C~h61~h69~h6E~h20'
+ls_smileyface = '~h7B~h5C~h66~h31~h20~h5C~h27~h32~h39~h7D'
+
+ls_endrecord = '~h5c~h70~h61~h72~h0d~h0a~h7d~h7b~h5c~h70~h6c~h61~h69~h6e~h20~h5c~h70~h61~h72~h64~h5c~h70~h61~h67~h65~h20'
+
+
+// ttlinit.lang
+
+CHOOSE CASE astr.lang
+	CASE "SPA"
+		ls_export += "f 0"
+	CASE "ARA"
+		ls_export += "f 1"
+	CASE "CAM"
+		ls_export += "f 2"
+	CASE "FRE"
+		ls_export += "f 3"
+	CASE "GER"
+		ls_export += "f 4"
+	CASE "GRE"
+		ls_export += "f 5"
+	CASE "ITA"
+		ls_export += "f 6"
+	CASE "KOR"
+		ls_export += "f 7"
+	CASE "LAO"
+		ls_export += "f 8"
+	CASE "POL"
+		ls_export += "f 9"
+	CASE "POR"
+		ls_export += "f a"
+	CASE "RUS"
+		ls_export += "f b"
+	CASE "VIE"
+		ls_export += "f c"
+	CASE "ENG"
+		ls_export += ''
+END CHOOSE
+
+ls_export += ''
+
+// ttlinit.ajfyn
+
+CHOOSE CASE astr.ajfyn 
+	CASE "AF"
+		ls_export += "a f"
+	CASE "AN"
+		ls_export += "a .n"
+	CASE "JF"
+		ls_export += "c f"
+	CASE "JN"
+		ls_export += "c .n"
+	CASE "YN"
+		ls_export += "a .n"
+	CASE "YF"
+		ls_export += "a f"
+END CHOOSE
+
+ls_export += ls_endfield_text+ls_endfield 
+
+// ttlinit.ttlart
+
+IF NOT IsNull(astr.ttlart) THEN
+	ls_export += trim(astr.ttlart) + ' '
+END IF
+ls_export += ls_endfield_text+ls_endfield
+
+// ttlinit.ttl
+
+if not isnull(astr.ttl) then
+  ls_export += trim(astr.ttl)
+end if
+
+ls_export += ls_endfield_text+ls_endfield 
+
+// mchar.bkmed
+//03/11/2009 PROCESS DB/RC RECORDED BOOKS
+IF Trim(astr.dbrc) = 'DB/RC' THEN
+		ls_export += astr.dbrc
+ELSE
+	CHOOSE CASE trim(astr.bkmed)
+		CASE "RC"
+			ls_export += 'RC'
+			// 01/31/2008 include db media
+		CASE "DB"
+			ls_export += 'DB'
+			
+		CASE "BR"
+			ls_export += 'BR'
+		CASE "P/B"
+			ls_export += 'BR'
+	END CHOOSE
+END IF
+
+ls_export += ls_endfield_text+ls_endfield 
+
+// mchar.bkseq
+
+if not isnull(astr.bkseq) then
+  ls_export += trim(string(astr.bkseq))
+end if
+
+ls_export += ls_endfield_text+ls_endfield 
+
+// ttlinit.aepcd
+
+CHOOSE CASE trim(astr.aepcd)
+	CASE 'A'
+		ls_export += 'by'
+	CASE 'E'
+		ls_export += 'edited by'
+	CASE 'S'
+		ls_export += 'selected by'
+	CASE 'T'
+		ls_export += 'translated by'
+	CASE 'R'
+		ls_export += 'retold by'
+	CASE 'C'
+		ls_export += 'compiled by'
+	CASE 'P'
+		ls_export += ''
+	CASE 'N'
+		ls_export += ''
+	CASE 'I'
+		ls_export += 'by'
+	CASE 'L'
+		ls_export += 'by'
+END CHOOSE
+
+ls_export += ls_endfield_text+ls_endfield 
+
+// ttlinit.authfn
+
+if not isnull(astr.authfn) then
+	ls_export += trim(astr.authfn)
+end if
+
+ls_export += ls_endfield_text+ls_endfield 
+
+//ttlinit.auth & use coauthstr to output authors
+
+ls_temp = ""
+
+if not isnull(astr.auth) then
+	ls_temp += trim(astr.auth)
+	if not isnull(astr.coauthstr) then
+		ls_temp += " and " + trim(astr.coauthstr)
+	end if
+end if
+
+ls_export += ls_temp + ls_endfield_text+ls_endfield  
+
+// use narrstr to output narrators
+
+if not isnull(astr.narrstr) then
+	ls_export += trim(astr.narrstr)
+end if
+
+ls_export += ls_endfield_text+ls_endfield 
+
+// Volumes
+
+ls_temp =  ""
+
+if not isnull(astr.vols) then
+	IF TRIM(astr.bkmed) = 'BR' AND astr.vols = 1 THEN
+		ls_temp += string(astr.vols) + " volume"
+	ELSEIF astr.bkmed = 'BR' THEN
+		ls_temp += string(astr.vols) + " volumes"
+//	ELSEIF TRIM(astr.bkmed) = 'RC' AND astr.vols = 1 THEN
+//		ls_temp += string(astr.vols) + " cassette"
+//	ELSEIF TRIM(astr.bkmed) = 'RC' THEN
+//		ls_temp += string(astr.vols) + " cassettes"
+//	// 01/31/2008 db
+//	ELSEIF TRIM(astr.bkmed) = 'DB' AND astr.vols = 1 THEN
+//		ls_temp += string(astr.vols) + " flash cartridge"
+//	ELSEIF TRIM(astr.bkmed) = 'DB' THEN
+//		ls_temp += string(astr.vols) + " flash cartridges"
+// 03/13/2009 for all recorded books do hours and minutes
+ELSEIF Trim(astr.bkmed) = 'RC' OR Trim(astr.bkmed) = 'DB' THEN
+		ls_temp += f_duration(astr.length_)
+	END IF
+end if
+
+if not isnull(astr.ricd) then 
+	IF TRIM(astr.ricd) = 'RI' OR TRIM(astr.ricd) = 'RR' THEN
+		ls_temp = ls_temp + " (Reissue)"
+	END IF
+end if
+
+ls_temp += ls_endfield_text+ls_endfield 
+
+ls_export += ls_temp
+
+// If foreign annotation exist first type that and then type the english annotation.
+if not isnull(astr.anno_foreign) then
+	ls_export += string(astr.anno_foreign)
+	if not isnull(astr.anno) then
+		IF NOT Pos(astr.anno, 'bestseller') > 0 THEN
+			IF astr.prop_added_flg = 'Y' THEN
+				ls_export += "(" + astr.anno + ")" + ls_endfield_text + ls_endfield 
+			ELSE		
+				ls_export += "(" + astr.anno + ") " + string(astr.anyr) + "." + ls_endfield_text+ls_endfield 
+			END IF
+		ELSE
+			ls_export += "(" + astr.anno + ") .Bestseller" + string(astr.anyr) + "." + ls_endfield_text+ls_endfield
+		END IF
+	else
+		ls_export += ls_endfield_text+ls_endfield		
+	end if
+// else type the english annotation, if exist.
+else
+	if not isnull(astr.anno) then
+		IF NOT Pos(astr.anno, 'bestseller') > 0 THEN
+			IF astr.prop_added_flg = 'Y' THEN
+				ls_export += astr.anno + ls_endfield_text + ls_endfield 
+			ELSE		
+				ls_export += astr.anno + ' ' + string(astr.anyr) + "." + ls_endfield_text+ls_endfield 
+			END IF
+		ELSE
+			ls_export += astr.anno + '.Bestseller' + string(astr.anyr) + "." + ls_endfield_text+ls_endfield
+		END IF
+	end if
+end if		
+
+
+if not isnull(astr.oneliner) then 
+	ls_export += trim(astr.oneliner) + ls_endfield_text+ls_endfield 
+end if
+
+if not isnull(astr.pmsub1) then
+	ls_export += trim(astr.pmsub1) 
+end if
+
+IF NOT ISNULL(astr.pmsub2) and not trim(astr.pmsub2)="" THEN
+	ls_export += ls_smileyface + trim(astr.pmsub2)
+END IF
+
+IF NOT ISNULL(astr.pmsub3) and not trim(astr.pmsub3)="" THEN
+	ls_export += ls_smileyface + trim(astr.pmsub3)
+END IF
+
+ls_export += ls_endfield_text+ls_endfield 
+
+IF TRIM(astr.bkmed) = 'RC' OR & 
+TRIM(astr.bkmed) = 'DB' THEN // 01/31/2008
+	ls_export += 'C070'
+ELSEIF TRIM(astr.bkmed) = 'BR' THEN
+	ls_export += 'C010'
+	// 01/31/2008 what is for DB?  SAME AS RC
+END IF
+
+ls_export += ls_endfield_text+ls_endfield + ls_endrec_text+ls_endrecord 
+
+RETURN ls_export
+end function
+

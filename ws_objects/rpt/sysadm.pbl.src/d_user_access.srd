@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_user_access.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=128 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=userid dbname="USERID" )
+ column=(type=char(5) updatewhereclause=yes name=group_ dbname="GROUP_" )
+ column=(type=char(30) updatewhereclause=yes name=userdesc dbname="USERDESC" )
+ retrieve="  SELECT picsuser.userid,   
+         picsuser.group_,   
+         picsuser.userdesc  
+    FROM picsuser  
+   WHERE picsuser.userid = :ls_userid    
+" arguments=(("ls_userid", string)) )
+text(band=detail alignment="1" text="User ID" border="0" color="0" x="18" y="36" height="64" width="206"  name=userid_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Group" border="0" color="0" x="649" y="36" height="64" width="169"  name=group_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="261" y="36" height="64" width="329" format="[General]"  name=userid dddw.name=dddw_userid dddw.displaycolumn=userid dddw.datacolumn=userid dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="5" color="0" x="855" y="36" height="64" width="242"  name=group_  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="User Name" border="0" color="0" x="1125" y="36" height="64" width="315"  name=userdesc_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1458" y="36" height="64" width="992" format="[general]"  name=userdesc edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

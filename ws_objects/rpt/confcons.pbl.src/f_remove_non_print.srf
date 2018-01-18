@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_remove_non_print.srf
+global type f_remove_non_print from function_object
+end type
+
+forward prototypes
+global function string f_remove_non_print (string ls_text)
+end prototypes
+
+global function string f_remove_non_print (string ls_text);string 			ls_source
+n_cst_string 	inv_string
+
+ls_source = ls_text
+
+ls_source =  inv_string.of_RemoveNonPrint(ls_source)
+
+RETURN(ls_source)
+end function
+

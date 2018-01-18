@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_acquisition_receive.srd
+$PBExportComments$Received books
+release 10;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=116 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="553648127"  height.autosize=yes)
+table(column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(80) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=datetime update=yes updatewhereclause=yes name=acquist_pbordt dbname="acquist.pbordt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=acquist_pbrecdt dbname="acquist.pbrecdt" )
+ column=(type=decimal(0) updatewhereclause=yes name=acquist_pbneed dbname="acquist.pbneed" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=acquist_pboh dbname="acquist.pboh" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=acquist_pbdlrcd dbname="acquist.pbdlrcd" )
+ column=(type=char(6) updatewhereclause=yes key=yes name=acquist_chno dbname="acquist.chno" )
+ retrieve="  SELECT ttlinit.ttl,
+         ttlinit.auth,   
+         acquist.pbordt,   
+         acquist.pbrecdt,   
+         acquist.pbneed,   
+         acquist.pboh,   
+         acquist.pbdlrcd,   
+         acquist.chno  
+    FROM acquist, ttlinit  
+   WHERE ttlinit.chno = acquist.chno  
+    AND  acquist.pbordt is not NULL
+			
+" update="acquist" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Title" border="0" color="0" x="690" y="4" height="52" width="91" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Author" border="0" color="0" x="1248" y="4" height="52" width="142" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Chart
+Number" border="0" color="0" x="27" y="4" height="104" width="169" html.valueishtml="0"  name=ttlinit_chno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Order
+ Date" border="0" color="0" x="1943" y="4" height="104" width="119" html.valueishtml="0"  name=acquist_pbordt_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Receive 
+Date" border="0" color="0" x="2286" y="4" height="104" width="197" html.valueishtml="0"  name=acquist_pbrecdt_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Copies
+Ordered" border="0" color="0" x="2656" y="4" height="104" width="174" html.valueishtml="0"  name=acquist_pbneed_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Copies
+Recvd." border="0" color="0" x="2848" y="4" height="104" width="160" html.valueishtml="0"  name=ttlinit_pboh_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Vend.
+Code" border="0" color="0" x="3063" y="4" height="104" width="128" html.valueishtml="0"  name=acquist_pbdlrcd_t visible="1"  font.face="MS Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="16711680" x="261" y="8" height="72" width="951" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1861" y="8" height="72" width="366" format="[general]" html.valueishtml="0"  name=acquist_pbordt  tag="Order Date" visible="1" editmask.mask="mm/dd/yyyy"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="2254" y="8" height="72" width="393" format="[general]" html.valueishtml="0"  name=acquist_pbrecdt  tag="Receive Date" visible="1" editmask.mask="mm/dd/yyyy"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="5" color="0" x="2674" y="8" height="72" width="133" format="[general]" html.valueishtml="0"  name=acquist_pbneed  tag="Copies Ordered" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="2" tabsequence=30 border="5" color="0" x="2866" y="8" height="72" width="133" format="00/00/0000" html.valueishtml="0"  name=acquist_pboh  tag="Copies Received" visible="1" editmask.mask="#####" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="3058" y="8" height="72" width="128" format="[general]" html.valueishtml="0"  name=acquist_pbdlrcd  tag="Vendor Code" visible="1" dddw.name=dddw_acquisition_dealer_codes dddw.displaycolumn=dlrcd dddw.datacolumn=dlrcd dddw.percentwidth=350 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="5" color="16711680" x="9" y="8" height="72" width="229" format="[general]" html.valueishtml="0"  name=acquist_chno visible="1" editmask.mask="######" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="16711680" x="1239" y="8" height="72" width="594" html.valueishtml="0"  name=ttlinit_auth visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

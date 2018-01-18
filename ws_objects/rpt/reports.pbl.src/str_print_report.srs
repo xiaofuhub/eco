@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_print_report.srs
+global type str_print_report from structure
+	string		lchart_no
+	string		lchart_no1
+	datetime		d_date
+end type
+

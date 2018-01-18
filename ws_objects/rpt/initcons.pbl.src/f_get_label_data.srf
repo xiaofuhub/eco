@@ -1,0 +1,52 @@
+﻿$PBExportHeader$f_get_label_data.srf
+global type f_get_label_data from function_object
+end type
+
+forward prototypes
+global function integer f_get_label_data (string as_conno, ref string as_label, ref string as_print, ref string as_braille)
+end prototypes
+
+global function integer f_get_label_data (string as_conno, ref string as_label, ref string as_print, ref string as_braille);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  f_get_label_data
+//
+//	Description:
+//	For a given conno get the DTB Label data
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			11/04/2009    	5.0			
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+string ls_print, ls_braille, ls_data
+int li_count
+
+select count(*)
+INTO :li_count
+from DB_LABELS
+WHERE CONNO = :as_conno using sqlservertrans ;
+
+IF li_count = 0 THEN
+	as_label = 'N'
+	as_print = 'N'
+	as_braille = 'N'
+	RETURN 1
+ELSE
+	as_label = 'Y'
+	select print_approved, braille_approved
+	INTO :as_print, :as_braille
+	from DB_LABELS
+	WHERE CONNO = :as_conno using sqlservertrans ;
+END IF
+RETURN 1
+
+
+
+
+end function
+

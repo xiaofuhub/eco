@@ -1,0 +1,16 @@
+﻿$PBExportHeader$f_pics_set_def_prn_setting.srf
+global type f_pics_set_def_prn_setting from function_object
+end type
+
+forward prototypes
+global subroutine f_pics_set_def_prn_setting ()
+end prototypes
+
+global subroutine f_pics_set_def_prn_setting ();// This function will set the default printer setting
+nvo_PowerPrn.of_SetPrinterOrientation(1)
+nvo_PowerPrn.of_SetPaperSource(1)
+nvo_PowerPrn.of_SetPaperSize(1)
+nvo_PowerPrn.of_SetCopies(1)
+
+end subroutine
+

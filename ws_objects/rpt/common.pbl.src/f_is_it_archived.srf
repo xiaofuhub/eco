@@ -1,0 +1,59 @@
+﻿$PBExportHeader$f_is_it_archived.srf
+global type f_is_it_archived from function_object
+end type
+
+forward prototypes
+global function boolean f_is_it_archived (string conno, long bkseq)
+end prototypes
+
+global function boolean f_is_it_archived (string conno, long bkseq);string Larflag,Lconno
+
+IF (bkseq = 0 AND IsNull(conno)) THEN
+	MessageBox("ERROR","Either Book number or Control number can be entered.")
+	RETURN FALSE
+ELSEIF (bkseq > 0 AND IsNull(conno)=FALSE) THEN
+	MessageBox("ERROR","Either Book number or Control number can be entered.")
+	RETURN FALSE	
+ELSEIF (bkseq > 0 AND IsNull(conno)=TRUE) THEN
+	// You have entered book number and checking on archive flag in mchar table.
+	
+	Select conno into :Lconno
+		from mchar
+		where bkseq = :bkseq
+		and arflag = 'A'
+	using sqlservertrans;
+	IF f_check_dberror(sqlservertrans,"mchar")=FALSE THEN
+		RETURN FALSE
+	END IF
+	IF (Lconno<>"" AND IsNull(Lconno)=FALSE) THEN
+		// Book has been archived
+		MessageBox("ERROR","This book number has been archived.")
+		RETURN TRUE
+	ELSE
+		// Book has not yet been archived
+		RETURN FALSE
+	END IF
+ELSEIF ( bkseq = 0 AND IsNull(conno)=FALSE) THEN
+	// You have entered control number and checking on archive flag in mchar table.
+	
+	Select arflag into :Larflag
+		from mchar
+		where conno = :conno
+	using sqlservertrans;
+	IF f_check_dberror(sqlservertrans,"mchar")=FALSE THEN
+		RETURN FALSE
+	END IF
+	IF Larflag='A' THEN
+		// control number has been archived
+		MessageBox("ERROR","This control number has been archived.")
+		RETURN TRUE
+	ELSE
+		// control number has not yet been archived
+		RETURN FALSE
+	END IF
+ELSE
+	RETURN FALSE
+END IF
+
+end function
+

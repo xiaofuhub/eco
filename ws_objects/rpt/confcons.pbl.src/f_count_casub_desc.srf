@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_count_casub_desc.srf
+global type f_count_casub_desc from function_object
+end type
+
+forward prototypes
+global function integer f_count_casub_desc (string casub)
+end prototypes
+
+global function integer f_count_casub_desc (string casub);int casub_count
+
+Select count(*) into :casub_count from casubj
+where casubj_code = :casub 
+and part_of_anno = 'Y'
+using sqlservertrans;
+
+RETURN casub_count
+
+end function
+

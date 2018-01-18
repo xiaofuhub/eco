@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_ri.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes name=prevbkmed dbname="ri.prevbkmed" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prevbkseq dbname="ri.prevbkseq" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=conno dbname="ri.conno" )
+ column=(type=char(2) updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" values="RI	RI/RR	RR/RT	RT/" )
+ retrieve="  SELECT ri.prevbkmed,   
+         ri.prevbkseq,
+         ri.conno,
+        mchar.ricd  
+    FROM ri, mchar  
+   WHERE ri.conno = :Lconno
+    AND ri.conno = mchar.conno
+	AND   ri.prevbkseq is not NULL
+   AND	ri.prevbkmed is not NULL
+
+" update="ri" updatewhere=1 updatekeyinplace=yes arguments=(("Lconno", string)) )
+text(band=header alignment="1" text="Previous Book No" border="0" color="0" x="128" y="12" height="52" width="393" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="617" y="8" height="52" width="233" format="[general]" html.valueishtml="0"  name=conno visible="0" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="448" y="8" height="52" width="142" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=upper  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="18" y="4" height="52" width="151" format="[general]" html.valueishtml="0"  name=prevbkmed  tag="Previous book medium" visible="1" dddw.name=dddw_ref_book_media_all dddw.displaycolumn=bkmed dddw.datacolumn=bkmed dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="187" y="8" height="52" width="242" format="######" html.valueishtml="0"  name=prevbkseq  tag="Prvious book sequence" visible="1" edit.limit=0 edit.case=any edit.format="######" edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

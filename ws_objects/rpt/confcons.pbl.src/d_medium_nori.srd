@@ -1,0 +1,85 @@
+﻿$PBExportHeader$d_medium_nori.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes name=mchar_med dbname="mchar.med" dbalias=".med" validationmsg="~"Medium must be selected.~"" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=mchar_conno dbname="mchar.conno" dbalias=".conno" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=bkmed dbname="mchar.bkmed" dbalias=".bkmed" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_priority dbname="mchar.priority" dbalias=".priority" initial="N" values="N	N/P	P/R	R/" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" dbalias=".ricd" values="RI	RI/RT	RT/RR	RR/NULL	NULL/" validationmsg="~"Valid codes are RR,  RI or RT~"" )
+ column=(type=char(6) update=yes updatewhereclause=yes name=mchar_chno dbname="mchar.chno" dbalias=".chno" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_arflag dbname="mchar.arflag" dbalias=".arflag" initial="NULL" )
+ column=(type=char(1) updatewhereclause=yes name=frflag dbname="mchar.frflag" dbalias=".frflag" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_g1br dbname="mchar.g1br" dbalias=".g1br" initial="N" values="Yes	Y/No	N/" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=requestedby dbname="mchar.requestedby" dbalias=".requestedby" values="Patron	patron/Advisory Committee	advisory committee/Librarian or other	librarian or other/Not a patron request	not a patron request/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=flash_indicator dbname="mchar.flash_indicator" dbalias=".flash_indicator" values="Flash	Y/Flash	N" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=flash_change_user dbname="mchar.flash_change_user" dbalias=".flash_change_user" )
+ column=(type=datetime update=yes updatewhereclause=yes name=flash_change_date dbname="mchar.flash_change_date" dbalias=".flash_change_date" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=other_media_conno dbname="mchar.other_media_conno" dbalias=".other_media_conno" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=created_by dbname="mchar.created_by" dbalias=".created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=create_date dbname="mchar.create_date" dbalias=".create_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=modified_by dbname="mchar.modified_by" dbalias=".modified_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=update_date dbname="mchar.update_date" dbalias=".update_date" )
+ retrieve="  SELECT mchar.med,   
+         mchar.conno,
+         mchar.bkseq,
+         mchar.bkmed,   
+         mchar.priority,   
+         mchar.ricd,   
+         mchar.chno,			
+         mchar.arflag,
+         mchar.frflag,   
+         mchar.g1br ,
+	     mchar.requestedby,
+  	     mchar.flash_indicator,
+         mchar.flash_change_user,
+         mchar.flash_change_date,
+         mchar.other_media_conno,
+		mchar.created_by,
+		mchar.create_date,
+		mchar.modified_by,
+		mchar.update_date
+    FROM mchar   
+   WHERE mchar.chno = :Lchno    
+order by conno asc
+" update="mchar" updatewhere=0 updatekeyinplace=no arguments=(("Lchno", string))  sort="mchar_conno A " )
+text(band=header alignment="2" text="Medium" border="0" color="0" x="9" y="4" height="56" width="192" html.valueishtml="0"  name=med_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="Control No" border="0" color="0" x="389" y="4" height="56" width="229" html.valueishtml="0"  name=conno_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=header id=7 alignment="0" tabsequence=32766 border="0" color="79741120" x="631" y="4" height="44" width="18" format="[general]" html.valueishtml="0"  name=mchar_chno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="Priority" border="0" color="0" x="928" y="4" height="56" width="151" html.valueishtml="0"  name=priority_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="G1 Braille" border="0" color="0" x="1097" y="4" height="56" width="210" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=header id=8 alignment="0" tabsequence=32766 border="0" color="12632256" x="1518" y="4" height="44" width="18" format="[general]" html.valueishtml="0"  name=mchar_arflag visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="Requested By" border="0" color="0" x="1330" y="4" height="56" width="311" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="Bk Med" border="0" color="0" x="215" y="4" height="56" width="160" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="14" y="8" height="64" width="183" format="[general]" html.valueishtml="0"  name=mchar_med  tag="Enter media " visible="1" dddw.name=dddw_picsmedia dddw.displaycolumn=media_name dddw.datacolumn=media_name dddw.percentwidth=500 dddw.lines=4 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="215" y="8" height="64" width="142" format="[general]" html.valueishtml="0"  name=bkmed visible="1" dddw.name=dddw_ref_book_media_active dddw.displaycolumn=bkmed dddw.datacolumn=bkmed dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=30 border="5" color="0" x="389" y="8" height="64" width="251" format="[general]" html.valueishtml="0"  name=mchar_conno  tag="Enter Control number" visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=60 border="5" color="0" x="1097" y="8" height="64" width="201" format="[general]" html.valueishtml="0"  name=mchar_g1br visible="1~tif(  mchar_med  = 'BR', 1, 0 )" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="928" y="8" height="64" width="137" format="[general]" html.valueishtml="0"  name=mchar_priority  tag="Enter Priority" visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=upper  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2359" y="8" height="64" width="37" format="[general]" html.valueishtml="0"  name=frflag visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=70 border="5" color="0" x="1326" y="8" height="64" width="549" format="[general]" html.valueishtml="0"  name=requestedby visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2414" y="8" height="64" width="41" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="0" edit.limit=2 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.codetable=yes edit.validatecode=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="1902" y="8" height="64" width="247" format="[general]" html.valueishtml="0"  name=other_media_conno visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2162" y="8" height="64" width="178" format="[general]" html.valueishtml="0"  name=bkseq visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=40 border="0" color="0" x="677" y="8" height="64" width="229" format="[general]" html.valueishtml="0" protect="0~tif(  NOT(IsNull(bkseq)) , 1, 0 )"  name=flash_indicator visible="1~tif(  bkmed = 'DB', 1, 0 )" checkbox.text="Flash" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=90 border="0" color="0" x="2533" y="12" height="64" width="50" format="[shortdate] [time]" html.valueishtml="0"  name=flash_change_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=80 border="0" color="0" x="2469" y="8" height="64" width="50" format="[general]" html.valueishtml="0"  name=flash_change_user visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="79741120" x="2583" y="0" height="64" width="462" format="[general]" html.valueishtml="0"  name=created_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="79741120" x="3045" y="0" height="64" width="256" format="[shortdate] [time]" html.valueishtml="0"  name=create_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="79741120" x="3301" y="0" height="64" width="462" format="[general]" html.valueishtml="0"  name=modified_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="79741120" x="3762" y="0" height="64" width="256" format="[shortdate] [time]" html.valueishtml="0"  name=update_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

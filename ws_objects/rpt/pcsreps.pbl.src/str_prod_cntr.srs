@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_prod_cntr.srs
+global type str_prod_cntr from structure
+	date		ld_stdt
+	string		ls_cntr
+end type
+

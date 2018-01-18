@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_add_cnt_cmts.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=500 color="536870912" )
+table(column=(type=date update=yes updatewhereclause=yes key=yes name=rpt_month dbname="cntr_comments.rpt_month" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=cntr dbname="cntr_comments.cntr" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=cntr_comments dbname="cntr_comments.cntr_comments" )
+ retrieve="  SELECT rpt_month,
+			cntr,   
+         cntr_comments         
+    FROM cntr_comments  
+   WHERE cntr = :lcntr 
+	AND   rpt_month = :ld_stdt   
+" update="cntr_comments" updatewhere=1 updatekeyinplace=yes arguments=(("lcntr", string),("ld_stdt", date)) )
+text(band=detail alignment="0" text="Comment:" border="0" color="0" x="64" y="188" height="64" width="288"  name=t_3  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="379" y="188" height="268" width="1906" format="[general]"  name=cntr_comments edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Date:" border="0" color="0" x="219" y="64" height="64" width="174"  name=t_1  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="411" y="68" height="64" width="407" format="[general]"  name=rpt_month editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Contract:" border="0" color="0" x="946" y="72" height="64" width="242"  name=t_2  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="1202" y="72" height="64" width="379" format="[general]"  name=cntr edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

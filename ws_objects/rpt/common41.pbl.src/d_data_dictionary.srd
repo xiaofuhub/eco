@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_data_dictionary.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1636 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes key=yes name=colname dbname="pics_columns.colname" )
+ column=(type=char(200) updatewhereclause=yes name=tabname dbname="pics_columns.tabname" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=description dbname="pics_columns.description" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=type dbname="pics_columns.type" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=key dbname="pics_columns.key" values="Yes	Y/No	N/" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=sources dbname="pics_columns.sources" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=destination dbname="pics_columns.destination" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=attributes dbname="pics_columns.attributes" )
+ retrieve="  SELECT colname,   
+         tabname,   
+         description,   
+         type,   
+         key,   
+         sources,   
+         destination,   
+         attributes
+    FROM pics_columns   
+	WHERE colname = :colname
+" update="pics_columns" updatewhere=1 updatekeyinplace=yes arguments=(("colname", string)) )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="448" y="40" height="76" width="773" format="[general]"  name=colname edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="5" color="0" x="453" y="1320" height="272" width="1902" format="[general]"  name=attributes edit.limit=0 edit.case=any edit.autoselect=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="5" color="0" x="448" y="1100" height="168" width="1902" format="[general]"  name=destination edit.limit=0 edit.case=any edit.autoselect=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="0" x="448" y="860" height="188" width="1902" format="[general]"  name=sources edit.limit=0 edit.case=any edit.autoselect=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="448" y="732" height="76" width="507" format="[general]"  name=key radiobuttons.columns=2 radiobuttons.lefttext=yes radiobuttons.scale=no radiobuttons.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="448" y="604" height="76" width="640" format="[general]"  name=type edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="448" y="308" height="252" width="1902" format="[general]"  name=description edit.limit=0 edit.case=any edit.autoselect=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Column Name:" border="0" color="0" x="32" y="40" height="64" width="393"  name=t_1  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Attributes:" border="0" color="0" x="46" y="1316" height="64" width="379"  name=t_8  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Destination:" border="0" color="0" x="46" y="1096" height="64" width="379"  name=t_7  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Sources:" border="0" color="0" x="46" y="864" height="64" width="379"  name=t_6  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Key:" border="0" color="0" x="46" y="728" height="64" width="379"  name=t_5  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Type:" border="0" color="0" x="46" y="608" height="64" width="379"  name=t_4  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Description:" border="0" color="0" x="46" y="312" height="64" width="379"  name=t_3  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="448" y="176" height="76" width="933" format="[general]"  name=tabname edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Table Name:" border="0" color="0" x="46" y="172" height="64" width="379"  name=t_2  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="12632256" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

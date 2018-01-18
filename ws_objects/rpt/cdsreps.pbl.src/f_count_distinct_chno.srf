@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_count_distinct_chno.srf
+global type f_count_distinct_chno from function_object
+end type
+
+forward prototypes
+global function integer f_count_distinct_chno (string ls_start_date, string ls_end_date, string annoinit)
+end prototypes
+
+global function integer f_count_distinct_chno (string ls_start_date, string ls_end_date, string annoinit);int li_rt
+
+select count( distinct mchar.chno) into :li_rt
+from mchar, ttlinit
+where mchar.chno = ttlinit.chno and ttlinit.annoinit = :annoinit AND &
+		ttlinit.ccdt >=:ls_start_date and ttlinit.ccdt <= :ls_end_date using sqlserverTrans;
+return li_rt
+end function
+

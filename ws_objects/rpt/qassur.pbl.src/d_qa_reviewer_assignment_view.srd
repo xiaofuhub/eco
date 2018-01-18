@@ -1,0 +1,75 @@
+﻿$PBExportHeader$d_qa_reviewer_assignment_view.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=72 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="vw_qa_reviewer_assign.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq1 dbname="vw_qa_reviewer_assign.bkseq" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="vw_qa_reviewer_assign.qastg" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="vw_qa_reviewer_assign.qastatcd" )
+ column=(type=datetime updatewhereclause=yes name=qarecdt dbname="vw_qa_reviewer_assign.qarecdt" )
+ column=(type=datetime updatewhereclause=yes name=created_date dbname="vw_qa_reviewer_assign.created_date" )
+ column=(type=char(7) updatewhereclause=yes name=lang dbname="vw_qa_reviewer_assign.lang" )
+ column=(type=char(8) updatewhereclause=yes name=priority dbname="vw_qa_reviewer_assign.priority" values="Rush	R/Normal	N/Priority	P/" )
+ column=(type=char(1) updatewhereclause=yes name=pcode dbname="vw_qa_reviewer_assign.pcode" )
+ column=(type=char(512) updatewhereclause=yes name=ttl dbname="vw_qa_reviewer_assign.ttl" )
+ column=(type=char(20) updatewhereclause=yes name=prev_reviewer dbname="vw_qa_reviewer_assign.prev_reviewer" )
+ column=(type=char(20) updatewhereclause=yes name=curr_reviewer dbname="vw_qa_reviewer_assign.curr_reviewer" )
+ column=(type=datetime updatewhereclause=yes name=mindate1 dbname="vw_qa_reviewer_assign.mindate1" )
+ column=(type=datetime updatewhereclause=yes name=mindate2 dbname="vw_qa_reviewer_assign.mindate2" )
+ column=(type=char(1) updatewhereclause=yes name=check_box dbname="check_box" values="	Y/	N" )
+ column=(type=char(10) updatewhereclause=yes name=book_assign_days dbname="book_assign_days" )
+ column=(type=datetime updatewhereclause=yes name=date_assigned dbname="date_assigned" )
+ retrieve="SELECT ~"VW_QA_REVIEWER_ASSIGN~".~"BKMED~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"BKSEQ~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"QASTG~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"QASTATCD~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"QARECDT~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"CREATED_DATE~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"LANG~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"PRIORITY~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"PCODE~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"TTL~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"PREV_REVIEWER~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"CURR_REVIEWER~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"MINDATE1~",   
+         ~"VW_QA_REVIEWER_ASSIGN~".~"MINDATE2~"  ,
+' ' AS CHECK_BOX  ,
+			(select parameter_value from ref_system_control_parameters where lower(parameter_name) = 'book_assign_days' ) as book_assign_days,
+			(SELECT MAX(DATE_ASSIGNED) FROM QA_REVIEWER_ASSIGNMENT WHERE BKSEQ = vw_qa_reviewer_assign.BKSEQ AND 
+				QA_REVIEWER_ASSIGNMENT.ACTIVE_STATUS_CODE = 'A' ) AS DATE_ASSIGNED
+    FROM ~"VW_QA_REVIEWER_ASSIGN~"
+" )
+text(band=header alignment="0" text="Book Number" border="6" color="33554432" x="0" y="16" height="52" width="443" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Book Title" border="6" color="33554432" x="462" y="16" height="52" width="1394" html.valueishtml="0"  name=t_2 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Received Date" border="6" color="33554432" x="1879" y="16" height="52" width="421" html.valueishtml="0"  name=t_3 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Language" border="6" color="33554432" x="2318" y="16" height="52" width="261" html.valueishtml="0"  name=t_4 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Priority" border="6" color="33554432" x="2597" y="16" height="52" width="192" html.valueishtml="0"  name=t_5 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Prev Reviewer" border="6" color="33554432" x="2816" y="16" height="52" width="571" html.valueishtml="0"  name=t_6 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Current Reviewer" border="6" color="33554432" x="3410" y="16" height="52" width="544" html.valueishtml="0"  name=t_10 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Check to Assign" border="6" color="33554432" x="3973" y="16" height="52" width="430" html.valueishtml="0"  name=t_7 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="448" y="8" height="64" width="1394" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="23" y="8" height="64" width="407" format="[general]" html.valueishtml="0"  name=bkseq1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="1879" y="8" height="64" width="421" format="[shortdate] [time]" html.valueishtml="0"  name=qarecdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="2322" y="8" height="64" width="265" format="[general]" html.valueishtml="0"  name=lang visible="1" dddw.name=dddw_language dddw.displaycolumn=lang_desc dddw.datacolumn=lang_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="2601" y="8" height="64" width="192" format="[general]" html.valueishtml="0"  name=priority visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="2802" y="8" height="64" width="571" format="[general]" html.valueishtml="0"  name=prev_reviewer visible="1" dddw.name=dddw_qa_reviewers dddw.displaycolumn=user_ dddw.datacolumn=userid dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="2" tabsequence=20 border="0" color="33554432" x="3995" y="8" height="64" width="411" format="[general]" html.valueishtml="0" protect="0~tIF ( nOT ISNULL( curr_reviewer ),  1,0)"  name=check_box visible="1~tIF ( nOT ISNULL( curr_reviewer ),  0,1)" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qarecdt) ,today()) > long( book_assign_days ) and (isnull( date_assigned ))), rgb(255,0,0), if((pcode= 'R' ),rgb(0,128,0), rgb(0,0,0))  )" x="3392" y="8" height="64" width="571" format="[general]" html.valueishtml="0"  name=curr_reviewer visible="1" dddw.name=dddw_qa_reviewers dddw.displaycolumn=user_ dddw.datacolumn=userid dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=footer x="18" y="0" height="64" width="78"  name=r_1 visible="1" brush.hatch="6" brush.color="255" pen.style="0" pen.width="5" pen.color="1073741824"  background.mode="2" background.color="33554432" )
+text(band=footer alignment="0" text="- Unassigned~t'- Unassigned within ' + string( book_assign_days ) +' days'" border="0" color="33554432" x="105" y="4" height="52" width="795" html.valueishtml="0"  name=t_8 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=footer x="919" y="0" height="64" width="78"  name=r_2 visible="1" brush.hatch="6" brush.color="32768" pen.style="0" pen.width="5" pen.color="1073741824"  background.mode="2" background.color="33554432" )
+text(band=footer alignment="0" text="- Rush Book" border="0" color="33554432" x="1010" y="4" height="52" width="283" html.valueishtml="0"  name=t_9 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

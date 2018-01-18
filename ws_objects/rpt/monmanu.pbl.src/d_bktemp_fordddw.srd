@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_bktemp_fordddw.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=56 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=template dbname="BOOKNAVIGATIONTEMPLATES.TEMPLATE" )
+ retrieve="  SELECT distinct TEMPLATE
+    FROM BOOKNAVIGATIONTEMPLATES 
+
+"  sort="template A " )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="33554432" x="0" y="4" height="60" width="489" format="[general]" html.valueishtml="0"  name=template visible="1" dddw.name=dddw_bktemp dddw.displaycolumn=template dddw.datacolumn=template dddw.percentwidth=0 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

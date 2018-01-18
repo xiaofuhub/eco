@@ -1,0 +1,386 @@
+﻿$PBExportHeader$f_calc_unit_subunit.srf
+global type f_calc_unit_subunit from function_object
+end type
+
+forward prototypes
+global function boolean f_calc_unit_subunit (long lbkseq, string lmedia, string lcntr, string lcntrtype)
+end prototypes
+
+global function boolean f_calc_unit_subunit (long lbkseq, string lmedia, string lcntr, string lcntrtype);int Lvols,Llen,Lqnty,i, rtn,li_sum_qnty
+long lunits,lsubunits,ll_rows
+string lmsg,Lbkno
+
+IF Lcntrtype = 'D' THEN
+	Lmedia = 'RTB'
+END IF
+
+// If there are more than one row in the MCHAR for this book, then use the media flag code
+SELECT COUNT(*) 
+INTO :ll_rows
+FROM MCHAR
+WHERE BKSEQ = :Lbkseq
+AND MED = :Lmedia
+USING SQLServerTrans;
+
+IF ll_rows > 1 THEN
+
+    // RC books
+	SELECT vols,len,qnty 
+	INTO :Lvols,:Llen,:Lqnty
+	FROM mchar
+	WHERE bkseq = :Lbkseq and med = :Lmedia and bkmed = 'RC'
+	USING sqlservertrans;
+	
+	IF f_check_dberror(sqlservertrans,"mchar")=FALSE THEN
+		RETURN FALSE	
+	END IF
+	
+	IF (IsNull(Lqnty) AND lmedia<>'P/B') THEN
+		Lbkno = 'RC'+string(lbkseq)
+		lmsg = "qnty is missing from mchar table for book number: "+Lbkno
+		rtn = 	MessageBox("ERROR",lmsg,Question!,YesNo!,1)
+		IF rtn = 1 THEN
+			SELECT SUM(qty)
+			INTO :li_sum_qnty
+			FROM DISTSCHED@pic_link
+			WHERE bkno = :Lbkno
+			USING sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"DISCTSCHED")=FALSE THEN
+				RETURN FALSE
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+			// Update Qnty for DB boks
+			UPDATE mchar set qnty = :li_sum_qnty
+			WHERE bkseq = :Lbkseq
+			AND bkmed = 'RC'
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"MCHAR")=FALSE THEN
+				RETURN FALSE
+			ELSE
+
+			CHOOSE CASE Lmedia
+		CASE 'RC'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			UPDATE prod SET units=:Lunits,subunits=:Lsubunits
+			WHERE bkseq = :Lbkseq and bkmed = 'RC' AND prodstage = 'DU' AND cntr = :Lcntr
+			USING sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'RTB'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'RC' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'BR'
+			Lunits = Llen * Lqnty
+			Lsubunits = Lvols * Lqnty
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'BR' and prodstage in ('PR','EM') and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'P/B'
+			Lunits = Lqnty
+			Update prod set units=:Lunits
+			where bkseq = :Lbkseq and bkmed = 'BR' and prodstage in ('PB','EM') and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'FD '
+			Lunits = Lvols * Lqnty
+			Update prod set units=:Lunits
+			where bkseq = :Lbkseq and bkmed = 'FD' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE ELSE
+		END CHOOSE	
+			END IF
+		ELSE
+			RETURN FALSE			
+		END IF	
+	ELSEIF (IsNull(Llen) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","len is missing from mchar table for book number: "+'RC'+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSEIF (IsNull(Lvols) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","vols is missing from mchar table for book number: "+'RC'+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSE
+		// unsupported appeon feature GOTO replaced 3/24/2010
+		CHOOSE CASE Lmedia
+		CASE 'RC'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			UPDATE prod SET units=:Lunits,subunits=:Lsubunits
+			WHERE bkseq = :Lbkseq and bkmed = 'RC' AND prodstage = 'DU' AND cntr = :Lcntr
+			USING sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'RTB'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'RC' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'BR'
+			Lunits = Llen * Lqnty
+			Lsubunits = Lvols * Lqnty
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'BR' and prodstage in ('PR','EM') and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'P/B'
+			Lunits = Lqnty
+			Update prod set units=:Lunits
+			where bkseq = :Lbkseq and bkmed = 'BR' and prodstage in ('PB','EM') and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'FD '
+			Lunits = Lvols * Lqnty
+			Update prod set units=:Lunits
+			where bkseq = :Lbkseq and bkmed = 'FD' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE ELSE
+		END CHOOSE	
+	END IF
+
+// Tracker 2192 08/06/09 Do not update vols and len for DB book
+// Vols=2 issue creating invoicing problem
+	// First of all make sure the len, vols both media RC and DB are the same
+//	UPDATE mchar set len = :Llen, vols = :Lvols
+//	WHERE bkseq = :Lbkseq
+//	AND med = :Lmedia
+//	AND bkmed = 'DB'
+//	using sqlservertrans;
+//	IF f_check_dberror(sqlservertrans,"MCHAR")=FALSE THEN
+//		RETURN FALSE
+//	END IF		
+
+    // DB Books qnty
+	SELECT qnty 
+	INTO :Lqnty
+	FROM mchar
+	WHERE bkseq = :Lbkseq and med = :Lmedia and bkmed = 'DB'
+	USING sqlservertrans;
+	
+	IF f_check_dberror(sqlservertrans,"mchar")=FALSE THEN
+		RETURN FALSE	
+	END IF
+	
+	IF (IsNull(Lqnty) AND lmedia<>'P/B') THEN
+		Lbkno = 'DB'+string(lbkseq)
+		lmsg = "qnty is missing from mchar table for book number: "+Lbkno
+		rtn = 	MessageBox("ERROR",lmsg,Question!,YesNo!,1)
+		IF rtn = 1 THEN
+			SELECT SUM(qty)
+			INTO :li_sum_qnty
+			FROM DISTSCHED@pic_link
+			WHERE bkno = :Lbkno
+			USING sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"DISCTSCHED")=FALSE THEN
+				RETURN FALSE
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+			// Update Qnty for DB boks
+			UPDATE mchar set qnty = :li_sum_qnty
+			WHERE bkseq = :Lbkseq
+			AND bkmed = 'DB'
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"MCHAR")=FALSE THEN
+				RETURN FALSE
+			ELSE
+
+			CHOOSE CASE Lmedia
+		CASE 'RC'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			UPDATE prod SET units=:Lunits,subunits=:Lsubunits
+			WHERE bkseq = :Lbkseq and bkmed = 'DB' AND prodstage = 'FC' AND cntr = :Lcntr
+			USING sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'RTB'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'DB' and prodstage = 'FC' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE ELSE
+		END CHOOSE	
+
+			END IF
+		ELSE
+			RETURN FALSE			
+		END IF	
+	ELSEIF (IsNull(Llen) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","len is missing from mchar table for book number: "+'DB'+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSEIF (IsNull(Lvols) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","vols is missing from mchar table for book number: "+'DB'+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSE
+
+		CHOOSE CASE Lmedia
+		CASE 'RC'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			UPDATE prod SET units=:Lunits,subunits=:Lsubunits
+			WHERE bkseq = :Lbkseq and bkmed = 'DB' AND prodstage = 'FC' AND cntr = :Lcntr
+			USING sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'RTB'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'DB' and prodstage = 'FC' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE ELSE
+		END CHOOSE	
+	END IF
+   	
+ELSEIF ll_rows = 1 THEN
+// There is only one row in MCHAR for that book number and media
+
+	SELECT vols,len,qnty 
+	INTO :Lvols,:Llen,:Lqnty
+	FROM mchar
+	WHERE bkseq = :Lbkseq and
+			med = :Lmedia
+	USING sqlservertrans;
+	
+	IF f_check_dberror(sqlservertrans,"mchar")=FALSE THEN
+		RETURN FALSE	
+	END IF
+	
+	IF (IsNull(Lqnty) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","qnty is missing from mchar table for book number: "+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSEIF (IsNull(Llen) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","len is missing from mchar table for book number: "+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSEIF (IsNull(Lvols) AND lmedia<>'P/B') THEN
+		MessageBox("ERROR","vols is missing from mchar table for book number: "+string(lbkseq),StopSign!)
+		RETURN FALSE	
+	ELSE
+		CHOOSE CASE Lmedia
+		CASE 'RC'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'RC' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'RTB'
+			Lunits = Lvols * Lqnty
+			Lsubunits = Lvols
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'RC' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'BR'
+			Lunits = Llen * Lqnty
+			Lsubunits = Lvols * Lqnty
+			Update prod set units=:Lunits,subunits=:Lsubunits
+			where bkseq = :Lbkseq and bkmed = 'BR' and prodstage in ('PR','EM') and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'P/B'
+			Lunits = Lqnty
+			Update prod set units=:Lunits
+			where bkseq = :Lbkseq and bkmed = 'BR' and prodstage in ('PB','EM') and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE 'FD '
+			Lunits = Lvols * Lqnty
+			Update prod set units=:Lunits
+			where bkseq = :Lbkseq and bkmed = 'FD' and prodstage = 'DU' and cntr = :Lcntr
+			using sqlservertrans;
+			IF f_check_dberror(sqlservertrans,"prod")=FALSE THEN
+				RETURN FALSE	
+			ELSE
+				COMMIT USING sqlservertrans;
+			END IF
+		CASE ELSE
+		END CHOOSE	
+	END IF
+		
+END IF
+
+RETURN TRUE
+end function
+

@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_distrib_schedule.srs
+global type str_distrib_schedule from structure
+	date		ld_date
+	date		ld_date1
+	string		ls_contract
+	date		ld_dates
+	date		ld_pcdt
+	string		arraymed[]
+	long		arraylong[]
+	string		arrayrpt[]
+	string		s
+end type
+

@@ -1,0 +1,52 @@
+﻿$PBExportHeader$f_setorca.srf
+$PBExportComments$(PB70Base) - Creates/Destroys the Common Routines service
+global type f_setorca from function_object
+end type
+
+forward prototypes
+global function ostypes f_setorca (ref common_orca anv_orca, boolean ab_switch)
+end prototypes
+
+global function ostypes f_setorca (ref common_orca anv_orca, boolean ab_switch);//*---------------------------------------------------------*/
+//*    f_setorca:  Creates/Destroys the common   			*/
+//*                  orca service based on platform		*/ 
+//*---------------------------------------------------------*/
+environment le_env
+
+If IsNull ( ab_switch ) Then Return Windows!
+
+If ab_switch Then
+	
+	GetEnvironment ( le_env ) 
+	
+	If IsNull ( anv_orca ) Or Not IsValid ( anv_orca ) Then
+				
+		/*  Create common orca service  */
+		Choose Case le_env.OSType
+				
+			Case Windows!, WindowsNT!
+				If le_env.CharSet = CharSetUnicode! Then
+					anv_orca = Create common_orca_unicode
+				Else
+					anv_orca = Create common_orca_win32
+				End If
+				
+			Case Else
+				anv_orca = Create common_orca
+				
+		End Choose
+		
+	End If
+	
+Else
+	
+	If IsValid ( anv_orca ) Then
+		Destroy anv_orca
+		Return le_env.OSType
+	End If
+	
+End If
+
+Return le_env.OSType
+end function
+

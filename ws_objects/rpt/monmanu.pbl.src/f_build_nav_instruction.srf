@@ -1,0 +1,324 @@
+﻿$PBExportHeader$f_build_nav_instruction.srf
+global type f_build_nav_instruction from function_object
+end type
+
+forward prototypes
+global function string f_build_nav_instruction (string as_conno, string as_template)
+end prototypes
+
+global function string f_build_nav_instruction (string as_conno, string as_template);Long li_count,  li_cur, i,j, li_cnt,li_level, li_len, rtn, li_cnt1,li_cnt2, li_cnt3,&
+     li_cnt4, li_cnt5, li_cnt6, cnt1, cnt2, cnt3, cnt4, cnt5, cnt6
+
+String  ls_conno, ls_elemt, ls_navinstr, ls_cmt, ls_template,ls_navinstr_l6
+
+ls_conno=as_conno
+ls_template=as_template
+
+DataStore lds_bknvg_forsort
+lds_bknvg_forsort=CREATE DataStore
+
+SetNULL(ls_navinstr)
+SetNULL(ls_navinstr_l6)
+
+lds_bknvg_forsort.dataObject='d_bknvg_forsort'
+lds_bknvg_forsort.SetTransObject(sqlservertrans)
+li_cnt=lds_bknvg_forsort.Retrieve(ls_conno,ls_template)
+FOR i=1 TO li_cnt
+	li_level=lds_bknvg_forsort.object.navigationlevel[i]
+	CHOOSE CASE li_level
+		CASE 1
+			cnt1++
+		CASE 2
+			cnt2++
+		CASE 3
+			cnt3++
+		CASE 4
+			cnt4++
+		CASE 5
+			cnt5++
+		CASE 6
+			cnt6++
+	END CHOOSE
+NEXT
+FOR i=1 TO li_cnt
+	ls_elemt=Trim(lds_bknvg_forsort.object.bookelement[i])
+	li_level=lds_bknvg_forsort.object.navigationlevel[i]
+	ls_cmt=Trim(lds_bknvg_forsort.object.comments[i])
+	CHOOSE CASE li_level
+		CASE 1
+			li_cnt1++
+			IF li_cnt1=1  AND li_cnt1=cnt1 AND li_cnt1=li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr='Level 1= '+ls_elemt
+				ELSE
+					ls_navinstr='Level 1= '+ls_elemt+'('+ls_cmt+')'
+				END IF
+			ELSEIF li_cnt1=1  AND li_cnt1=cnt1 AND li_cnt1<li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr='Level 1= '+ls_elemt+'; '
+				ELSE
+					ls_navinstr='Level 1= '+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt1=1 AND li_cnt1<cnt1 AND IsNull(ls_navinstr) THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr='Level 1= '+ls_elemt+', '
+				ELSE
+					ls_navinstr='Level 1= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt1=1 AND li_cnt1<cnt1 AND NOT(IsNull(ls_navinstr))THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+' Level 1= '+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+' Level 1= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt1<cnt1 THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt1=cnt1 AND li_cnt1<li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt1=cnt1 AND li_cnt1=li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'
+				END IF
+			END IF
+		CASE 2
+			li_cnt2++
+			IF li_cnt2=1  AND li_cnt2=cnt2 AND li_cnt1+li_cnt2 =li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					IF IsNull(ls_navinstr) THEN
+						ls_navinstr='Level 2= '+ls_elemt
+					ELSE						
+						ls_navinstr=ls_navinstr+'Level 2= '+ls_elemt
+					END IF
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 2= '+ls_elemt+'('+ls_cmt+')'
+				END IF
+			ELSEIF li_cnt2=1  AND li_cnt2=cnt2 AND li_cnt1+li_cnt2<li_cnt THEN			
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 2= '+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 2= '+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt2=1 AND li_cnt2<cnt2 THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 2= '+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 2= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt2<cnt2 THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt2=cnt2 AND li_cnt1+li_cnt2<li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt2=cnt2 AND li_cnt1+li_cnt2=li_cnt THEN			
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'
+				END IF
+			END IF
+		CASE 3
+			li_cnt3++
+			IF li_cnt3=1  AND li_cnt3=cnt3 AND li_cnt1+li_cnt2+li_cnt3=li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					IF IsNull(ls_navinstr) THEN
+						ls_navinstr='Level 3= '+ls_elemt
+					ELSE						
+						ls_navinstr=ls_navinstr+'Level 3= '+ls_elemt
+					END IF
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 3= '+ls_elemt+'('+ls_cmt+')'
+				END IF
+			ELSEIF li_cnt3=1  AND li_cnt3=cnt3 AND li_cnt1+li_cnt2+li_cnt3<li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 3= '+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 3= '+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt3=1 AND li_cnt3<cnt3 THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 3= '+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 3= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt3<cnt3 THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt3=cnt3 AND li_cnt1+li_cnt2+li_cnt3<li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt3=cnt3 AND li_cnt1+li_cnt2+li_cnt3=li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'
+				END IF
+			END IF
+		CASE 4
+			li_cnt4++
+			IF li_cnt4=1  AND li_cnt4=cnt4 AND li_cnt1+li_cnt2+li_cnt3+li_cnt4=li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					IF IsNull(ls_navinstr) THEN
+						ls_navinstr='Level 4= '+ls_elemt
+					ELSE						
+						ls_navinstr=ls_navinstr+'Level 4= '+ls_elemt
+					END IF
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 4= '+ls_elemt+'('+ls_cmt+')'
+				END IF
+			ELSEIF li_cnt4=1  AND li_cnt4=cnt4 AND li_cnt1+li_cnt2+li_cnt3+li_cnt4<li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 4= '+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 4= '+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt4=1 AND li_cnt4<cnt4 THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 4= '+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 4= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt4<cnt4 THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt4=cnt4 AND li_cnt1+li_cnt2+li_cnt3+li_cnt4<li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt4=cnt4 AND li_cnt1+li_cnt2+li_cnt3+li_cnt4=li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'
+				END IF
+			END IF
+		CASE 5
+			li_cnt5++
+			IF li_cnt5=1  AND li_cnt5=cnt5 AND li_cnt1+li_cnt2+li_cnt3+&
+									li_cnt4+ li_cnt5=li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					IF IsNull(ls_navinstr) THEN
+						ls_navinstr='Level 5= '+ls_elemt
+					ELSE						
+						ls_navinstr=ls_navinstr+'Level 5= '+ls_elemt
+					END IF
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 5= '+ls_elemt+'('+ls_cmt+')'
+				END IF
+			ELSEIF li_cnt5=1  AND li_cnt5=cnt5 AND li_cnt1+li_cnt2+li_cnt3+&
+									li_cnt4+ li_cnt5 <li_cnt THEN			
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 5= '+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 5= '+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt5=1 AND li_cnt5<cnt5 THEN		
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+'Level 5= '+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+'Level 5= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt5<cnt5 THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+', '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt5=cnt5 AND li_cnt1+li_cnt2+li_cnt3+li_cnt4+li_cnt5<li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt+'; '
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt5=cnt5 AND li_cnt1+li_cnt2+li_cnt3+li_cnt4+li_cnt5=li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr=ls_navinstr+ls_elemt
+				ELSE
+					ls_navinstr=ls_navinstr+ls_elemt+'('+ls_cmt+')'
+				END IF
+			END IF
+		CASE 6
+			li_cnt6++
+			IF li_cnt6=1  AND li_cnt6=cnt6 AND li_cnt6=li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr_l6='Non-hirearchal navigation structures= '+ls_elemt
+				ELSE
+					ls_navinstr_l6='Non-hirearchal navigation structures= '+ls_elemt+'('+ls_cmt+')'
+				END IF
+			ELSEIF li_cnt6=1  AND li_cnt6=cnt6 AND li_cnt6<li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr_l6='Non-hirearchal navigation structures= '+ls_elemt+'; '
+				ELSE
+					ls_navinstr_l6='Non-hirearchal navigation structures= '+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt6=1 AND li_cnt6<cnt6 THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr_l6='Non-hirearchal navigation structures= '+ls_elemt+', '
+				ELSE
+					ls_navinstr_l6='Non-hirearchal navigation structures= '+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt6<cnt6 THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr_l6=ls_navinstr_l6+ls_elemt+', '
+				ELSE
+					ls_navinstr_l6=ls_navinstr_l6+ls_elemt+'('+ls_cmt+')'+', '
+				END IF
+			ELSEIF li_cnt6=cnt6 AND li_cnt6<li_cnt THEN
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr_l6=ls_navinstr_l6+ls_elemt+'; '
+				ELSE
+					ls_navinstr_l6=ls_navinstr_l6+ls_elemt+'('+ls_cmt+')'+'; '
+				END IF
+			ELSEIF li_cnt6=cnt6 AND li_cnt6=li_cnt THEN				
+				IF IsNull(ls_cmt) OR ls_cmt='' THEN
+					ls_navinstr_l6=ls_navinstr_l6+ls_elemt
+				ELSE
+					ls_navinstr_l6=ls_navinstr_l6+ls_elemt+'('+ls_cmt+')'
+				END IF
+			END IF
+	END CHOOSE
+NEXT
+
+//messagebox('the created string is: ',ls_navinstr)
+//messagebox('the created string is: ',ls_navinstr_l6)
+//
+IF NOT(IsNULL(ls_navinstr_l6))  AND NOT(IsNULL(ls_navinstr))THEN
+	ls_navinstr = ls_navinstr_l6 + ' ' + ls_navinstr
+ELSEIF NOT(IsNULL(ls_navinstr_l6))  AND IsNULL(ls_navinstr)THEN
+	ls_navinstr = ls_navinstr_l6
+END IF
+	
+RETURN TRIM(ls_navinstr)
+	
+	
+	
+	
+end function
+

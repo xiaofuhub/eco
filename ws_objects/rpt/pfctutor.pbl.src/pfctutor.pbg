@@ -1,0 +1,9 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "pfctutor.pbl" "";
+@end;
+@begin Objects 
+ "d_dddw_states.srd" "pfctutor.pbl";
+ "d_prodlist.srd" "pfctutor.pbl";
+ "d_sales_report.srd" "pfctutor.pbl";
+@end;

@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_pre_count.srf
+global type f_pre_count from function_object
+end type
+
+forward prototypes
+global function integer f_pre_count (string as_chno)
+end prototypes
+
+global function integer f_pre_count (string as_chno);string ls_anno, ls_null
+long li_cnt= -1
+
+select decode(prop_added_flg, 'Y', anno, decode(anno_property, NULL, anno,  anno||' '||annotation.anno_property)) into :ls_anno
+  from annotation
+where chno=:as_chno
+using SqlServerTrans;
+if f_check_dberror(sqlservertrans,'select from annotation')=false then
+	messagebox(' ','database error occurred')
+	return -1
+end if
+ls_anno=trim(ls_anno)
+if isnull(ls_anno)=false then
+	li_cnt=f_count_word(ls_anno)
+end if
+return li_cnt
+end function
+

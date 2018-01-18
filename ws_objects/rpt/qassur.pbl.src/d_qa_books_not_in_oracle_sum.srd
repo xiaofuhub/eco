@@ -1,0 +1,120 @@
+﻿$PBExportHeader$d_qa_books_not_in_oracle_sum.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=78164112 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 )
+header(height=128 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" height.autosize=yes )
+table(column=(type=number updatewhereclause=yes key=yes name=bkseq dbname="qastg.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes key=yes name=bkmed dbname="qastg.bkmed" dbalias=".bkmed" )
+ column=(type=char(1) updatewhereclause=yes key=yes name=qastg dbname="qastg.qastg" dbalias=".qastg" )
+ column=(type=char(7) updatewhereclause=yes key=yes name=cntr dbname="qastg.cntr" dbalias=".cntr" )
+ column=(type=datetime updatewhereclause=yes key=yes name=qastg_qarecdt dbname="qastg.qarecdt" dbalias=".qarecdt" )
+ column=(type=char(1) updatewhereclause=yes key=yes name=qastg_qastatcd dbname="qastg.qastatcd" dbalias=".qastatcd" )
+ column=(type=datetime updatewhereclause=yes name=qastg_qacompdt dbname="qastg.qacompdt" dbalias=".qacompdt" )
+ column=(type=char(8) updatewhereclause=yes name=qarejcd dbname="qastg.qarejcd" dbalias=".qarejcd" )
+ column=(type=char(8) updatewhereclause=yes name=qainit dbname="qastg.qainit" dbalias=".qainit" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=qacomments dbname="qastg.qacomments" dbalias=".qacomments" )
+ column=(type=number updatewhereclause=yes name=mchar_len dbname="mchar.len" dbalias=".len" )
+ column=(type=number updatewhereclause=yes name=mchar_minlastside dbname="mchar.minlastside" dbalias=".minlastside" )
+ column=(type=char(1) updatewhereclause=yes name=ancntr_cntrcvcd dbname="ancntr.cntrcvcd" dbalias=".cntrcvcd" values="	Y/	N" )
+ column=(type=char(1) updatewhereclause=yes name=ancntr_cntrtype dbname="ancntr.cntrtype" dbalias=".cntrtype" values="	Y/	N" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="ancntr.prdr" dbalias=".prdr" )
+ column=(type=char(36) updatewhereclause=yes name=narr dbname="narr" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_review_type_code dbname="qastg.review_type_code" dbalias=".review_type_code" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_reload_indicator_yn dbname="qastg.reload_indicator_yn" dbalias=".reload_indicator_yn" values="	Y/	N/	0" )
+ column=(type=number updatewhereclause=yes name=qastg_test_no dbname="qastg.test_no" dbalias=".test_no" )
+ retrieve="SELECT qastg.bkseq, qastg.bkmed, qastg.qastg, qastg.cntr,
+       qastg.qarecdt qarecdt, qastg.qastatcd, qastg.qacompdt, qastg.qarejcd,
+       qastg.qainit, qastg.qacomments, mchar.len, mchar.minlastside,
+       ancntr.cntrcvcd, ancntr.cntrtype, ancntr.prdr,
+       TRIM (narr.narr) || ' ' || SUBSTR (narr.narrfn, 1, 1) narr,
+	 qastg.review_type_code, qastg.reload_indicator_yn, qastg.test_no
+  FROM mchar, ancntr, qastg, narr
+ WHERE mchar.bkseq = qastg.bkseq
+   AND mchar.bkmed = qastg.bkmed
+   AND mchar.bkmed <> 'FD'
+   AND qastg.cntr = ancntr.cntr
+   AND to_char(qastg.qacompdt,'dd-mon-yyyy') = :lqacompdt
+   AND qastg.bkseq = narr.bkseq(+)
+   AND qastg.bkmed = narr.bkmed(+)
+UNION 
+SELECT qastg.bkseq, qastg.bkmed, qastg.qastg, qastg.cntr,
+       qastg.qarecdt qarecdt, qastg.qastatcd, qastg.qacompdt, qastg.qarejcd,
+       qastg.qainit, qastg.qacomments, mchar.len, mchar.minlastside,
+       ancntr.cntrcvcd, ancntr.cntrtype, ancntr.prdr,
+       TRIM (narr.narr) || ' ' || SUBSTR (narr.narrfn, 1, 1) narr,
+	 qastg.review_type_code, qastg.reload_indicator_yn, qastg.test_no
+  FROM mchar, ancntr, qastg, narr, prod
+ WHERE prod.bkseq = qastg.bkseq
+   AND prod.bkmed = qastg.bkmed
+   AND mchar.bkseq = prod.bkseq
+   AND mchar.bkmed <> 'FD'
+   AND ancntr.cntrtype = 'Z'
+   AND qastg.cntr = ancntr.cntr
+   AND to_char(qastg.qacompdt,'dd-mon-yyyy')  = :lqacompdt
+   AND qastg.bkseq = narr.bkseq(+)
+   AND qastg.bkmed = narr.bkmed(+)
+UNION 
+SELECT qastg.bkseq, qastg.bkmed, qastg.qastg, qastg.cntr,
+       qastg.qarecdt qarecdt, qastg.qastatcd, qastg.qacompdt, qastg.qarejcd,
+       qastg.qainit, qastg.qacomments, mchar.len, mchar.minlastside,
+       ancntr.cntrcvcd, ancntr.cntrtype, ancntr.prdr,
+       TRIM (narr.narr) || ' ' || SUBSTR (narr.narrfn, 1, 1) narr,
+	 qastg.review_type_code, qastg.reload_indicator_yn, qastg.test_no
+  FROM mchar, ancntr, qastg, narr, prod
+ WHERE prod.bkseq = qastg.bkseq
+   AND prod.bkmed = 'DB'
+   AND mchar.bkmed <> 'FD'
+   AND mchar.bkseq = prod.bkseq
+   AND ancntr.cntrtype = 'A'
+   AND qastg.cntr = ancntr.cntr
+   AND to_char(qastg.qacompdt,'dd-mon-yyyy') = :lqacompdt
+   AND qastg.bkseq = narr.bkseq(+)
+   AND qastg.bkmed = narr.bkmed(+)
+" update="qastg" updatewhere=0 updatekeyinplace=yes arguments=(("Lqacompdt", date))  sort="bkseq A " )
+text(band=header alignment="2" text="PCSID" border="0" color="0" x="645" y="12" height="112" width="229" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Book No" border="0" color="0" x="475" y="12" height="112" width="160" html.valueishtml="0"  name=qastg_bkseq_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="2" text="QA Stage" border="0" color="0" x="882" y="12" height="120" width="507" html.valueishtml="0"  name=qastg_qastg_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="2" text="RejCD" border="0" color="0" x="2469" y="12" height="112" width="105" html.valueishtml="0"  name=qastg_qarejcd_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="2" text="Init" border="0" color="0" x="2857" y="12" height="112" width="133" html.valueishtml="0"  name=qastg_qainit_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="2" text="QAComments" border="0" color="0" x="2999" y="12" height="112" width="1568" html.valueishtml="0"  name=qastg_qacomments_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="0" text="Trks/Pgs" border="0" color="0" x="2583" y="12" height="112" width="133" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="0" text="Minlast" border="0" color="0" x="2725" y="12" height="112" width="123" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="2" text="ToWeb" border="0" color="0" x="101" y="12" height="112" width="128" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="0" text="Prdr" border="0" color="0" x="1765" y="12" height="112" width="114" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="2" text="InWeb" border="0" color="0" x="238" y="12" height="112" width="146" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="0" text="Narrator" border="0" color="0" x="1399" y="12" height="112" width="357" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=header alignment="0" text="Stat" border="0" color="0" x="1888" y="12" height="112" width="96" html.valueishtml="0"  name=qastg_qastatcd_1_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Reload" border="0" color="0" x="1993" y="12" height="112" width="192" html.valueishtml="0"  name=qastg_reload_indicator_yn_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="ReviewType" border="0" color="0" x="2194" y="12" height="112" width="274" html.valueishtml="0"  name=qastg_review_type_code_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="16" height="56" width="82" format="[general]" html.valueishtml="0"  name=bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=13 alignment="2" tabsequence=10 border="5" color="0" x="101" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=ancntr_cntrcvcd visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="2" tabsequence=20 border="5" color="0" x="238" y="4" height="76" width="146" format="[general]" html.valueishtml="0"  name=ancntr_cntrtype visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="2" tabsequence=30 border="5" color="0" x="475" y="4" height="76" width="160" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=50 border="5" color="0" x="882" y="4" height="76" width="507" format="[general]" html.valueishtml="0"  name=qastg visible="1" dddw.name=dddw_ref_qa_stages dddw.displaycolumn=qa_stage_description dddw.datacolumn=qastg dddw.percentwidth=100 dddw.lines=10 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4576" y="4" height="76" width="5" format="[general]" html.valueishtml="0"  name=qastg_qastatcd visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="4590" y="4" height="76" width="5" format="[shortdate] [time]" html.valueishtml="0"  name=qastg_qarecdt visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=10 alignment="0" tabsequence=140 border="5" color="0" x="2999" y="4" height="76" width="1568" format="[general]" html.valueishtml="0"  name=qacomments visible="1" height.autosize=yes edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=130 border="5" color="0" x="2857" y="4" height="76" width="133" format="[general]" html.valueishtml="0"  name=qainit visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="2" tabsequence=120 border="5" color="0" x="2725" y="4" height="76" width="123" format="[general]" html.valueishtml="0"  name=mchar_minlastside visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="2" tabsequence=110 border="5" color="0" x="2583" y="4" height="76" width="133" format="[general]" html.valueishtml="0"  name=mchar_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="2" tabsequence=100 border="5" color="0" x="2469" y="4" height="76" width="105" format="[general]" html.valueishtml="0"  name=qarejcd visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="0" x="1399" y="4" height="76" width="357" format="[general]" html.valueishtml="0"  name=narr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="645" y="4" height="76" width="229" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="1" tabsequence=150 border="5" color="33554432" x="398" y="4" height="76" width="73" format="[general]" html.valueishtml="0"  name=bkmed_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=15 alignment="0" tabsequence=60 border="5" color="0" x="1765" y="4" height="76" width="114" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=70 border="5" color="0~tif(trim(upper(qastg_qastatcd))  = 'R' OR trim(upper(qastg_qastatcd))  = 'B', RGB(255,0,0),RGB(255,255,255))" x="1888" y="4" height="76" width="96" format="[general]" html.valueishtml="0"  name=qastg_qastatcd_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=18 alignment="2" tabsequence=80 border="5" color="0" x="1998" y="4" height="76" width="187" format="[general]" html.valueishtml="0"  name=qastg_reload_indicator_yn visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.other="0" checkbox.scale=yes checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=17 alignment="0" tabsequence=90 border="5" color="0" x="2199" y="4" height="76" width="270" format="[general]" html.valueishtml="0"  name=qastg_review_type_code visible="1" dddw.name=dddw_ref_qa_review_types dddw.displaycolumn=review_type_description dddw.datacolumn=review_type_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

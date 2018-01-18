@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_validate_recagcy.srf
+global type f_validate_recagcy from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_recagcy (string Lrecagcy)
+end prototypes
+
+global function boolean f_validate_recagcy (string Lrecagcy);int rowcnt=0
+SELECT count(*) into :rowcnt from narrtbl 
+where recagcy=:lrecagcy
+using sqlservertrans;
+IF rowcnt=0 THEN
+	RETURN FALSE
+ELSE
+	RETURN TRUE
+END IF
+end function
+

@@ -1,0 +1,16 @@
+﻿$PBExportHeader$dddw_libcode.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=libcd dbname="lib.libcd" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=libstcd dbname="lib.libstcd" )
+ retrieve="  SELECT lib.libcd, libstcd  
+    FROM lib
+	order by libcd   
+" update="lib" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="5" y="12" height="76" width="366" format="[general]" html.valueishtml="0"  name=libcd visible="1" dddw.name=dddw_libcode dddw.displaycolumn=libcd dddw.datacolumn=libcd dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=upper dddw.autohscroll=yes dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="393" y="8" height="64" width="32" format="[general]" html.valueishtml="0"  name=libstcd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_remove_underline_code.srf
+global type f_remove_underline_code from function_object
+end type
+
+forward prototypes
+global function string f_remove_underline_code (string lanno)
+end prototypes
+
+global function string f_remove_underline_code (string lanno);string 			ls_source
+n_cst_string 	inv_string
+
+ls_source = Lanno
+
+ls_source =  inv_string.of_GlobalReplace(ls_source, "&dD", "<U>")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "&d@", "</U>")
+
+RETURN ls_source
+
+end function
+

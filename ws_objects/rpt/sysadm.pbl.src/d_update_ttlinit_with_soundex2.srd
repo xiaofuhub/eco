@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_update_ttlinit_with_soundex2.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(6) update=yes updatewhereclause=yes key=yes name=chno dbname="ttlinit.chno" )
+ column=(type=char(512) update=yes updatewhereclause=yes name=ttl dbname="ttlinit.ttl" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=soundex_ttl dbname="ttlinit.soundex_ttl" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=soundex_auth dbname="ttlinit.soundex_auth" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=auth dbname="ttlinit.auth" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=authfn dbname="ttlinit.authfn" )
+ retrieve="  SELECT ttlinit.chno,   
+         ttlinit.ttl,   
+         ttlinit.soundex_ttl,   
+         ttlinit.soundex_auth,   
+         ttlinit.auth,   
+         ttlinit.authfn  
+    FROM ttlinit,  mchar
+	 where ttlinit.chno = mchar.chno 
+    and   mchar.update_date > :adt_datetime 
+    order by 1" update="ttlinit" updatewhere=0 updatekeyinplace=yes arguments=(("adt_datetime", date)) )
+text(band=header alignment="2" text="Chno" border="0" color="0" x="5" y="4" height="64" width="192" html.valueishtml="0"  name=chno_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ttl" border="0" color="0" x="201" y="4" height="64" width="1536" html.valueishtml="0"  name=ttl_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Soundex Ttl" border="0" color="0" x="1755" y="4" height="64" width="1125" html.valueishtml="0"  name=soundex_ttl_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Soundex Auth" border="0" color="0" x="2898" y="4" height="64" width="960" html.valueishtml="0"  name=soundex_auth_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Auth" border="0" color="0" x="3872" y="4" height="64" width="960" html.valueishtml="0"  name=auth_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Authfn" border="0" color="0" x="4837" y="4" height="64" width="960" html.valueishtml="0"  name=authfn_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="192" format="[general]" html.valueishtml="0"  name=chno visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="210" y="4" height="76" width="1522" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="1755" y="4" height="76" width="1125" format="[general]" html.valueishtml="0"  name=soundex_ttl visible="1" edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="2898" y="4" height="76" width="960" format="[general]" html.valueishtml="0"  name=soundex_auth visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="3872" y="4" height="76" width="960" format="[general]" html.valueishtml="0"  name=auth visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="4837" y="4" height="76" width="960" format="[general]" html.valueishtml="0"  name=authfn visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,68 @@
+﻿$PBExportHeader$d_magazine_cost_maintenance.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=124 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=mag_fy dbname="mag.fy" )
+ column=(type=char(7) updatewhereclause=yes key=yes name=mag_cntr dbname="mag.cntr" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=mag_magcd dbname="mag.magcd" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucmast dbname="mag.ucmast" initial="0" validation="DEC(gettext()) < 9999.999999" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucdupl dbname="mag.ucdupl" initial="0" validation="DEC(gettext()) < 9999.999999" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucothr dbname="mag.ucothr" initial="0" validation="DEC(gettext()) < 9999.999999" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_estmail dbname="mag.estmail" initial="0" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcso dbname="mag.cntcso" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsadjc dbname="mag.cntcsadjc" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsc dbname="mag.cntcsc" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estmin dbname="mag.estmin" initial="0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estsubs dbname="mag.estsubs" initial="0" )
+ column=(type=decimal(1) updatewhereclause=yes name=mag_estsz dbname="mag.estsz" initial="0" )
+ column=(type=decimal(0) updatewhereclause=yes name=mag_estiss dbname="mag.estiss" initial="0" )
+ column=(type=char(34) updatewhereclause=yes name=magttl_title dbname="magttl.title" )
+ retrieve="  SELECT MAG.FY,   
+         MAG.CNTR,   
+         MAG.MAGCD,   
+         MAG.UCMAST,   
+         MAG.UCDUPL,   
+         MAG.UCOTHR,   
+         MAG.ESTMAIL,   
+         MAG.CNTCSO,   
+         MAG.CNTCSADJC,   
+         MAG.CNTCSC,   
+         MAG.ESTMIN,   
+         MAG.ESTSUBS,   
+         MAG.ESTSZ,   
+         MAG.ESTISS,   
+         MAGTTL.TITLE  
+    FROM MAG,   
+         MAGTTL  
+   WHERE ( MAG.MAGCD = MAGTTL.MAGCD ) and  
+         ( mag.fy = :li_fy ) AND  
+         ( mag.cntr = :ls_contract )     
+" update="MAG" updatewhere=1 updatekeyinplace=no arguments=(("li_fy", number),("ls_contract", string))  sort="magttl_title A " )
+text(band=header alignment="2" text="Magazine
+ Code" border="6" color="0" x="9" y="8" height="104" width="265" html.valueishtml="0"  name=mag_magcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Unit Cost
+ Mastering" border="6" color="0" x="283" y="8" height="104" width="288" html.valueishtml="0"  name=mag_ucmast_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Unit Cost
+ Duplication" border="6" color="0" x="581" y="8" height="104" width="315" html.valueishtml="0"  name=mag_ucdupl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Unit Cost
+ Other" border="6" color="0" x="905" y="8" height="104" width="352" html.valueishtml="0"  name=mag_ucothr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est. Mail" border="6" color="0" x="1266" y="8" height="104" width="361" html.valueishtml="0"  name=mag_estmail_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contract Cost
+(without mail)" border="6" color="0" x="1637" y="8" height="104" width="430" html.valueishtml="0"  name=mag_cntcso_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contract Cost
+ Adjustments" border="6" color="0" x="2075" y="8" height="104" width="489" html.valueishtml="0"  name=mag_cntcsadjc_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Adjusted Total
+(with mail)" border="6" color="0" x="2574" y="8" height="104" width="370" html.valueishtml="0"  name=mag_cntcsc_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="9" y="8" height="64" width="265" format="[general]" html.valueishtml="0"  name=mag_magcd  tag="Magazine Code" visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="0" x="283" y="8" height="64" width="288" format="[general]" html.valueishtml="0"  name=mag_ucmast  tag="Unit Cost Mastering" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="0" x="581" y="8" height="64" width="315" format="[general]" html.valueishtml="0"  name=mag_ucdupl  tag="Unit Cost Duplication" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="905" y="8" height="64" width="352" format="[general]" html.valueishtml="0"  name=mag_ucothr  tag="Unit Cost Other" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="1266" y="8" height="64" width="361" format="[general]" html.valueishtml="0"  name=mag_estmail  tag="Estimated Mailing Cost" visible="1" editmask.mask="####.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=50 border="5" color="0" x="1637" y="8" height="64" width="430" format="[general]" html.valueishtml="0"  name=mag_cntcso  tag="Original Contract Cost" visible="1" editmask.mask="##,###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="2075" y="8" height="64" width="489" format="[general]" html.valueishtml="0"  name=mag_cntcsadjc  tag="Adjustments to the Contract Cost" visible="1" editmask.mask="$##,###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="2574" y="8" height="64" width="370" format="[general]" html.valueishtml="0"  name=mag_cntcsc  tag="Cumulative Contract Cost" visible="1" editmask.mask="$##,###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

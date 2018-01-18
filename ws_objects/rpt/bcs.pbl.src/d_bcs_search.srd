@@ -1,0 +1,138 @@
+﻿$PBExportHeader$d_bcs_search.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=892 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=cconno dbname="mchar.conno" )
+ column=(type=char(3) updatewhereclause=yes name=cmed dbname="mchar.med" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="mchar.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=cvols dbname="mchar.vols" )
+ column=(type=datetime updatewhereclause=yes name=cfr dbname="mchar.fr" )
+ column=(type=char(4) updatewhereclause=yes name=mchar_prdr dbname="ancntr.prdr" )
+ column=(type=datetime updatewhereclause=yes name=cs1 dbname="catalog.s1" )
+ column=(type=char(8) updatewhereclause=yes name=cs1init dbname="catalog.s1init" )
+ column=(type=datetime updatewhereclause=yes name=cs2in dbname="catalog.s2in" )
+ column=(type=datetime updatewhereclause=yes name=cs2out dbname="catalog.s2out" )
+ column=(type=datetime updatewhereclause=yes name=cat dbname="catalog.cat" )
+ column=(type=char(30) updatewhereclause=yes name=cothermed dbname="catalog.othermed" )
+ column=(type=char(34) updatewhereclause=yes name=cnarr dbname="narr.narr" )
+ column=(type=char(34) updatewhereclause=yes name=narr_narrfn dbname="narr.narrfn" )
+ column=(type=char(4) updatewhereclause=yes name=crecagcy dbname="narr.recagcy" )
+ column=(type=char(3) updatewhereclause=yes name=prevbkmed dbname="ri.prevbkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=prevbkseq dbname="ri.prevbkseq" )
+ column=(type=char(6) updatewhereclause=yes name=cchno dbname="ttlinit.chno" )
+ column=(type=char(34) updatewhereclause=yes name=cauth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=cauthfn dbname="ttlinit.authfn" )
+ column=(type=char(512) updatewhereclause=yes name=cttl dbname="ttlinit.ttl" )
+ column=(type=char(34) updatewhereclause=yes name=sttl dbname="ttlinit.sttl" )
+ column=(type=char(2) updatewhereclause=yes name=cajyfn dbname="ttlinit.ajyfn" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_publisher dbname="ttlinit.publisher" )
+ column=(type=char(8) updatewhereclause=yes name=clcno dbname="ttlinit.lcno" )
+ column=(type=char(70) updatewhereclause=yes name=serttl dbname="ttlinit.serttl" )
+ column=(type=char(60) updatewhereclause=yes name=cseqnote dbname="ttlinit.seqnote" )
+ column=(type=char(4) updatewhereclause=yes name=cdewey dbname="ttlinit.dewey" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="prod.cntr" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="prod.actenddt" )
+ retrieve="  SELECT mchar.conno,   
+         mchar.med,   
+         mchar.bkseq,   
+         mchar.bkmed,   
+         mchar.vols,   
+         mchar.fr,   
+			ancntr.prdr,   
+         catalog.s1,   
+         catalog.s1init,   
+         catalog.s2in,   
+         catalog.s2out,   
+         catalog.cat,   
+         catalog.othermed,   
+         narr.narr,   
+         narr.narrfn,   
+         narr.recagcy,   
+         ri.prevbkmed,   
+         ri.prevbkseq,   
+         ttlinit.chno,   
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.ttl,   
+         ttlinit.sttl,   
+         ttlinit.ajyfn,   
+         ttlinit.publisher,   
+         ttlinit.lcno,   
+         ttlinit.serttl,   
+         ttlinit.seqnote,   
+         ttlinit.dewey,
+			prod.cntr,
+			prod.actenddt
+    FROM prod, ancntr, mchar, ri, ttlinit, catalog, narr  
+   WHERE mchar.conno = catalog.conno  and 
+         mchar.chno  = ttlinit.chno  and  
+			mchar.bkseq = prod.bkseq  and
+			mchar.bkmed = prod.bkmed  and
+			mchar.bkseq = narr.bkseq (+) and
+			mchar.bkmed = narr.bkmed (+) and
+			prod.cntr = ancntr.cntr (+) and
+			mchar.conno = ri.conno (+) and
+			prod.prodstage in ('MA','PU','AB') and
+			ancntr.cntrtype in ('T','M')
+	" )
+column(band=detail id=15 alignment="0" tabsequence=190 border="5" color="0" x="1175" y="680" height="64" width="329" format="[general]" html.valueishtml="0"  name=narr_narrfn visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="LC Card #:" border="0" color="0" x="128" y="112" height="52" width="233" html.valueishtml="0"  name=clcno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="AJYFN:" border="0" color="0" x="197" y="200" height="52" width="165" html.valueishtml="0"  name=cajyfn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Author:" border="0" color="0" x="206" y="300" height="52" width="155" html.valueishtml="0"  name=cauth_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Series:" border="0" color="0" x="215" y="476" height="52" width="146" html.valueishtml="0"  name=cserttl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Narrator:" border="0" color="0" x="174" y="680" height="52" width="187" html.valueishtml="0"  name=cnarr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Catalog Initials:" border="0" color="0" x="37" y="772" height="52" width="325" html.valueishtml="0"  name=cs1init_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Publisher:" border="0" color="0" x="151" y="584" height="52" width="210" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Control Number:" border="0" color="0" x="14" y="28" height="52" width="347" html.valueishtml="0"  name=cconno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Title:" border="0" color="0" x="256" y="388" height="52" width="105" html.valueishtml="0"  name=cttl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=50 border="5" color="0" x="379" y="112" height="64" width="311" format="[general]" html.valueishtml="0"  name=clcno  tag="Enter the LC card number" visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=24 alignment="0" tabsequence=80 border="5" color="0" x="379" y="200" height="76" width="137" format="[general]" html.valueishtml="0"  name=cajyfn visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=180 border="5" color="0" x="384" y="680" height="64" width="768" format="[general]" html.valueishtml="0"  name=cnarr visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=25 alignment="0" tabsequence=150 border="5" color="0" x="379" y="584" height="64" width="782" format="[general]" html.valueishtml="0"  name=ttlinit_publisher visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="255" x="379" y="28" height="64" width="293" format="[general]" html.valueishtml="0"  name=cconno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Other Medium/BK:" border="0" color="0" x="599" y="200" height="52" width="402" html.valueishtml="0"  name=cothermed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Stage I Date:" border="0" color="0" x="713" y="28" height="52" width="288" html.valueishtml="0"  name=cs1_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Medium:" border="0" color="0" x="818" y="112" height="52" width="183" html.valueishtml="0"  name=cmed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=20 border="5" color="0" x="1024" y="28" height="64" width="389" format="[general]" html.valueishtml="0"  name=cs1  tag="Enter the stage I date" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=90 border="5" color="0" x="1024" y="200" height="76" width="517" format="[general]" html.valueishtml="0"  name=cothermed  tag="Enter the Other medium" visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=60 border="5" color="0" x="1024" y="112" height="64" width="110" format="[general]" html.valueishtml="0"  name=cmed visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=28 alignment="0" tabsequence=130 border="5" color="0" x="1577" y="476" height="76" width="1010" format="[general]" html.valueishtml="0"  name=cseqnote visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Sequel:" border="0" color="0" x="1390" y="480" height="52" width="165" html.valueishtml="0"  name=cseqnote_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="5" color="0" x="1577" y="584" height="64" width="137" format="[general]" html.valueishtml="0"  name=crecagcy visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=170 border="5" color="0" x="2066" y="584" height="64" width="165" format="[general]" html.valueishtml="0"  name=mchar_prdr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Record Agency:" border="0" color="0" x="1202" y="584" height="52" width="352" html.valueishtml="0"  name=crecagcy_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Producer:" border="0" color="0" x="1833" y="584" height="52" width="210" html.valueishtml="0"  name=cprdr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="5" color="0" x="1925" y="680" height="64" width="329" format="[general]" html.valueishtml="0"  name=actenddt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Narration date:" border="0" color="0" x="1582" y="680" height="52" width="320" html.valueishtml="0"  name=cnarrcomp_mmyy_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=220 border="5" color="0" x="983" y="772" height="64" width="329" format="[general]" html.valueishtml="0"  name=cs2in visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Stage II Date in:" border="0" color="0" x="599" y="772" height="52" width="352" html.valueishtml="0"  name=cs2in_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Stage II Date out:" border="0" color="0" x="1362" y="772" height="52" width="384" html.valueishtml="0"  name=cs2out_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=230 border="5" color="0" x="1783" y="772" height="64" width="329" format="[general]" html.valueishtml="0"  name=cs2out visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Dewey:" border="0" color="0" x="2290" y="680" height="52" width="165" html.valueishtml="0"  name=cdewey_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=200 border="5" color="0" x="2478" y="680" height="64" width="233" format="[general]" html.valueishtml="0"  name=cdewey  tag="Enter the Dewey number" visible="1" edit.limit=4 edit.case=upper edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=240 border="5" color="0" x="2469" y="772" height="64" width="347" format="[general]" html.valueishtml="0"  name=cat visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Catalog Date:" border="0" color="0" x="2144" y="772" height="52" width="297" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="1783" y="28" height="64" width="329" format="[general]" html.valueishtml="0"  name=cfr visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Chart Number:" border="0" color="0" x="2162" y="28" height="52" width="311" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=40 border="5" color="16711680" x="2491" y="28" height="68" width="215" format="[general]" html.valueishtml="0"  name=cchno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Final Review:" border="0" color="0" x="1467" y="28" height="52" width="293" html.valueishtml="0"  name=cfr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="0" tabsequence=100 border="5" color="0" x="379" y="300" height="64" width="622" format="[general]" html.valueishtml="0"  name=cauth visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Volumes:" border="0" color="0" x="1659" y="300" height="52" width="197" html.valueishtml="0"  name=cvols_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=110 border="5" color="0" x="1024" y="300" height="64" width="521" format="[general]" html.valueishtml="0"  name=cauthfn visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1874" y="116" height="64" width="101" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="2002" y="116" height="64" width="242" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="5" color="0" x="2007" y="204" height="64" width="242" format="[general]" html.valueishtml="0"  name=prevbkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Reissue of:" border="0" color="0" x="1605" y="204" height="52" width="242" html.valueishtml="0"  name=criprevbkno1_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Book Number:" border="0" color="0" x="1536" y="116" height="52" width="311" html.valueishtml="0"  name=cbkno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="5" color="0" x="1879" y="204" height="64" width="101" format="[general]" html.valueishtml="0"  name=prevbkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=22 alignment="0" tabsequence=120 border="5" color="0" x="384" y="388" height="60" width="2199" format="[general]" html.valueishtml="0"  name=cttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Distibutor:" border="0" color="0" x="2103" y="300" height="52" width="215" html.valueishtml="0"  name=cdupl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="5" color="0" x="2336" y="300" height="64" width="247" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="1" tabsequence=70 border="5" color="0" x="1879" y="300" height="64" width="192" format="[general]" html.valueishtml="0"  name=cvols visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=210 border="5" color="0" x="384" y="772" height="52" width="183" format="[general]" html.valueishtml="0"  name=cs1init visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=27 alignment="0" tabsequence=140 border="5" color="0" x="384" y="480" height="68" width="965" format="[general]" html.valueishtml="0"  name=serttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_count_word.srf
+global type f_count_word from function_object
+end type
+
+forward prototypes
+global function integer f_count_word (string lanno)
+end prototypes
+
+global function integer f_count_word (string lanno);Integer			ll_count
+string 			ls_space,ls_source
+n_cst_string 	inv_string
+
+ls_source = Lanno
+ls_space = " "
+
+ls_source =  inv_string.of_GlobalReplace(ls_source, "       ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "      ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "     ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "    ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "   ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "  ", " ")
+
+ll_count = inv_string.of_CountOccurrences(ls_source, ls_space, TRUE)
+
+RETURN ll_count+1
+
+end function
+

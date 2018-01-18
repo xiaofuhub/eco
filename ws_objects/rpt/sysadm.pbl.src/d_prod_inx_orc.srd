@@ -1,0 +1,77 @@
+﻿$PBExportHeader$d_prod_inx_orc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=15780518 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=140 color="536870912" )
+summary(height=96 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="prod.bkseq" )
+ column=(type=char(2) updatewhereclause=yes name=prodstage dbname="prod.prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="cntr" )
+ column=(type=char(7) updatewhereclause=yes name=cntr_orc dbname="cntr_orc" )
+ column=(type=datetime updatewhereclause=yes name=schstdt dbname="prod.schstdt" )
+ column=(type=datetime updatewhereclause=yes name=schenddt dbname="prod.schenddt" )
+ column=(type=datetime updatewhereclause=yes name=actstdt dbname="prod.actstdt" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="prod.actenddt" )
+ column=(type=datetime updatewhereclause=yes name=schstdt_orc dbname="schstdt_orc" )
+ column=(type=datetime updatewhereclause=yes name=schenddt_orc dbname="schenddt_orc" )
+ column=(type=datetime updatewhereclause=yes name=actstdt_orc dbname="actstdt_orc" )
+ column=(type=datetime updatewhereclause=yes name=actenddt_orc dbname="actenddt_orc" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=datetime update=yes updatewhereclause=yes name=update_date dbname="mchar.update_date" )
+ column=(type=datetime updatewhereclause=yes name=mod_date dbname="mod_date" )
+ column=(type=char(8) updatewhereclause=yes name=comment_ dbname="comment_" )
+ retrieve="  SELECT prod.bkmed,   
+         prod.bkseq,   
+         prodstage,
+			'       ' cntr,
+			'       ' cntr_orc,   
+         schstdt,   
+         schenddt,   
+         actstdt,   
+         actenddt,
+			to_date('01/01/1900','MM/DD/YYYY')	schstdt_orc,
+			to_date('01/01/1900','MM/DD/YYYY') schenddt_orc,
+			to_date('01/01/1900','MM/DD/YYYY') actstdt_orc,
+			to_date('01/01/1900','MM/DD/YYYY') actenddt_orc ,
+			conno,
+			update_date,
+			to_date('01/01/1900','MM/DD/YYYY') mod_date,
+			'								' comment_ 
+    FROM prod,mchar 
+	WHERE prod.bkseq = mchar.bkseq
+	AND   prod.bkmed = mchar.bkmed
+	AND   trim(prod.bkmed)||prod.bkseq in ( :as_bkno_list )
+" update="mchar" updatewhere=0 updatekeyinplace=yes arguments=(("as_bkno_list", stringlist))  sort="bkmed A bkseq A prodstage A " )
+text(band=header alignment="2" text="BookNo" border="0" color="0" x="64" y="8" height="128" width="219" html.valueishtml="0"  name=bkmed_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="SchenddtPICS/Web" border="0" color="0" x="1600" y="8" height="128" width="544" html.valueishtml="0"  name=schenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="ActstdtPICS/Web" border="0" color="0" x="2235" y="8" height="128" width="544" html.valueishtml="0"  name=actstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="ActenddtPICS/Web" border="0" color="0" x="2807" y="8" height="128" width="544" html.valueishtml="0"  name=actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="SchstdtPICS/Web" border="0" color="0" x="1074" y="8" height="128" width="544" html.valueishtml="0"  name=schstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="UpdateDate" border="0" color="0" x="3401" y="8" height="128" width="283" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="0" text="Modified  Date" border="0" color="0" x="3739" y="8" height="128" width="311" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="0" text="MakeComments" border="0" color="0" x="4027" y="8" height="128" width="366" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="CntrPICS/Web" border="0" color="0" x="526" y="8" height="128" width="544" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="ProdStage" border="0" color="0" x="352" y="8" height="128" width="210" html.valueishtml="0"  name=prodstage_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="5" color="0" x="9" y="4" height="64" width="18" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="32" y="4" height="64" width="123" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="0" x="3077" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=actenddt_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  actenddt <>  actenddt_orc, RGB(255,255,0),if(isnull( actenddt) and (not isnull( actenddt_orc )),rgb(255,255,0),if(isnull( actenddt_orc) and (not isnull( actenddt)),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="2789" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=actenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="0" x="2496" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=actstdt_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  actstdt <>  actstdt_orc, RGB(255,255,0),if(isnull( actstdt) and (not isnull( actstdt_orc )),rgb(255,255,0),if(isnull( actstdt_orc) and (not isnull( actstdt)),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="2208" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=actstdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="1920" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=schenddt_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  schenddt <>  schenddt_orc, RGB(255,255,0),if(isnull( schenddt) and (not isnull( schenddt_orc )),rgb(255,255,0),if(isnull( schenddt_orc) and (not isnull( schenddt)),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="1627" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=schenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="1335" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=schstdt_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  schstdt <>  schstdt_orc, RGB(255,255,0),if(isnull( schstdt) and (not isnull( schstdt_orc )),rgb(255,255,0),if(isnull( schstdt_orc) and (not isnull( schstdt)),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="1047" y="8" height="64" width="265" format="mm/dd/yy" html.valueishtml="0"  name=schstdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="5" color="0" x="3365" y="8" height="64" width="315" format="mm/dd/yyyy" html.valueishtml="0"  name=update_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="786" y="8" height="64" width="233" format="[general]" html.valueishtml="0"  name=cntr_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  cntr  <>  cntr_orc , RGB(255,255,0),if(isnull( cntr ) and (not isnull( cntr_orc  )),rgb(255,255,0),if(isnull(  cntr_orc ) and (not isnull( cntr )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="5" color="0" x="178" y="8" height="64" width="197" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="402" y="8" height="64" width="101" format="[general]" html.valueishtml="0"  name=prodstage visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="530" y="8" height="64" width="233" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="0" x="3698" y="8" height="64" width="325" format="[general]" html.valueishtml="0"  name=mod_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="5" color="0" x="4055" y="4" height="64" width="599" format="[general]" html.valueishtml="0"  name=comment_ visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+compute(band=summary alignment="1" expression="count(  bkseq  for all )"border="5" color="0" x="416" y="20" height="64" width="288" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=summary alignment="2" text="Total Books" border="0" color="0" x="41" y="16" height="64" width="338" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

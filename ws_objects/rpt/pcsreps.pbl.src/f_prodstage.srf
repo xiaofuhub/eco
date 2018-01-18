@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_prodstage.srf
+global type f_prodstage from function_object
+end type
+
+forward prototypes
+global function date f_prodstage (string prodstage, string cntrtype, date schstdt, date schenddt)
+end prototypes
+
+global function date f_prodstage (string prodstage, string cntrtype, date schstdt, date schenddt);IF prodstage = 'MA' or prodstage = 'DU' or prodstage = 'AB' THEN
+	return schstdt 
+	return schenddt
+//	<action1>
+//ELSEIF <condition2> THEN
+//	<action2>
+ELSE
+//	<action3>
+END IF
+
+end function
+

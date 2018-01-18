@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_menu.srs
+$PBExportComments$Pics menu string
+global type str_menu from structure
+	string		menu_array[]
+end type
+

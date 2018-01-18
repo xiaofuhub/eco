@@ -1,0 +1,71 @@
+﻿$PBExportHeader$d_book_query_cy.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=48 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=544 color="536870912"  height.autosize=yes)
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="CONNO" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="BKMED" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="BKSEQ" )
+ column=(type=char(6) updatewhereclause=yes name=chno dbname="CHNO" )
+ column=(type=char(1) updatewhereclause=yes name=cascd dbname="CASCD" values="Qualified for next batch	N/Not selected	X/Qualified	Q/Received	R/" )
+ column=(type=decimal(0) updatewhereclause=yes name=qnty dbname="QNTY" )
+ column=(type=datetime updatewhereclause=yes name=cabdt dbname="CABDT" )
+ column=(type=char(1) updatewhereclause=yes name=priority dbname="PRIORITY" values="Priority books	P/Rush books or Bestsellers	R/Normal books	N/" )
+ column=(type=datetime updatewhereclause=yes name=dsdt dbname="DSDT" )
+ column=(type=char(512) updatewhereclause=yes name=ttl dbname="TTL" )
+ column=(type=char(34) updatewhereclause=yes name=authfn dbname="AUTHFN" )
+ column=(type=char(34) updatewhereclause=yes name=auth dbname="AUTH" )
+ column=(type=char(5) updatewhereclause=yes name=ahonorific dbname="AHONORIFIC" )
+ column=(type=char(3) updatewhereclause=yes name=casub dbname="CASUB" )
+ retrieve="select b.conno, b.bkmed, 
+		b.bkseq, b.chno, 
+		b.cascd, b.qnty, 
+		b.cabdt, b.priority,
+		b.dsdt, 
+		a.ttl, a.authfn, 
+		a.auth, a.ahonorific, 
+		a.casub
+		
+from  mchar b, ttlinit a
+where
+		b.chno= a.chno(+) and
+		b.conno =:as_conno
+" arguments=(("as_conno", string)) )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="1641" y="0" height="56" width="27" format="[general]" html.valueishtml="0"  name=bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1678" y="4" height="56" width="37" format="[general]" html.valueishtml="0"  name=bkmed visible="1~t0" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1737" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=chno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="trim(bkmed)+string( bkseq )"border="0" color="0" x="594" y="32" height="56" width="361" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="132" height="56" width="1376" format="[general]" html.valueishtml="0"  name=auth visible="1"  resizeable=1 edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1984" y="132" height="56" width="1326" format="[general]" html.valueishtml="0"  name=authfn visible="1"  resizeable=1  moveable=1  slideleft=yes height.autosize=yes edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="3323" y="132" height="60" width="91" format="[general]" html.valueishtml="0"  name=ahonorific visible="1"  resizeable=1  moveable=1  slideleft=yes height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="224" height="56" width="2816" format="[general]" html.valueishtml="0"  name=ttl visible="1"  resizeable=1  moveable=1 height.autosize=yes edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="336" height="60" width="731" format="[general]" html.valueishtml="0"  name=cascd visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2597" y="36" height="56" width="416" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="432" height="60" width="535" format="[general]" html.valueishtml="0"  name=qnty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1742" y="332" height="60" width="325" format="mm/dd/yyyy" html.valueishtml="0"  name=cabdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="1742" y="432" height="60" width="713" format="[general]" html.valueishtml="0"  name=priority visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3131" y="428" height="60" width="297" format="[General]" html.valueishtml="0"  name=dsdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3131" y="328" height="60" width="169" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Book Number " border="0" color="0" x="178" y="32" height="60" width="379" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Author:" border="0" color="0" x="178" y="132" height="60" width="192" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Title:" border="0" color="0" x="178" y="224" height="60" width="128" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="CASCD:" border="0" color="0" x="174" y="336" height="60" width="206" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Total Quanty:" border="0" color="0" x="174" y="432" height="60" width="325" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Priority:" border="0" color="0" x="1477" y="432" height="60" width="210" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="CABDT:" border="0" color="0" x="1481" y="332" height="60" width="197" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Control Number:" border="0" color="0" x="2139" y="36" height="60" width="430" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="CASUB:" border="0" color="0" x="2597" y="332" height="60" width="201" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Distribution Date:" border="0" color="0" x="2597" y="432" height="60" width="434" html.valueishtml="0"  name=t_10 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_auth_desc.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(34) updatewhereclause=yes name=authfn dbname="ttlinit.authfn" )
+ column=(type=char(34) updatewhereclause=yes name=auth dbname="ttlinit.auth" )
+ column=(type=char(69) updatewhereclause=yes name=authname dbname="authname" )
+ retrieve="  SELECT authfn, auth, authfn||' '||auth authname
+    FROM TTLINIT
+   WHERE  chno in ( :ls_chnos )
+ORDER BY auth
+" arguments=(("ls_chnos", stringlist)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="0" y="0" height="64" width="498" format="[general]" html.valueishtml="0"  name=auth visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="33554432" x="498" y="0" height="64" width="384" html.valueishtml="0"  name=authfn visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="33554432" x="891" y="0" height="64" width="530" html.valueishtml="0"  name=authname visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

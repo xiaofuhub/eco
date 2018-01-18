@@ -1,0 +1,60 @@
+﻿$PBExportHeader$d_rpt_open_cmp_asigntitles.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="prod.cntr" )
+ column=(type=char(11) updatewhereclause=yes name=cntrlc dbname="ancntr.cntrlc" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="ancntr.prdr" )
+ column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="ancntr.cntrmed" )
+ retrieve="  SELECT DISTINCT prod.bkseq,   
+         prod.bkmed,   
+         prod.cntr ,
+			ancntr.cntrlc,
+			ancntr.prdr, 
+			ancntr.cntrmed
+    FROM prod ,
+			ancntr,
+			mchar
+	where ancntr.prdr= :as_prdr AND
+			prod.cntr = ancntr.cntr and
+			prod.bkseq= mchar.bkseq and
+			prod.bkmed= mchar.bkmed and
+			ancntr.cntrlc is not null and 
+			ancntr.cntr_status ='A' and
+			(arflag  is null or arflag <>'A' )
+
+ 
+
+
+
+
+
+
+			
+
+
+			
+
+" arguments=(("as_prdr", string))  sort="prdr A cntrmed A cntr A bkseq A bkmed A " )
+group(level=1 header.height=0 trailer.height=0 by=("prdr" , "cntrmed" , "cntr" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Bkseq" border="0" color="0" x="5" y="4" height="64" width="329" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkmed" border="0" color="0" x="338" y="4" height="64" width="187" html.valueishtml="0"  name=bkmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cntr" border="0" color="0" x="530" y="4" height="64" width="219" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="cntrlc" border="0" color="0" x="1129" y="0" height="64" width="215" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="assigntitles" border="0" color="0" x="768" y="4" height="64" width="338" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="prdr" border="0" color="0" x="1385" y="4" height="64" width="114" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="cntrmed" border="0" color="0" x="1531" y="12" height="64" width="238" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="338" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="4" height="76" width="219" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="count( string( bkseq )+ bkmed  for  group 1)"border="0" color="0" x="782" y="4" height="64" width="215" format="[GENERAL]" html.valueishtml="0"  name=asigntitles visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1033" y="8" height="64" width="297" format="[general]" html.valueishtml="0"  name=cntrlc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1385" y="4" height="64" width="110" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1550" y="0" height="64" width="82" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

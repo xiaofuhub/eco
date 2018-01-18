@@ -1,0 +1,1529 @@
+﻿$PBExportHeader$m_eco_main.srm
+forward
+global type m_eco_main from menu
+end type
+type m_file from menu within m_eco_main
+end type
+type m_close from menu within m_file
+end type
+type m_dash11 from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_pagesetup from menu within m_file
+end type
+type m_printimmediate from menu within m_file
+end type
+type m_dash13 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_eco_main
+m_close m_close
+m_dash11 m_dash11
+m_print m_print
+m_printscreen m_printscreen
+m_pagesetup m_pagesetup
+m_printimmediate m_printimmediate
+m_dash13 m_dash13
+m_exit m_exit
+end type
+type m_eco from menu within m_eco_main
+end type
+type m_remoteandamplifire from menu within m_eco
+end type
+type m_remoteonly from menu within m_eco
+end type
+type m_amplifieronly from menu within m_eco
+end type
+type m_- from menu within m_eco
+end type
+type m_search from menu within m_eco
+end type
+type m_eco from menu within m_eco_main
+m_remoteandamplifire m_remoteandamplifire
+m_remoteonly m_remoteonly
+m_amplifieronly m_amplifieronly
+m_- m_-
+m_search m_search
+end type
+type m_tools from menu within m_eco_main
+end type
+type m_customizetoolbars from menu within m_tools
+end type
+type m_1 from menu within m_tools
+end type
+type m_reportbuilder from menu within m_tools
+end type
+type m_calculator from menu within m_tools
+end type
+type m_-1 from menu within m_tools
+end type
+type m_filter from menu within m_tools
+end type
+type m_sort from menu within m_tools
+end type
+type m_find from menu within m_tools
+end type
+type m_ecouserchangepassword from menu within m_tools
+end type
+type m_tools from menu within m_eco_main
+m_customizetoolbars m_customizetoolbars
+m_1 m_1
+m_reportbuilder m_reportbuilder
+m_calculator m_calculator
+m_-1 m_-1
+m_filter m_filter
+m_sort m_sort
+m_find m_find
+m_ecouserchangepassword m_ecouserchangepassword
+end type
+type m_window from menu within m_eco_main
+end type
+type m_cascade from menu within m_window
+end type
+type m_tilehorizontal from menu within m_window
+end type
+type m_tilevertical from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_dash51 from menu within m_window
+end type
+type m_minimizeall from menu within m_window
+end type
+type m_undoarrange from menu within m_window
+end type
+type m_window from menu within m_eco_main
+m_cascade m_cascade
+m_tilehorizontal m_tilehorizontal
+m_tilevertical m_tilevertical
+m_layer m_layer
+m_dash51 m_dash51
+m_minimizeall m_minimizeall
+m_undoarrange m_undoarrange
+end type
+global type m_eco_main from menu
+m_file m_file
+m_eco m_eco
+m_tools m_tools
+m_window m_window
+end type
+end forward
+
+global type m_eco_main from menu
+m_file m_file
+m_eco m_eco
+m_tools m_tools
+m_window m_window
+end type
+global m_eco_main m_eco_main
+
+forward prototypes
+public function integer of_sendmessage (string as_message)
+end prototypes
+
+public function integer of_sendmessage (string as_message);//////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  of_SendMessage
+//
+//	Access:  public
+//
+//	Arguments:		
+//	as_message  message (event notification) to be sent
+//
+//	Returns:  integer
+//	 1 = Message successfully sent
+//	-1 = message could not be sent (use debug object for more info)
+//
+//	Description:
+//	Sends a specified message (event notification) to a receiving window 
+//	through the pfc_messagerouter event.
+//
+//	Sequence:
+//	If application is MDI:
+//	1) Active MDI sheet pfc_messagerouter event.
+//	2) MDI Frame Window pfc_messagerouter event.
+//
+//	Application is SWI:
+//	1) ParentWindow pfc_messagerouter event.
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//	Revision History
+//
+//	Version
+//	5.0   Initial version
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//	Copyright © 1996 Powersoft Corporation.  All Rights Reserved.
+//	Any distribution of the PowerBuilder Foundation Classes (PFC)
+//	source code by other than Powersoft is prohibited.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+integer		li_rc = -1
+window		lw_frame
+window		lw_sheet
+n_cst_menu	lnv_menu
+
+// Check arguments
+if IsNull (as_message) or LenA (Trim (as_message)) = 0 then
+	return li_rc
+end if
+
+// Determine if application is MDI by getting frame window
+lnv_menu.of_GetMDIFrame (this, lw_frame)   
+if IsValid (lw_frame) then
+
+	// Try sending the message to the active MDI sheet
+	lw_sheet = lw_frame.GetActiveSheet()
+	if IsValid (lw_sheet) then
+		li_rc = lw_sheet.dynamic event pfc_messagerouter (as_message)
+	end if
+
+	if li_rc <> 1 then
+		// Try sending the message to the frame
+		li_rc = lw_frame.dynamic event pfc_messagerouter (as_message)
+	end if
+else
+	// Try sending the message to the parentwindow
+	if IsValid (parentwindow) then
+		li_rc = parentwindow.dynamic event pfc_messagerouter (as_message)
+	end if
+end if
+
+if IsNull (li_rc) then
+	li_rc = -1
+end if
+
+// Debug message if message could not be received
+//if li_rc = -1 and IsValid (gnv_app.inv_debug) then
+//	MessageBox (gnv_app.inv_debug.ics_pfc, "Message " + as_message + &
+//					" was not received.")
+//end if
+//
+return li_rc
+
+end function
+
+on m_eco_main.create
+m_eco_main=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_file=create m_file
+this.m_eco=create m_eco
+this.m_tools=create m_tools
+this.m_window=create m_window
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_eco
+this.Item[UpperBound(this.Item)+1]=this.m_tools
+this.Item[UpperBound(this.Item)+1]=this.m_window
+end on
+
+on m_eco_main.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_eco)
+destroy(this.m_tools)
+destroy(this.m_window)
+end on
+
+type m_file from menu within m_eco_main
+m_close m_close
+m_dash11 m_dash11
+m_print m_print
+m_printscreen m_printscreen
+m_pagesetup m_pagesetup
+m_printimmediate m_printimmediate
+m_dash13 m_dash13
+m_exit m_exit
+end type
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.mergeoption = filemenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_close=create m_close
+this.m_dash11=create m_dash11
+this.m_print=create m_print
+this.m_printscreen=create m_printscreen
+this.m_pagesetup=create m_pagesetup
+this.m_printimmediate=create m_printimmediate
+this.m_dash13=create m_dash13
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_close
+this.Item[UpperBound(this.Item)+1]=this.m_dash11
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printscreen
+this.Item[UpperBound(this.Item)+1]=this.m_pagesetup
+this.Item[UpperBound(this.Item)+1]=this.m_printimmediate
+this.Item[UpperBound(this.Item)+1]=this.m_dash13
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_close)
+destroy(this.m_dash11)
+destroy(this.m_print)
+destroy(this.m_printscreen)
+destroy(this.m_pagesetup)
+destroy(this.m_printimmediate)
+destroy(this.m_dash13)
+destroy(this.m_exit)
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;of_SendMessage ("pfc_close")
+end on
+
+on m_close.create
+call super::create
+this.text = "&Close"
+this.microhelp = "Close"
+this.toolbaritemname = "custom039!"
+this.toolbaritemtext = "Close"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_dash11 from menu within m_file
+end type
+
+on m_dash11.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_print from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_print")
+end event
+
+on m_print.create
+call super::create
+this.text = "&Print..."
+this.microhelp = "Prints the item"
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Print"
+this.toolbaritemorder = 10
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+on m_printscreen.create
+call super::create
+this.text = "Print &Screen~tCtrl+P"
+this.shortcut = 336
+this.microhelp = "Print Screen"
+this.toolbaritemname = "custom004!"
+this.toolbaritemtext = "Print Screen"
+this.toolbaritemorder = 20
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;// Script for printing a screen
+
+Long	ll_Job
+
+SetPointer(Hourglass!)
+
+// Open a print job and give it a title
+ll_Job = PrintOpen("Print Screen Example")
+If ll_Job = -1 Then
+	Messagebox("Print Job Open Error","Could not open a print job. Check printer " + &
+	"setting and Print Manager")
+	Return
+End If
+
+SetPointer(Hourglass!)
+
+// Prints the screen image at the location specified by x and y and in the size specified by 
+// width and height. If you do not specify the width and height, PowerBuilder uses the original 
+// size of the screen.
+PrintScreen(ll_Job, 10, 10, 8000, 10000)
+
+// Close the print job which will send the data to the printer
+PrintClose(ll_Job)
+
+end event
+
+on m_printscreen.destroy
+call super::destroy
+end on
+
+type m_pagesetup from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_pagesetup")
+end event
+
+on m_pagesetup.create
+call super::create
+this.text = "Page Set&up..."
+this.microhelp = "Changes page layout settings"
+this.toolbaritemtext = "Page Setup"
+this.toolbaritemorder = 30
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_pagesetup.destroy
+call super::destroy
+end on
+
+type m_printimmediate from menu within m_file
+end type
+
+event clicked;of_SendMessage ("pfc_printimmediate")
+end event
+
+on m_printimmediate.create
+call super::create
+this.visible = false
+this.text = "Print &Immediate"
+this.microhelp = "Prints the item"
+this.toolbaritemtext = "Print Immediate"
+this.toolbaritemorder = 40
+this.toolbaritemspace = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printimmediate.destroy
+call super::destroy
+end on
+
+type m_dash13 from menu within m_file
+end type
+
+on m_dash13.create
+call super::create
+this.visible = false
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;of_SendMessage ("pfc_close")
+gnv_app.event pfc_exit()
+end event
+
+on m_exit.create
+call super::create
+this.text = "E&xit~tAlt+F4"
+this.shortcut = 627
+this.microhelp = "Quits the application"
+this.toolbaritemname = "exit!"
+this.toolbaritemtext = "Exit"
+this.toolbaritemorder = 45
+this.shifttoright = true
+this.menuitemtype = menuitemtypeexit!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_eco from menu within m_eco_main
+m_remoteandamplifire m_remoteandamplifire
+m_remoteonly m_remoteonly
+m_amplifieronly m_amplifieronly
+m_- m_-
+m_search m_search
+end type
+
+on m_eco.create
+call super::create
+this.text = "&Eco"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_remoteandamplifire=create m_remoteandamplifire
+this.m_remoteonly=create m_remoteonly
+this.m_amplifieronly=create m_amplifieronly
+this.m_-=create m_-
+this.m_search=create m_search
+this.Item[UpperBound(this.Item)+1]=this.m_remoteandamplifire
+this.Item[UpperBound(this.Item)+1]=this.m_remoteonly
+this.Item[UpperBound(this.Item)+1]=this.m_amplifieronly
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_search
+end on
+
+on m_eco.destroy
+call super::destroy
+destroy(this.m_remoteandamplifire)
+destroy(this.m_remoteonly)
+destroy(this.m_amplifieronly)
+destroy(this.m_-)
+destroy(this.m_search)
+end on
+
+type m_remoteandamplifire from menu within m_eco
+end type
+
+event clicked;OpenSheet(w_eco_patron, w_eco_main, 0, Original!)
+end event
+
+on m_remoteandamplifire.create
+call super::create
+this.text = "Remote a&nd Amplifire"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_remoteandamplifire.destroy
+call super::destroy
+end on
+
+type m_remoteonly from menu within m_eco
+end type
+
+event clicked;OpenSheet(w_eco_patron_remote_only, w_eco_main, 0, Original!)
+end event
+
+on m_remoteonly.create
+call super::create
+this.text = "&Remote Only"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_remoteonly.destroy
+call super::destroy
+end on
+
+type m_amplifieronly from menu within m_eco
+end type
+
+event clicked;OpenSheet(w_eco_patron_amplifier_only, w_eco_main, 0, Original!)
+end event
+
+on m_amplifieronly.create
+call super::create
+this.text = "&Amplifier Only"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_amplifieronly.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_eco
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_search from menu within m_eco
+end type
+
+event clicked;OpenSheet(w_eco_search_patron, w_eco_main, 0, Original!)
+end event
+
+on m_search.create
+call super::create
+this.text = "&Search Screen"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_search.destroy
+call super::destroy
+end on
+
+type m_tools from menu within m_eco_main
+m_customizetoolbars m_customizetoolbars
+m_1 m_1
+m_reportbuilder m_reportbuilder
+m_calculator m_calculator
+m_-1 m_-1
+m_filter m_filter
+m_sort m_sort
+m_find m_find
+m_ecouserchangepassword m_ecouserchangepassword
+end type
+
+on m_tools.create
+call super::create
+this.text = "&Tools"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_customizetoolbars=create m_customizetoolbars
+this.m_1=create m_1
+this.m_reportbuilder=create m_reportbuilder
+this.m_calculator=create m_calculator
+this.m_-1=create m_-1
+this.m_filter=create m_filter
+this.m_sort=create m_sort
+this.m_find=create m_find
+this.m_ecouserchangepassword=create m_ecouserchangepassword
+this.Item[UpperBound(this.Item)+1]=this.m_customizetoolbars
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_reportbuilder
+this.Item[UpperBound(this.Item)+1]=this.m_calculator
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_filter
+this.Item[UpperBound(this.Item)+1]=this.m_sort
+this.Item[UpperBound(this.Item)+1]=this.m_find
+this.Item[UpperBound(this.Item)+1]=this.m_ecouserchangepassword
+end on
+
+on m_tools.destroy
+call super::destroy
+destroy(this.m_customizetoolbars)
+destroy(this.m_1)
+destroy(this.m_reportbuilder)
+destroy(this.m_calculator)
+destroy(this.m_-1)
+destroy(this.m_filter)
+destroy(this.m_sort)
+destroy(this.m_find)
+destroy(this.m_ecouserchangepassword)
+end on
+
+type m_customizetoolbars from menu within m_tools
+end type
+
+on m_customizetoolbars.create
+call super::create
+this.text = "Customize &Toolbars...~tCtrl+T"
+this.shortcut = 340
+this.microhelp = "Arranges toolbar buttons"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_toolbars")
+end event
+
+on m_customizetoolbars.destroy
+call super::destroy
+end on
+
+type m_1 from menu within m_tools
+end type
+
+on m_1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_reportbuilder from menu within m_tools
+end type
+
+event clicked;open(w_mdi_quick_select)
+end event
+
+on m_reportbuilder.create
+call super::create
+this.text = "&Report Builder~tCtrl+R"
+this.shortcut = 338
+this.microhelp = "Report Builder"
+this.toolbaritemname = "properties!"
+this.toolbaritemtext = "Report Builder"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_reportbuilder.destroy
+call super::destroy
+end on
+
+type m_calculator from menu within m_tools
+end type
+
+event clicked;string ls_data
+ls_data = "calc"
+Run(ls_data)
+end event
+
+on m_calculator.create
+call super::create
+this.text = "&Calculator~tCtrl+L"
+this.shortcut = 332
+this.microhelp = "Calculator"
+this.toolbaritemname = "compute!"
+this.toolbaritemtext = "Calculator"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_calculator.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_tools
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_filter from menu within m_tools
+end type
+
+event clicked;SetPointer(hourglass!)
+of_SendMessage("pfc_filterdlg")
+
+end event
+
+on m_filter.create
+call super::create
+this.text = "&Filter"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_filter.destroy
+call super::destroy
+end on
+
+type m_sort from menu within m_tools
+end type
+
+event clicked;SetPointer(hourglass!)
+of_SendMessage("pfc_sortdlg")
+
+end event
+
+on m_sort.create
+call super::create
+this.text = "&Sort"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_find from menu within m_tools
+end type
+
+event clicked;SetPointer(hourglass!)
+of_SendMessage("pfc_finddlg")
+
+end event
+
+on m_find.create
+call super::create
+this.text = "F&ind"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_ecouserchangepassword from menu within m_tools
+end type
+
+event clicked;OpenSheet(w_user_change_passwrd, w_eco_main, 0, Original!)
+end event
+
+on m_ecouserchangepassword.create
+call super::create
+this.text = "&ECO User Change Password"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_ecouserchangepassword.destroy
+call super::destroy
+end on
+
+type m_window from menu within m_eco_main
+m_cascade m_cascade
+m_tilehorizontal m_tilehorizontal
+m_tilevertical m_tilevertical
+m_layer m_layer
+m_dash51 m_dash51
+m_minimizeall m_minimizeall
+m_undoarrange m_undoarrange
+end type
+
+on m_window.create
+call super::create
+this.text = "&Window"
+this.shifttoright = true
+this.mergeoption = windowmenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cascade=create m_cascade
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_tilevertical=create m_tilevertical
+this.m_layer=create m_layer
+this.m_dash51=create m_dash51
+this.m_minimizeall=create m_minimizeall
+this.m_undoarrange=create m_undoarrange
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_tilehorizontal
+this.Item[UpperBound(this.Item)+1]=this.m_tilevertical
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_dash51
+this.Item[UpperBound(this.Item)+1]=this.m_minimizeall
+this.Item[UpperBound(this.Item)+1]=this.m_undoarrange
+end on
+
+on m_window.destroy
+call super::destroy
+destroy(this.m_cascade)
+destroy(this.m_tilehorizontal)
+destroy(this.m_tilevertical)
+destroy(this.m_layer)
+destroy(this.m_dash51)
+destroy(this.m_minimizeall)
+destroy(this.m_undoarrange)
+end on
+
+event selected;//////////////////////////////////////////////////////////////////////////////
+//
+//	Event:  selected
+//
+//	Description:
+//	Enables menu items based on sheet manager service
+//
+//////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Version
+//	5.0   Initial version
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//	Copyright © 1996 Powersoft Corporation.  All Rights Reserved.
+//	Any distribution of the PowerBuilder Foundation Classes (PFC)
+//	source code by other than Powersoft is prohibited.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+any				la_rc
+boolean			lb_normal
+integer			li_rc
+integer			li_sheetcount
+integer			li_cnt = 1
+arrangetypes	le_arrange
+n_cst_menu		lnv_menu
+window			lw_obj
+window			lw_sheet[]
+w_frame			lw_frame
+
+// Get frame window
+li_rc = lnv_menu.of_GetMDIFrame (this, lw_obj)
+if li_rc < 0 then
+	return
+end if
+
+// Determine if frame is a PFC frame descendant
+la_rc = lw_obj.dynamic event pfc_descendant()
+if IsNull (la_rc) then
+	return
+end if
+lw_frame = lw_obj
+
+// If sheetmanager service is enabled, allow for undo and minimize capabilities
+if IsValid (lw_frame.inv_sheetmanager) then
+
+	// First determine if there are any nonminimized sheets open
+	li_sheetcount = lw_frame.inv_sheetmanager.of_GetSheets (lw_sheet)
+	do while li_cnt <= li_sheetcount and not lb_normal
+		if lw_sheet[li_cnt].windowstate <> minimized! then
+			lb_normal = true
+		end if
+		li_cnt++
+	loop
+
+	this.m_undoarrange.enabled = true
+	this.m_minimizeall.enabled = lb_normal
+	this.m_cascade.enabled = lb_normal
+	this.m_layer.enabled = lb_normal
+	this.m_tilehorizontal.enabled = lb_normal
+	this.m_tilevertical.enabled = lb_normal
+
+	// Get current arrange state of windows and set undo text
+	le_arrange = lw_frame.inv_sheetmanager.of_GetCurrentState()
+	choose case le_arrange
+		case tile!
+			this.m_undoarrange.text = "&Undo Tile Vertical"
+			this.m_undoarrange.microhelp = "Undoes vertical tile arrangement of windows"
+		case tilehorizontal!
+			this.m_undoarrange.text = "&Undo Tile Horizontal"
+			this.m_undoarrange.microhelp = "Undoes horizontal tile arrangement of windows"
+		case cascade!
+			this.m_undoarrange.text = "&Undo Cascade"
+			this.m_undoarrange.microhelp = "Undoes cascaded arrangement of windows"
+		case layer!
+			this.m_undoarrange.text = "&Undo Layer"
+			this.m_undoarrange.microhelp = "Undoes layered arrangement of windows"
+		case icons!
+			this.m_undoarrange.text = "&Undo Minimize All"
+			this.m_undoarrange.microhelp = "Undoes minimization of windows"
+			this.m_cascade.enabled = false
+			this.m_layer.enabled = false
+			this.m_tilehorizontal.enabled = false
+			this.m_tilevertical.enabled = false
+			this.m_minimizeall.enabled = false
+		case else
+			this.m_undoarrange.enabled = false
+			this.m_undoarrange.text = "&Undo"
+			this.m_undoarrange.microhelp = "Undo"
+	end choose
+else
+	this.m_minimizeall.enabled = false
+	this.m_undoarrange.enabled = false
+end if
+
+end event
+
+type m_cascade from menu within m_window
+end type
+
+on m_cascade.create
+call super::create
+this.text = "&Cascade"
+this.microhelp = "Cascade windows so that each title bar is visible"
+this.toolbaritemvisible = false
+this.toolbaritemname = "cascade!"
+this.toolbaritemtext = "Cascade"
+this.toolbaritemorder = 220
+this.toolbaritemspace = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;of_SendMessage ("pfc_cascade")
+end event
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tilehorizontal from menu within m_window
+end type
+
+on m_tilehorizontal.create
+call super::create
+this.text = "Tile &Horizontal"
+this.microhelp = "Tile windows horizontally so that none are overlapping"
+this.toolbaritemvisible = false
+this.toolbaritemname = "horizontal!"
+this.toolbaritemtext = "Tile Horizontal"
+this.toolbaritemorder = 225
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;of_SendMessage ("pfc_tilehorizontal")
+end event
+
+on m_tilehorizontal.destroy
+call super::destroy
+end on
+
+type m_tilevertical from menu within m_window
+end type
+
+on m_tilevertical.create
+call super::create
+this.text = "Tile &Vertical"
+this.microhelp = "Tile windows vertically so that none are overlapping"
+this.toolbaritemvisible = false
+this.toolbaritemname = "tile!"
+this.toolbaritemtext = "Tile Vertical"
+this.toolbaritemorder = 230
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;of_SendMessage ("pfc_tilevertical")
+end event
+
+on m_tilevertical.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_window
+end type
+
+on m_layer.create
+call super::create
+this.text = "&Layer"
+this.microhelp = "Layer windows so that each one completely covers the one below it"
+this.toolbaritemvisible = false
+this.toolbaritemname = "layer!"
+this.toolbaritemtext = "Layer"
+this.toolbaritemorder = 235
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;of_SendMessage ("pfc_layer")
+end event
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_dash51 from menu within m_window
+end type
+
+on m_dash51.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash51.destroy
+call super::destroy
+end on
+
+type m_minimizeall from menu within m_window
+end type
+
+on m_minimizeall.create
+call super::create
+this.text = "&Minimize All Windows"
+this.microhelp = "Minimizes all windows"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Minimize All Windows"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;of_SendMessage ("pfc_minimizeall")
+end event
+
+on m_minimizeall.destroy
+call super::destroy
+end on
+
+type m_undoarrange from menu within m_window
+end type
+
+on m_undoarrange.create
+call super::create
+this.text = "&Undo"
+this.microhelp = "Undo"
+this.toolbaritemvisible = false
+this.toolbaritemname = "undo!"
+this.toolbaritemtext = "Undo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;of_SendMessage ("pfc_undoarrange")
+end event
+
+on m_undoarrange.destroy
+call super::destroy
+end on
+

@@ -1,0 +1,71 @@
+﻿$PBExportHeader$d_book_query_inv.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=132 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=108 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="inv.cntr" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="inv.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="inv.bkmed" )
+ column=(type=char(2) updatewhereclause=yes name=prodstage dbname="inv.prodstage" values="Mastering	MA/Duplication	DU/Abstruse	AB/Editing	ED/Sub-mastering	SM/Inter-mastering	IM/Pressing	PR/Binding	BI/Purchasing	PU/Print Braille	PB/Mastering Adjust. 1	M1/Mastering Adjust. 2	M2/Duplication Adjust. 1	D1/Duplication Adjust. 2	D2/" validationmsg="'Invalid Production stage, or you are duplicating this production stage'" )
+ column=(type=char(2) updatewhereclause=yes name=ovrcd dbname="inv.ovrcd" validationmsg="~"You must choose a Override Code Description.~"" )
+ column=(type=datetime updatewhereclause=yes name=admdt dbname="inv.admdt" )
+ column=(type=char(10) updatewhereclause=yes name=invno dbname="inv.invno" validationmsg="~"Invoice number must be entered.~"" )
+ column=(type=decimal(2) updatewhereclause=yes name=invamt dbname="inv.invamt" validationmsg="~"Invoice amount must be entered.~"" )
+ column=(type=datetime updatewhereclause=yes name=pcsdt dbname="inv.pcsdt" )
+ column=(type=char(11) updatewhereclause=yes name=ancntr_cntrlc dbname="ancntr.cntrlc" )
+ retrieve="  SELECT mchar.conno,
+			inv.cntr,   
+         inv.bkseq,   
+         inv.bkmed,   
+         inv.prodstage,   
+         inv.ovrcd,   
+         inv.admdt,   
+         inv.invno,   
+         inv.invamt,   
+         inv.pcsdt,
+			ancntr.cntrlc
+    FROM mchar,inv,ancntr 
+   WHERE inv.bkseq = mchar.bkseq  AND  
+         inv.bkmed = mchar.bkmed AND  
+			inv.cntr = ancntr.cntr AND
+         mchar.conno = :as_conno
+ORDER BY inv.prodstage DESC   
+" arguments=(("as_conno", string)) )
+group(level=1 header.height=128 trailer.height=0 by=("bkseq" ) header.color="536870912" trailer.color="536870912" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="160" y="32" height="76" width="302" format="[general]" html.valueishtml="0"  name=bkseq_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="50" y="32" height="76" width="96" format="[general]" html.valueishtml="0"  name=bkmed_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=header.1 x1="5" y1="116" x2="3305" y2="116"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=header.1 alignment="2" text="Production Stage" border="0" color="0" x="101" y="4" height="104" width="247" html.valueishtml="0"  name=prodstage_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="LCContract" border="0" color="0" x="599" y="4" height="104" width="183" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="rgb(192,192,192)"border="0" color="0" x="3730" y="8" height="76" width="73" format="[general]" html.valueishtml="0"  name=backcolor visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="12632256" x="3648" y="8" height="76" width="37" format="[general]" html.valueishtml="0"  name=bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="12632256" x="3451" y="8" height="76" width="59" format="[general]" html.valueishtml="0"  name=cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="12632256" x="3552" y="8" height="76" width="59" format="[general]" html.valueishtml="0"  name=bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=detail alignment="0" expression="rgb(255,255,255)"border="0" color="0" x="3831" y="12" height="76" width="261" format="[general]" html.valueishtml="0"  name=windowcolor visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="12632256" x="4105" y="28" height="56" width="187" format="[general]" html.valueishtml="0"  name=conno visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="23" y="12" height="76" width="494" format="[general]" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=prodstage visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.required=yes ddlb.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="549" y="12" height="76" width="521" format="[general]" html.valueishtml="0"  name=ancntr_cntrlc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header.1 alignment="2" text="Admin Date" border="0" color="0" x="1147" y="4" height="104" width="146" html.valueishtml="0"  name=admdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="Invoice Number" border="0" color="0" x="1490" y="4" height="104" width="174" html.valueishtml="0"  name=invno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="Invoice Amount" border="0" color="0" x="2235" y="4" height="104" width="174" html.valueishtml="0"  name=invamt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="Override Description" border="0" color="0" x="2693" y="4" height="104" width="242" html.valueishtml="0"  name=ovrcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="PCS Date" border="0" color="0" x="1874" y="4" height="104" width="110" html.valueishtml="0"  name=pcsdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1115" y="12" height="76" width="320" format="[general]" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=admdt  tag="Please enter the Admin date" visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="1467" y="12" height="76" width="352" format="[general]" html.valueishtml="0"  name=invno  tag="Enter the Invoice number" visible="1" editmask.required=yes editmask.mask="aaaaaaaaaa" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="1847" y="12" height="76" width="315" format="[general]" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=pcsdt  tag="Date that PCS processes the invoice for a book or magazine issue from a producer." visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2199" y="12" height="76" width="384" format="[general]" html.valueishtml="0" protect="0~tIf((IsRowNew() OR isNull( invamt )) AND ((bkmed<>~"BR~") OR (bkmed<>~"P/b~")),0,1)"  name=invamt  tag="Enter the invoice amount." visible="1" editmask.required=yes editmask.mask="$###,###.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2624" y="12" height="76" width="695" format="[general]" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=ovrcd  tag="Select the override description." visible="1" dddw.name=dddw_override dddw.displaycolumn=description dddw.datacolumn=ovrcd dddw.percentwidth=125 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.required=yes dddw.nilisnull=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

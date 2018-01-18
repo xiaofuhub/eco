@@ -1,0 +1,69 @@
+﻿$PBExportHeader$d_update_for_books_orl.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes name=bkno dbname="BOOKS.BKNO" )
+ column=(type=char(256) update=yes updatewhereclause=yes name=ttl dbname="BOOKS.TTL" )
+ column=(type=char(70) update=yes updatewhereclause=yes name=auth dbname="BOOKS.AUTH" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=publisher dbname="BOOKS.PUBLISHER" )
+ column=(type=char(500) update=yes updatewhereclause=yes name=anno dbname="BOOKS.ANNO" )
+ column=(type=datetime update=yes updatewhereclause=yes name=batchdt dbname="BOOKS.BATCHDT" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=med dbname="BOOKS.MED" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=casub dbname="BOOKS.CASUB" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=pubyr dbname="BOOKS.PUBYR" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=review dbname="BOOKS.REVIEW" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=estsz dbname="BOOKS.ESTSZ" )
+ column=(type=char(17) update=yes updatewhereclause=yes name=ricd dbname="BOOKS.RICD" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=priority dbname="BOOKS.PRIORITY" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=bkmed dbname="BOOKS.BKMED" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bkseq dbname="BOOKS.BKSEQ" )
+ retrieve="  SELECT BKNO ,
+			ttl,
+			auth,
+			publisher,
+			anno,
+        	batchdt,
+			med,
+			casub,
+			pubyr,
+			review, 
+			estsz,
+			ricd,
+			priority,
+			bkmed,
+			bkseq
+    FROM BOOKS 
+" update="BOOKS" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Bkno" border="0" color="0" x="5" y="4" height="64" width="247" html.valueishtml="0"  name=bkno_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Auth" border="0" color="0" x="256" y="4" height="64" width="347" html.valueishtml="0"  name=auth_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ttl" border="0" color="0" x="631" y="4" height="64" width="347" html.valueishtml="0"  name=ttl_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Publisher" border="0" color="0" x="1001" y="8" height="64" width="347" html.valueishtml="0"  name=publisher_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anno" border="0" color="0" x="1376" y="12" height="64" width="347" html.valueishtml="0"  name=anno_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batchdt" border="0" color="0" x="1755" y="8" height="64" width="347" html.valueishtml="0"  name=batchdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Med" border="0" color="0" x="2121" y="8" height="64" width="155" html.valueishtml="0"  name=med_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Casub" border="0" color="0" x="2295" y="4" height="64" width="178" html.valueishtml="0"  name=casub_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pubyr" border="0" color="0" x="2487" y="12" height="64" width="183" html.valueishtml="0"  name=pubyr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Review" border="0" color="0" x="2679" y="12" height="64" width="347" html.valueishtml="0"  name=review_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estsz" border="0" color="0" x="3045" y="12" height="64" width="183" html.valueishtml="0"  name=estsz_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ricd" border="0" color="0" x="3241" y="12" height="64" width="128" html.valueishtml="0"  name=ricd_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Priority" border="0" color="0" x="3383" y="12" height="64" width="128" html.valueishtml="0"  name=priority_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="0" y="0" height="76" width="256" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1815" y="4" height="76" width="256" format="[shortdate] [time]" html.valueishtml="0"  name=batchdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2185" y="8" height="76" width="96" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2363" y="4" height="76" width="96" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2487" y="0" height="76" width="197" format="[general]" html.valueishtml="0"  name=pubyr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="3433" y="4" height="76" width="32" format="[general]" html.valueishtml="0"  name=priority visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="293" y="4" height="56" width="160" format="[general]" html.valueishtml="0"  name=auth visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2779" y="16" height="56" width="165" format="[general]" html.valueishtml="0"  name=review visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1033" y="12" height="64" width="242" format="[general]" html.valueishtml="0"  name=publisher visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3241" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=ricd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="718" y="8" height="56" width="128" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3049" y="4" height="76" width="187" format="[general]" html.valueishtml="0"  name=estsz visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1499" y="8" height="56" width="101" format="[general]" html.valueishtml="0"  name=anno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3511" y="0" height="56" width="69" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="3579" y="0" height="56" width="992" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

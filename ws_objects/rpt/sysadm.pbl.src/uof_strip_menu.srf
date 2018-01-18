@@ -1,0 +1,37 @@
+﻿$PBExportHeader$uof_strip_menu.srf
+global type uof_strip_menu from function_object
+end type
+
+forward prototypes
+global function string uof_strip_menu (string menutext)
+end prototypes
+
+global function string uof_strip_menu (string menutext);//This function strips the shortcut keys or accelerator keys from the menuid.text.
+//If it is a separator then it returns ' '
+
+string menu_text
+Integer li_l
+
+menu_text = menutext
+
+IF left(menu_text,1) <> '-' THEN
+	li_l = pos(menu_text,'&')
+   IF li_l <> 0 THEN
+		menu_text = mid(menu_text,1,(li_l)-1)+mid(menu_text,li_l+1,9999)
+		li_l=pos(menu_text,'~t')
+		IF li_l <> 0 THEN
+		 menu_text = mid(menu_text,1,(li_l)-1)
+		 RETURN menu_text
+	   ELSE
+		 RETURN menu_text
+	  END IF
+    ELSE
+		RETURN menu_text
+   END IF
+ELSE
+	RETURN ''
+END IF
+
+
+end function
+

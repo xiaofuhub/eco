@@ -1,0 +1,29 @@
+﻿$PBExportHeader$f_qa_val_recv_dt.srf
+global type f_qa_val_recv_dt from function_object
+end type
+
+forward prototypes
+global function boolean f_qa_val_recv_dt ()
+end prototypes
+
+global function boolean f_qa_val_recv_dt ();// This function will validate if the date received that was entered must be 
+// equal or greater than the completion date of the previouse stage.
+int i,rowcnt
+date Lqarecdt,Lqacompdt
+w_qa_product_review.dw_qa_qastg.AcceptText()
+rowcnt = w_qa_product_review.dw_qa_qastg.rowcount()
+IF rowcnt > 1 THEN
+	FOR i=2 TO rowcnt
+		Lqarecdt = date(w_qa_product_review.dw_qa_qastg.object.qarecdt[i])
+		Lqacompdt = date(w_qa_product_review.dw_qa_qastg.object.qacompdt[i - 1])
+		// MessageBox("dates",string(Lqarecdt)+" "+string(Lqacompdt))
+		IF (Lqarecdt < Lqacompdt) THEN
+			RETURN FALSE
+		END IF
+	NEXT
+	RETURN TRUE
+ELSE
+	RETURN TRUE
+END IF
+end function
+

@@ -1,0 +1,91 @@
+﻿$PBExportHeader$d_romance_data_extract_all_media.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=3264 color="536870912" )
+table(column=(type=char(6) updatewhereclause=yes name=chno dbname="ttlinit.chno" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_lang dbname="ttlinit.lang" )
+ column=(type=char(2) updatewhereclause=yes name=ttlinit_ajyfn dbname="ttlinit.ajyfn" )
+ column=(type=char(5) updatewhereclause=yes name=ttlinit_ttlart dbname="ttlinit.ttlart" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=char(1) updatewhereclause=yes name=ttlinit_aepcd dbname="ttlinit.aepcd" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=coauth_coauthfn dbname="coauth.coauthfn" )
+ column=(type=char(34) updatewhereclause=yes name=coauth_coauth dbname="coauth.coauth" )
+ column=(type=char(34) updatewhereclause=yes name=narr_narr dbname="narr.narr" )
+ column=(type=char(34) updatewhereclause=yes name=narrtbl_narrfn dbname="narr.narrfn" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_vols dbname="mchar.vols" )
+ column=(type=char(2) updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" )
+ column=(type=char(4000) updatewhereclause=yes name=annotation_anno dbname="annotation_anno" )
+ column=(type=char(4000) updatewhereclause=yes name=annotation_anno_foreign dbname="annotation.anno_foreign" )
+ column=(type=char(1) updatewhereclause=yes name=annotation_prop_added_flg dbname="annotation.prop_added_flg" )
+ column=(type=decimal(0) updatewhereclause=yes name=ttlinit_anyr dbname="ttlinit.anyr" )
+ column=(type=char(60) updatewhereclause=yes name=ttlinit_oneliner dbname="ttlinit.oneliner" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_pmsub1 dbname="ttlinit.pmsub1" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_pmsub2 dbname="ttlinit.pmsub2" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_pmsub3 dbname="ttlinit.pmsub3" )
+ column=(type=char(50) updatewhereclause=yes name=lang_desc dbname="language.lang_desc" )
+ column=(type=char(1) updatewhereclause=yes name=g1br dbname="mchar.g1br" )
+ retrieve="SELECT DISTINCT ttlinit.chno, ttlinit.lang, ttlinit.ajyfn, ttlinit.ttlart,
+                ttlinit.ttl, mchar.bkmed, mchar.bkseq, ttlinit.aepcd,
+                ttlinit.authfn, ttlinit.auth, coauth.coauthfn, coauth.coauth,
+                narr.narr, narr.narrfn, mchar.vols, mchar.ricd,
+                decode(prop_added_flg, 'Y', anno, decode(anno_property, NULL, anno,  anno||' '||annotation.anno_property)) annotation_anno,
+                annotation.anno_foreign, annotation.prop_added_flg,
+                ttlinit.anyr, ttlinit.oneliner, ttlinit.pmsub1,
+                ttlinit.pmsub2, ttlinit.pmsub3, LANGUAGE.lang_desc,
+                mchar.g1br
+           FROM mchar, narr, ttlinit, coauth, annotation, LANGUAGE
+          WHERE mchar.chno = ttlinit.chno
+            AND ttlinit.chno = annotation.chno
+            AND mchar.bkseq = narr.bkseq(+)
+            AND mchar.bkmed = narr.bkmed(+)
+            AND ttlinit.chno = coauth.chno(+)
+            AND ttlinit.lang = LANGUAGE.lang_code
+            AND ttlinit.casub IN ('ROM', 'ROX')
+            AND mchar.pmqdt BETWEEN :ld_pmdate AND :ld_pmdate1
+       ORDER BY ttlinit.chno
+" arguments=(("ld_pmdate", date),("ld_pmdate1", date))  sort="chno A " )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="248" height="76" width="439" format="[general]" html.valueishtml="0"  name=ttlinit_ttlart visible="1" height.autosize=yes edit.limit=5 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="500" height="76" width="329" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="644" height="76" width="389" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="748" height="76" width="320" format="[general]" html.valueishtml="0"  name=ttlinit_aepcd visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="860" height="76" width="1120" format="[general]" html.valueishtml="0"  name=ttlinit_authfn visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="972" height="76" width="1120" format="[general]" html.valueishtml="0"  name=ttlinit_auth visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="1092" height="76" width="1120" format="[general]" html.valueishtml="0"  name=coauth_coauthfn visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="1200" height="76" width="1120" format="[general]" html.valueishtml="0"  name=coauth_coauth visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="1324" height="76" width="384" format="[general]" html.valueishtml="0"  name=mchar_vols visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="1428" height="76" width="379" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="1788" height="80" width="603" format="[general]" html.valueishtml="0"  name=ttlinit_anyr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="/* f_export( ttlinit_lang , ttlinit_ajyfn , ttlinit_ttlart , ttlinit_ttl , mchar_bkmed , mchar_bkseq , ttlinit_aepcd , ttlinit_authfn , ttlinit_auth , coauth_coauthfn , coauth_coauth , narr_narr , narrtbl_narrfn , mchar_vols , mchar_ricd , annotation_anno ,  ttlinit_anyr ,ttlinit_oneliner , ttlinit_pmsub1 , ttlinit_pmsub2 , ttlinit_pmsub3 ) */"border="0" color="0" x="37" y="2716" height="508" width="2656" format="[general]" html.valueishtml="0"  name=c_export visible="1"  hidesnaked=1  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912"  height.autosize=yes)
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="2588" height="88" width="343" format="[general]" html.valueishtml="0"  name=ttlinit_pmsub3 visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="2448" height="96" width="338" format="[general]" html.valueishtml="0"  name=ttlinit_pmsub2 visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="2324" height="84" width="334" format="[general]" html.valueishtml="0"  name=ttlinit_pmsub1 visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="2180" height="100" width="1952" format="[general]" html.valueishtml="0"  name=ttlinit_oneliner visible="1" height.autosize=yes edit.limit=60 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="2040" height="96" width="1120" format="[general]" html.valueishtml="0"  name=narrtbl_narrfn visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="1900" height="92" width="1120" format="[general]" html.valueishtml="0"  name=narr_narr visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="4" height="76" width="238" format="[general]" html.valueishtml="0"  name=ttlinit_lang visible="1" height.autosize=yes edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="132" height="76" width="229" format="[general]" html.valueishtml="0"  name=ttlinit_ajyfn visible="1" height.autosize=yes edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="357" y="8" height="64" width="197" format="[general]" html.valueishtml="0"  name=chno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="32" y="380" height="76" width="2482" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="759" y="1800" height="64" width="87" format="[general]" html.valueishtml="0"  name=annotation_prop_added_flg visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="1230" y="1784" height="368" width="1929" format="[general]" html.valueishtml="0"  name=annotation_anno_foreign visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="631" y="20" height="64" width="343" format="[general]" html.valueishtml="0"  name=lang_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="1061" y="24" height="64" width="325" format="[general]" html.valueishtml="0"  name=g1br visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="3159" y="0" height="64" width="3511" format="[general]" html.valueishtml="0"  name=annotation_anno visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_ancntrall.srs
+$PBExportComments$Structure used to display all contract
+global type str_ancntrall from structure
+	string		cntr
+	string		cntrmed
+	string		cntrtype
+end type
+

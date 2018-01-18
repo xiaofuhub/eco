@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_prod_inx.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=15780518 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=104 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="prod.bkseq" )
+ column=(type=char(2) updatewhereclause=yes name=prodstage dbname="prod.prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="prod.cntr" )
+ column=(type=datetime updatewhereclause=yes name=schstdt dbname="prod.schstdt" )
+ column=(type=datetime updatewhereclause=yes name=schenddt dbname="prod.schenddt" )
+ column=(type=datetime updatewhereclause=yes name=actstdt dbname="prod.actstdt" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="prod.actenddt" )
+ column=(type=char(1) updatewhereclause=yes name=arflag dbname="mchar.arflag" )
+ column=(type=datetime update=yes updatewhereclause=yes name=update_date dbname="mchar.update_date" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=conno dbname="mchar.conno" )
+ column=(type=char(1) updatewhereclause=yes name=diff dbname="diff" )
+ retrieve="  SELECT a.bkmed,   
+         a.bkseq,   
+         a.prodstage,
+			a.cntr,   
+         a.schstdt,   
+         a.schenddt,   
+         a.actstdt,   
+         a.actenddt,
+			b.arflag,
+			b.update_date ,
+			b.conno,
+			'N' diff
+    FROM prod a, mchar b 
+where	a.bkmed=b.bkmed and a.bkseq=b.bkseq and
+		a.bkseq in (select bkseq from prdrbk_compare ) and
+		(b.arflag is null or b.arflag<>'A' )
+		order by a.bkmed, a.bkseq, a.prodstage, a.cntr
+		
+" update="mchar" updatewhere=0 updatekeyinplace=no  sort="bkmed A bkseq A prodstage A cntr A " )
+text(band=header alignment="2" text="Bkmed" border="0" color="0" x="206" y="28" height="64" width="242" html.valueishtml="0"  name=bkmed_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkseq" border="0" color="0" x="457" y="24" height="64" width="265" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Stage" border="0" color="0" x="736" y="24" height="64" width="210" html.valueishtml="0"  name=prodstage_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schstdt" border="0" color="0" x="937" y="24" height="64" width="329" html.valueishtml="0"  name=schstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schenddt" border="0" color="0" x="1298" y="24" height="64" width="334" html.valueishtml="0"  name=schenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actstdt" border="0" color="0" x="1659" y="24" height="64" width="343" html.valueishtml="0"  name=actstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actenddt" border="0" color="0" x="2002" y="24" height="64" width="384" html.valueishtml="0"  name=actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Update date" border="0" color="0" x="2400" y="24" height="64" width="453" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="0" text="Archives" border="0" color="0" x="2898" y="24" height="64" width="384" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="0" text="Diff" border="0" color="0" x="3191" y="24" height="64" width="206" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="274" y="8" height="68" width="128" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="5" color="0" x="439" y="8" height="68" width="293" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="773" y="8" height="68" width="114" format="[general]" html.valueishtml="0"  name=prodstage visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="937" y="8" height="68" width="329" format="[general]" html.valueishtml="0"  name=schstdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="1298" y="8" height="68" width="329" format="[general]" html.valueishtml="0"  name=schenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="1664" y="8" height="68" width="329" format="[general]" html.valueishtml="0"  name=actstdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="2034" y="8" height="68" width="325" format="[general]" html.valueishtml="0"  name=actenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="2395" y="8" height="68" width="613" format="[shortdate] [time]" html.valueishtml="0"  name=update_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3173" y="8" height="68" width="32" format="[general]" html.valueishtml="0"  name=conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="3045" y="8" height="68" width="110" format="[general]" html.valueishtml="0"  name=arflag visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="0" x="3223" y="8" height="68" width="73" format="[general]" html.valueishtml="0"  name=diff visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3319" y="8" height="68" width="69" format="[general]" html.valueishtml="0"  name=cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

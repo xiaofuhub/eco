@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_create_sttl.srf
+global type f_create_sttl from function_object
+end type
+
+forward prototypes
+global function string f_create_sttl (string lttl)
+end prototypes
+
+global function string f_create_sttl (string lttl);string 			ls_source
+n_cst_string 	inv_string
+
+ls_source = Lttl
+
+ls_source =  inv_string.of_GlobalReplace(ls_source, ".", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, ",", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, ":", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, ";", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "?", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "!", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "~"", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "\", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "|", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "~~", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "(", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, ")", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "{", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "}", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "+", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "-", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "_", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "=", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "/", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "\\", "")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "'", "")
+
+ls_source =  inv_string.of_RemoveNonPrint(ls_source)
+
+ls_source = Lower(ls_source)
+ls_source = mid(ls_source,1,34)
+
+RETURN ls_source
+
+
+end function
+

@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_rpt_commts_in_amonth_update.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=120 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=prdr dbname="mon_rpts_comments.prdr" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=rpt_month dbname="mon_rpts_comments.rpt_month" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=prd_comments dbname="mon_rpts_comments.prd_comments" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=qa_comments dbname="mon_rpts_comments.qa_comments" )
+ retrieve="  SELECT mon_rpts_comments.prdr,   
+         mon_rpts_comments.rpt_month,   
+         mon_rpts_comments.prd_comments,   
+         mon_rpts_comments.qa_comments  
+    FROM mon_rpts_comments   
+	where trim(prdr)= :as_prdr and rpt_month>=:ad_start_date and rpt_month<= :ad_end_date" update="mon_rpts_comments" updatewhere=1 updatekeyinplace=no arguments=(("as_prdr", string),("ad_start_date", datetime),("ad_end_date", datetime)) )
+text(band=header alignment="2" text="Prdr" border="0" color="0" x="5" y="4" height="64" width="18" html.valueishtml="0"  name=prdr_t visible="1~t0"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Comment Date" border="0" color="0" x="0" y="0" height="56" width="315" html.valueishtml="0"  name=rpt_month_t visible="1~t0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Delivery Comments" border="0" color="0" x="366" y="0" height="56" width="1408" html.valueishtml="0"  name=prd_comments_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Quality Assurance Comments" border="0" color="0" x="1879" y="0" height="56" width="1641" html.valueishtml="0"  name=qa_comments_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="52" width="18" format="[general]" html.valueishtml="0"  name=prdr visible="1~t0" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="41" y="4" height="52" width="174" format="[general]" html.valueishtml="0"  name=rpt_month visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="238" y="4" height="108" width="1600" format="[general]" html.valueishtml="0"  name=prd_comments visible="1" height.autosize=yes edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="1879" y="4" height="108" width="1641" format="[general]" html.valueishtml="0"  name=qa_comments visible="1" height.autosize=yes edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

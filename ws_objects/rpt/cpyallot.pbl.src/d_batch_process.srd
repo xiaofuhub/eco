@@ -1,0 +1,129 @@
+﻿$PBExportHeader$d_batch_process.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=datetime update=yes updatewhereclause=yes key=yes name=cabdt dbname="copyallot.cabdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=defimp dbname="copyallot.defimp" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=defrows dbname="copyallot.defrows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=defupduser dbname="copyallot.defupduser" )
+ column=(type=datetime update=yes updatewhereclause=yes name=schedins dbname="copyallot.schedins" )
+ column=(type=number update=yes updatewhereclause=yes name=schedinsrows dbname="copyallot.schedinsrows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=schedinsuser dbname="copyallot.schedinsuser" )
+ column=(type=datetime update=yes updatewhereclause=yes name=webupd dbname="copyallot.webupd" )
+ column=(type=number update=yes updatewhereclause=yes name=batchinsrows dbname="copyallot.batchinsrows" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=booksinsrows dbname="copyallot.booksinsrows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=webupduser dbname="copyallot.webupduser" )
+ column=(type=datetime update=yes updatewhereclause=yes name=marcexp dbname="copyallot.marcexp" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=marcrows dbname="copyallot.marcrows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=marcuser dbname="copyallot.marcuser" )
+ column=(type=datetime update=yes updatewhereclause=yes name=marcemail dbname="copyallot.marcemail" )
+ column=(type=datetime update=yes updatewhereclause=yes name=batchimp dbname="copyallot.batchimp" )
+ column=(type=number update=yes updatewhereclause=yes name=batchimprows dbname="copyallot.batchimprows" )
+ column=(type=number update=yes updatewhereclause=yes name=schedupdrows dbname="copyallot.schedupdrows" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=booksimprows dbname="copyallot.booksimprows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=batchimpuser dbname="copyallot.batchimpuser" )
+ column=(type=datetime update=yes updatewhereclause=yes name=distfile dbname="copyallot.distfile" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=distfilelib dbname="copyallot.distfilelib" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=distfilebooks dbname="copyallot.distfilebooks" )
+ column=(type=number update=yes updatewhereclause=yes name=distfilerows dbname="copyallot.distfilerows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=distfileuser dbname="copyallot.distfileuser" )
+ column=(type=datetime update=yes updatewhereclause=yes name=distsched dbname="copyallot.distsched" )
+ column=(type=number update=yes updatewhereclause=yes name=distschedrows dbname="copyallot.distschedrows" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mcharupdrows dbname="copyallot.mcharupdrows" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=distscheduser dbname="copyallot.distscheduser" )
+ retrieve="  SELECT cabdt,   
+         defimp,   
+         defrows,   
+         defupduser,   
+         schedins,   
+         schedinsrows,   
+         schedinsuser,   
+         webupd,   
+         batchinsrows,   
+         booksinsrows,   
+         webupduser,   
+         marcexp,   
+         marcrows,   
+         marcuser,   
+         marcemail,   
+         batchimp,   
+         batchimprows,
+			schedupdrows, 
+         booksimprows,   
+         batchimpuser,   
+         distfile,   
+         distfilelib,   
+         distfilebooks,   
+         distfilerows,   
+         distfileuser,   
+         distsched,   
+         distschedrows,
+			mcharupdrows,   
+         distscheduser 
+ 
+    FROM copyallot 
+		where cabdt=:ad_cabdt
+		
+" update="copyallot" updatewhere=0 updatekeyinplace=yes arguments=(("ad_cabdt", datetime))  sort="cabdt D " )
+text(band=header alignment="2" text="Cabdt" border="0" color="0" x="5" y="4" height="64" width="329" html.valueishtml="0"  name=cabdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defimp" border="0" color="0" x="338" y="4" height="64" width="603" html.valueishtml="0"  name=defimp_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defrows" border="0" color="0" x="946" y="4" height="64" width="329" html.valueishtml="0"  name=defrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defupduser" border="0" color="0" x="1280" y="4" height="64" width="576" html.valueishtml="0"  name=defupduser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schedins" border="0" color="0" x="1861" y="4" height="64" width="603" html.valueishtml="0"  name=schedins_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schedinsrows" border="0" color="0" x="2469" y="4" height="64" width="370" html.valueishtml="0"  name=schedinsrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schedinsuser" border="0" color="0" x="2843" y="4" height="64" width="576" html.valueishtml="0"  name=schedinsuser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Webupd" border="0" color="0" x="3424" y="4" height="64" width="603" html.valueishtml="0"  name=webupd_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batchinsrows" border="0" color="0" x="4032" y="4" height="64" width="361" html.valueishtml="0"  name=batchinsrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Booksinsrows" border="0" color="0" x="4398" y="4" height="64" width="370" html.valueishtml="0"  name=booksinsrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Webupduser" border="0" color="0" x="4773" y="4" height="64" width="576" html.valueishtml="0"  name=webupduser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Marcexp" border="0" color="0" x="5353" y="4" height="64" width="603" html.valueishtml="0"  name=marcexp_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Marcrows" border="0" color="0" x="5961" y="4" height="64" width="329" html.valueishtml="0"  name=marcrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Marcuser" border="0" color="0" x="6295" y="4" height="64" width="576" html.valueishtml="0"  name=marcuser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Marcemail" border="0" color="0" x="6875" y="4" height="64" width="603" html.valueishtml="0"  name=marcemail_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batchimp" border="0" color="0" x="7483" y="4" height="64" width="603" html.valueishtml="0"  name=batchimp_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batchimprows" border="0" color="0" x="8091" y="4" height="64" width="375" html.valueishtml="0"  name=batchimprows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Booksimpuser" border="0" color="0" x="8471" y="4" height="64" width="379" html.valueishtml="0"  name=booksimpuser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batchimpuser" border="0" color="0" x="8855" y="4" height="64" width="576" html.valueishtml="0"  name=batchimpuser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distfile" border="0" color="0" x="9435" y="4" height="64" width="603" html.valueishtml="0"  name=distfile_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distfilelib" border="0" color="0" x="10043" y="4" height="64" width="329" html.valueishtml="0"  name=distfilelib_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distfilebooks" border="0" color="0" x="10377" y="4" height="64" width="338" html.valueishtml="0"  name=distfilebooks_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distfilerows" border="0" color="0" x="10720" y="4" height="64" width="329" html.valueishtml="0"  name=distfilerows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distfileuser" border="0" color="0" x="11054" y="4" height="64" width="576" html.valueishtml="0"  name=distfileuser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distsched" border="0" color="0" x="11634" y="4" height="64" width="603" html.valueishtml="0"  name=distsched_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schedupdrows" border="0" color="0" x="12242" y="4" height="64" width="389" html.valueishtml="0"  name=schedupdrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distschedrows" border="0" color="0" x="12640" y="4" height="64" width="389" html.valueishtml="0"  name=distschedrows_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Distscheduser" border="0" color="0" x="13033" y="4" height="64" width="576" html.valueishtml="0"  name=distscheduser_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=cabdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="338" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=defimp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="0" x="946" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=defrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="1280" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=defupduser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="1861" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=schedins visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="0" x="2469" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=schedinsrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="2843" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=schedinsuser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="0" x="3424" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=webupd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=90 border="0" color="0" x="4032" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=batchinsrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=100 border="0" color="0" x="4398" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=booksinsrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="0" color="0" x="4773" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=webupduser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="0" color="0" x="5353" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=marcexp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=130 border="0" color="0" x="5961" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=marcrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="0" color="0" x="6295" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=marcuser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="0" color="0" x="6875" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=marcemail visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="0" color="0" x="7483" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=batchimp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="1" tabsequence=170 border="0" color="0" x="8091" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=batchimprows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=190 border="0" color="0" x="8855" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=batchimpuser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=200 border="0" color="0" x="9435" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=distfile visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="1" tabsequence=210 border="0" color="0" x="10043" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=distfilelib visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="1" tabsequence=220 border="0" color="0" x="10377" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=distfilebooks visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="1" tabsequence=230 border="0" color="0" x="10720" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=distfilerows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=240 border="0" color="0" x="11054" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=distfileuser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=250 border="0" color="0" x="11634" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=distsched visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="1" tabsequence=260 border="0" color="0" x="12242" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=schedupdrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="1" tabsequence=270 border="0" color="0" x="12640" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=distschedrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=280 border="0" color="0" x="13033" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=distscheduser visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="13609" y="0" height="64" width="1161" format="[general]" html.valueishtml="0"  name=mcharupdrows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="14770" y="0" height="64" width="1161" format="[general]" html.valueishtml="0"  name=booksimprows visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

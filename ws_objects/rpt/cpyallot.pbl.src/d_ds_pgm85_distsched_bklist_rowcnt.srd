@@ -1,0 +1,59 @@
+﻿$PBExportHeader$d_ds_pgm85_distsched_bklist_rowcnt.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="prdr" )
+ column=(type=number updatewhereclause=yes name=bkseq dbname="bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="bkmed" )
+ column=(type=char(4) updatewhereclause=yes name=libcd dbname="libcd" )
+ retrieve="SELECT ancntr.prdr, sched.bkseq, sched.bkmed, sched.libcd
+  FROM ancntr, mchar, prod, sched, org@pic_link
+ WHERE (sched.ordqty > 0)
+   AND (prod.prodstage IN ('DU', 'PR', 'PB','EM','FC'))
+   AND (ancntr.cntrtype IN ('T', 'D'))
+   AND libstcd IN ('A', 'E', 'N')
+   AND (ancntr.cntr = prod.cntr)
+   AND (prod.bkseq = mchar.bkseq)
+   AND (prod.bkmed = mchar.bkmed)
+   AND (mchar.bkseq = sched.bkseq)
+   AND (mchar.bkmed = sched.bkmed)
+   AND sched.libcd = org.orgcd
+   AND (mchar.bkmed || mchar.bkseq) IN (:as_bklist)
+   AND mchar.arflag IS NULL
+UNION
+SELECT ancntr.prdr, sched.bkseq, sched.bkmed, sched.libcd
+  FROM ancntr, mchar, prod, sched, org@pic_link
+ WHERE (sched.ordqty > 0)
+   AND (prod.prodstage IN ( 'PU'))
+   AND (ancntr.cntrtype = 'M')
+   AND libstcd IN ('A', 'E', 'N')
+   AND (ancntr.cntr = prod.cntr)
+   AND (prod.bkseq = mchar.bkseq)
+   AND (prod.bkmed = mchar.bkmed)
+   AND (mchar.bkseq = sched.bkseq)
+   AND (mchar.bkmed = sched.bkmed)
+   AND sched.libcd = org.orgcd
+   AND (mchar.bkmed || mchar.bkseq) IN (:as_bklist)
+   AND mchar.arflag IS NULL
+" arguments=(("as_bklist", stringlist)) )
+text(band=header alignment="2" text="Prdr" border="0" color="0" x="5" y="4" height="64" width="137" html.valueishtml="0"  name=prdr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkseq" border="0" color="0" x="146" y="4" height="64" width="329" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkmed" border="0" color="0" x="480" y="4" height="64" width="187" html.valueishtml="0"  name=bkmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Libcd" border="0" color="0" x="672" y="4" height="64" width="402" html.valueishtml="0"  name=libcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="137" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="146" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="480" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="672" y="4" height="76" width="402" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()

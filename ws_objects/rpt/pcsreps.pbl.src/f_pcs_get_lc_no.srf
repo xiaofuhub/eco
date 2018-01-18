@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_pcs_get_lc_no.srf
+global type f_pcs_get_lc_no from function_object
+end type
+
+forward prototypes
+global function string f_pcs_get_lc_no (string lcntr)
+end prototypes
+
+global function string f_pcs_get_lc_no (string lcntr);string lc_no
+
+select cntrlc
+into :lc_no
+from ancntr
+where cntr=:lcntr
+using sqlservertrans;
+
+return lc_no
+end function
+

@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_batch_formation.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=268 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=mchar_cascd dbname="compute_0001" )
+ column=(type=datetime updatewhereclause=yes name=batch_cabdt dbname="batch.cabdt" )
+ column=(type=datetime updatewhereclause=yes name=rtndt dbname="batch.rtndt" )
+ retrieve="  SELECT COUNT(*),batch.cabdt,
+			 batch.dsdt rtndt
+    FROM mchar,   
+         batch  
+   WHERE ( batch.cabdt = :ld_date ) AND  
+         ( mchar.cascd = 'Q' )   
+GROUP BY batch.cabdt ,batch.dsdt  
+" arguments=(("ld_date", datetime)) )
+text(band=detail alignment="0" text="Copy Allotment Batch Date:" border="0" color="0" x="343" y="44" height="64" width="741" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=detail alignment="1" text="Number of Qualifying Books:" border="0" color="0" x="334" y="168" height="64" width="773" html.valueishtml="0"  name=compute_0001_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="255" x="1157" y="36" height="76" width="338" format="mm/dd/yyyy" html.valueishtml="0"  name=batch_cabdt  tag="Enter valid copyallotment batch date from batch table" visible="1" editmask.autoskip=yes editmask.mask="mm/dd/yyyy"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="0" text="Return by Date:" border="0" color="0" x="1870" y="32" height="64" width="507" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="255" x="2450" y="36" height="76" width="338" format="[general]" html.valueishtml="0"  name=rtndt visible="1" editmask.autoskip=yes editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="255" x="1161" y="164" height="80" width="329" format="[general]" html.valueishtml="0"  name=mchar_cascd  tag="Number of books with cascd  =  'Q'" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

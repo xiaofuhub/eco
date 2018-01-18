@@ -1,0 +1,94 @@
+﻿$PBExportHeader$d_selectbooks_conv.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=276 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="conversionbooks.conno" )
+ column=(type=char(80) updatewhereclause=yes name=auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=authfn dbname="ttlinit.authfn" )
+ column=(type=char(116) updatewhereclause=yes name=aname dbname="aname" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="mchar.bkmed" )
+ column=(type=char(8) updatewhereclause=yes name=conno2 dbname="mchar.conno2" )
+ column=(type=char(7) updatewhereclause=yes name=digitalprd dbname="digitalprd" )
+ column=(type=char(43) updatewhereclause=yes name=bkno dbname="bkno" )
+ column=(type=datetime updatewhereclause=yes name=convassigndate dbname="conversionbooks.convassigndate" )
+ column=(type=char(4) updatewhereclause=yes name=cyr dbname="cyr" )
+ column=(type=char(1) updatewhereclause=yes name=upd_flag dbname="conversionbooks.upd_flag" values="	Y/	N" )
+ column=(type=char(1) updatewhereclause=yes name=action_type dbname="conversionbooks.action_type" )
+ column=(type=char(1) updatewhereclause=yes name=status dbname="conversionbooks.status" )
+ column=(type=char(1) updatewhereclause=yes name=ship_status dbname="conversionbooks.ship_status" )
+ column=(type=char(1) updatewhereclause=yes name=shipstatus dbname="conversionbooks.shipstatus" )
+ column=(type=char(512) updatewhereclause=yes name=ttl dbname="ttlinit.ttl" )
+ column=(type=char(34) updatewhereclause=yes name=narr dbname="narr.narr" )
+ column=(type=char(34) updatewhereclause=yes name=narrfn dbname="narr.narrfn" )
+ column=(type=char(70) updatewhereclause=yes name=nname dbname="nname" )
+ retrieve="SELECT conversionbooks.conno, ttlinit.auth, ttlinit.authfn,
+       TRIM (ttlinit.auth) || ', ' || ttlinit.authfn aname, mchar.bkseq,
+       mchar.bkmed, mchar.conno conno2,
+       DECODE (mchar.digitalprd,
+               'D', 'Digital',
+               'V', 'Digital',
+               'N', 'Digital',
+               NULL
+              ) digitalprd,
+       TRIM (mchar.bkmed) || mchar.bkseq bkno, conversionbooks.convassigndate,
+       TO_CHAR (convassigndate, 'yyyy') cyr, conversionbooks.upd_flag,
+       conversionbooks.action_type, conversionbooks.action_type status,
+       conversionbooks.ship_status, conversionbooks.ship_status shipstatus,
+       ttlinit.ttl, narr.narr, narr.narrfn,
+       TRIM (narr.narr) || ', ' || narr.narrfn nname
+  FROM conversionbooks, mchar, narr, ttlinit
+ WHERE (conversionbooks.conno(+) = mchar.conno)
+   AND (mchar.bkseq = narr.bkseq)
+   AND (mchar.bkmed = narr.bkmed)
+   AND (mchar.chno = ttlinit.chno)
+   AND (mchar.arflag IS NULL)
+   AND (ttlinit.auth IS NOT NULL OR ttlinit.authfn IS NOT NULL)
+" retrieve.asneeded=yes  sort="authname A ttl A " )
+group(level=1 header.height=0 trailer.height=0 by=("authname" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="CDS Select Books For Conversion" border="0" color="33554432" x="1394" y="40" height="64" width="1221" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Title" border="0" color="33554432" x="2478" y="196" height="64" width="293" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="BKNO" border="0" color="33554432" x="882" y="196" height="64" width="247" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Author Name" border="0" color="33554432" x="201" y="196" height="64" width="457" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Narrator" border="0" color="33554432" x="3538" y="192" height="64" width="384" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Conv" border="0" color="33554432" x="1371" y="196" height="64" width="192" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="ConvDate" border="0" color="33554432" x="1152" y="132" height="128" width="224" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Status" border="0" color="33554432" x="1678" y="196" height="64" width="224" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="33554432" x="4379" y="12" height="32" width="14" format="[general]" html.valueishtml="0"  name=narrfn visible="0" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="59" y="16" height="32" width="14" format="[general]" html.valueishtml="0"  name=bkmed visible="0" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="110" y="16" height="32" width="14" format="[shortdate] [time]" html.valueishtml="0"  name=convassigndate visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="183" y="12" height="36" width="5" format="[general]" html.valueishtml="0"  name=auth visible="0" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="41" y="16" height="32" width="14" format="[general]" html.valueishtml="0"  name=conno visible="0" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="206" y="4" height="32" width="14" format="[general]" html.valueishtml="0"  name=aname visible="0" edit.limit=70 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="142" y="16" height="32" width="14" format="[general]" html.valueishtml="0"  name=authfn visible="0" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="33554432" x="4306" y="16" height="32" width="14" format="[general]" html.valueishtml="0"  name=narr visible="0" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="4338" y="12" height="32" width="14" format="[general]" html.valueishtml="0"  name=conno2 visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="846" y="4" height="32" width="14" format="[general]" html.valueishtml="0"  name=bkseq visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="882" y="4" height="56" width="215" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=43 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if(not (isnull( auth ) or isnull(authfn)),auth+', '+authfn,if(isnull(authfn),auth,authfn))"border="0" color="33554432" x="201" y="4" height="56" width="626" format="[GENERAL]" html.valueishtml="0"  name=authname visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="1554" y="4" height="60" width="558" format="[general]" html.valueishtml="0"  name=action_type visible="1~tif(  ship_status = 'N', 0, 1 )" dddw.name=dddw_action_type dddw.displaycolumn=meaning dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=10 border="0" color="33554432" x="1417" y="4" height="56" width="73" format="[general]" html.valueishtml="0"  name=upd_flag visible="1~tif(isnull(  conno ), if(isnull( digitalprd ), 1, 0),0)" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="1371" y="4" height="60" width="169" format="[general]" html.valueishtml="0"  name=digitalprd visible="1~tif( isnull( digitalprd ), 0, 1 )" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="33554432" x="1138" y="4" height="56" width="219" format="[general]" html.valueishtml="0"  name=cyr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="2194" y="4" height="56" width="1321" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="3538" y="4" height="56" width="626" format="[general]" html.valueishtml="0"  name=nname visible="1" edit.limit=70 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="2149" y="4" height="60" width="27" format="[general]" html.valueishtml="0"  name=ship_status visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Selected but not found" border="0" color="33554432" x="1545" y="4" height="60" width="594" html.valueishtml="0"  name=t_10 visible="1~tif(  ship_status = 'N', 1, 0 )"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="5545" y="0" height="60" width="23" format="[general]" html.valueishtml="0"  name=shipstatus visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="5568" y="0" height="60" width="23" format="[general]" html.valueishtml="0"  name=status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=footer alignment="2" text="text" border="0" color="33554432" x="677" y="204" height="64" width="91" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="authname")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

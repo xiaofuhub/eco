@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_validate_qa_initial.srf
+global type f_validate_qa_initial from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_qa_initial (string lqainit)
+end prototypes
+
+global function boolean f_validate_qa_initial (string lqainit);int rowcnt=0
+SELECT count(*) into :rowcnt from qastg 
+where qainit=:lqainit
+using sqlservertrans;
+IF rowcnt=0 THEN
+	RETURN FALSE
+ELSE
+	RETURN TRUE
+END IF
+end function
+

@@ -1,0 +1,5 @@
+﻿$PBExportHeader$d_casubj.srq
+SELECT  CASUBJ_CODE,
+           CASUBJ_DESC
+        FROM CASUBJ
+        ORDER BY CASUBJ_CODE ASC  

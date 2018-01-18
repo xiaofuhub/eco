@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_arrsn.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 107 print.margin.right = 107 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="553648127"  height.autosize=yes)
+table(column=(type=char(3) updatewhereclause=yes name=med dbname="mchar.med" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=conno dbname="mchar.conno" )
+ column=(type=char(8) updatewhereclause=yes name=arrsn_conno dbname="arrsn.conno" )
+ column=(type=char(100) updatewhereclause=yes name=arrsn_reason dbname="arrsn.reason" )
+ column=(type=datetime updatewhereclause=yes name=arrsn_ardt dbname="arrsn.ardt" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_arflag dbname="mchar.arflag" initial="' '" values="	A/	  " )
+ retrieve="  SELECT mchar.med,   
+         mchar.conno,   
+         arrsn.conno,   
+         arrsn.reason,   
+         arrsn.ardt,   
+         mchar.arflag  
+    FROM mchar, arrsn
+   WHERE mchar.chno = :s_chno 
+	AND	mchar.conno = arrsn.conno (+)
+" update="mchar" updatewhere=0 updatekeyinplace=yes arguments=(("s_chno", string)) )
+text(band=header alignment="2" text="Medium" border="0" color="0" x="96" y="4" height="64" width="219" html.valueishtml="0"  name=med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Control No" border="0" color="0" x="338" y="4" height="64" width="288" html.valueishtml="0"  name=conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Reason For Archiving" border="0" color="0" x="1006" y="4" height="64" width="590" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Archived Date" border="0" color="0" x="1993" y="4" height="64" width="366" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Archived" border="0" color="0" x="2409" y="4" height="64" width="242" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="151" y="8" height="84" width="114" format="[general]" html.valueishtml="0"  name=med  tag="Medium of the Book" visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="293" y="8" height="84" width="347" format="[general]" html.valueishtml="0"  name=conno  tag="Existing Control Number" visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="0" x="667" y="8" height="80" width="1339" format="[general]" html.valueishtml="0"  name=arrsn_reason  tag="Enter Valid Reason for Archiving this Record" visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="2039" y="8" height="84" width="302" format="" html.valueishtml="0"  name=arrsn_ardt  tag="Date of archived" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=6 alignment="2" tabsequence=20 border="5" color="0" x="2523" y="12" height="48" width="55" format="[general]" html.valueishtml="0"  name=mchar_arflag  tag="Archival Flag" visible="1" checkbox.text="" checkbox.on="A" checkbox.off="  " checkbox.scale=no checkbox.threed=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_combine_string1_string2.srf
+global type f_combine_string1_string2 from function_object
+end type
+
+forward prototypes
+global function string f_combine_string1_string2 (string auth, string authfn)
+end prototypes
+
+global function string f_combine_string1_string2 (string auth, string authfn);   
+IF	(Not IsNull(auth) and Not IsNull(authfn) ) THEN
+	Return (trim(auth) + " " +(authfn) )
+	
+ELSEIF	((IsNull(auth) or TRIM(auth) = "") and (IsNull(authfn) or TRIM(authfn) = "")) THEN
+	return("")
+	
+ELSEIF	(Not IsNull(auth) and (IsNull(authfn) or TRIM(authfn) = "" )  ) THEN
+	Return trim(auth)
+ELSE	
+	return (authfn)
+END IF
+
+
+
+
+end function
+

@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_pcs_cntr.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=124 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(7) updatewhereclause=yes name=cntr dbname="ancntr.cntr" )
+ column=(type=decimal(0) updatewhereclause=yes name=cntrttl dbname="ancntr.cntrttl" )
+ column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="ancntr.cntrmed" )
+ retrieve="  SELECT distinct cntr,cntrttl,cntrmed
+    FROM ancntr  
+WHERE cntrtype='A' 
+" retrieve.asneeded=yes )
+text(band=header alignment="2" text="ContractNumber" border="0" color="33554432" x="9" y="4" height="120" width="521" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Selected but not assigned" border="0" color="33554432" x="539" y="4" height="120" width="357" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Selected but not found" border="0" color="33554432" x="1408" y="4" height="120" width="347" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Remaining from total allocated" border="0" color="33554432" x="3374" y="4" height="120" width="421" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Totalallocated" border="0" color="33554432" x="3127" y="4" height="120" width="238" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Selected  butspecial handling" border="0" color="33554432" x="1765" y="4" height="120" width="448" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Returned byProducer" border="0" color="33554432" x="2222" y="4" height="120" width="315" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Unusable byProducer" border="0" color="33554432" x="2546" y="4" height="120" width="325" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Rejectedby QAS" border="0" color="33554432" x="2880" y="4" height="120" width="238" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="76" width="521" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_assigned_and_shipped( cntr )"border="0" color="33554432" x="905" y="0" height="76" width="494" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Assigned, Shipped and Returned" border="0" color="33554432" x="905" y="4" height="120" width="494" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_assigned_not_shipped( cntr )"border="0" color="33554432" x="539" y="0" height="76" width="357" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_assigned_and_not_found( cntr )"border="0" color="33554432" x="1408" y="0" height="76" width="347" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_assigned_spec_hand( cntr )"border="0" color="33554432" x="1765" y="0" height="76" width="448" format="[GENERAL]" html.valueishtml="0"  name=compute_6 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_shipped_by_prdr(cntr)"border="0" color="33554432" x="2222" y="0" height="76" width="315" format="[GENERAL]" html.valueishtml="0"  name=compute_7 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_unusable_by_prdr(cntr)"border="0" color="33554432" x="2546" y="0" height="76" width="325" format="[GENERAL]" html.valueishtml="0"  name=compute_8 visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="f_books_rejected_by_qas( cntr )"border="0" color="134217857" x="2880" y="0" height="76" width="238" format="[GENERAL]" html.valueishtml="0"  name=compute_9 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="cntrttl + f_get_current_no_ttls( cntr ,  cntrmed )  "border="0" color="33554432" x="3127" y="0" height="76" width="238" format="[GENERAL]" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="2" expression="  compute_5  - ( compute_1 +  compute_2 )"border="0" color="33554432" x="3374" y="0" height="76" width="421" format="[GENERAL]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,60 @@
+﻿$PBExportHeader$d_magazine_issue_maintenance_rc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=556 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=magcd dbname="magiss.magcd" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=issdt dbname="magiss.issdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=subs dbname="magiss.subs" initial="0" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=cntr dbname="magiss.cntr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fy dbname="magiss.fy" )
+ column=(type=datetime update=yes updatewhereclause=yes name=startdt dbname="magiss.startdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=estshipdt dbname="magiss.estshipdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=extc dbname="magiss.extc" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=szs dbname="magiss.szs" initial="0" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=sz dbname="magiss.sz" initial="0" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=szl dbname="magiss.szl" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=shipdt dbname="magiss.shipdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mins dbname="magiss.mins" initial="0" )
+ retrieve="  SELECT MAGISS.MAGCD,   
+         MAGISS.ISSDT,   
+         MAGISS.SUBS,   
+         MAGISS.CNTR,   
+         MAGISS.FY,   
+         MAGISS.STARTDT,   
+         MAGISS.ESTSHIPDT,   
+         MAGISS.EXTC,   
+         MAGISS.SZS,   
+         MAGISS.SZ,   
+         MAGISS.SZL,   
+         MAGISS.SHIPDT,   
+         MAGISS.MINS  
+    FROM MAGISS  
+   WHERE ( magiss.magcd = :ls_magcode ) AND  
+         ( magiss.issdt = :ld_issuedate )    
+" update="MAGISS" updatewhere=1 updatekeyinplace=no arguments=(("ls_magcode", string),("ld_issuedate", date)) )
+column(band=detail id=9 alignment="0" tabsequence=50 border="5" color="0" x="165" y="460" height="68" width="384" format="[general]" html.valueishtml="0"  name=szs visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="0" tabsequence=60 border="5" color="0" x="649" y="460" height="68" width="384" format="[general]" html.valueishtml="0"  name=sz visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=70 border="5" color="0" x="1198" y="460" height="68" width="384" format="[general]" html.valueishtml="0"  name=szl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="1536" y="116" height="68" width="384" format="[general]" html.valueishtml="0"  name=extc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="2" text="Contract" border="0" color="0" x="567" y="40" height="52" width="183" html.valueishtml="0"  name=cntr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Fiscal Year" border="0" color="0" x="41" y="40" height="52" width="238" html.valueishtml="0"  name=fy_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="453" y="116" height="68" width="384" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="5" color="0" x="923" y="116" height="68" width="384" format="[general]" html.valueishtml="0"  name=estshipdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="5" color="0" x="41" y="116" height="68" width="256" format="[general]" html.valueishtml="0"  name=fy visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Est. Ship Date" border="0" color="0" x="955" y="40" height="52" width="311" html.valueishtml="0"  name=estshipdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Start Date" border="0" color="0" x="105" y="212" height="52" width="219" html.valueishtml="0"  name=startdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Ship Date" border="0" color="0" x="585" y="212" height="52" width="215" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Subscribers" border="0" color="0" x="1024" y="212" height="52" width="251" html.valueishtml="0"  name=subs_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Minutes" border="0" color="0" x="1481" y="212" height="52" width="169" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="0" tabsequence=10 border="5" color="0" x="41" y="288" height="68" width="384" format="[general]" html.valueishtml="0"  name=startdt visible="1" editmask.useformat=yes editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=20 border="5" color="0" x="512" y="288" height="68" width="384" format="[general]" html.valueishtml="0"  name=shipdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="960" y="288" height="68" width="384" format="[general]" html.valueishtml="0"  name=subs visible="1" editmask.mask="###,###" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=40 border="5" color="0" x="1403" y="288" height="68" width="384" format="[general]" html.valueishtml="0"  name=mins visible="1" editmask.mask="#####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="2" text="Medium RC Cassettes" border="0" color="0" x="622" y="388" height="52" width="475" html.valueishtml="0"  name=sz_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Small RC Cassettes" border="0" color="0" x="137" y="388" height="52" width="421" html.valueishtml="0"  name=szs_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Large RC Cassettes" border="0" color="0" x="1166" y="388" height="52" width="430" html.valueishtml="0"  name=szl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Cumulative Extension Days" border="0" color="0" x="1435" y="40" height="52" width="585" html.valueishtml="0"  name=extc_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

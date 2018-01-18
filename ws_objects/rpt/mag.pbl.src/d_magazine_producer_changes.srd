@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_magazine_producer_changes.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=magcd dbname="mag.magcd" )
+ retrieve="  SELECT MAG.MAGCD  
+    FROM MAG  
+   WHERE mag.fy = :li_fy    
+" arguments=(("li_fy", number)) )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="0" x="41" y="16" height="64" width="325" format="[general]" html.valueishtml="0"  name=magcd visible="1" dddw.name=ddw_magcd dddw.displaycolumn=magcd dddw.datacolumn=magcd dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=no dddw.case=upper dddw.required=yes dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

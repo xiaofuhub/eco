@@ -1,0 +1,41 @@
+﻿$PBExportHeader$d_autotest_rejection_history_moved.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="qa_mover_requests.bkmed" dbalias=".bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="qa_mover_requests.bkseq" dbalias=".bkseq" )
+ column=(type=char(4000) updatewhereclause=yes name=ttl dbname="ttl" )
+ column=(type=char(1) updatewhereclause=yes name=qa_mover_requests_request_status_code dbname="qa_mover_requests.request_status_code" dbalias=".request_status_code" )
+ column=(type=datetime updatewhereclause=yes name=created_date dbname="qa_mover_requests.created_date" dbalias=".created_date" )
+ retrieve=" SELECT DISTINCT BKMED,
+		BKSEQ
+	,F_GET_TITLE(BKSEQ, BKMED) AS TTL
+	, request_status_code
+	,date_moved as created_date
+    FROM   qa_mover_requests
+WHERE  PROGRAM_ID = 'UQRM' 
+		AND request_status_code = 'M' 
+order by bkseq" filter="qa_mover_requests_request_status_code = 'M'")
+text(band=header alignment="0" text="Book" border="6" color="33554432" x="18" y="4" height="64" width="361" html.valueishtml="0"  name=t_4 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Laste Date/Time Moved" border="6" color="33554432" x="402" y="4" height="64" width="759" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Status" border="6" color="33554432" x="3552" y="4" height="64" width="411" html.valueishtml="0"  name=t_3 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Title" border="6" color="33554432" x="1193" y="4" height="64" width="2350" html.valueishtml="0"  name=qacomments_t visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="14" y="12" height="64" width="82" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="114" y="12" height="64" width="256" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="389" y="12" height="64" width="777" format="[shortdate] [time]" html.valueishtml="0"  name=created_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="3552" y="12" height="64" width="411" format="[general]" html.valueishtml="0"  name=qa_mover_requests_request_status_code visible="1" dddw.name=dddw_ref_request_status dddw.displaycolumn=description dddw.datacolumn=request_status_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1189" y="12" height="64" width="2350" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

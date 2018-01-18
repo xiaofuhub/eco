@@ -1,0 +1,109 @@
+﻿$PBExportHeader$d_magazine_producer_changes_main_rc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=12 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=980 color="536870912" )
+table(column=(type=char(7) updatewhereclause=yes name=magcntr_cntr dbname="magcntr.cntr" )
+ column=(type=char(4) updatewhereclause=yes name=magcntr_prdr dbname="magcntr.prdr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estiss dbname="mag.estiss" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_freq dbname="mag.freq" )
+ column=(type=char(3) updatewhereclause=yes name=magcntr_format dbname="magcntr.format" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estsubs dbname="mag.estsubs" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=mag_estsz dbname="mag.estsz" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_estmin dbname="mag.estmin" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mag_ccd dbname="mag.ccd" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucmast dbname="mag.ucmast" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucdupl dbname="mag.ucdupl" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucothr dbname="mag.ucothr" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_estmail dbname="mag.estmail" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcso dbname="mag.cntcso" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mag_fy dbname="mag.fy" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=mag_cntr dbname="mag.cntr" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=mag_magcd dbname="mag.magcd" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsc dbname="mag.cntcsc" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsadjc dbname="mag.cntcsadjc" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=mag_magst dbname="mag.magst" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_invamtc dbname="mag.invamtc" )
+ column=(type=decimal(0) updatewhereclause=yes name=magcntr_fy dbname="magcntr.fy" )
+ column=(type=char(11) updatewhereclause=yes name=magcntr_cntrlc dbname="magcntr.cntrlc" )
+ column=(type=char(4) updatewhereclause=yes name=magcntr_prodcd dbname="magcntr.prodcd" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=mag_estszs dbname="mag.estszs" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=mag_estszl dbname="mag.estszl" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucdupls dbname="mag.ucdupls" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=mag_ucdupll dbname="mag.ucdupll" )
+ retrieve="SELECT  magcntr.cntr ,
+           magcntr.prdr ,
+           mag.estiss ,
+           mag.freq ,
+           magcntr.format ,
+           mag.estsubs ,
+           mag.estsz ,
+           mag.estmin ,
+           mag.ccd ,
+           mag.ucmast ,
+           mag.ucdupl ,
+           mag.ucothr ,
+           mag.estmail ,
+           mag.cntcso ,
+           mag.fy ,
+           mag.cntr ,
+           mag.magcd ,
+           mag.cntcsc ,
+           mag.cntcsadjc ,
+           mag.magst ,
+           mag.invamtc ,
+           magcntr.fy ,
+           magcntr.cntrlc ,
+           magcntr.prodcd ,
+           mag.estszs ,
+           mag.estszl ,
+           mag.ucdupls ,
+           mag.ucdupll     
+        FROM mag ,
+           magcntr     
+        WHERE ( mag.fy = magcntr.fy ) and         
+					( magcntr.cntr = mag.cntr ) and          
+					( mag.fy = :li_fy) and          
+					( mag.magcd = :ls_magcode) and          
+					( mag.magst = 'A')   " update="mag" updatewhere=1 updatekeyinplace=no arguments=(("li_fy", number),("ls_magcode", string)) )
+text(band=detail alignment="1" text="Contract Calendar Days" border="0" color="0" x="1696" y="28" height="52" width="512" html.valueishtml="0"  name=mag_ccd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=80 border="5" color="0" x="2254" y="24" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_ccd  tag="Conract Calendar Days" visible="1" editmask.mask="###" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="439" y="36" height="76" width="375" format="[general]" html.valueishtml="0"  name=magcntr_cntr  tag="Original Contract " visible="1" edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="5" color="0" x="439" y="136" height="76" width="192" format="[general]" html.valueishtml="0"  name=magcntr_prdr  tag="Original Producer for this contract" visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="5" color="0" x="439" y="236" height="76" width="155" format="[general]" html.valueishtml="0"  name=magcntr_format visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="439" y="332" height="76" width="288" format="[general]" html.valueishtml="0"  name=mag_estiss  tag="Estimated Issues" visible="1" editmask.mask="###" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="439" y="436" height="76" width="302" format="[general]" html.valueishtml="0"  name=mag_freq visible="1" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Original Contract" border="0" color="0" x="41" y="40" height="52" width="357" html.valueishtml="0"  name=magcntr_cntr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Original Producer" border="0" color="0" x="27" y="148" height="52" width="370" html.valueishtml="0"  name=magcntr_prdr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Format" border="0" color="0" x="251" y="240" height="52" width="146" html.valueishtml="0"  name=magcntr_format_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Est. Issues" border="0" color="0" x="165" y="340" height="52" width="233" html.valueishtml="0"  name=mag_estiss_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Frequency" border="0" color="0" x="169" y="440" height="52" width="229" html.valueishtml="0"  name=mag_freq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="1280" y="24" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_estsubs  tag="Estimated Subscribers" visible="1" editmask.mask="######" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=40 border="5" color="0" x="1280" y="116" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_estmin  tag="Estimated Minutes" visible="1" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=25 alignment="0" tabsequence=50 border="5" color="0" x="1280" y="212" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_estszs visible="1" editmask.mask="####.0" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=60 border="5" color="0" x="1280" y="312" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_estsz  tag="Estimated Size" visible="1" editmask.mask="####.0" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=26 alignment="0" tabsequence=70 border="5" color="0" x="1280" y="420" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_estszl visible="1" editmask.mask="####.0" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Est. Subscribers" border="0" color="0" x="901" y="28" height="52" width="347" html.valueishtml="0"  name=mag_estsubs_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Est. Minutes" border="0" color="0" x="978" y="124" height="52" width="270" html.valueishtml="0"  name=mag_estmin_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Est. Size Small" border="0" color="0" x="933" y="224" height="52" width="315" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Est Size Medium" border="0" color="0" x="891" y="320" height="52" width="357" html.valueishtml="0"  name=mag_estsz_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Est. Size Large" border="0" color="0" x="923" y="428" height="52" width="325" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="2" text="Unit Cost Mastering" border="0" color="0" x="23" y="608" height="52" width="421" html.valueishtml="0"  name=mag_ucmast_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="5" color="0" x="91" y="680" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_ucmast  tag="Unit Cost Mastering" visible="1" editmask.mask="####.000000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="0" text="N E W   U N I T   C O S T " border="0" color="0" x="384" y="540" height="52" width="576" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="N E W   C O N T R A C T  D O L L A R S" border="0" color="0" x="1623" y="540" height="52" width="891" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="79741120" )
+text(band=detail alignment="2" text="Unit Cost Other" border="0" color="0" x="750" y="608" height="52" width="329" html.valueishtml="0"  name=mag_ucothr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Estimated Mailing Cost" border="0" color="0" x="1659" y="608" height="52" width="485" html.valueishtml="0"  name=mag_estmail_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Total" border="0" color="0" x="2331" y="608" height="52" width="110" html.valueishtml="0"  name=mag_cntcso_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=110 border="5" color="0" x="759" y="680" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_ucothr  tag="Unit Cost Other" visible="1" editmask.mask="####.000000" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=150 border="5" color="0" x="1760" y="680" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_estmail  tag="Estimated Mailing Cost" visible="1" editmask.mask="####.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=14 alignment="0" tabsequence=160 border="5" color="0" x="2203" y="680" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_cntcso  tag="Contract Cost Original" visible="1" editmask.mask="########.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=130 border="5" color="0" x="553" y="868" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_ucdupl  tag="Unit Cost Duplication" visible="1" editmask.mask="####.000000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=27 alignment="0" tabsequence=120 border="5" color="0" x="64" y="876" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_ucdupls visible="1" editmask.mask="####.000000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="0" text="UC Duplication Small" border="0" color="0" x="23" y="792" height="52" width="453" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="2" text="UC Duplication Medium" border="0" color="0" x="517" y="792" height="52" width="507" html.valueishtml="0"  name=mag_ucdupl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="UC Duplication Large" border="0" color="0" x="1074" y="792" height="52" width="462" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=28 alignment="0" tabsequence=140 border="5" color="0" x="1115" y="876" height="76" width="329" format="[general]" html.valueishtml="0"  name=mag_ucdupll visible="1" editmask.mask="####.000000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

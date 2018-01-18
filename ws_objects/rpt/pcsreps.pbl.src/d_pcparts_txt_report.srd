@@ -1,0 +1,72 @@
+﻿$PBExportHeader$d_pcparts_txt_report.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=1083 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=135 color="536870912" )
+detail(height=156 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=mchar_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=number updatewhereclause=yes name=mchar_vols dbname="mchar.vols" )
+ column=(type=number updatewhereclause=yes name=ccontain dbname="contain" )
+ retrieve="  SELECT prod.bkseq,   
+         mchar.med,   
+         mchar.vols,
+			(c4 + c6) contain			
+    FROM prod,   
+         mchar,
+			qastg,
+			trkstbl
+	WHERE ( prod.bkseq = mchar.bkseq ) and
+			( prod.bkmed = mchar.bkmed ) and
+			( prod.bkseq = qastg.bkseq ) and
+			( prod.bkmed = qastg.bkmed ) and
+			( prod.cntr = qastg.cntr ) and
+			( mchar.vols = trkstbl.vols(+)) and
+			( mchar.len = trkstbl.trks(+)) and
+			( qastg.qastg = '2' ) and
+			( qastg.qacompdt is not null) and
+			( qastg.qastatcd = 'A') and
+			( mchar.vols > '1' ) and
+			( prod.prodstage in ('DU','PB','PR')) and
+			( prod.actenddt is Null) and
+			( mchar.arflag is null) and
+			( mchar.med <> 'RC')
+UNION  SELECT prod.bkseq,   
+         mchar.med,   
+         mchar.vols,
+			(c4 + c6) contain
+    FROM prod,   
+         mchar,
+			qastg,
+			trkstbl
+	WHERE ( prod.bkseq = mchar.bkseq ) and
+			( prod.bkmed = mchar.bkmed ) and
+			( prod.bkseq = qastg.bkseq ) and
+			( prod.bkmed = qastg.bkmed ) and
+			( prod.cntr = qastg.cntr ) and
+			( mchar.vols = trkstbl.vols) and
+			( mchar.len = trkstbl.trks) and
+			( qastg.qastg = '2' ) and
+			( qastg.qacompdt is not null) and
+			( qastg.qastatcd = 'A') and
+			( mchar.vols > '1' ) and
+			( (c4+c6) > '1' ) and
+			( prod.prodstage in ('DU','PB','PR')) and
+			( prod.actenddt is Null) and
+			( mchar.arflag is null) and
+			( mchar.med = 'RC')
+			order by 1" )
+text(band=header alignment="2" text="LIST OF MULTI-PART BOOKS NEARING SHIPMENT" border="0" color="0" x="906" y="260" height="166" width="3843" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="2583" y="437" height="135" width="1322" format="mm/dd/yyyy" html.valueishtml="0"  name=today visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="AS OF:" border="0" color="0" x="2031" y="437" height="135" width="510" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="BOOK NO." border="0" color="0" x="1468" y="854" height="166" width="666" html.valueishtml="0"  name=mchar_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="VOLS" border="0" color="0" x="2979" y="854" height="166" width="364" html.valueishtml="0"  name=mchar_vols_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="rightTrim( mchar_med) +' ' + mchar_bkseq "border="0" color="0" x="1468" y="0" height="156" width="906" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="VOLUMES" border="0" color="0" x="3479" y="0" height="135" width="583" html.valueishtml="0"  name=t_3 visible="1~tif(  mchar_med = 'BR', 1, 0 )"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="CONTAINERS" border="0" color="0" x="3479" y="0" height="135" width="833" html.valueishtml="0"  name=t_4 visible="1~tif(  mchar_med = 'RC', 1, 0 )"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="2979" y="0" height="135" width="375" format="[general]" html.valueishtml="0"  name=mchar_vols visible="1~tif(  mchar_med = 'BR', 1, 0 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="2979" y="11" height="135" width="354" format="[general]" html.valueishtml="0"  name=ccontain visible="1~tif(  mchar_med = 'RC', 1, 0 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="5250" y="0" height="135" width="1000" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

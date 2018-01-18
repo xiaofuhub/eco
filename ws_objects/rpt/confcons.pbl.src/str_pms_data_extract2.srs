@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_pms_data_extract2.srs
+$PBExportComments$PMS data extract - structure to hold export variables
+global type str_pms_data_extract2 from structure
+	string		lang
+	string		ttl
+	string		bkmed
+	long		bkseq
+	string		ajyfn
+	integer		mcnt
+	string		dbrc
+end type
+

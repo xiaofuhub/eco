@@ -1,0 +1,80 @@
+﻿$PBExportHeader$d_avg_deviation_count.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=140 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes name=mchar_arflag dbname="mchar.arflag" )
+ column=(type=number updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=datetime updatewhereclause=yes name=prod_schenddt dbname="prod.schenddt" )
+ retrieve="  SELECT mchar.arflag,   
+         prod.bkseq,   
+         prod.bkmed,   
+         prod.prodstage,   
+         prod.cntr,   
+         prod.actenddt,   
+         prod.schenddt  
+    FROM mchar,   
+         prod  
+   WHERE ( mchar.bkseq = prod.bkseq ) 
+	and	( mchar.bkmed = prod.bkmed )
+	and	( mchar.arflag is null)
+	and	( prod.actenddt <= :Ld_enddt)
+	and	( prod.cntr = :Ls_cntr)
+	and	( prod.prodstage in ('DU','PR','PB','EM'))
+UNION SELECT mchar.arflag,   
+         prod.bkseq,   
+         prod.bkmed,   
+         prod.prodstage,   
+         prod.cntr,   
+         prod.actenddt,   
+         prod.schenddt  
+    FROM mchar,   
+         prod  
+   WHERE ( mchar.bkseq = prod.bkseq ) 
+	and	( mchar.bkmed = prod.bkmed )
+	and	( mchar.arflag is null)
+	and	( prod.schenddt <= :Ld_enddt)
+	and	( prod.actenddt is null)
+	and	( prod.cntr = :Ls_cntr)
+	and	( prod.prodstage in ('DU','PR','PB','EM'))
+
+    
+" arguments=(("Ld_enddt", date),("Ls_cntr", string)) )
+text(band=header alignment="2" text="Mchar
+Arflag" border="0" color="0" x="5" y="4" height="128" width="169" html.valueishtml="0"  name=mchar_arflag_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Bkseq" border="0" color="0" x="178" y="4" height="128" width="384" html.valueishtml="0"  name=prod_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Bkmed" border="0" color="0" x="567" y="4" height="128" width="197" html.valueishtml="0"  name=prod_bkmed_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Prodstage" border="0" color="0" x="768" y="4" height="128" width="293" html.valueishtml="0"  name=prod_prodstage_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Cntr" border="0" color="0" x="1065" y="4" height="128" width="256" html.valueishtml="0"  name=prod_cntr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Actenddt" border="0" color="0" x="1326" y="4" height="128" width="384" html.valueishtml="0"  name=prod_actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Schenddt" border="0" color="0" x="1714" y="4" height="128" width="389" html.valueishtml="0"  name=prod_schenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="64" format="[general]" html.valueishtml="0"  name=mchar_arflag visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="178" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="567" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="768" y="4" height="76" width="101" format="[general]" html.valueishtml="0"  name=prod_prodstage visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1065" y="4" height="76" width="256" format="[general]" html.valueishtml="0"  name=prod_cntr visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1326" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=prod_actenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1714" y="4" height="76" width="389" format="[general]" html.valueishtml="0"  name=prod_schenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

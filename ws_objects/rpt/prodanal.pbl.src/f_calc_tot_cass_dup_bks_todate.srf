@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_calc_tot_cass_dup_bks_todate.srf
+global type f_calc_tot_cass_dup_bks_todate from function_object
+end type
+
+forward prototypes
+global function long f_calc_tot_cass_dup_bks_todate (string lcntr)
+end prototypes
+
+global function long f_calc_tot_cass_dup_bks_todate (string lcntr);long sumpages=0
+
+select sum(qnty * vols) into :sumpages from mchar 
+where bkseq in (select bkseq from prod where cntr = :lcntr and prodstage = 'DU')
+using sqlservertrans;
+
+IF NOT(f_check_dberror(sqlservertrans,'MCHAR')) THEN
+	return 0
+ELSE
+	return sumpages
+END IF
+end function
+

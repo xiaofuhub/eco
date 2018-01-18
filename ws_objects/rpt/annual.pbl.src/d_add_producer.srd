@@ -1,0 +1,70 @@
+﻿$PBExportHeader$d_add_producer.srd
+$PBExportComments$Add producers
+release 10;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1116 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=prdr dbname="producer.prdr" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=prdr_name dbname="producer.prdr_name" )
+ column=(type=char(24) update=yes updatewhereclause=yes name=prdr_addr dbname="producer.prdr_addr" )
+ column=(type=char(24) update=yes updatewhereclause=yes name=prdr_city dbname="producer.prdr_city" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=prdr_state dbname="producer.prdr_state" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=vendorcd dbname="producer.vendorcd" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=prdr_zip dbname="producer.prdr_zip" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=contact_name dbname="producer.contact_name" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=contact_phone dbname="producer.contact_phone" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=contact_fax dbname="producer.contact_fax" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_email dbname="producer.contact_email" )
+ column=(type=char(1000) update=yes updatewhereclause=yes name=email_par_changes dbname="producer.email_par_changes" )
+ retrieve="  SELECT producer.prdr,   
+         producer.prdr_name,   
+         producer.prdr_addr,   
+         producer.prdr_city,   
+         producer.prdr_state,   
+         producer.vendorcd,   
+         producer.prdr_zip,
+         producer.contact_name,
+         producer.contact_phone,
+         producer.contact_fax,
+         producer.contact_email,
+         email_par_changes
+    FROM producer   
+	WHERE prdr = :Lprdr
+" update="producer" updatewhere=0 updatekeyinplace=yes arguments=(("Lprdr", string)) )
+column(band=detail id=7 alignment="0" tabsequence=60 border="5" color="0" x="325" y="724" height="76" width="553" format="[general]" html.valueishtml="0"  name=prdr_zip visible="1" editmask.required=yes editmask.mask="######-####" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="325" y="32" height="76" width="265" format="[general]" html.valueishtml="0"  name=prdr visible="1" editmask.mask="!!!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="325" y="308" height="76" width="800" format="[general]" html.valueishtml="0"  name=prdr_addr visible="1" edit.limit=24 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="325" y="448" height="76" width="800" format="[general]" html.valueishtml="0"  name=prdr_city visible="1" edit.limit=24 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="325" y="584" height="76" width="553" format="[general]" html.valueishtml="0"  name=prdr_state visible="1" dddw.name=d_state_lookup dddw.displaycolumn=state_name dddw.datacolumn=state_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="325" y="172" height="76" width="1120" format="[general]" html.valueishtml="0"  name=prdr_name visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Zip Code" border="0" color="0" x="41" y="724" height="64" width="251" html.valueishtml="0"  name=prdr_zip_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Producer" border="0" color="0" x="41" y="32" height="64" width="251" html.valueishtml="0"  name=prdr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Address" border="0" color="0" x="59" y="308" height="64" width="233" html.valueishtml="0"  name=prdr_addr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="City" border="0" color="0" x="192" y="448" height="64" width="101" html.valueishtml="0"  name=prdr_city_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="State" border="0" color="0" x="151" y="584" height="64" width="142" html.valueishtml="0"  name=prdr_state_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Name" border="0" color="0" x="123" y="184" height="64" width="169" html.valueishtml="0"  name=prdr_name_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Contact Information" border="0" color="0" x="1637" y="184" height="64" width="626" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Vendor Code" border="0" color="0" x="1243" y="56" height="64" width="366" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Name" border="0" color="0" x="1431" y="320" height="64" width="169" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Phone Number" border="0" color="0" x="1189" y="456" height="64" width="411" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Fax Number" border="0" color="0" x="1266" y="596" height="64" width="334" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Email Address" border="0" color="0" x="1198" y="732" height="64" width="402" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=70 border="5" color="0" x="1641" y="60" height="64" width="434" format="[general]" html.valueishtml="0"  name=vendorcd visible="1" edit.limit=10 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="5" color="0" x="1632" y="320" height="64" width="1065" format="[general]" html.valueishtml="0"  name=contact_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="5" color="0" x="1637" y="452" height="64" width="507" format="[general]" html.valueishtml="0"  name=contact_phone visible="1" editmask.mask="(###)###-####" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="5" color="0" x="1637" y="596" height="64" width="507" format="[general]" html.valueishtml="0"  name=contact_fax visible="1" editmask.mask="(###)###-####" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="5" color="0" x="1641" y="732" height="64" width="1070" format="[general]" html.valueishtml="0"  name=contact_email visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="5" color="0" x="329" y="916" height="172" width="2363" format="[general]" html.valueishtml="0"  name=email_par_changes visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.hscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Email PAR Changes" border="0" color="0" x="329" y="840" height="64" width="558" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

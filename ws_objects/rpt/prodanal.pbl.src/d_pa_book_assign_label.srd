@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_pa_book_assign_label.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=1073741824 processing=2 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 500 print.margin.bottom = 500 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no label.name="Laser Address-Clear  1.00 x 2.83 5660" label.width=2833 label.height=1000 label.rows=10 label.rows.spacing=0 label.columns=3 label.columns.spacing=0 label.topdown=no label.sheet=yes label.shape=roundrectangle label.ellipse_height=0 label.ellipse_width=0 )
+detail(height=1000 color="536870912" )
+table(column=(type=char(43) updatewhereclause=yes name=bkno dbname="bkno" )
+ column=(type=char(34) updatewhereclause=yes name=auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=sttl dbname="ttlinit.sttl" )
+ column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ retrieve="  SELECT DISTINCT MCHAR.BKMED||MCHAR.BKSEQ bkno,   
+         ttlinit.auth,ttlinit.sttl,conno 
+          
+    FROM MCHAR,   
+         PROD,   
+         TTLINIT  
+   WHERE ( MCHAR.BKSEQ = PROD.BKSEQ ) and
+           mchar.bkmed = prod.bkmed and  
+         ( MCHAR.CHNO = TTLINIT.CHNO ) and
+           prod.cntr=:as_cntr and
+           prod.assigndt=:ad_assigndt
+         ORDER BY bkno    
+" arguments=(("as_cntr", string),("ad_assigndt", date)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="41" y="145" height="166" width="2739" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="31" y="354" height="166" width="2104" format="[general]" html.valueishtml="0"  name=auth visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="52" y="572" height="166" width="2104" format="[general]" html.valueishtml="0"  name=sttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="52" y="770" height="166" width="2072" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

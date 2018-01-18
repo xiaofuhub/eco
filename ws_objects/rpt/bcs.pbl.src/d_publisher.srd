@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_publisher.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=888 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ column=(type=datetime updatewhereclause=yes name=shiprptdt dbname="mchar.shiprptdt" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=char(34) updatewhereclause=yes name=publisher dbname="ttlinit.publisher" )
+ column=(type=decimal(0) updatewhereclause=yes name=pubyr dbname="ttlinit.pubyr" )
+ column=(type=char(3) updatewhereclause=yes name=casub dbname="ttlinit.casub" )
+ column=(type=decimal(0) updatewhereclause=yes name=ttlinit_cryr dbname="ttlinit.cryr" )
+ column=(type=datetime updatewhereclause=yes name=cat dbname="catalog.cat" )
+ retrieve=" SELECT mchar.conno,   
+         mchar.shiprptdt,   
+         prod.actenddt,   
+         ttlinit.publisher,   
+         ttlinit.pubyr,   
+         ttlinit.casub,   
+         ttlinit.cryr,  
+			catalog.cat
+    FROM mchar,   
+         prod,   
+         ttlinit,
+			catalog  
+   WHERE mchar.bkseq = prod.bkseq (+) and  
+   		mchar.bkmed = prod.bkmed (+) and  
+         mchar.chno = ttlinit.chno and
+			mchar.conno = catalog.conno
+" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="5" color="0" x="690" y="452" height="76" width="329" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="690" y="668" height="76" width="329" format="[general]" html.valueishtml="0"  name=shiprptdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="690" y="776" height="76" width="329" format="[general]" html.valueishtml="0"  name=cat visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="690" y="568" height="64" width="329" format="[general]" html.valueishtml="0"  name=prod_actenddt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="690" y="356" height="64" width="311" format="[general]" html.valueishtml="0"  name=ttlinit_cryr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="255" x="690" y="20" height="76" width="311" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="690" y="128" height="76" width="960" format="[general]" html.valueishtml="0"  name=publisher visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Date of publication:" border="0" color="0" x="137" y="244" height="64" width="526" html.valueishtml="0"  name=pubyr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Copyright date:" border="0" color="0" x="251" y="352" height="64" width="411" html.valueishtml="0"  name=cryr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Subject code:" border="0" color="0" x="288" y="460" height="64" width="375" html.valueishtml="0"  name=casub_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Control Number:" border="0" color="0" x="224" y="28" height="64" width="439" html.valueishtml="0"  name=conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Publisher:" border="0" color="0" x="393" y="132" height="64" width="270" html.valueishtml="0"  name=publisher_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Catalog date:" border="0" color="0" x="297" y="784" height="64" width="366" html.valueishtml="0"  name=cat_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Ship date(SC):" border="0" color="0" x="270" y="672" height="64" width="393" html.valueishtml="0"  name=shiprptdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Actual End Date(MCM):" border="0" color="0" x="32" y="568" height="64" width="631" html.valueishtml="0"  name=mcm_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="0" x="690" y="236" height="76" width="329" format="[general]" html.valueishtml="0"  name=pubyr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_deviation_ext_rpt_active.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=288 color="536870912" )
+summary(height=84 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=bkseq dbname="ext.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="ext.bkmed" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=long updatewhereclause=yes name=ext_ext dbname="ext.ext" )
+ column=(type=char(60) updatewhereclause=yes name=ext_extrsn dbname="ext.extrsn" )
+ retrieve="  SELECT ext.bkseq,   
+         ext.bkmed,   
+         ttlinit.ttl,   
+         ext.ext,   
+         ext.extrsn
+    FROM ext,   
+         mchar,   
+         ttlinit  
+   WHERE ( ext.bkseq = mchar.bkseq ) and  
+         ( mchar.chno = ttlinit.chno ) and  
+         ( ext.bkmed = mchar.bkmed ) and
+			( ext.extpcdt between :start_dt and :end_dt)
+" arguments=(("start_dt", date),("end_dt", date)) )
+text(band=header alignment="2" text="Book No" border="0" color="0" x="0" y="188" height="64" width="567"  name=ext_bkseq_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title" border="0" color="0" x="453" y="188" height="64" width="1472"  name=ttlinit_ttl_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ext" border="0" color="0" x="2048" y="188" height="64" width="229"  name=ext_ext_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Extension Reason" border="0" color="0" x="2121" y="188" height="64" width="1253"  name=ext_extrsn_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+line(band=header x1="18" y1="280" x2="3314" y2="280"  name=l_1 pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Extensions granted" border="0" color="0" x="1175" y="52" height="80" width="658"  name=t_2  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="-" border="0" color="0" x="2277" y="52" height="80" width="37"  name=t_3  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression=" start_dt "border="0" color="0" x="1883" y="52" height="76" width="389" format="mm/dd/yyyy"  name=compute_2  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression=" end_dt "border="0" color="0" x="2309" y="52" height="76" width="361" format="mm/dd/yyyy"  name=compute_3  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="174" y="4" height="76" width="242" format="[general]"  name=bkseq edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="4" height="76" width="110" format="[general]"  name=bkmed edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="443" y="4" height="76" width="1591" format="[general]"  name=ttlinit_ttl edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2341" y="0" height="76" width="1001" format="[general]"  name=ext_extrsn edit.limit=60 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="2071" y="4" height="76" width="219" format="[general]"  name=ext_ext edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=summary x1="2062" y1="0" x2="2281" y2="0"  name=l_2 pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=summary alignment="1" text="Total Extension" border="0" color="0" x="1463" y="12" height="64" width="576"  name=t_1  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="2" expression="sum(  ext_ext )"border="0" color="0" x="2066" y="12" height="64" width="215" format="[GENERAL]"  name=compute_1  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

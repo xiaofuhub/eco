@@ -1,0 +1,69 @@
+﻿$PBExportHeader$f_update_mchar_time.srf
+global type f_update_mchar_time from function_object
+end type
+
+forward prototypes
+global subroutine f_update_mchar_time (string lconno, long lbkseq, string mflag, string operation)
+end prototypes
+
+global subroutine f_update_mchar_time (string lconno, long lbkseq, string mflag, string operation);Datetime ltoday
+ltoday = DateTime(Today(), Now())
+string ls_userid
+
+ls_userid = gnv_app.of_GetUserId()
+// Book number is given.
+IF mflag = 'B' THEN
+	// If adding a new book
+	IF operation = 'A' THEN
+		UPDATE mchar
+		SET create_date = :ltoday,created_by = :ls_userid
+		WHERE bkseq = :lbkseq
+		USING SQLServerTrans;
+		IF f_check_dberror(sqlservertrans,"ADDING A TIMESTAMP TO MCHAR") THEN
+			COMMIT USING SQLServerTrans;
+		ELSE
+			ROLLBACK USING SQLServerTrans;
+		END IF
+	// or updating a book.
+	ELSEIF operation = 'U' OR operation = 'D' THEN
+		UPDATE mchar
+		SET update_date = :ltoday,modified_by = :ls_userid
+		WHERE bkseq = :lbkseq
+		USING SQLServerTrans;
+		IF f_check_dberror(sqlservertrans,"UPDATING THE TIMESTAMP IN MCHAR") THEN
+			COMMIT USING SQLServerTrans;
+		ELSE
+			ROLLBACK USING SQLServerTrans;
+		END IF
+	END IF
+// Control number is given.
+ELSEIF mflag = 'C' THEN
+	// if adding a conno
+	IF operation = 'A' THEN
+		UPDATE mchar
+		SET create_date = :ltoday,created_by = :ls_userid
+		WHERE conno = :lconno
+		USING SQLServerTrans;
+		IF f_check_dberror(sqlservertrans,"ADDING A TIMESTAMP TO MCHAR") THEN
+			COMMIT USING SQLServerTrans;
+		ELSE
+			ROLLBACK USING SQLServerTrans;
+		END IF
+	// or updating a conno.
+	ELSEIF operation = 'U' OR operation = 'D' THEN
+		UPDATE mchar
+		SET update_date = :ltoday,modified_by = :ls_userid
+		WHERE conno = :lconno
+		USING SQLServerTrans;
+		IF f_check_dberror(sqlservertrans,"UPDATING THE TIMESTAMP IN MCHAR") THEN
+			COMMIT USING SQLServerTrans;
+		ELSE
+			ROLLBACK USING SQLServerTrans;
+		END IF
+	END IF
+END IF	
+
+
+		
+end subroutine
+

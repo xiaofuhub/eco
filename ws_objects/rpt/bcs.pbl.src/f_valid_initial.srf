@@ -1,0 +1,54 @@
+﻿$PBExportHeader$f_valid_initial.srf
+global type f_valid_initial from function_object
+end type
+
+forward prototypes
+global function boolean f_valid_initial (string initial)
+end prototypes
+
+global function boolean f_valid_initial (string initial);//**********************************************************************
+// Checks if initial exists as a s1init in the catalog table
+// by issuing an SQL SELECT statement
+//
+// Returns TRUE if initial is found; otherwise, returns FALSE
+//
+// Assumes that sqlservertrans has been initialized and connected
+//**********************************************************************
+
+String Linit
+
+SetMicroHelp(w_pics_main,'Validating cataloger initials, Please wait...')
+
+If IsNull (initial) Then
+	MessageBox ('initial_lookup', 'NULL argument received', Exclamation!)
+	return FALSE
+End If
+
+SELECT picsuser.userid  
+   INTO :Linit  
+   FROM picsuser  
+   WHERE picsuser.userid = :initial   
+USING sqlservertrans;
+
+IF sqlservertrans.SQLCode < 0 THEN
+	String ls_message,ls_msgparm[1]
+	ls_message = 'A database error has occurred.~n' + &
+					 'Database error code:  ' + String (sqlservertrans.sqldbcode) + '~r~n' + &
+					 'Database error message:~r~n' + sqlservertrans.sqlerrtext
+	Messagebox (gnv_app.iapp_object.DisplayName, ls_message, StopSign!, Ok!)
+   SetMicroHelp(w_pics_main,'')
+	return FALSE
+ELSEIF sqlservertrans.SQLCode = 100 THEN
+  	SetMicroHelp(w_pics_main,'')
+	return FALSE
+ELSE
+	IF TRIM(Linit)=TRIM(initial) THEN
+		SetMicroHelp(w_pics_main,'')
+		return TRUE
+	ELSE
+		SetMicroHelp(w_pics_main,'Invalid Initials...')
+		return FALSE
+	end if
+End if
+end function
+

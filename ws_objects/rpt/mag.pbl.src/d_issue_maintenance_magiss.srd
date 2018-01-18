@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_issue_maintenance_magiss.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=396 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=magiss_magcd dbname="magiss.magcd" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=magiss_issdt dbname="magiss.issdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=magiss_subs dbname="magiss.subs" initial="0" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=magiss_sz dbname="magiss.sz" initial="0.0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=magiss_mins dbname="magiss.mins" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=magiss_startdt dbname="magiss.startdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=magiss_estshipdt dbname="magiss.estshipdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=magiss_extc dbname="magiss.extc" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=magiss_shipdt dbname="magiss.shipdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=magiss_fy dbname="magiss.fy" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=magiss_cntr dbname="magiss.cntr" )
+ retrieve="  SELECT MAGISS.MAGCD,   
+         MAGISS.ISSDT,   
+         MAGISS.SUBS,   
+         MAGISS.SZ,   
+         MAGISS.MINS,   
+         MAGISS.STARTDT,   
+         MAGISS.ESTSHIPDT,   
+         MAGISS.EXTC,   
+         MAGISS.SHIPDT,   
+         MAGISS.FY,   
+         MAGISS.CNTR  
+    FROM MAGISS  
+   WHERE ( ( magiss.magcd = :ls_magcode ) AND  
+         ( magiss.issdt = :ld_issuedate ) )    
+" update="MAGISS" updatewhere=1 updatekeyinplace=no arguments=(("ls_magcode", string),("ld_issuedate", date)) )
+text(band=detail alignment="1" text="Cumulative Extension Days" border="0" color="0" x="1431" y="36" height="56" width="594" html.valueishtml="0"  name=magiss_extc_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Contract" border="0" color="0" x="599" y="36" height="52" width="183" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Fiscal Year" border="0" color="0" x="55" y="36" height="52" width="238" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=10 alignment="2" tabsequence=32766 border="5" color="0" x="46" y="116" height="64" width="247" format="[general]" html.valueishtml="0"  name=magiss_fy  tag="Fiscal Year" visible="1" editmask.mask="0000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="466" y="116" height="64" width="402" format="[general]" html.valueishtml="0"  name=magiss_cntr  tag="Contract" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="5" color="0" x="1001" y="116" height="64" width="334" format="[general]" html.valueishtml="0"  name=magiss_estshipdt  tag="Estimated Ship Date" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="5" color="0" x="1559" y="116" height="64" width="274" format="[general]" html.valueishtml="0"  name=magiss_extc  tag="Cumulative Extension Days" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Est. Ship Date" border="0" color="0" x="1010" y="36" height="56" width="306" html.valueishtml="0"  name=magiss_estshipdt_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Start Date" border="0" color="0" x="55" y="212" height="52" width="219" html.valueishtml="0"  name=magiss_startdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Ship Date" border="0" color="0" x="558" y="212" height="52" width="215" html.valueishtml="0"  name=magiss_shipdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Size" border="0" color="0" x="1403" y="212" height="52" width="91" html.valueishtml="0"  name=magiss_sz_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Minutes" border="0" color="0" x="1678" y="212" height="52" width="174" html.valueishtml="0"  name=magiss_mins_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=10 border="5" color="0" x="37" y="288" height="64" width="334" format="MM/DD/YYYY " html.valueishtml="0"  name=magiss_startdt  tag="Start Date" visible="1" editmask.useformat=yes editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="2" tabsequence=20 border="5" color="0" x="471" y="284" height="64" width="334" format="[general]" html.valueishtml="0"  name=magiss_shipdt  tag="Ship date" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="1321" y="284" height="64" width="274" format="[general]" html.valueishtml="0"  name=magiss_sz  tag="Size" visible="1" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="1641" y="284" height="64" width="274" format="" html.valueishtml="0"  name=magiss_mins  tag="Minutes" visible="1" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Subscribers" border="0" color="0" x="942" y="212" height="52" width="251" html.valueishtml="0"  name=magiss_subs_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="923" y="284" height="64" width="274" format="[general]" html.valueishtml="0"  name=magiss_subs  tag="Subscribers" visible="1" editmask.mask="###,###" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

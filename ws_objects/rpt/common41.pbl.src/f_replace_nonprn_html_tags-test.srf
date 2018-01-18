@@ -1,0 +1,125 @@
+﻿$PBExportHeader$f_replace_nonprn_html_tags-test.srf
+global type f_replace_nonprn_html_tags-test from function_object
+end type
+
+forward prototypes
+global function string f_replace_nonprn_html_tags-test (string p_str)
+end prototypes
+
+global function string f_replace_nonprn_html_tags-test (string p_str);STRING l_tmp,nullstr
+n_cst_string inv_string
+
+SetNull(NullStr)
+
+IF IsNull(p_str) THEN
+     RETURN NullStr
+END IF
+
+//l_tmp = inv_string.of_GlobalReplace(p_str, '~160', '&#160;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~161', '&#161;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~162', '&#162;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~163', '&#163;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~164', '&#164;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~165', '&#165;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~166', '&#166;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~167', '&#167;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~168', '&#168;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~169', '&#169;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~170', '&#170;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~171', '&#171;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~172', '&#172;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~173', '&#173;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~174', '&#174;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~175', '&#175;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~176', '&#176;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~177', '&#177;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~178', '&#178;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~179', '&#179;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~180', '&#180;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~181', '&#181;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~182', '&#182;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~183', '&#183;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~184', '&#184;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~185', '&#185;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~186', '&#186;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~187', '&#187;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~188', '&#188;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~189', '&#189;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~190', '&#190;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~191', '&#191;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~192', '&#192;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~193', '&#193;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~194', '&#194;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~195', '&#195;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~196', '&#196;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~197', '&#197;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~198', '&#198;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~199', '&#199;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~200', '&#200;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~201', '&#201;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~202', '&#202;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~203', '&#203;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~204', '&#204;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~205', '&#205;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~206', '&#206;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~207', '&#207;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~208', '&#208;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~209', '&#209;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~210', '&#210;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~211', '&#211;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~212', '&#212;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~213', '&#213;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~214', '&#214;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~215', '&#215;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~216', '&#216;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~217', '&#217;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~218', '&#218;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~219', '&#219;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~220', '&#220;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~221', '&#221;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~222', '&#222;')
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~223', '&#223;')
+
+//  valid code 
+l_tmp = inv_string.of_GlobalReplace(p_str, '~224', '&#224;');
+//l_tmp = inv_string.of_GlobalReplace(l_tmp, '~224', '&#224;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~225', '&#225;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~226', '&#226;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~227', '&#227;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~228', '&#228;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~229', '&#229;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~230', '&#230;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~231', '&#231;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~232', '&#232;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~233', '&#233;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~234', '&#234;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~235', '&#235;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~236', '&#236;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~237', '&#237;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~238', '&#238;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~239', '&#239;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~240', '&#240;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~241', '&#241;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~242', '&#242;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~243', '&#243;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~244', '&#244;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~245', '&#245;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~246', '&#246;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~247', '&#247;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~248', '&#248;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~249', '&#249;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~250', '&#250;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~251', '&#251;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~252', '&#252;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~253', '&#253;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~254', '&#254;')
+l_tmp = inv_string.of_GlobalReplace(l_tmp, '~255', '&#255;')
+//
+
+//l_tmp = p_str
+
+RETURN l_tmp
+
+
+end function
+

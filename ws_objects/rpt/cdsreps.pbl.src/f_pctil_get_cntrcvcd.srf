@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_pctil_get_cntrcvcd.srf
+global type f_pctil_get_cntrcvcd from function_object
+end type
+
+forward prototypes
+global function string f_pctil_get_cntrcvcd (long lbkseq, string lbkmed)
+end prototypes
+
+global function string f_pctil_get_cntrcvcd (long lbkseq, string lbkmed);String Lprdr,Lcntrcvcd,Lcntrtype
+
+Select prdr,cntrcvcd,cntrtype into :Lprdr,:Lcntrcvcd,:Lcntrtype from ancntr 
+where cntr in (select cntr from prod where bkseq = :Lbkseq and bkmed = :Lbkmed)
+using sqlservertrans;
+
+RETURN TRIM(Lprdr)+' '+Lcntrcvcd+Lcntrtype
+
+
+
+
+end function
+

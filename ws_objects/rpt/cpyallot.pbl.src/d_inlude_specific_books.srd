@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_inlude_specific_books.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="bkmed" )
+ column=(type=long updatewhereclause=yes name=bkseq dbname="bkseq" )
+ column=(type=char(512) updatewhereclause=yes name=ttl dbname="ttl" )
+ column=(type=char(1) updatewhereclause=yes name=repeat dbname="repeat" )
+ retrieve="  SELECT mchar.bkmed,   
+         mchar.bkseq,   
+         ttlinit.ttl,
+			'N' repeat 
+    FROM mchar,   
+         ttlinit  
+   WHERE ( mchar.chno = ttlinit.chno )    
+" )
+text(band=header alignment="2" text="Book Number" border="0" color="0" x="91" y="60" height="64" width="393" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="Repeat" border="0" color="0" x="2414" y="56" height="64" width="206" html.valueishtml="0"  name=t_2 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="Title" border="0" color="0" x="571" y="60" height="64" width="1097" html.valueishtml="0"  name=ttl_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="55" y="4" height="68" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=upper edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="0" x="197" y="4" height="68" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2450" y="8" height="60" width="73" format="[general]" html.valueishtml="0"  name=repeat visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="571" y="4" height="68" width="1806" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

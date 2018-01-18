@@ -1,0 +1,47 @@
+﻿$PBExportHeader$f_exception_report.srf
+global type f_exception_report from function_object
+end type
+
+forward prototypes
+global function boolean f_exception_report (string ajyfn, string casub, string dewey)
+end prototypes
+
+global function boolean f_exception_report (string ajyfn, string casub, string dewey);casub = TRIM(casub)
+ajyfn = TRIM(ajyfn)
+dewey = TRIM(dewey)
+
+IF ajyfn = 'AF' or ajyfn = 'YF' THEN
+	IF (NOT ( (mid(casub,1,1) >= 'A' and mid(casub,1,1) < 'J') OR &
+			    (mid(casub,1,1) >  'J' and mid(casub,1,1) <= 'Z') ) ) OR &
+			  mid(dewey,1,1) <> 'F' THEN
+		RETURN TRUE
+	ELSE
+		RETURN FALSE
+	END IF
+ELSEIF ajyfn = 'AN' or ajyfn = 'YN' THEN
+	IF (NOT ( (mid(casub,1,1) >= '0' and mid(casub,1,1) <= '9') OR &
+					casub='SPA' OR casub='OFL') ) OR &
+				(dewey < '000' or dewey > '999') THEN 
+		Return TRUE
+	ELSE 
+		Return FALSE
+	END IF
+//ELSEIF ajyfn = 'JF'  THEN
+//	IF (NOT (mid(casub,1,2)='JF' OR casub='SPA' OR casub='OFL') )  OR &
+//			mid(dewey,1,2) <> 'JF' THEN
+//		Return TRUE
+//	ELSE 
+//		Return FALSE
+//	END IF
+ELSEIF ajyfn = 'JN'  THEN
+	IF (NOT (mid(casub,1,2)='JN' OR casub='SPA' OR casub='OFL') ) OR &
+		(dewey < 'J000' or dewey > 'J999') THEN
+		Return TRUE
+	ELSE 
+		Return FALSE
+	END IF
+ELSE
+	return FALSE
+END IF
+end function
+

@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_remove_extra_spaces.srf
+global type f_remove_extra_spaces from function_object
+end type
+
+forward prototypes
+global function string f_remove_extra_spaces (string ls_text)
+end prototypes
+
+global function string f_remove_extra_spaces (string ls_text);string 			ls_space,ls_source
+n_cst_string 	inv_string
+
+ls_source = ls_text
+
+ls_space = " "
+
+ls_source =  inv_string.of_GlobalReplace(ls_source, "       ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "      ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "     ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "    ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "   ", " ")
+ls_source =  inv_string.of_GlobalReplace(ls_source, "  ", " ")
+
+RETURN(ls_source)
+end function
+

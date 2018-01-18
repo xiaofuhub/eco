@@ -1,0 +1,76 @@
+﻿$PBExportHeader$d_comm_vendor_listing.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=312 color="536870912" )
+table(column=(type=char(12) updatewhereclause=yes name=vendabbr_vendabbr dbname="vendabbr.vendabbr" )
+ column=(type=char(150) updatewhereclause=yes name=org_name dbname="org.name" )
+ column=(type=char(100) updatewhereclause=yes name=org_addr1 dbname="org.addr1" )
+ column=(type=char(100) updatewhereclause=yes name=org_addr2 dbname="org.addr2" )
+ column=(type=char(100) updatewhereclause=yes name=org_addr3 dbname="org.addr3" )
+ column=(type=char(50) updatewhereclause=yes name=org_city dbname="org.city" )
+ column=(type=char(50) updatewhereclause=yes name=org_state dbname="org.state" )
+ column=(type=char(50) updatewhereclause=yes name=org_zip dbname="org.zip" )
+ column=(type=char(25) updatewhereclause=yes name=org_phone1 dbname="org.phone1" )
+ column=(type=char(25) updatewhereclause=yes name=org_fax dbname="org.fax" )
+ column=(type=char(70) updatewhereclause=yes name=org_email1 dbname="org.email1" )
+ column=(type=char(8) updatewhereclause=yes name=org_orgcd dbname="org.orgcd" )
+ column=(type=char(150) updatewhereclause=yes name=vendabbr_vendor_description dbname="vendabbr.vendor_description" )
+ column=(type=char(20) updatewhereclause=yes name=vendabbr_modified_by dbname="vendabbr.modified_by" )
+ column=(type=datetime updatewhereclause=yes name=vendabbr_modified_date dbname="vendabbr.modified_date" )
+ retrieve="  SELECT ~"VENDABBR~".~"VENDABBR~",   
+         ~"ORG~".~"NAME~",   
+         ~"ORG~".~"ADDR1~",   
+         ~"ORG~".~"ADDR2~",   
+         ~"ORG~".~"ADDR3~",   
+         ~"ORG~".~"CITY~",   
+         ~"ORG~".~"STATE~",   
+         ~"ORG~".~"ZIP~",   
+         ~"ORG~".~"PHONE1~",   
+         ~"ORG~".~"FAX~",   
+         ~"ORG~".~"EMAIL1~",   
+		 ~"ORG~".~"ORGCD~",
+         ~"VENDABBR~".~"VENDOR_DESCRIPTION~",   
+         ~"VENDABBR~".~"MODIFIED_BY~",   
+         ~"VENDABBR~".~"MODIFIED_DATE~"  
+    FROM ~"ORG~",   
+         ~"VENDABBR~"  
+   WHERE ( ( ~"ORG~".~"ORGTYPE~" = 'CAV' ) AND  
+         ( ~"ORG~".~"ACTIVE_STATUS_CODE~" = 'A' ) AND  
+         ( ~"VENDABBR~".~"VENDCD~" =  ~"ORG~".~"ORGCD~"  ) )    
+ORDER BY ~"VENDABBR~".~"VENDABBR~"
+" )
+text(band=header alignment="2" text="Vendor
+Code" border="0" color="33554432" x="14" y="8" height="120" width="224" html.valueishtml="0"  name=vendabbr_vendabbr_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Vendor Name" border="0" color="33554432" x="251" y="8" height="120" width="928" html.valueishtml="0"  name=org_name_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Phone" border="0" color="33554432" x="1783" y="8" height="120" width="411" html.valueishtml="0"  name=org_phone1_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fax" border="0" color="33554432" x="2208" y="8" height="120" width="402" html.valueishtml="0"  name=org_fax_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Email" border="0" color="33554432" x="2624" y="8" height="120" width="480" html.valueishtml="0"  name=org_email1_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Description" border="0" color="33554432" x="3118" y="8" height="120" width="1445" html.valueishtml="0"  name=vendabbr_vendor_description_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Last
+Updated By" border="0" color="33554432" x="4576" y="8" height="120" width="347" html.valueishtml="0"  name=vendabbr_modified_by_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Last
+Updated On" border="0" color="33554432" x="4937" y="4" height="120" width="347" html.valueishtml="0"  name=vendabbr_modified_date_t visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Address" border="0" color="33554432" x="1189" y="4" height="128" width="576" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="4937" y="8" height="204" width="347" format="[shortdate] [time]" html.valueishtml="0"  name=vendabbr_modified_date visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="251" y="8" height="196" width="928" format="[general]" html.valueishtml="0"  name=org_name visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="14" y="8" height="196" width="224" format="[general]" html.valueishtml="0"  name=vendabbr_vendabbr visible="1" edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="1778" y="8" height="196" width="416" format="[general]" html.valueishtml="0"  name=org_phone1 visible="1" editmask.mask="(###)-###-####" editmask.focusrectangle=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="2208" y="8" height="196" width="402" format="[general]" html.valueishtml="0"  name=org_fax visible="1" editmask.mask="(###)-###-####" editmask.focusrectangle=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="2624" y="8" height="196" width="480" format="[general]" html.valueishtml="0"  name=org_email1 visible="1" edit.limit=70 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="3118" y="8" height="288" width="1445" format="[general]" html.valueishtml="0"  name=vendabbr_vendor_description visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.displayonly=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="4576" y="8" height="196" width="347" format="[general]" html.valueishtml="0"  name=vendabbr_modified_by visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_address( org_addr1 , org_addr2 , org_city , org_state , org_zip )"border="0" color="33554432" x="1189" y="12" height="188" width="576" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

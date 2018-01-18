@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_rpt_cmpt_prod_qc_tbl_and_bar.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=5 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1808 color="536870912"  height.autosize=yes)
+table(column=(type=char(10) updatewhereclause=yes name=a dbname="a" )
+ unbound = "yes"arguments=(("as_prdr", string),("as_cntrmed", string),("ad_start_date", date),("ad_end_date", date),("ai_fy", number)) )
+report(band=detail dataobject="d_rpt_qc_apr_rej_show" x="9" y="988" height="404" width="3520" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw4  slideup=directlyabove )
+report(band=detail dataobject="d_rpt_late_and_reg_bar" x="14" y="612" height="372" width="3506" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw3  slideup=directlyabove )
+report(band=detail dataobject="d_rpt_sum_prod_data_show" x="14" y="232" height="372" width="3497" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw2  slideup=directlyabove )
+report(band=detail dataobject="d_rpt_detail_show" x="14" y="12" height="208" width="2053" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw1  slideup=directlyabove )
+report(band=detail dataobject="d_rpt_qc_rej_bar" x="14" y="1396" height="412" width="3497" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw5  slideup=directlyabove )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

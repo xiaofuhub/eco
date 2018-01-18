@@ -1,0 +1,42 @@
+﻿$PBExportHeader$f_decrypt.srf
+global type f_decrypt from function_object
+end type
+
+forward prototypes
+global function string f_decrypt (string as_data, string as_password)
+end prototypes
+
+global function string f_decrypt (string as_data, string as_password);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function :  f_decrypt
+// Args		: String data - MS Cryptography 1.0 encrypted password from DB
+//				: String password - plain password text entered by user
+//	Description:
+//	String - Returns  decrypted password  to be matched with the user entered password
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			06/24/2009      4.2							2214
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+string ls_ret
+n_cst_crypto lnv_crypto 
+
+IF NOT Isvalid( lnv_crypto) THEN
+	lnv_crypto = CREATE n_cst_crypto
+END IF
+
+ls_ret =  lnv_crypto.decryptdata( as_data, as_password)
+
+DESTROY  lnv_crypto
+
+RETURN  ls_ret
+
+
+end function
+

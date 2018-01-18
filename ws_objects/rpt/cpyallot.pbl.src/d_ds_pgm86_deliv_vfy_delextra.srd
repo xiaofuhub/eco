@@ -1,0 +1,66 @@
+﻿$PBExportHeader$d_ds_pgm86_deliv_vfy_delextra.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=108 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=datetime updatewhereclause=yes name=prod_assigndt dbname="prod.assigndt" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_casub dbname="ttlinit.casub" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ column=(type=char(1) updatewhereclause=yes name=del dbname="del" )
+ retrieve="  SELECT distinct 
+	prod.actenddt,
+	prod.assigndt,
+	prod.prodstage,
+	mchar.bkmed,
+	mchar.bkseq,
+	ttlinit.casub,
+	ancntr.prdr,
+	'N' del
+	
+    FROM ancntr,   
+         lib,   
+         mchar,   
+         prod,   
+         sched,   
+         ttlinit  
+   WHERE 
+	libstcd in ('A','E','N') and
+	prod.actenddt <= :ad_mydate and
+	prod.prodstage in ('PR','DU','PB') and
+	mchar.shiprptdt is null and
+	sched.libcd = lib.libcd and
+	sched.bkseq = mchar.bkseq and
+	sched.bkmed = mchar.bkmed and
+	mchar.chno = ttlinit.chno and
+	prod.bkseq = sched.bkseq and
+	prod.bkmed = sched.bkmed and
+	ancntr.cntr = prod.cntr and
+   mchar.cabdt = sched.cabdt and
+	mchar.arflag is null 
+	
+" arguments=(("ad_mydate", datetime))  sort="mchar_bkseq A mchar_bkmed A prod_prodstage A prod_assigndt A ancntr_prdr A " )
+text(band=header alignment="2" text="Prod
+Actenddt" border="0" color="0" x="357" y="4" height="128" width="384" html.valueishtml="0"  name=prod_actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mchar
+Bkmed" border="0" color="0" x="745" y="4" height="128" width="197" html.valueishtml="0"  name=mchar_bkmed_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mchar
+Bkseq" border="0" color="0" x="946" y="4" height="128" width="389" html.valueishtml="0"  name=mchar_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="prdr" border="0" color="0" x="1431" y="16" height="64" width="160" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="assigndt" border="0" color="0" x="1810" y="32" height="64" width="306" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="casub" border="0" color="0" x="2203" y="32" height="64" width="238" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1394" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3077" y="12" height="64" width="105" format="[general]" html.valueishtml="0"  name=del visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="3182" y="0" height="64" width="192" format="[shortdate] [time]" html.valueishtml="0"  name=prod_actenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3374" y="0" height="64" width="192" format="[shortdate] [time]" html.valueishtml="0"  name=prod_assigndt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3566" y="0" height="64" width="64" format="[general]" html.valueishtml="0"  name=prod_prodstage visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3630" y="0" height="64" width="96" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3726" y="0" height="64" width="1376" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="5102" y="0" height="64" width="96" format="[general]" html.valueishtml="0"  name=ttlinit_casub visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

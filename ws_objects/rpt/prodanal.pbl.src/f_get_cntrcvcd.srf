@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_get_cntrcvcd.srf
+global type f_get_cntrcvcd from function_object
+end type
+
+forward prototypes
+global function string f_get_cntrcvcd ()
+end prototypes
+
+global function string f_get_cntrcvcd ();string Lcntrcvcd
+
+IF IsValid(w_pa_assigning_books) THEN
+	Lcntrcvcd = w_pa_assigning_books.dw_pa_ancntr_data.object.cntrcvcd[1]
+END IF
+
+return Lcntrcvcd
+end function
+

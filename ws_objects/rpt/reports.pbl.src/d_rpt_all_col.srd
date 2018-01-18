@@ -1,0 +1,163 @@
+﻿$PBExportHeader$d_rpt_all_col.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=prdr dbname="monrpt.prdr" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=cntrmed dbname="monrpt.cntrmed" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=cntr dbname="monrpt.cntr" )
+ column=(type=char(11) update=yes updatewhereclause=yes name=cntrlc dbname="monrpt.cntrlc" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=start_date dbname="monrpt.start_date" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=end_date dbname="monrpt.end_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=awadtitles dbname="monrpt.awadtitles" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=asgntitles dbname="monrpt.asgntitles" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=shiptitles dbname="monrpt.shiptitles" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=latetottitles dbname="monrpt.latetottitles" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=planship dbname="monrpt.planship" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=actship dbname="monrpt.actship" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=regship dbname="monrpt.regship" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=lateship dbname="monrpt.lateship" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc1apprv dbname="monrpt.qc1apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc2apprv dbname="monrpt.qc2apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc3apprv dbname="monrpt.qc3apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc4apprv dbname="monrpt.qc4apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc1reject dbname="monrpt.qc1reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc2reject dbname="monrpt.qc2reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc3reject dbname="monrpt.qc3reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qc4reject dbname="monrpt.qc4reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc1apprv dbname="monrpt.ctdqc1apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc2apprv dbname="monrpt.ctdqc2apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc3apprv dbname="monrpt.ctdqc3apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc4apprv dbname="monrpt.ctdqc4apprv" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc1reject dbname="monrpt.ctdqc1reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc2reject dbname="monrpt.ctdqc2reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc3reject dbname="monrpt.ctdqc3reject" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctdqc4reject dbname="monrpt.ctdqc4reject" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=latepct dbname="monrpt.latepct" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=rejpct1 dbname="monrpt.rejpct1" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=rejpct2 dbname="monrpt.rejpct2" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=rejpct3 dbname="monrpt.rejpct3" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=rejpct4 dbname="monrpt.rejpct4" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fy dbname="monrpt.fy" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=done dbname="monrpt.done" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=foreign_lang dbname="monrpt.foreign_lang" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=qastat dbname="monrpt.qastat" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=prdstat dbname="monrpt.prdstat" )
+ retrieve="  SELECT monrpt.prdr,   
+         monrpt.cntrmed,
+			monrpt.cntr,   
+         monrpt.cntrlc,   
+         monrpt.start_date,   
+         monrpt.end_date,   
+         monrpt.awadtitles,   
+         monrpt.asgntitles,   
+         monrpt.shiptitles,   
+         monrpt.latetottitles,   
+         monrpt.planship,   
+         monrpt.actship,   
+         monrpt.regship,   
+         monrpt.lateship,   
+         monrpt.qc1apprv,   
+         monrpt.qc2apprv,   
+         monrpt.qc3apprv,
+			qc4apprv,   
+         monrpt.qc1reject,   
+         monrpt.qc2reject,   
+         monrpt.qc3reject,
+			qc4reject,   
+         monrpt.ctdqc1apprv,   
+         monrpt.ctdqc2apprv,   
+         monrpt.ctdqc3apprv,
+			ctdqc4apprv,   
+         monrpt.ctdqc1reject,   
+         monrpt.ctdqc2reject,   
+         monrpt.ctdqc3reject,
+			ctdqc4reject,
+			monrpt.latepct,
+			monrpt.rejpct1,
+			monrpt.rejpct2,
+			monrpt.rejpct3 ,
+			rejpct4,
+			monrpt.fy ,
+			monrpt.done,
+			monrpt.foreign_lang,
+			monrpt.qastat,
+			monrpt.prdstat
+
+    FROM monrpt   
+	where start_date>=:ad_fy_start_date and end_date <=:ad_fy_end_date
+			" update="monrpt" updatewhere=1 updatekeyinplace=no arguments=(("ad_fy_start_date", datetime),("ad_fy_end_date", datetime))  sort="prdr A cntrmed A cntr A start_date A end_date A " )
+text(band=header alignment="2" text="Prdr" border="0" color="0" x="78" y="4" height="64" width="137" html.valueishtml="0"  name=prdr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cntrmed" border="0" color="0" x="219" y="4" height="64" width="224" html.valueishtml="0"  name=cntrmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cntrlc" border="0" color="0" x="649" y="4" height="64" width="329" html.valueishtml="0"  name=cntrlc_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Start Date" border="0" color="0" x="983" y="4" height="64" width="329" html.valueishtml="0"  name=start_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="End Date" border="0" color="0" x="1317" y="4" height="64" width="329" html.valueishtml="0"  name=end_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Awadtitles" border="0" color="0" x="1650" y="4" height="64" width="329" html.valueishtml="0"  name=awadtitles_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Asgntitles" border="0" color="0" x="1989" y="4" height="64" width="325" html.valueishtml="0"  name=asgntitles_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Shiptitles" border="0" color="0" x="2322" y="4" height="64" width="329" html.valueishtml="0"  name=shiptitles_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Latetottitles" border="0" color="0" x="2656" y="4" height="64" width="329" html.valueishtml="0"  name=latetottitles_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Planship" border="0" color="0" x="2990" y="4" height="64" width="329" html.valueishtml="0"  name=planship_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actship" border="0" color="0" x="3323" y="4" height="64" width="329" html.valueishtml="0"  name=actship_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Regship" border="0" color="0" x="3657" y="4" height="64" width="329" html.valueishtml="0"  name=regship_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Lateship" border="0" color="0" x="3991" y="4" height="64" width="329" html.valueishtml="0"  name=lateship_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qc1apprv" border="0" color="0" x="4325" y="4" height="64" width="329" html.valueishtml="0"  name=qc1apprv_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qc2apprv" border="0" color="0" x="4658" y="4" height="64" width="329" html.valueishtml="0"  name=qc2apprv_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qc3apprv" border="0" color="0" x="4992" y="4" height="64" width="329" html.valueishtml="0"  name=qc3apprv_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qc1reject" border="0" color="0" x="5326" y="4" height="64" width="329" html.valueishtml="0"  name=qc1reject_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qc2reject" border="0" color="0" x="5659" y="4" height="64" width="329" html.valueishtml="0"  name=qc2reject_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qc3reject" border="0" color="0" x="5993" y="4" height="64" width="329" html.valueishtml="0"  name=qc3reject_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctdqc1apprv" border="0" color="0" x="6327" y="4" height="64" width="329" html.valueishtml="0"  name=ctdqc1apprv_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctdqc2apprv" border="0" color="0" x="6661" y="4" height="64" width="329" html.valueishtml="0"  name=ctdqc2apprv_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctdqc3apprv" border="0" color="0" x="6994" y="4" height="64" width="329" html.valueishtml="0"  name=ctdqc3apprv_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctdqc1reject" border="0" color="0" x="7333" y="4" height="64" width="334" html.valueishtml="0"  name=ctdqc1reject_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctdqc2reject" border="0" color="0" x="7671" y="4" height="64" width="334" html.valueishtml="0"  name=ctdqc2reject_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctdqc3reject" border="0" color="0" x="8014" y="4" height="64" width="334" html.valueishtml="0"  name=ctdqc3reject_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Latepct" border="0" color="0" x="8425" y="4" height="64" width="197" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Qc1rpct" border="0" color="0" x="8722" y="4" height="64" width="210" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="1" text="Qc2rpct" border="0" color="0" x="9006" y="8" height="64" width="210" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="1" text="Qc3rpct" border="0" color="0" x="9312" y="4" height="64" width="210" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="fy" border="0" color="0" x="9591" y="4" height="64" width="101" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="0" y="4" height="76" width="183" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="197" y="4" height="76" width="133" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=60 border="0" color="0" x="1650" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=awadtitles visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="347" y="4" height="64" width="238" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="0" color="0" x="603" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=cntrlc visible="1" edit.limit=11 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="0" color="0" x="983" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="0" color="0" x="1317" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=end_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=70 border="0" color="0" x="1989" y="4" height="76" width="325" format="[general]" html.valueishtml="0"  name=asgntitles visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=80 border="0" color="0" x="2322" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=shiptitles visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=90 border="0" color="0" x="2656" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=latetottitles visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=100 border="0" color="0" x="2990" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=planship visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=110 border="0" color="0" x="3323" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=actship visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=120 border="0" color="0" x="3657" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=regship visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=130 border="0" color="0" x="3991" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=lateship visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="1" tabsequence=140 border="0" color="0" x="4325" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qc1apprv visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="1" tabsequence=150 border="0" color="0" x="4658" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qc2apprv visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="1" tabsequence=160 border="0" color="0" x="4992" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qc3apprv visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="1" tabsequence=170 border="0" color="0" x="5326" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qc1reject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="1" tabsequence=180 border="0" color="0" x="5659" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qc2reject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="1" tabsequence=190 border="0" color="0" x="5993" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qc3reject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="1" tabsequence=200 border="0" color="0" x="6327" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=ctdqc1apprv visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="1" tabsequence=210 border="0" color="0" x="6661" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=ctdqc2apprv visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="1" tabsequence=220 border="0" color="0" x="6994" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=ctdqc3apprv visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="1" tabsequence=230 border="0" color="0" x="7333" y="4" height="76" width="325" format="[general]" html.valueishtml="0"  name=ctdqc1reject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="1" tabsequence=240 border="0" color="0" x="7671" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=ctdqc2reject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="1" tabsequence=250 border="0" color="0" x="8009" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=ctdqc3reject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="0" x="8343" y="4" height="64" width="315" format="[general]" html.valueishtml="0"  name=latepct visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="0" x="8690" y="4" height="64" width="251" format="[general]" html.valueishtml="0"  name=rejpct1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="0" x="8987" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=rejpct2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="0" x="9285" y="4" height="64" width="279" format="[general]" html.valueishtml="0"  name=rejpct3 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="9563" y="0" height="64" width="201" format="[general]" html.valueishtml="0"  name=fy visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="0" x="9778" y="0" height="64" width="69" format="[general]" html.valueishtml="0"  name=done visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="0" x="9870" y="0" height="64" width="110" format="[general]" html.valueishtml="0"  name=foreign_lang visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="9975" y="0" height="64" width="174" format="[general]" html.valueishtml="0"  name=qastat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="10158" y="8" height="64" width="192" format="[general]" html.valueishtml="0"  name=prdstat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=0 border="0" color="0" x="10350" y="0" height="64" width="1161" html.valueishtml="0"  name=qc4apprv visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=0 border="0" color="0" x="11511" y="0" height="64" width="1161" html.valueishtml="0"  name=qc4reject visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=0 border="0" color="0" x="12672" y="0" height="64" width="1161" html.valueishtml="0"  name=ctdqc4apprv visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=0 border="0" color="0" x="13833" y="0" height="64" width="1161" html.valueishtml="0"  name=ctdqc4reject visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=0 border="0" color="0" x="14994" y="0" height="64" width="1161" html.valueishtml="0"  name=rejpct4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

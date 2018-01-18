@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_cdpasscd_annoinit.srd
+release 7;
+datawindow(units=2 timer_interval=0 color=12632256 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=343 color="536870912" )
+summary(height=343 color="536870912" )
+footer(height=10 color="536870912" )
+detail(height=333 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=ttlinit_annoinit dbname="ANNOINIT" )
+ retrieve="  SELECT distinct ttlinit.annoinit  
+    FROM ttlinit, mchar 
+ 
+   WHERE ( ttlinit.ccdt between :ld_stdt and :ld_enddt ) and
+			( ttlinit.chno = mchar.chno ) 
+			order by annoinit  
+" arguments=(("ld_stdt", datetime),("ld_enddt", datetime)) )
+text(band=header alignment="0" text="Librarian" border="0" color="0" x="20" y="93" height="166" width="729"  name=t_1  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="20" y="72" height="166" width="729" format="[general]"  name=ttlinit_annoinit edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=summary alignment="0" text="Total" border="0" color="0" x="20" y="83" height="166" width="729"  name=t_2  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

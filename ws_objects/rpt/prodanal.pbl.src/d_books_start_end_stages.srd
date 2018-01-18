@@ -1,0 +1,53 @@
+﻿$PBExportHeader$d_books_start_end_stages.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 )
+header(height=132 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes key=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=char(2) updatewhereclause=yes key=yes name=prodstage dbname="prod.prodstage" )
+ column=(type=char(7) updatewhereclause=yes key=yes name=cntr dbname="prod.cntr" )
+ column=(type=datetime update=yes updatewhereclause=yes name=schstdt dbname="prod.schstdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=schenddt dbname="prod.schenddt" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ retrieve="  SELECT ~"MCHAR~".~"BKSEQ~",   ~"PROD~".~"BKSEQ~",
+         ~"PROD~".~"BKMED~",   
+         ~"PROD~".~"PRODSTAGE~",   
+         ~"PROD~".~"CNTR~",   
+         ~"PROD~".~"SCHSTDT~",   
+         ~"PROD~".~"SCHENDDT~", 
+         ~"PROD~".~"ACTENDDT~" 
+    FROM ~"PROD~" ,~"MCHAR~"
+WHERE ~"MCHAR~".~"BKSEQ~" = ~"PROD~".~"BKSEQ~"
+AND ~"MCHAR~".~"BKMED~" = ~"PROD~".~"BKMED~"
+AND ~"MCHAR~".~"BKSEQ~"=:Lbkseq 
+AND ~"PROD~".~"CNTR~"=:Lcntr
+ORDER BY ~"PROD~".~"SCHSTDT~"
+" update="PROD" updatewhere=0 updatekeyinplace=yes arguments=(("Lbkseq", number),("Lcntr", string)) )
+text(band=header alignment="2" text="ProdStage" border="0" color="33554432" x="361" y="12" height="128" width="155" html.valueishtml="0"  name=prodstage_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="NLSContract" border="0" color="33554432" x="530" y="12" height="128" width="288" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ScheduleStart Date" border="0" color="33554432" x="832" y="12" height="128" width="338" html.valueishtml="0"  name=schstdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ScheduleEnd date" border="0" color="33554432" x="1184" y="12" height="128" width="343" html.valueishtml="0"  name=schenddt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="BookNo" border="0" color="33554432" x="133" y="12" height="128" width="219" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=10 border="5" color="33554432" x="832" y="8" height="76" width="338" format="[shortdate] [time]" html.valueishtml="0" protect="0~tif( IsNull( prod_actenddt) and (prodstage = 'MA' or prodstage = 'AB' or prodstage = 'ZM' or prodstage = 'DU' or prodstage = 'PB' or prodstage = 'PB' or prodstage = 'EM' or prodstage = 'FC'),0, 1 )"  name=schstdt visible="1" editmask.ddcalendar=yes editmask.mask="mm/dd/yy" editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=20 border="5" color="33554432" x="1184" y="8" height="76" width="343" format="[shortdate] [time]" html.valueishtml="0" protect="0~tif( IsNull( prod_actenddt) and (prodstage = 'MA' or prodstage = 'AB' or prodstage = 'ZM' or prodstage = 'DU' or prodstage = 'PB' or prodstage = 'PB' or prodstage = 'EM' or prodstage = 'FC'),0, 1 )"  name=schenddt visible="1" editmask.ddcalendar=yes editmask.mask="mm/dd/yy" editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="1536" y="0" height="64" width="5" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554432" x="530" y="8" height="76" width="288" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="361" y="8" height="76" width="155" format="[general]" html.valueishtml="0"  name=prodstage visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554432" x="137" y="8" height="76" width="215" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554432" x="14" y="8" height="76" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="0" tabsequence=30 border="0" color="33554432" x="1550" y="0" height="64" width="9" format="[shortdate] [time]" html.valueishtml="0"  name=prod_actenddt visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

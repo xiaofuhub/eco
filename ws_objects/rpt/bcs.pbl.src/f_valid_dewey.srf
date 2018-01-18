@@ -1,0 +1,54 @@
+﻿$PBExportHeader$f_valid_dewey.srf
+global type f_valid_dewey from function_object
+end type
+
+forward prototypes
+global function boolean f_valid_dewey (string dewey, string ajyfn)
+end prototypes
+
+global function boolean f_valid_dewey (string dewey, string ajyfn);Integer Idewey
+character sub_dewey
+
+ajyfn=RightTrim(ajyfn)
+dewey=RightTrim(dewey)
+
+IF ajyfn='AN' or ajyfn='YN' THEN
+	Idewey = Integer(dewey)
+	IF Idewey >= 1 and Idewey <= 999 THEN
+		RETURN TRUE
+	ELSE 
+		RETURN FALSE
+	END IF
+END IF
+
+IF ajyfn='AF' or ajyfn='YF' THEN
+	IF dewey = 'F' THEN
+		RETURN TRUE
+	ELSE
+		RETURN FALSE
+	END IF
+END IF
+
+IF ajyfn='JN' THEN
+	sub_dewey = dewey
+	IF sub_dewey <> 'J' THEN
+		RETURN FALSE
+	END IF
+	Idewey = Integer(Mid(dewey,2,3))
+	IF Idewey >= 1 and Idewey <= 999 THEN
+		RETURN TRUE
+	ELSE 
+		RETURN FALSE
+	END IF
+END IF
+
+IF ajyfn='JF' THEN
+	IF dewey >= 'JF' THEN
+		RETURN TRUE
+	ELSE 
+		RETURN FALSE
+	END IF
+END IF
+
+end function
+

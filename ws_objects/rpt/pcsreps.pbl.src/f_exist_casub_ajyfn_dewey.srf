@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_exist_casub_ajyfn_dewey.srf
+global type f_exist_casub_ajyfn_dewey from function_object
+end type
+
+forward prototypes
+global function boolean f_exist_casub_ajyfn_dewey (string lcasub, string lajyfn, string ldewey)
+end prototypes
+
+global function boolean f_exist_casub_ajyfn_dewey (string lcasub, string lajyfn, string ldewey);IF ((IsNull(ldewey) OR ldewey="") OR &
+	 (IsNull(lcasub) OR lcasub="") OR &
+	 (IsNull(lajyfn) OR lajyfn="")) THEN
+	RETURN TRUE
+ELSE
+	RETURN FALSE
+END IF
+	
+end function
+

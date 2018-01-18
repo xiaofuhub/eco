@@ -1,0 +1,341 @@
+﻿$PBExportHeader$f_export_to_xml.srf
+global type f_export_to_xml from function_object
+end type
+
+forward prototypes
+global function string f_export_to_xml (str_pms_data_extract astr)
+end prototypes
+
+global function string f_export_to_xml (str_pms_data_extract astr);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  f_export_to_xml
+//
+//	Description:
+//	export text to xml format
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			01/31/2008      002 PICS Modifications	 PICS PMS 2.0 Modifications
+//																			PMS B.2, PMS B.2.1
+//																Introduce flash books media DB
+// Murali K			01/13/2009		New XML format catalog changes 
+// Murali K.			02/18/09			Title, author, coauthor, narrator do not use PB code use db function escape characters.
+// Murali K.			02/26/09 		space after spanish annotation 2159
+// Murali K.			12/7/09			Add AEPCD='P" attribute as published by #2248
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+string ls_export,ls_endfield,ls_endrecord, ls_temp,ls_multipleauthors
+
+ls_endfield =  '~n'
+
+// bibliography tag
+ls_export += "<bibliography>"
+
+// ttlinit.ttlart
+
+ls_export += "<Article>"
+if NOT IsNull(astr.ttlart) THEN
+  ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ttlart)))+"</Article>"
+else
+  ls_export += "</Article>"
+end if
+
+
+// ttlinit.ttlart and ttlinit.ttl
+
+ls_export += "<Title>"
+if not isnull(astr.ttl) THEN
+//  ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ttl)))+"</Title>"
+  ls_export += f_change_pipe_italics_tags(trim(astr.ttl))+"</Title>"
+else
+  ls_export += "</Title>"
+end if
+
+// mchar.bkmed
+ls_export += "<BookMedium>"
+
+// 01/16/2009 if both rc/db are present 
+IF astr.dbrc = 'DB/RC' then
+	ls_export += f_replace_nonprn_html_tags(trim(astr.dbrc))
+ELSE
+	CHOOSE CASE trim(astr.bkmed)
+		CASE "RC"
+			ls_export += ' RC '
+		CASE "BR"
+			ls_export += ' BR '
+		CASE "P/B"
+			ls_export += ' BR '
+		//Include flash books also 01/31/2008'
+		CASE "DB"
+			ls_export += ' DB '
+	END CHOOSE
+END IF
+
+ls_export += "</BookMedium>" 
+
+// mchar.bkseq
+ls_export += "<BookNumber>"
+if not isnull(astr.bkseq) then
+//  ls_export += trim(astr.bkmed)+'_'+trim(string(astr.bkseq))+"</BookNumber>"+ls_endfield
+// 01/15/2009 XML fixes remove underscore
+	IF astr.dbrc = 'DB/RC' then
+		ls_export += f_replace_nonprn_html_tags(trim(astr.dbrc)) +' '+trim(string(astr.bkseq))+"</BookNumber>"+ls_endfield 
+	ELSE
+		  ls_export += trim(astr.bkmed)+' '+trim(string(astr.bkseq))+"</BookNumber>"+ls_endfield
+	END IF
+else
+  ls_export += "</BookNumber>"+ls_endfield
+end if
+
+// New tag duration new 01/16/2009
+IF tRIM(astr.bkmed) <> 'BR' THEN
+	
+	long ll_length, ll_hours, ll_minutes
+	string ls_duration
+	ll_length = astr.length_
+	IF  isnull(astr.length_) THEN
+		ls_duration =  '0  hours ' +  ' 0 minutes '
+	END IF
+	IF ll_length > 0 THEN
+		ll_hours = int(ll_length/ 60) // round(ll_length / 60,2)
+		IF ll_hours < 1 THEN
+			ll_hours =0
+		END IF
+		ll_minutes = round( ll_length - int(ll_length / 60) * 60,3) // mod(ll_length, 60)
+		IF ll_hours = 1 THEN
+			ls_duration = string(ll_hours) + ' hour ' + string(ll_minutes) + ' minutes '
+		ELSE
+			ls_duration = string(ll_hours) + ' hours ' + string(ll_minutes) + ' minutes '
+		END IF
+	ELSE
+			ls_duration =  '0  hours ' +  ' 0 minutes '
+	END IF
+	ls_export += "<Duration>"
+
+	
+//	if not isnull(astr.length_) THEN
+	  ls_export += f_replace_nonprn_html_tags(trim(ls_duration))+"</Duration>"
+//	else
+//	  ls_export += "</Duration>"
+//	end if
+	//////////// new duration
+ELSE
+	IF gs_catalog = 'youngerreaders' THEN
+		CHOOSE CASE astr.bkmed 
+			CASE 'BR'
+				  ls_export += "<Duration>" + ' ' +"</Duration>"
+			CASE 'DB', 'RC'
+		END CHOOSE
+	END IF
+END IF // ONLY FOR TBT AND CASSETTE CATALOG
+
+// Author and Coauthor information
+
+ls_export += "<Author>"
+
+// ttlinit.aepcd
+
+ls_export += "<AttributionTag>"
+CHOOSE CASE trim(astr.aepcd)
+	CASE 'A'
+		ls_export += 'by '
+	CASE 'E'
+		ls_export += 'edited by '
+	CASE 'S'
+		ls_export += 'selected by '
+	CASE 'T'
+		ls_export += 'translated by '
+	CASE 'R'
+		ls_export += 'retold by '
+	CASE 'C'
+		ls_export += 'compiled by' 
+	CASE 'P'
+		ls_export += 'published by' // #2248 12/7/2009 add AEPCD='P" attribute as published by
+	CASE 'N'
+		ls_export += ''
+	CASE 'I'
+		ls_export += 'by '
+	CASE 'L'
+		ls_export += 'by '
+END CHOOSE
+
+ls_export += "</AttributionTag>" 
+
+// ttlinit.authfn
+
+ls_export += "<AuthorFirstName>"
+if not isnull(astr.authfn) then
+//	ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.authfn)))+" "+"</AuthorFirstName>"
+	ls_export += f_change_pipe_italics_tags(trim(astr.authfn))+" "+"</AuthorFirstName>"
+else
+	ls_export += "</AuthorFirstName>"
+end if
+
+//ttlinit.auth 
+
+ls_temp = ""
+
+ls_export += "<AuthorLastName>"
+if not isnull(astr.auth) then
+	// 01/23/2009 do not include honorific print separate tag
+//	if not isnull(astr.ahonorific) then
+//		ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.auth))) + " "+ f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ahonorific))) + "</AuthorLastName>" 
+//	else
+//		ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.auth))) +"</AuthorLastName>" 
+		ls_export += f_change_pipe_italics_tags(trim(astr.auth)) +"</AuthorLastName>" 
+//	end if
+else
+	ls_export += "</AuthorLastName>"
+end if
+
+// Author honorific
+ls_export += "<AuthorHonorific>"
+if not isnull(astr.ahonorific) then
+//		ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ahonorific))) +"</AuthorHonorific>" 
+		ls_export += f_change_pipe_italics_tags(trim(astr.ahonorific)) +"</AuthorHonorific>" 
+else
+	ls_export += "</AuthorHonorific>"
+end if
+ls_export += "</Author>" // author and coauthors tag are separate 02/05/2009
+
+// Coauthors ATTRIBUTION DO WE NEED IT
+// 01/13/2009
+//if not isnull(astr.coauthstr) then
+//	IF astr.coauthcnt > 1  THEN
+//		ls_export += "<CoAttributionTag>"+","+"</CoAttributionTag>" 
+//	//		ls_multipleauthors = ', '
+//		ELSEIF astr.coauthcnt = 1 THEN
+//			ls_export += "<CoAttributionTag>"+"and"+"</CoAttributionTag>" 
+//	//		ls_multipleauthors = ' and '
+//		ELSE
+//	//		ls_multipleauthors = ''
+//		END IF
+//		//////// 01/13/2009
+//END IF
+
+ls_export += "<Coauthors>"
+if not isnull(astr.coauthstr) then
+	// 01/23/2009 print the constructed coauthors string from the screen
+	ls_export += astr.coauthstr  // 01/23/2009
+end if
+ls_export += "</Coauthors>"
+
+
+
+// use narrstr to output narrators only for cassettes
+
+IF TRIM(astr.bkmed) = 'RC'  OR  &
+TRIM(astr.bkmed) = 'DB'   THEN // 01/31/2008
+	ls_export += "<Narrator>"
+	if not isnull(astr.narrstr) then
+//		ls_export += "read by "+f_replace_nonprn_html_tags(trim(astr.narrstr))+"</Narrator>"+ls_endfield 
+		ls_export += "read by "+trim(astr.narrstr)+"</Narrator>"+ls_endfield 
+	else
+		ls_export += "</Narrator>"+ls_endfield 
+	end if
+END IF
+
+// Volumes
+
+// 01/16/2009 quantity only for BR books
+IF Trim(astr.bkmed) = 'BR' THEN
+	ls_export += "<Quantity>"
+	ls_temp =  ""
+	
+	if not isnull(astr.vols) then
+		IF TRIM(astr.bkmed) = 'BR' AND astr.vols = 1 THEN
+			ls_temp += string(astr.vols) + " volume"
+		ELSEIF astr.bkmed = 'BR' THEN
+			ls_temp += string(astr.vols) + " volumes"
+		ELSEIF TRIM(astr.bkmed) = 'RC' AND astr.vols = 1 THEN
+			ls_temp += string(astr.vols) + " cassette"
+		ELSEIF TRIM(astr.bkmed) = 'RC' THEN
+			ls_temp += string(astr.vols) + " cassettes"
+		// 01/31/2008 add DB as media
+		ELSEIF TRIM(astr.bkmed) = 'DB' AND astr.vols = 1 THEN
+			ls_temp += string(astr.vols) + " flash cartridge"
+		ELSEIF TRIM(astr.bkmed) = 'DB' THEN
+			ls_temp += string(astr.vols) + " flash cartridges"
+			
+		END IF
+	end if
+	
+	if not isnull(astr.ricd) then 
+		IF TRIM(astr.ricd) = 'RI' OR TRIM(astr.ricd) = 'RR' THEN
+			ls_temp = ls_temp + " (Reissue)"
+		END IF
+	end if
+	
+	ls_temp += "</Quantity>"+ls_endfield 
+	ls_export += ls_temp
+ELSE
+	IF gs_catalog = 'youngerreaders' THEN
+		CHOOSE CASE astr.bkmed 
+			CASE 'DB', 'RC'
+				  ls_export += "<Quantity>" + ' ' +"</Quantity>"
+		END CHOOSE
+	END IF
+
+END IF
+
+
+ls_export += "</bibliography>"
+
+ls_export += "<Annotation>"
+// If foreign annotation exist first type that and then type the english annotation.
+if not isnull(astr.anno_foreign) then
+//	astr.anno_foreign = f_change_pipe_italics_tags(f_replace_nonprn_html_tags(astr.anno_foreign))
+	astr.anno_foreign = f_change_pipe_italics_tags(astr.anno_foreign)
+	ls_export += string(astr.anno_foreign) + ' ' // 02/26/09 space after spanish annotation 2159
+	if not isnull(astr.anno) then
+//		astr.anno = f_change_pipe_italics_tags(f_replace_nonprn_html_tags(astr.anno))
+		astr.anno = f_change_pipe_italics_tags(astr.anno) // 01/21/2009
+		
+//		IF NOT Pos(astr.anno, 'bestseller') > 0 THEN
+//			IF astr.prop_added_flg = 'Y' THEN
+				ls_export += "(" + astr.anno + ")" +"</Annotation>"+ ls_endfield 
+//			ELSE		
+//				ls_export += "(" + astr.anno + ") " + string(astr.anyr) + "." +"</Annotation>"+ ls_endfield 
+//			END IF
+//		ELSE
+//			ls_export += "(" + astr.anno + ") .Bestseller" + string(astr.anyr) + "." +"</Annotation>"+ ls_endfield
+//		END IF
+	else
+		ls_export += "</Annotation>"
+		ls_export += ls_endfield		
+	end if
+// else type the english annotation, if exist.
+else
+	if not isnull(astr.anno) then
+//		astr.anno = f_change_pipe_italics_tags(f_replace_nonprn_html_tags(astr.anno))
+		astr.anno = f_change_pipe_italics_tags(astr.anno) // 01/21/2009
+//		IF NOT Pos(astr.anno, 'bestseller') > 0 THEN
+//			IF astr.prop_added_flg = 'Y' THEN
+				ls_export += astr.anno + "</Annotation>"+ ls_endfield 
+//			ELSE		
+//				ls_export += astr.anno + ' ' + string(astr.anyr) + "." +"</Annotation>"+ ls_endfield 
+//			END IF
+//		ELSE
+//			ls_export += astr.anno + '.Bestseller' + string(astr.anyr) + "." +"</Annotation>"+ ls_endfield
+//		END IF
+	end if
+end if		
+
+////// if we need bestseller tag separately - braille book review catalog only 
+//IF gs_catalog = 'braillebookreview' THEN
+//	ls_export += "<Bestseller>"
+//	if not isnull(astr.bestseller) then
+//		ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.bestseller)))+" "+"</Bestseller>"
+//	else
+//		ls_export += "</Bestseller>"
+//	end if
+//END IF
+
+RETURN ls_export
+end function
+

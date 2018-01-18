@@ -1,0 +1,33 @@
+﻿$PBExportHeader$d_sp1_distsched.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=140 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=prdr dbname="PRODUCER" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=cabdt dbname="CABDT" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=libcd dbname="LIBCD" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=bkno dbname="BKNO" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ordqty dbname="QTY" )
+ column=(type=datetime update=yes updatewhereclause=yes name=scheddate dbname="SCHEDDATE" )
+ retrieve="SELECT  distsched.producer ,
+           distsched.cabdt ,
+           distsched.libcd ,
+           distsched.bkno ,
+           distsched.qty ,
+           distsched.scheddate     
+        FROM distsched@pic_link   " update="distsched" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Copy AllotmentDate" border="0" color="0" x="347" y="4" height="128" width="457" html.valueishtml="0"  name=cabdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="BookNumber" border="0" color="0" x="50" y="4" height="128" width="247" html.valueishtml="0"  name=bkno_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Producer" border="0" color="0" x="1143" y="4" height="128" width="274" html.valueishtml="0"  name=producer_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Library Code" border="0" color="0" x="850" y="4" height="128" width="242" html.valueishtml="0"  name=libcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Quantity" border="0" color="0" x="1449" y="4" height="128" width="283" html.valueishtml="0"  name=qty_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="347" y="4" height="76" width="475" format="[shortdate] [time]" html.valueishtml="0"  name=cabdt visible="1" editmask.mask="mm/dd/yy hh:mm:ss" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1371" y="4" height="76" width="69" format="[shortdate] [time]" html.valueishtml="0"  name=scheddate visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="0" x="41" y="4" height="76" width="247" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="5" color="0" x="1486" y="4" height="76" width="210" format="[general]" html.valueishtml="0"  name=ordqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=40 border="5" color="0" x="1170" y="4" height="76" width="165" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="855" y="4" height="76" width="274" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

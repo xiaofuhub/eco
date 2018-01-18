@@ -1,0 +1,13 @@
+﻿$PBExportHeader$d_producer_col_only.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="prdrhol.prdr" )
+ retrieve="  SELECT DISTINCT prdrhol.prdr  
+    FROM prdrhol   
+" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="4" height="76" width="370" format="[general]~tupper( prdr )" html.valueishtml="0"  name=prdr visible="1" dddw.name=dddw_producer_holiday dddw.displaycolumn=prdr dddw.datacolumn=prdr dddw.percentwidth=100 dddw.lines=10 dddw.limit=4 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.nilisnull=yes dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

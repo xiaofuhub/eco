@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_calc_tot_dup_bks_todate.srf
+global type f_calc_tot_dup_bks_todate from function_object
+end type
+
+forward prototypes
+global function long f_calc_tot_dup_bks_todate (string lcntr)
+end prototypes
+
+global function long f_calc_tot_dup_bks_todate (string lcntr);long lcnt=0
+select count(*) into :lcnt from prod where cntr=:lcntr and prodstage='DU'
+using sqlservertrans;
+IF NOT(f_check_dberror(sqlservertrans,'PROD')) THEN
+	return 0
+ELSE
+	return lcnt
+END IF
+end function
+

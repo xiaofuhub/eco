@@ -1,0 +1,42 @@
+﻿$PBExportHeader$str_pms_data_extract.srs
+$PBExportComments$PMS data extract - structure to hold export variables
+global type str_pms_data_extract from structure
+	string		chno
+	string		lang
+	string		ajfyn
+	string		ttlart
+	string		ttl
+	string		bkmed
+	long		bkseq
+	string		aepcd
+	string		authfn
+	string		auth
+	string		ahonorific
+	string		coauthfn
+	string		coauth
+	string		chonorific
+	string		narr
+	string		narrfn
+	long		vols
+	string		ricd
+	string		anno
+	string		anno_foreign
+	string		prop_added_flg
+	long		anyr
+	string		oneliner
+	string		pmsub1
+	string		pmsub2
+	string		pmsub3
+	string		lang_desc
+	string		g1br
+	string		casub
+	long		length_
+	long		mcnt
+	string		dbrc
+	string		bestseller
+	boolean		live
+	string		coauthstr
+	string		narrstr
+	integer		coauthcnt
+end type
+

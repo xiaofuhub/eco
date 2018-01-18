@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_catalog_info.srs
+$PBExportComments$PMS data extract - structure to hold export variables
+global type str_catalog_info from structure
+	string		pmsub
+	string		casub
+	string		media
+end type
+

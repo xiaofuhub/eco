@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_voucher_report.srs
+global type str_voucher_report from structure
+	date		ld_date
+	date		ld_date1
+	string		ls_contract
+	date		ld_dates
+	date		ld_pcdt
+	string		array[20]
+	date		d_date
+end type
+

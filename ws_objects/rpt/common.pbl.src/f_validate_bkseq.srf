@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_validate_bkseq.srf
+$PBExportComments$Function to validate book sequence
+global type f_validate_bkseq from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_bkseq (long lseq, string lmed)
+end prototypes
+
+global function boolean f_validate_bkseq (long lseq, string lmed);IF Lseq > 0 THEN
+	IF Lmed <> "" THEN 
+		RETURN TRUE
+	ELSE
+		RETURN FALSE
+	END IF
+ELSEIF Lmed <> "" THEN
+	IF Lseq > 0 THEN
+		RETURN TRUE
+	ELSE
+		RETURN FALSE
+	END IF
+ELSE
+	RETURN TRUE
+END IF
+end function
+

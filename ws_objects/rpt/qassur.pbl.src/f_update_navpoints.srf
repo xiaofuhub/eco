@@ -1,0 +1,72 @@
+﻿$PBExportHeader$f_update_navpoints.srf
+global type f_update_navpoints from function_object
+end type
+
+forward prototypes
+global function integer f_update_navpoints ()
+end prototypes
+
+global function integer f_update_navpoints ();Blob ncx_blob
+String ls_text
+Integer i,rtn,ll_rows,lcnt_navpoint
+long ll_bkseq
+n_ds lds
+n_cst_string 	inv_string
+
+lds = CREATE n_ds
+lds.dataObject = "d_test_navpoint"
+
+ll_rows = lds.SetTransObject(SqlServerTrans)
+ll_rows = lds.Retrieve()
+
+IF ll_rows = -1  THEN
+	Messagebox("Database Error","There was an error during the retrieve.  Please try again.")
+	SetPointer(arrow!)
+	RETURN -1
+END IF
+
+FOR i = 1 TO ll_rows
+	ll_bkseq = lds.object.bkseq[i]	
+
+	// NCX File
+	SELECTBLOB NCX_FILE
+			  INTO  :ncx_blob
+			  FROM DTB_DATA
+			  where BKSEQ = :ll_bkseq
+			  USING SQLServerTrans ;
+	IF SqlServerTrans.sqlNRows > 0 AND NOT(IsNull(ncx_blob))THEN
+		ls_text = lower(String(ncx_blob))
+		
+		lcnt_navpoint = inv_string.of_CountOccurrences(ls_text,  '/navpoint', TRUE)
+
+		UPDATE DTB_DATA
+		SET NAVPOINTS = :lcnt_navpoint
+		WHERE BKSEQ = :ll_bkseq
+		USING SQLServerTrans ;
+		 IF f_check_dberror(SqlServerTrans,"Update into dtb_data ") = FALSE THEN
+			ROLLBACK USING SqlServerTrans;
+			Messagebox("Error in Update","Record was not updated into dtb_data table (ERROR in Update dtb_data)")
+			RETURN -1
+		END IF
+
+	ELSEIF 	IsNull(ncx_blob) THEN
+		Messagebox("ERROR SELECTING BLOB"," NCX File is NULL for book number "+string(ll_bkseq))
+	ELSE
+		Messagebox("ERROR SELECTING BLOB"," Error in selecting NCX File.")
+	END IF
+	
+
+      SetNull(ncx_blob)
+      SetNull(ll_bkseq)
+      SetNull(ls_text)
+      SetNull(lcnt_navpoint)
+NEXT
+
+ IF f_check_dberror(SqlServerTrans,"Update into dtb_data ") = TRUE THEN
+	COMMIT USING SqlServerTrans;
+	Messagebox("DTB_DATA","Record updated")
+	RETURN -1
+END IF
+
+end function
+

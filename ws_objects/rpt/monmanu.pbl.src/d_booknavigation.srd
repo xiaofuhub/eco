@@ -1,0 +1,58 @@
+﻿$PBExportHeader$d_booknavigation.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=44 color="536870912"  height.autosize=yes)
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=conno dbname="booknavigation.conno" )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=bookelement dbname="booknavigation.bookelement" )
+ column=(type=number update=yes updatewhereclause=yes name=navigationlevel dbname="booknavigation.navigationlevel" values="	1/	2/	3/	4/	5/	6/" )
+ column=(type=char(500) update=yes updatewhereclause=yes name=comments dbname="booknavigation.comments" )
+ column=(type=number update=yes updatewhereclause=yes name=position dbname="booknavigation.position" )
+ column=(type=char(32) update=yes updatewhereclause=yes name=template dbname="booknavigation.template" )
+ retrieve="  SELECT CONNO,   
+         BOOKELEMENT,   
+         NAVIGATIONLEVEL,   
+         COMMENTS,   
+         POSITION,
+	  TEMPLATE  
+    FROM BOOKNAVIGATION   
+	where conno=:as_conno
+	and template=:as_template
+" update="BOOKNAVIGATION" updatewhere=0 updatekeyinplace=no arguments=(("as_conno", string),("as_template", string))  sort="conno A position A " )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="3022" y="52" height="52" width="247" format="[general]" html.valueishtml="0"  name=conno visible="0" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="E" border="0" color="33554432" x="105" y="8" height="44" width="69" html.valueishtml="0"  name=t_2 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="V" border="0" color="33554432" x="192" y="8" height="44" width="69" html.valueishtml="0"  name=t_3 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="E" border="0" color="33554432" x="265" y="8" height="44" width="69" html.valueishtml="0"  name=t_4 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="L" border="0" color="33554432" x="338" y="8" height="44" width="69" html.valueishtml="0"  name=t_5 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="S" border="0" color="33554432" x="416" y="8" height="52" width="69" html.valueishtml="0"  name=t_6 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="L" border="0" color="33554432" x="23" y="8" height="44" width="69" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="1" border="0" color="33554432" x="14" y="56" height="40" width="78" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Serif" font.height="-6" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="2" border="0" color="33554432" x="96" y="56" height="40" width="78" html.valueishtml="0"  name=t_10 visible="1"  font.face="MS Serif" font.height="-6" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="3" border="0" color="33554432" x="183" y="56" height="40" width="78" html.valueishtml="0"  name=t_11 visible="1"  font.face="MS Serif" font.height="-6" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="4" border="0" color="33554432" x="256" y="56" height="40" width="78" html.valueishtml="0"  name=t_12 visible="1"  font.face="MS Serif" font.height="-6" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="5" border="0" color="33554432" x="334" y="56" height="40" width="78" html.valueishtml="0"  name=t_13 visible="1"  font.face="MS Serif" font.height="-6" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="6" border="0" color="33554432" x="411" y="56" height="40" width="78" html.valueishtml="0"  name=t_14 visible="1"  font.face="MS Serif" font.height="-6" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Title:" border="0" color="33554432" x="521" y="0" height="48" width="119" html.valueishtml="0"  name=t_7 visible="1"  font.face="Microsoft Sans Serif" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Book Element" border="0" color="33554432" x="517" y="52" height="48" width="635" html.valueishtml="0"  name=bookelement_t visible="1"  font.face="Microsoft Sans Serif" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="C o m m e n t s" border="0" color="33554432" x="1321" y="52" height="48" width="1166" html.valueishtml="0"  name=comments_t visible="1"  font.face="Microsoft Sans Serif" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Book Number:" border="0" color="33554432" x="2277" y="4" height="48" width="329" html.valueishtml="0"  name=t_8 visible="1"  font.face="Microsoft Sans Serif" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="" border="0" color="33554432" x="2610" y="4" height="48" width="270" html.valueishtml="0"  name=t_bkno visible="1"  font.face="Microsoft Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="" border="0" color="33554432" x="649" y="0" height="48" width="1618" html.valueishtml="0"  name=t_title visible="1"  font.face="Microsoft Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="3758" y="0" height="56" width="50" format="[general]" html.valueishtml="0"  name=position visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="3822" y="4" height="48" width="114" format="[general]" html.valueishtml="0"  name=template visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="3" tabsequence=10 border="0" color="33554432" x="18" y="0" height="48" width="471" format="[general]" html.valueishtml="0"  name=navigationlevel visible="1" radiobuttons.columns=6 radiobuttons.scale=yes radiobuttons.threed=yes  font.face="Microsoft Sans Serif" font.height="-4" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="33554432" x="1115" y="4" height="40" width="2542" format="[general]" html.valueishtml="0"  name=comments visible="1" edit.limit=500 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="530" y="0" height="44" width="581" format="[general]" html.valueishtml="0"  name=bookelement visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_validate_pmsub.srf
+global type f_validate_pmsub from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_pmsub (string pmsub)
+end prototypes
+
+global function boolean f_validate_pmsub (string pmsub);string Local_pmsub
+
+IF (pmsub="" OR IsNull(pmsub)) THEN
+	pmsub = "????"
+END IF
+
+Select pmsub_code into :Local_pmsub from pmsub
+where pmsub_code = :pmsub
+using sqlservertrans;
+	// MessageBox("pmsub","local_pmsub = "+ Local_pmsub + " pmsub = "+ pmsub)
+IF f_check_dberror(sqlservertrans,"PMSUB")=FALSE THEN
+	RETURN FALSE
+END IF
+
+IF ( (TRIM(pmsub)=TRIM(Local_pmsub)) OR pmsub="????" ) THEN
+	RETURN TRUE
+ELSE
+	RETURN FALSE
+END IF
+
+end function
+

@@ -1,0 +1,89 @@
+﻿$PBExportHeader$d_vol_selection.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=180 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="553648127"  height.autosize=yes)
+table(column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="BKSEQ" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="BKMED" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="PRODSTAGE" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="CNTR" )
+ column=(type=datetime updatewhereclause=yes name=prod_schstdt dbname="SCHSTDT" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="ACTENDDT" )
+ column=(type=datetime updatewhereclause=yes name=qastg_qacompdt dbname="QACOMPDT" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=mchar_conno dbname="CONNO" )
+ column=(type=datetime updatewhereclause=yes name=mchar_fr dbname="FR" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_len dbname="LEN" )
+ column=(type=char(512) updatewhereclause=yes name=cttl dbname="TTL" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_cascd dbname="CASCD" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="PRDR" )
+ column=(type=char(1) updatewhereclause=yes name=cas_flag dbname="AS_FLAG" validation="gettext() = ~"N~" OR gettext() = ~"I~"" validationmsg="~"Enter 'I' to include books in this batch or 'N' to not to be selected for this batch~"" )
+ retrieve="  SELECT prod.bkseq,   
+         prod.bkmed,   
+         prod.prodstage,   
+         prod.cntr,   
+         prod.schstdt,   
+         prod.actenddt,   
+         qastg.qacompdt,   
+         mchar.conno,   
+         mchar.fr,   
+         mchar.len,   
+         ttlinit.ttl,   
+         mchar.cascd,   
+         ancntr.prdr,   
+         'N' AS as_flag 
+    FROM  prod  ,
+			qastg ,   
+         mchar,   
+         ttlinit,   
+         ancntr  
+   WHERE ( prod.cntr = ancntr.cntr ) and 
+			( prod.bkmed = qastg.bkmed (+) ) and 
+			( prod.bkseq = qastg.bkseq (+)) and 
+			( prod.cntr = qastg.cntr (+)) and  
+         ( mchar.bkseq = prod.bkseq ) and 
+ 			( mchar.bkMED = prod.bkmed ) and 
+         ( mchar.chno = ttlinit.chno ) and  
+         qastg.qastg = '1' AND  
+         qastg.qastatcd = 'A' AND  
+         prod.actenddt IS NOT NULL AND  
+         prod.prodstage in ('AB','MA') AND  
+         (mchar.cascd IS NULL AND  
+         mchar.cabdt IS NULL) AND  
+         ancntr.cntrcvcd <> 'C'
+ORDER BY ancntr.prdr ASC,   
+         prod.schstdt ASC,   
+         prod.bkseq ASC   
+" update="mchar" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Title" border="0" color="0" x="1006" y="120" height="52" width="137" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="QA Approval
+Date" border="0" color="0" x="2473" y="12" height="160" width="233" html.valueishtml="0"  name=qastg_qacompdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Final
+Review
+Date" border="0" color="0" x="1632" y="16" height="156" width="201" html.valueishtml="0"  name=mchar_fr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Length" border="0" color="0" x="1431" y="120" height="52" width="174" html.valueishtml="0"  name=mchar_applen_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Schedule
+ Start
+Date(RM)" border="0" color="0" x="1883" y="16" height="156" width="251" html.valueishtml="0"  name=prod_schstdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Actual
+End
+Date(MCM) " border="0" color="0" x="2158" y="16" height="156" width="288" html.valueishtml="0"  name=prod_actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Prdr" border="0" color="0" x="14" y="120" height="52" width="123" html.valueishtml="0"  name=ancntr_prdr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Please
+Select
+Flag" border="0" color="0" x="169" y="16" height="156" width="178" html.valueishtml="0"  name=hold_flag visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Book
+Number" border="0" color="0" x="384" y="68" height="104" width="201" html.valueishtml="0"  name=mchar_bkmed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=14 alignment="0" tabsequence=10 border="5" color="0" x="229" y="4" height="76" width="64" format="[general]" html.valueishtml="0"  name=cas_flag  tag="Enter 'I' to include books in this batch or 'N' to not to be selected for this batch" visible="1" editmask.autoskip=yes editmask.mask="!" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="0" x="14" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=ancntr_prdr  tag="Code for the producer who is recording the book or producing the book in braille" visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="434" y="4" height="76" width="187" format="[general]" html.valueishtml="0"  name=prod_bkseq  tag="Book sequence" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="1591" y="4" height="76" width="274" format="[general]" html.valueishtml="0"  name=mchar_fr  tag="The date of final review in CDS (after which the book is sent to BCS)" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1883" y="4" height="76" width="274" format="[general]" html.valueishtml="0"  name=prod_schstdt  tag="The date that the book is officially assigned to the producer for the manufacturer to begin work." visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="2171" y="4" height="76" width="274" format="[general]" html.valueishtml="0"  name=prod_actenddt  tag="Date manufacturer completes the master tape or master copy of braille book" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="2459" y="4" height="76" width="274" format="[general]" html.valueishtml="0"  name=qastg_qacompdt  tag="The date a specific QA review ( QA stage 1,2, or 3 ) is completed.product may have been accepted or rejected." visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="1490" y="4" height="76" width="82" format="[general]" html.valueishtml="0"  name=mchar_len  tag="Length" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="645" y="4" height="76" width="827" format="[general]" html.valueishtml="0"  name=cttl visible="1" height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="352" y="4" height="76" width="82" format="[general]" html.valueishtml="0"  name=prod_bkmed  tag="Book medium" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

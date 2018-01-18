@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_qa_add_narr_for_book.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 )
+header(height=108 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(34) update=yes updatewhereclause=yes key=yes name=narr dbname="narr.narr" dbalias=".narr" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=narrfn dbname="narr.narrfn" dbalias=".narrfn" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bkseq dbname="narr.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=bkmed dbname="narr.bkmed" dbalias=".bkmed" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=recagcy dbname="narr.recagcy" dbalias=".recagcy" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=created_by dbname="narr.created_by" dbalias=".created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=created_date dbname="narr.created_date" dbalias=".created_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=modified_by dbname="narr.modified_by" dbalias=".modified_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=modified_date dbname="narr.modified_date" dbalias=".modified_date" )
+ retrieve="    SELECT narr.narr,   
+         narr.narrfn,   
+         narr.bkseq,   
+         narr.bkmed,
+			narr.recagcy,
+		narr.created_by,
+		narr.created_date,
+		narr.modified_by,
+		narr.modified_date
+    FROM narr  
+   WHERE bkseq = :lbkseq
+" update="narr" updatewhere=1 updatekeyinplace=yes arguments=(("lbkseq", number)) )
+text(band=header alignment="2" text="Narrator's 
+First Name" border="0" color="0" x="558" y="4" height="116" width="389" html.valueishtml="0"  name=narrfn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Narrator's
+ Last Name" border="0" color="0" x="9" y="4" height="116" width="539" html.valueishtml="0"  name=narr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Book
+Media" border="0" color="0" x="955" y="4" height="116" width="183" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Book 
+ Number" border="0" color="0" x="1147" y="4" height="116" width="302" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="12632256" x="1458" y="56" height="20" width="5" format="[general]" html.valueishtml="0"  name=recagcy visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="558" y="4" height="72" width="389" format="[general]" html.valueishtml="0"  name=narrfn  tag="Narrator's first name" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="9" y="4" height="72" width="539" format="[general]" html.valueishtml="0"  name=narr  tag="Narrator's last name" visible="1" dddw.name=dddw_narrtbl dddw.displaycolumn=narr dddw.datacolumn=narr dddw.percentwidth=250 dddw.lines=0 dddw.limit=34 dddw.allowedit=yes dddw.useasborder=no dddw.case=any dddw.nilisnull=yes dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="0" x="955" y="4" height="72" width="183" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1147" y="4" height="72" width="302" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

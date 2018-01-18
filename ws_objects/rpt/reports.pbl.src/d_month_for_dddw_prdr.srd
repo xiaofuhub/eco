@@ -1,0 +1,16 @@
+﻿$PBExportHeader$d_month_for_dddw_prdr.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes name=prdr dbname="ancntr.prdr" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=cntr dbname="ancntr.cntr" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=cntrmed dbname="ancntr.cntrmed" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ancntr~" ) COLUMN(NAME=~"ancntr.prdr~") COLUMN(NAME=~"ancntr.cntr~") COLUMN(NAME=~"ancntr.cntrmed~")) " update="ancntr" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="343" format="[general]" html.valueishtml="0"  name=prdr visible="1" dddw.name=dddw_prdr2 dddw.displaycolumn=prdr dddw.datacolumn=prdr dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="366" y="4" height="76" width="160" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="549" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

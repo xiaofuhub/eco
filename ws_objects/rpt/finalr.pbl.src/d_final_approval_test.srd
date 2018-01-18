@@ -1,0 +1,65 @@
+﻿$PBExportHeader$d_final_approval_test.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=4 color="536870912" )
+footer(height=12 color="536870912" )
+detail(height=220 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="mchar.bkmed" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=med dbname="mchar.med" values="BR	BR/BRA	BRA/BRF	BRF/BRX	BRX/RTB	RTB/CB	CB/TB	TB/RD	RD/FD	FD/CBA	CBA/P//B	P//B/" validationmsg="~"You must supply Medium.~"" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=priority dbname="mchar.priority" values="N	N/P	P/R	R/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=fr dbname="mchar.fr" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pcsstdt dbname="mchar.pcsstdt" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pcsstdt_flg dbname="mchar.pcsstdt_flg" values="Yes	Y/No	N/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=frflag dbname="mchar.frflag" initial="'Y'" values="Yes	Y/No	N/" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=conno dbname="mchar.conno" )
+ column=(type=char(6) updatewhereclause=yes name=chno dbname="mchar.chno" )
+ column=(type=char(1) updatewhereclause=yes name=andigcd dbname="mchar.andigcd" initial="'N'" values="Digital	Y/Analog	N/Either	M/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=emboss_eligible dbname="mchar.emboss_eligible" values="Yes	Y/No	N/" )
+ column=(type=char(39) updatewhereclause=yes name=compute_0013 dbname="compute_0013" values="Cassette	Cassette/Flash	Flash/Flash//Cassette	Flash//Cassette/" )
+ retrieve="  SELECT mchar.bkseq,mchar.bkmed,mchar.med,   
+         mchar.priority,   
+         mchar.fr,   
+         mchar.pcsstdt,   
+         mchar.pcsstdt_flg,   
+         mchar.frflag,   
+         mchar.conno,   
+         mchar.chno,
+         mchar.andigcd,
+	  mchar.emboss_eligible , '                                       '
+    FROM mchar  
+" update="mchar" updatewhere=1 updatekeyinplace=yes )
+data(null null null null null null null null null null null null null ) 
+text(band=detail alignment="0" text="Bkno:" border="0" color="0" x="41" y="128" height="56" width="123" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Conno:" border="0" color="0" x="14" y="32" height="56" width="146" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2816" y="40" height="52" width="55" format="[general]" html.valueishtml="0"  name=chno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="FR Date:" border="0" color="0" x="453" y="32" height="52" width="192" html.valueishtml="0"  name=fr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="PCS Start Date:" border="0" color="0" x="969" y="32" height="52" width="343" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Med:" border="0" color="0" x="1646" y="32" height="52" width="128" html.valueishtml="0"  name=med_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="255" x="658" y="24" height="76" width="297" format="[general]" html.valueishtml="0"  name=fr  tag="Final review date" visible="1" editmask.autoskip=yes editmask.mask="mm/dd/yyyy"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="255" x="1326" y="24" height="76" width="302" format="[general]" html.valueishtml="0"  name=pcsstdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=40 border="5" color="16711680" x="1783" y="24" height="76" width="201" format="[general]" html.valueishtml="0"  name=med  tag="medium" visible="1" ddlb.limit=3 ddlb.sorted=yes ddlb.allowedit=no ddlb.case=any ddlb.vscrollbar=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Frflag" border="0" color="0" x="2309" y="32" height="52" width="119" html.valueishtml="0"  name=frflag_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=60 border="5" color="0" x="2437" y="24" height="76" width="343" format="[general]" html.valueishtml="0"  name=frflag  tag="This flag indiacates whether the title has been passed the final review or not" visible="1" radiobuttons.columns=2 radiobuttons.scale=yes radiobuttons.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Priority" border="0" color="0" x="2002" y="32" height="52" width="142" html.valueishtml="0"  name=priority_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="5" color="0" x="2158" y="24" height="76" width="128" format="[general]" html.valueishtml="0"  name=priority  tag="Priority" visible="1" ddlb.limit=1 ddlb.allowedit=no ddlb.case=any ddlb.required=yes ddlb.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="0" tabsequence=10 border="5" color="255" x="174" y="24" height="76" width="270" format="[general]" html.valueishtml="0"  name=conno  tag="Enter Valid eight digit control number" visible="1" editmask.mask="########" editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=80 border="5" color="0" x="466" y="128" height="72" width="119" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=70 border="5" color="0" x="174" y="128" height="72" width="270" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=90 border="5" color="0" x="1202" y="136" height="52" width="366" format="[general]" html.valueishtml="0"  name=pcsstdt_flg visible="1" radiobuttons.columns=2 radiobuttons.scale=no radiobuttons.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="PCS Start Date Flag:" border="0" color="0" x="741" y="136" height="52" width="448" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Media Flag" border="0" color="0" x="1682" y="136" height="52" width="238" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="0" tabsequence=110 border="5" color="0" x="1947" y="128" height="68" width="407" format="[general]" html.valueishtml="0"  name=compute_0013 visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=100 border="5" color="0" x="2711" y="140" height="52" width="174" format="[general]" html.valueishtml="0"  name=emboss_eligible visible="0~tif(med = 'BR' OR med = 'P/B', 1, 0 )" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Embossor:" border="0" color="0" x="2469" y="140" height="52" width="224" html.valueishtml="0"  name=t_5 visible="0~tif(med = 'BR' OR med = 'P/B', 1, 0 )"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

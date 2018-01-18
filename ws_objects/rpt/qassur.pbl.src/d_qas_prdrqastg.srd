@@ -1,0 +1,56 @@
+﻿$PBExportHeader$d_qas_prdrqastg.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1232 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes name=bkno dbname="PRDRQASTG.BKNO" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=bkmed dbname="PRDRQASTG.BKMED" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bkseq dbname="PRDRQASTG.BKSEQ" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=cntr dbname="PRDRQASTG.CNTR" )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=qastg dbname="PRDRQASTG.QASTG" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=qarecdt dbname="PRDRQASTG.QARECDT" )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=qastatcd dbname="PRDRQASTG.QASTATCD" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=qacompdt dbname="PRDRQASTG.QACOMPDT" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=prdr dbname="PRDRQASTG.PRDR" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=subprdr dbname="PRDRQASTG.SUBPRDR" )
+ column=(type=char(512) update=yes updatewhereclause=yes name=qacomments dbname="PRDRQASTG.QACOMMENTS" )
+ retrieve="  SELECT PRDRQASTG.BKNO,   
+			PRDRQASTG.BKMED,
+			PRDRQASTG.BKSEQ,
+         PRDRQASTG.CNTR,   
+         PRDRQASTG.QASTG,   
+         PRDRQASTG.QARECDT,   
+         PRDRQASTG.QASTATCD,   
+         PRDRQASTG.QACOMPDT,   
+         PRDRQASTG.PRDR,   
+         PRDRQASTG.SUBPRDR,   
+         PRDRQASTG.QACOMMENTS  
+    FROM PRDRQASTG 
+WHERE bkseq = :lbkseq
+and bkmed = :lbkmed
+and cntr = :lcntr
+and qastg = :lqastg
+" update="PRDRQASTG" updatewhere=1 updatekeyinplace=yes arguments=(("lbkmed", string),("lcntr", string),("lqastg", string),("lbkseq", number)) )
+text(band=detail alignment="1" text="Bkno:" border="0" color="0" x="37" y="4" height="64" width="375"  name=bkno_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="4" height="76" width="247" format="[general]"  name=bkno edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cntr:" border="0" color="0" x="37" y="140" height="64" width="375"  name=cntr_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="140" height="76" width="219" format="[general]"  name=cntr edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Qastg:" border="0" color="0" x="37" y="276" height="64" width="375"  name=qastg_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="276" height="76" width="55" format="[general]"  name=qastg edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Qarecdt:" border="0" color="0" x="37" y="412" height="64" width="375"  name=qarecdt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="412" height="76" width="603" format="[shortdate] [time]"  name=qarecdt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Qastatcd:" border="0" color="0" x="37" y="548" height="64" width="375"  name=qastatcd_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="548" height="76" width="55" format="[general]"  name=qastatcd edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Qacompdt:" border="0" color="0" x="37" y="684" height="64" width="375"  name=qacompdt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="684" height="76" width="603" format="[shortdate] [time]"  name=qacompdt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Prdr:" border="0" color="0" x="37" y="820" height="64" width="375"  name=prdr_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="820" height="76" width="137" format="[general]"  name=prdr edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Subprdr:" border="0" color="0" x="37" y="956" height="64" width="375"  name=subprdr_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="956" height="76" width="137" format="[general]"  name=subprdr edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Qacomments:" border="0" color="0" x="37" y="1092" height="64" width="375"  name=qacomments_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="448" y="1092" height="64" width="3511" format="[general]"  name=qacomments edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="887" y="60" height="64" width="82"  name=bkmed  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="773" y="144" height="64" width="393"  name=bkseq  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

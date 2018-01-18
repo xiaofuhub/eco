@@ -1,0 +1,32 @@
+﻿$PBExportHeader$d_cc_par_report_bkno_med.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1988 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ retrieve="  SELECT mchar.med, 
+         mchar.bkseq,   
+         ttlinit.ttl    
+    FROM mchar, 
+			prod,  
+         ttlinit	  
+   WHERE ( mchar.chno = ttlinit.chno(+) ) and
+			( prod.bkseq = mchar.bkseq ) and
+			( prod.bkmed = mchar.bkmed ) and
+			( prod.assigndt = :ld_date ) and
+			( prod.cntr = :ls_cntr )" arguments=(("ld_date", date),("ls_cntr", string)) )
+text(band=detail alignment="0" text="PRODUCTION AUTHORIZATION RECORD EXCEPTION REPORT" border="0" color="0" x="466" y="104" height="64" width="1842" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=detail x="2409" y="76" height="120" width="27"  name=r_1 visible="1" brush.hatch="6" brush.color="8421504" pen.style="5" pen.width="5" pen.color="553648127"  background.mode="2" background.color="8421504" )
+rectangle(band=detail x="343" y="192" height="20" width="2094"  name=r_2 visible="1" brush.hatch="6" brush.color="8421504" pen.style="5" pen.width="5" pen.color="553648127"  background.mode="2" background.color="0" )
+rectangle(band=detail x="343" y="76" height="120" width="27"  name=r_3 visible="1" brush.hatch="6" brush.color="8421504" pen.style="5" pen.width="5" pen.color="553648127"  background.mode="2" background.color="8421504" )
+rectangle(band=detail x="343" y="60" height="20" width="2094"  name=r_4 visible="1" brush.hatch="6" brush.color="8421504" pen.style="5" pen.width="5" pen.color="553648127"  background.mode="2" background.color="0" )
+text(band=detail alignment="0" text="* *" border="0" color="0" x="343" y="384" height="64" width="59" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="* *" border="0" color="0" x="1440" y="384" height="64" width="59" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="NOTE: PAR requires special handling" border="0" color="0" x="407" y="384" height="64" width="1029" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="mchar_med+mchar_bkseq "border="0" color="0" x="347" y="284" height="48" width="311" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="663" y="284" height="48" width="2194" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" height.autosize=yes edit.limit=512 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

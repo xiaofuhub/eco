@@ -1,0 +1,37 @@
+﻿$PBExportHeader$f_anno_with_ss.srf
+global type f_anno_with_ss from function_object
+end type
+
+forward prototypes
+global function string f_anno_with_ss (string anno)
+end prototypes
+
+global function string f_anno_with_ss (string anno);long 		ll_return
+Integer	li_numstats,i
+String	ls_anno_words[ ],temp=' ',anno_ss
+
+n_cst_string		lnv_string
+anno_ss = anno
+
+// Separate the annotation into multiple words,
+// Separated by SPACES
+li_numstats = lnv_string.of_Parsetoarray(anno, ' ', ls_anno_words)
+
+For i = 1 to li_numstats
+	temp = temp + ls_anno_words[i]
+	IF len(temp) > 40 THEN
+		ls_anno_words[i] = ls_anno_words[i]+'~r~n~t'
+		temp = ' '
+	END IF
+NEXT
+
+ll_return = lnv_string.of_ArrayToString (ls_anno_words, ' ', anno)
+	
+IF ll_return = 1 THEN
+	RETURN TRIM(anno)
+ELSE
+	RETURN TRIM(anno_ss)
+END IF
+
+end function
+

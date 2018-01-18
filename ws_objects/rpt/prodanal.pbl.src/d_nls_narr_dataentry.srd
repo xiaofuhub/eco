@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_nls_narr_dataentry.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=164 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912"  height.autosize=yes)
+table(column=(type=char(34) update=yes updatewhereclause=yes key=yes name=narr dbname="narrtbl.narr" )
+ column=(type=char(34) update=yes updatewhereclause=yes key=yes name=narrfn dbname="narrtbl.narrfn" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=recagcy dbname="narrtbl.recagcy" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=narrsex dbname="narrtbl.narrsex" values="Male	M/Female	F/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=narractive dbname="narrtbl.narractive" values="Active	A/Inactive	I/" )
+ retrieve="SELECT  narr,narrfn,recagcy,narrsex,narractive
+FROM narrtbl
+ORDER BY 1,2" update="narrtbl" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="NarratorName" border="0" color="0" x="251" y="20" height="128" width="475" html.valueishtml="0"  name=devcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="RecordedAgency" border="0" color="0" x="1234" y="20" height="128" width="407" html.valueishtml="0"  name=descp_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="NarratorSex" border="0" color="0" x="1669" y="20" height="128" width="407" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Active orInactive" border="0" color="0" x="2121" y="20" height="128" width="407" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="41" y="4" height="76" width="713" format="[general]" html.valueishtml="0"  name=narr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="773" y="4" height="76" width="530" format="[general]" html.valueishtml="0"  name=narrfn visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="1326" y="4" height="76" width="279" format="[general]" html.valueishtml="0"  name=recagcy visible="1" dddw.name=dddw_qa_recagcy dddw.displaycolumn=recagcy dddw.datacolumn=recagcy dddw.percentwidth=100 dddw.lines=10 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="1737" y="0" height="76" width="274" format="[general]" html.valueishtml="0"  name=narrsex visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="2144" y="4" height="76" width="343" format="[general]" html.valueishtml="0"  name=narractive visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

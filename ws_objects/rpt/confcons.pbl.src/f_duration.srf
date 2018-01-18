@@ -1,0 +1,35 @@
+﻿$PBExportHeader$f_duration.srf
+global type f_duration from function_object
+end type
+
+forward prototypes
+global function string f_duration (long al_length)
+end prototypes
+
+global function string f_duration (long al_length);long ll_length, ll_hours, ll_minutes
+string ls_duration
+
+ll_length = al_length
+	
+IF  isnull(ll_length) THEN
+	ls_duration =  '0  hours ' +  ' 0 minutes '
+END IF
+
+IF ll_length > 0 THEN
+	ll_hours = int(ll_length/ 60) // round(ll_length / 60,2)
+	IF ll_hours < 1 THEN
+		ll_hours =0
+	END IF
+	ll_minutes = round( ll_length - int(ll_length / 60) * 60,3) // mod(ll_length, 60)
+	IF ll_hours = 1 THEN
+		ls_duration = string(ll_hours) + ' hour ' + string(ll_minutes) + ' minutes '
+	ELSE
+		ls_duration = string(ll_hours) + ' hours ' + string(ll_minutes) + ' minutes '
+	END IF
+ELSE
+		ls_duration =  '0  hours ' +  ' 0 minutes '
+END IF
+RETURN ls_duration
+
+end function
+

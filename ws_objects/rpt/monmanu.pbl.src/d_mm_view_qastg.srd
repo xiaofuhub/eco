@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_mm_view_qastg.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="qastg.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="qastg.bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="qastg.cntr" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="qastg.qastg" values="1	1/2	2/3	3/" )
+ column=(type=datetime updatewhereclause=yes name=qarecdt dbname="qastg.qarecdt" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt dbname="qastg.qacompdt" )
+ column=(type=char(8) updatewhereclause=yes name=qainit dbname="qastg.qainit" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="qastg.qastatcd" values="A	A/R	R/" )
+ column=(type=char(8) updatewhereclause=yes name=qarejcd dbname="qastg.qarejcd" )
+ retrieve="  SELECT qastg.bkseq,
+         qastg.bkmed,   
+         qastg.cntr, 
+			qastg.qastg,   
+         qastg.qarecdt,   
+         qastg.qacompdt,   
+         qastg.qainit,   
+         qastg.qastatcd,   
+         qastg.qarejcd
+    FROM qastg  
+   WHERE qastg.bkseq = :Lbkseq AND  
+         qastg.cntr = :Lcntr  
+ORDER BY 4 ASC,5 ASC,6 ASC,7 DESC  
+" arguments=(("Lbkseq", number),("Lcntr", string)) )
+text(band=header alignment="2" text="Reject Codes" border="0" color="0" x="1106" y="8" height="104" width="206" html.valueishtml="0"  name=qarejcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="A/R" border="0" color="0" x="768" y="8" height="104" width="91" html.valueishtml="0"  name=qastatcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Review Date" border="0" color="0" x="475" y="8" height="104" width="283" html.valueishtml="0"  name=qacompdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Received Date" border="0" color="0" x="174" y="8" height="104" width="293" html.valueishtml="0"  name=qarecdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QA Stage" border="0" color="0" x="9" y="8" height="104" width="155" html.valueishtml="0"  name=qastg_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reviewer" border="0" color="0" x="869" y="8" height="104" width="229" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="0" x="174" y="8" height="76" width="293" format="[general]" html.valueishtml="0"  name=qarecdt visible="1" editmask.required=yes editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="475" y="8" height="76" width="283" format="[general]" html.valueishtml="0"  name=qacompdt visible="1" editmask.required=yes editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="2" tabsequence=40 border="5" color="0" x="768" y="8" height="76" width="91" format="[general]" html.valueishtml="0"  name=qastatcd visible="1" edit.limit=1 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.imemode=0 edit.codetable=yes edit.validatecode=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=50 border="5" color="255" x="1106" y="8" height="76" width="206" format="[general]" html.valueishtml="0"  name=qarejcd visible="1" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no edit.required=yes edit.nilisnull=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="0" x="9" y="8" height="76" width="155" format="[general]" html.valueishtml="0"  name=qastg visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=upper ddlb.required=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="12632256" x="1321" y="8" height="76" width="5" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="869" y="8" height="76" width="229" format="[general]" html.valueishtml="0"  name=qainit visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

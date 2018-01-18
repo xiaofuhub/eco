@@ -1,0 +1,41 @@
+﻿$PBExportHeader$d_add_new_commercial_vendor_vend.srd
+$PBExportComments$Add New Commercial Vendor orgtype - CAV
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=440 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=vendabbr_vendcd dbname="vendabbr.vendcd" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=vendabbr_vendabbr dbname="vendabbr.vendabbr" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=vendabbr_vendor_description dbname="vendabbr.vendor_description" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=vendabbr_created_by dbname="vendabbr.created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=vendabbr_created_date dbname="vendabbr.created_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=vendabbr_modified_by dbname="vendabbr.modified_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=vendabbr_modified_date dbname="vendabbr.modified_date" )
+ retrieve="  SELECT ~"VENDABBR~".~"VENDCD~",   
+         ~"VENDABBR~".~"VENDABBR~",   
+         ~"VENDABBR~".~"VENDOR_DESCRIPTION~",   
+         ~"VENDABBR~".~"CREATED_BY~",   
+         ~"VENDABBR~".~"CREATED_DATE~",   
+         ~"VENDABBR~".~"MODIFIED_BY~",   
+         ~"VENDABBR~".~"MODIFIED_DATE~"  
+    FROM ~"VENDABBR~"   
+WHERE  ~"VENDABBR~".~"VENDABBR~" = :vendor" update="VENDABBR" updatewhere=1 updatekeyinplace=yes arguments=(("vendor", string)) )
+text(band=detail alignment="1" text="Vendor Description" border="0" color="33554432" x="9" y="12" height="64" width="558" html.valueishtml="0"  name=vendabbr_vendor_description_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="581" y="12" height="268" width="2693" format="[general]" html.valueishtml="0"  name=vendabbr_vendor_description visible="1" edit.limit=150 edit.case=any edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Vendor Created On" border="0" color="33554432" x="1207" y="340" height="64" width="649" html.valueishtml="0"  name=vendabbr_created_date_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Vendor Created By" border="0" color="33554432" x="23" y="344" height="64" width="539" html.valueishtml="0"  name=vendabbr_created_by_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="585" y="336" height="76" width="576" format="[general]" html.valueishtml="0"  name=vendabbr_created_by visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1893" y="340" height="76" width="334" format="[shortdate] [time]" html.valueishtml="0"  name=vendabbr_created_date visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

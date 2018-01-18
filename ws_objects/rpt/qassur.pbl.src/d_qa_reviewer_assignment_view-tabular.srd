@@ -1,0 +1,86 @@
+﻿$PBExportHeader$d_qa_reviewer_assignment_view-tabular.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=72 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=qareviewassign_bkseq dbname="qareviewassign.bkseq" )
+ column=(type=char(4000) updatewhereclause=yes name=ttl dbname="ttl" )
+ column=(type=datetime updatewhereclause=yes name=qareviewassign_qarecdt dbname="qareviewassign.qarecdt" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_lang dbname="ttlinit.lang" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_priority dbname="mchar.priority" values="Normal	N/Rush	R/Priority	P/" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=qa_reviewer_assignment_assigned_to dbname="qa_reviewer_assignment.assigned_to" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=qa_reviewer_assignment_assignment_no dbname="qa_reviewer_assignment.assignment_no" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=qa_reviewer_assignment_bkmed dbname="qa_reviewer_assignment.bkmed" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qa_reviewer_assignment_bkseq dbname="qa_reviewer_assignment.bkseq" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=qa_reviewer_assignment_assigned_by dbname="qa_reviewer_assignment.assigned_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=qa_reviewer_assignment_date_assigned dbname="qa_reviewer_assignment.date_assigned" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=qa_reviewer_assignment_active_status_code dbname="qa_reviewer_assignment.active_status_code" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=qa_reviewer_assignment_created_by dbname="qa_reviewer_assignment.created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=qa_reviewer_assignment_created_date dbname="qa_reviewer_assignment.created_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=qa_reviewer_assignment_modified_by dbname="qa_reviewer_assignment.modified_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=qa_reviewer_assignment_modified_date dbname="qa_reviewer_assignment.modified_date" )
+ column=(type=char(1) updatewhereclause=yes name=check_box dbname="check_box" values="	Y/	N" )
+ column=(type=char(10) updatewhereclause=yes name=book_assign_days dbname="book_assign_days" )
+ retrieve="  SELECT  DISTINCT QAREVIEWASSIGN.BKSEQ,
+         		F_GET_TITLE( MCHAR.BKSEQ,     MCHAR.BKMED) AS TTL,
+			QAREVIEWASSIGN.QARECDT,   
+			TTLINIT.LANG  ,
+			MCHAR.PRIORITY,
+			 QA_REVIEWER_ASSIGNMENT.ASSIGNED_TO,   
+			QA_REVIEWER_ASSIGNMENT.ASSIGNMENT_NO,   
+			QA_REVIEWER_ASSIGNMENT.BKMED,   
+			QA_REVIEWER_ASSIGNMENT.BKSEQ,   
+			QA_REVIEWER_ASSIGNMENT.ASSIGNED_BY,   
+			QA_REVIEWER_ASSIGNMENT.DATE_ASSIGNED,   
+			QA_REVIEWER_ASSIGNMENT.ACTIVE_STATUS_CODE,   
+			QA_REVIEWER_ASSIGNMENT.CREATED_BY,   
+			QA_REVIEWER_ASSIGNMENT.CREATED_DATE,   
+			QA_REVIEWER_ASSIGNMENT.MODIFIED_BY,   
+			QA_REVIEWER_ASSIGNMENT.MODIFIED_DATE ,
+			' ' AS CHECK_BOX  ,
+			(select parameter_value from ref_system_control_parameters where parameter_name = 'book_assign_days' ) as book_assign_days
+
+    FROM    
+      QA_REVIEWER_ASSIGNMENT,   
+         QAREVIEWASSIGN , 		
+		MCHAR,
+         TTLINIT  
+ WHERE  
+ (	QAREVIEWASSIGN.BKSEQ  = QA_REVIEWER_ASSIGNMENT.BKSEQ(+)    ) AND
+			 (MCHAR.BKSEQ = QAREVIEWASSIGN.BKSEQ   )  and  
+      	    TTLINIT.CHNO(+)  =  MCHAR.CHNO   
+AND	ROWNUM <=(select parameter_value from ref_system_control_parameters where parameter_name = 'review_assign_rows')  
+ORDER BY MCHAR.PRIORITY DESC, QAREVIEWASSIGN.QARECDT ASC
+" update="QA_REVIEWER_ASSIGNMENT" updatewhere=0 updatekeyinplace=no filter="isnull (qa_reviewer_assignment_active_status_code) or  qa_reviewer_assignment_active_status_code  = 'A'")
+text(band=header alignment="0" text="Book Number" border="6" color="33554432" x="0" y="16" height="52" width="443" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Book Title" border="6" color="33554432" x="462" y="16" height="52" width="1394" html.valueishtml="0"  name=t_2 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Received Date" border="6" color="33554432" x="1879" y="16" height="52" width="421" html.valueishtml="0"  name=t_3 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Language" border="6" color="33554432" x="2318" y="16" height="52" width="261" html.valueishtml="0"  name=t_4 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Priority" border="6" color="33554432" x="2597" y="16" height="52" width="192" html.valueishtml="0"  name=t_5 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Prev Reviewer" border="6" color="33554432" x="2816" y="16" height="52" width="773" html.valueishtml="0"  name=t_6 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Check to Assign" border="6" color="33554432" x="3602" y="16" height="52" width="727" html.valueishtml="0"  name=t_7 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="3602" y="8" height="64" width="727" format="[general]" html.valueishtml="0"  name=qa_reviewer_assignment_assigned_to visible="1" dddw.name=dddw_qa_reviewers dddw.displaycolumn=user_ dddw.datacolumn=userid dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qareviewassign_qarecdt) ,today()) > long( book_assign_days ) and (isnull(   qa_reviewer_assignment_date_assigned ))), rgb(255,0,0), rgb(0,0,0) )" x="9" y="8" height="64" width="416" format="[general]" html.valueishtml="0"  name=qareviewassign_bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qareviewassign_qarecdt) ,today()) > long( book_assign_days ) and (isnull(   qa_reviewer_assignment_date_assigned ))), rgb(255,0,0), rgb(0,0,0) )" x="457" y="8" height="64" width="1394" format="[general]" html.valueishtml="0"  name=ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qareviewassign_qarecdt) ,today()) > long( book_assign_days ) and (isnull(   qa_reviewer_assignment_date_assigned ))), rgb(255,0,0), rgb(0,0,0) )" x="1879" y="8" height="64" width="421" format="[shortdate] [time]" html.valueishtml="0"  name=qareviewassign_qarecdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qareviewassign_qarecdt) ,today()) > long( book_assign_days ) and (isnull(   qa_reviewer_assignment_date_assigned ))), rgb(255,0,0), rgb(0,0,0) )" x="2318" y="8" height="64" width="265" format="[general]" html.valueishtml="0"  name=ttlinit_lang visible="1" dddw.name=dddw_language dddw.displaycolumn=lang_desc dddw.datacolumn=lang_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( (daysafter( date(qareviewassign_qarecdt) ,today()) > long( book_assign_days ) and (isnull(   qa_reviewer_assignment_date_assigned ))), rgb(255,0,0), if(mchar_priority = 'R',rgb(0,128,0), rgb(0,0,0))  )" x="2597" y="8" height="64" width="201" format="[general]" html.valueishtml="0"  name=mchar_priority visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="IF ( nOT ISNULL( qa_reviewer_assignment_assigned_to ),  lookupdisplay(qa_reviewer_assignment_assigned_to) ,'New')"border="0" color="33554432~tif ( (daysafter( date(qareviewassign_qarecdt) ,today()) > long( book_assign_days ) and (isnull(   qa_reviewer_assignment_date_assigned ))), rgb(255,0,0), rgb(0,0,0) )" x="2816" y="8" height="64" width="773" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="2" tabsequence=10 border="0" color="33554432" x="3602" y="8" height="64" width="425" format="[general]" html.valueishtml="0" protect="0~tIF ( nOT ISNULL( qa_reviewer_assignment_assigned_to ),  1,0)"  name=check_box visible="1~tIF ( nOT ISNULL( qa_reviewer_assignment_assigned_to ), 0,1)" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=footer x="18" y="0" height="64" width="78"  name=r_1 visible="1" brush.hatch="6" brush.color="255" pen.style="0" pen.width="5" pen.color="1073741824"  background.mode="2" background.color="33554432" )
+text(band=footer alignment="0" text="- Unassigned" border="0" color="33554432" x="110" y="4" height="52" width="283" html.valueishtml="0"  name=t_8 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=footer x="434" y="0" height="64" width="78"  name=r_2 visible="1" brush.hatch="6" brush.color="32768" pen.style="0" pen.width="5" pen.color="1073741824"  background.mode="2" background.color="33554432" )
+text(band=footer alignment="0" text="- Rush Book" border="0" color="33554432" x="526" y="4" height="52" width="283" html.valueishtml="0"  name=t_9 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

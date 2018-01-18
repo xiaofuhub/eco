@@ -1,0 +1,78 @@
+﻿$PBExportHeader$f_par_changes_email_sending.srf
+global type f_par_changes_email_sending from function_object
+end type
+
+forward prototypes
+global subroutine f_par_changes_email_sending (string lconno)
+end prototypes
+
+global subroutine f_par_changes_email_sending (string lconno);String   lprdr, lcntr, lbkmed
+Long     lbkseq
+Date     ld_assigndt, ld_actenddt, ld_fr
+Integer  lcnt, rtn
+
+SELECT fr, bkseq, bkmed
+INTO :ld_fr, :lbkseq, :lbkmed
+FROM mchar
+WHERE conno = :lconno
+USING sqlservertrans;
+
+// Final review exist for this conno
+IF NOT(IsNull(ld_fr)) THEN
+// Get the contract number for duplication
+      SELECT cntr, actenddt, assigndt
+        INTO :lcntr, :ld_actenddt, :ld_assigndt
+        FROM prod
+       WHERE bkseq = :lbkseq
+         AND bkmed = :lbkmed
+         AND prodstage IN ('DU', 'PB', 'PR')
+			USING sqlservertrans;
+
+      IF IsNull(lcntr) THEN
+// Get the contract number for Narration if the contract number for duplication does not exist.
+// This book is only for narration.
+         SELECT cntr, actenddt, assigndt
+           INTO :lcntr, :ld_actenddt, :ld_assigndt
+           FROM prod
+          WHERE bkseq = :lbkseq AND bkmed = :lbkmed
+                AND prodstage IN ('MA', 'AB')
+			USING sqlservertrans;
+      END IF
+// Got the contract number and the book is not shipped yet (actenddt is null)
+    	IF NOT IsNull(ld_assigndt) AND IsNull(ld_actenddt) THEN
+			// prompt a messagebox
+			rtn = Messagebox('Email Notification','Do you want to send prodcuer an email for the changes you made?',question!,yesNo!,2)
+			IF rtn = 1 THEN
+				
+				lcnt = 0
+				
+				SELECT COUNT(*)				
+				INTO :lcnt
+				FROM par_email_sent
+				USING sqlservertrans;
+				
+				IF lcnt > 0 THEN
+					UPDATE par_email_sent
+					SET email_sent='Y'
+					WHERE conno = :lconno
+					USING sqlservertrans;
+				ELSE
+					INSERT INTO par_email_sent(conno, email_sent)
+					VALUES (:lconno, 'N')
+					USING sqlservertrans;
+				END IF
+				
+				IF f_check_dberror(sqlservertrans,'PAR_EMAIL_SENT') = FALSE THEN
+					ROLLBACK USING sqlservertrans;
+				ELSE
+					COMMIT USING sqlservertrans;
+				END IF
+				  
+				
+			END IF
+    	END IF
+	 
+END IF
+
+end subroutine
+

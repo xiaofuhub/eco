@@ -1,0 +1,71 @@
+﻿$PBExportHeader$f_blob_string.srf
+$PBExportComments$pms data extract - converts string to blob
+global type f_blob_string from function_object
+end type
+
+forward prototypes
+global function blob f_blob_string (string as_inp)
+end prototypes
+
+global function blob f_blob_string (string as_inp);long ll_count, ll_pos
+char lc_char
+blob lb_blob
+blob {10} lb_endfield
+blob {12} lb_endrec
+blob {9} lb_ef
+blob {11} lb_er
+string ls_temp
+uint lu_zero=0
+
+//lb_endfield = blob("aaaaaaaaa")
+//lb_endrec = blob("bbbbbbbbbbb")
+//
+
+// build endfield blob
+ls_temp = "~hde~h31~h04"
+blobedit(lb_endfield,1,ls_temp)
+blobedit(lb_endfield, 4,lu_zero)
+ls_temp = "~h04"
+blobedit(lb_endfield,5,ls_temp)
+blobedit(lb_endfield,6,lu_zero)
+ls_temp = "~h31~hde"
+blobedit(lb_endfield,7,ls_temp)
+lc_char = "~h0a"
+blobedit(lb_endfield,9,lc_char)
+lb_ef = blobmid(lb_endfield, 1, 9)
+
+//build endrec blob
+ls_temp = "~hde~h34~h06"
+blobedit(lb_endrec,1,ls_temp)
+blobedit(lb_endrec, 4,lu_zero)
+blobedit(lb_endrec, 6,lu_zero)
+ls_temp = "~h06"
+blobedit(lb_endrec,7,ls_temp)
+blobedit(lb_endrec, 8,lu_zero)
+ls_temp = "~h34~hde"
+blobedit(lb_endrec,9,ls_temp)
+lc_char = "~h0c"
+blobedit(lb_endrec,11,lc_char)
+
+lb_er = blobmid(lb_endrec, 1, 11)
+
+
+
+ll_pos = 1
+
+FOR ll_count=1 TO len(as_inp)
+	lc_char = mid(as_inp,ll_count,1)
+	CHOOSE CASE lc_char
+	CASE '~hfe'
+		lb_blob = lb_blob + lb_ef
+	CASE '~hff'
+		lb_blob = lb_blob + lb_er
+	CASE ELSE
+		lb_blob = lb_blob + blob(lc_char)
+	END CHOOSE
+NEXT
+
+return lb_blob
+
+end function
+

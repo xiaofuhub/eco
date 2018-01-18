@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_combine_auth_authfn_with_aepcd.srf
+global type f_combine_auth_authfn_with_aepcd from function_object
+end type
+
+forward prototypes
+global function string f_combine_auth_authfn_with_aepcd (string one_char, string auth, string authfn, string ahonorific)
+end prototypes
+
+global function string f_combine_auth_authfn_with_aepcd (string one_char, string auth, string authfn, string ahonorific);string ls_ret
+string ls_ahonorific
+IF IsNull(ahonorific)=FALSE OR ahonorific<>"" THEN
+	ls_ahonorific = " "+ahonorific
+ELSE
+	ls_ahonorific = " "
+END IF	
+CHOOSE CASE one_char
+	CASE	'A'  
+		ls_ret='by '+ f_combine_auth_authfn_no_mr(auth, authfn)+ls_ahonorific
+	CASE  'I'  
+		ls_ret ='by '+ f_combine_string1_string2( auth, authfn )+ls_ahonorific
+	CASE  'E'  
+		ls_ret ='edited by '+ f_combine_string1_string2( authfn, auth )+ls_ahonorific
+	CASE	'L'  
+		if not IsNull(trim(auth)) and trim(auth)<>'' then
+						ls_ret ='by '+trim(auth)
+		else
+						ls_ret =''
+		END IF
+	CASE	'N'  
+		ls_ret =''
+	CASE	'P'  
+		ls_ret ='published by '+ f_combine_string1_string2(authfn, auth)+ls_ahonorific
+	CASE	'R'  
+		ls_ret ='retold by '+ f_combine_string1_string2(authfn, auth)+ls_ahonorific
+	CASE	'S'  
+		ls_ret ='selected by '+ f_combine_string1_string2(authfn, auth)+ls_ahonorific
+	CASE	'C'  
+		ls_ret ='compiled by '+ f_combine_string1_string2(authfn, auth)+ls_ahonorific
+	CASE	'T'  
+		ls_ret ='translated by '+ f_combine_string1_string2(authfn, auth)+ls_ahonorific
+		
+END CHOOSE				
+RETURN ls_ret
+end function
+

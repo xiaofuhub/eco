@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_book_query_qa-12092008.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=48 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=868 color="536870912" height.autosize=yes )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="CONNO" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="BKMED" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="BKSEQ" )
+ column=(type=char(6) updatewhereclause=yes name=chno dbname="CHNO" )
+ column=(type=char(512) updatewhereclause=yes name=ttl dbname="TTL" )
+ column=(type=char(34) updatewhereclause=yes name=authfn dbname="AUTHFN" )
+ column=(type=char(34) updatewhereclause=yes name=auth dbname="AUTH" )
+ column=(type=char(5) updatewhereclause=yes name=ahonorific dbname="AHONORIFIC" )
+ retrieve="select b.conno, b.bkmed, b.bkseq, b.chno, 
+		a.ttl, a.authfn, a.auth, a.ahonorific
+		
+from  mchar b,  ttlinit a
+where
+		a.chno(+)= b.chno and
+		b.conno =:as_conno
+" arguments=(("as_conno", string)) )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="1641" y="0" height="56" width="27" format="[general]" html.valueishtml="0"  name=bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1678" y="4" height="56" width="37" format="[general]" html.valueishtml="0"  name=bkmed visible="1~t0" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1737" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=chno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2597" y="36" height="56" width="416" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="trim(bkmed)+string( bkseq )"border="0" color="0" x="594" y="32" height="56" width="361" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="224" height="56" width="2624" format="[general]" html.valueishtml="0"  name=ttl visible="1"  resizeable=1  moveable=1 height.autosize=yes edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="590" y="128" height="56" width="1202" format="[general]" html.valueishtml="0"  name=auth visible="1"  resizeable=1 edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1819" y="128" height="56" width="1307" format="[general]" html.valueishtml="0"  name=authfn visible="1"  resizeable=1  moveable=1  slideleft=yes height.autosize=yes edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3145" y="128" height="60" width="105" format="[general]" html.valueishtml="0"  name=ahonorific visible="1"  resizeable=1  moveable=1  slideleft=yes height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+report(band=detail dataobject="d_book_query_qa_stg_nest" x="174" y="332" height="260" width="2757" border="0"  height.autosize=yes criteria="" nest_arguments=((" bkseq ")) trail_footer = yes  name=dw_1 visible="1" )
+report(band=detail dataobject="d_book_query_qa_narr_nest" x="174" y="600" height="260" width="3072" border="0"  height.autosize=yes criteria="" nest_arguments=((" conno ")) trail_footer = yes  name=dw_2 visible="1"  slideup=allabove )
+text(band=detail alignment="0" text="Book Number " border="0" color="0" x="206" y="32" height="60" width="379" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Author:" border="0" color="0" x="206" y="128" height="60" width="192" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Title:" border="0" color="0" x="206" y="224" height="60" width="128" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Control Number:" border="0" color="0" x="2139" y="36" height="60" width="430" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

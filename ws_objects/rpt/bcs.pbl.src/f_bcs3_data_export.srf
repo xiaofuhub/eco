@@ -1,0 +1,406 @@
+﻿$PBExportHeader$f_bcs3_data_export.srf
+global type f_bcs3_data_export from function_object
+end type
+
+forward prototypes
+global function string f_bcs3_data_export (str_bcs3_data_extract astr, integer bcs_stage)
+end prototypes
+
+global function string f_bcs3_data_export (str_bcs3_data_extract astr, integer bcs_stage);string ls_export, ls_date, ls_source, ls_new
+string ls_anno_words[ ], temp=''
+integer li_len, li_numstats, i, line_num = 1
+long 		ll_return
+
+n_cst_string		lnv_string
+
+
+// conno
+ls_export = astr.conno
+
+// ttldt
+if isnull(astr.ttldt) then
+	ls_export += '        '
+else
+	ls_date = string(astr.ttldt, 'mm/dd/yyyy')
+	ls_export += ls_date
+end if
+
+If bcs_stage = 2 then
+	ls_export += 'S'
+else
+	ls_export += ' '
+end if
+
+// today's date
+ls_date = string(today(), 'mm/dd/yyyy')
+ls_export += ls_date
+
+// auth and authfn
+CHOOSE CASE astr.aepcd
+	CASE 'I'
+		if isnull(astr.authfn) then
+			if not isnull(astr.auth) then
+				ls_source = astr.auth
+			else
+				ls_source = '                                                                 '
+			end if
+		else
+			if not isnull(astr.auth) then
+				ls_source = astr.auth + astr.authfn
+			else
+				ls_source = astr.authfn
+			end if
+		end if
+		ls_source += '                                                                      '
+		ls_source += '                                                                      '
+		ls_new = left(ls_source, 92)
+		ls_export += ls_new
+	CASE 'N'
+		ls_source = '                                                                        '
+		ls_source += '                                                                       '
+		ls_new = left(ls_source, 92)
+		ls_export += ls_new
+	CASE 'L'
+		if not isnull(astr.auth) then
+				ls_source = astr.auth
+			else
+				ls_source = '                                                                 '
+		end if
+		ls_source += '                                                                      '
+		ls_source += '                                                                      '
+		ls_new = left(ls_source, 92)
+		ls_export += ls_new
+	CASE ELSE
+		if isnull(astr.authfn) then
+			if not isnull(astr.auth) then
+				ls_source = astr.auth
+			else
+				ls_source = '                                                                 '
+			end if
+		else
+			if not isnull(astr.auth) then
+				ls_source = astr.auth + ', ' + astr.authfn
+			else
+				ls_source = astr.authfn
+			end if
+		end if
+		ls_source += '                                                                      '
+		ls_source += '                                                                      '
+		ls_new = left(ls_source, 92)
+		ls_export += ls_new
+END CHOOSE
+
+// ttl
+if isnull(astr.ttl) then
+	ls_source = '                                                                            '
+	ls_source += '                                                                            '
+	ls_source += '                                                                            '
+	ls_source += '                                                                            '
+	ls_new = left(ls_source, 139)
+	ls_export += ls_new
+else // ttl has a value, so get to work...
+
+	// strip the ttl of all the pipe characters
+	ls_source = f_remove_pipe(astr.ttl)
+	
+	// Separate the ttl into multiple words,
+	// Separated by SPACES
+	li_numstats = lnv_string.of_Parsetoarray(ls_source, ' ', ls_anno_words)
+
+	// For each element in the array...
+	For i = 1 to li_numstats
+		// Check to see if the length is within limits
+		// and if it is, concatenate the next word from the array
+		li_len = len(temp) + len(ls_anno_words[i])
+		IF (li_len  < 45) then
+			temp = temp + ls_anno_words[i] + ' '
+		END IF
+		// if not or if it is the last word in the title, start writing out the lines to the 
+		// export string
+		IF (li_len >= 45) or (i = li_numstats) then
+			temp += '                                                                                                                            '
+			// First line of ttl is 45 characters
+			if line_num = 1 then
+				ls_export += left(temp, 45)
+			end if
+			// Second and third lines are 47 characters each
+			IF (line_num = 2) or (line_num = 3) then
+				ls_export += left(temp, 47)
+			end if
+			line_num += 1
+			temp = ''
+			// Decrement i if this IF block was entered only to write the string to ls_export
+			IF (li_len >= 45) THEN
+				i = i - 1
+			END IF
+		END IF
+	NEXT
+	
+	// Make sure all three lines for the title have been written
+	// If not, write blank lines of appropriate lengths
+	For i = line_num to 3
+		ls_new = '                                                                                                                                                              '
+		if line_num = 1 then
+				ls_export += left(ls_new, 45)
+		else
+				ls_export += left(ls_new, 47)
+		end if
+	NEXT
+
+end if
+
+// publisher
+if isnull(astr.publisher) then
+	ls_source = '                                                                            '
+	ls_source += '                                                                            '
+	ls_new = left(ls_source, 60)
+	ls_export += ls_new
+else
+	ls_source = astr.publisher
+	ls_source += '                                                                            '
+	ls_new = left(ls_source, 60)
+	ls_export += ls_new
+end if	
+
+// pubyr
+if isnull(astr.pubyr) then
+	ls_export += '         '
+else
+	ls_source = string(astr.pubyr)
+	ls_source += '                                                                      '
+	ls_new = left(ls_source, 8)
+	ls_export += ls_new
+end if
+
+// edition    
+ls_export += '                              '
+
+// med
+if isnull(astr.med) then
+	ls_export += '  '
+else
+	if (astr.med = 'P/B') then
+   	astr.med = 'PB'
+	end if
+	ls_new = left(astr.med, 2)
+	ls_export += ls_new
+end if
+
+// formats    
+ls_export += '    '
+
+// len
+if (isnull(astr.len) or (astr.len = 0 ) or (string(astr.len) = ' ')) then
+	ls_export += '      '
+else
+	ls_source = string(astr.len)
+	ls_source += '      '
+   ls_new = left(ls_source, 6)
+	ls_export += ls_new
+end if
+
+// vols
+if (isnull(astr.vols) or (astr.vols = 0) or (string(astr.vols) = ' ')) then
+	ls_export += '  '
+else
+	ls_source = string(astr.vols)
+	ls_source += '  '
+	ls_new = left(ls_source, 2)
+	ls_export += ls_new
+end if
+
+// minlastside
+if (isnull(astr.minlastside) or (astr.minlastside = 0) or (string(astr.minlastside) = ' ')) then
+	ls_export += '            '
+else
+	ls_source = string(astr.minlastside)
+	ls_source += '            '
+   ls_new = left(ls_source, 12)
+	ls_export += ls_new
+end if
+
+// lang
+
+if isnull(astr.lang) then
+	ls_export += '   '
+else
+	ls_export += lower(astr.lang)
+end if
+
+// speed
+ls_export += '                    '
+
+//// narrator & recagcy
+//if isnull(astr.narrstr) then
+	ls_source = '                                                                                                                                               '
+	ls_source += '                                                                                                                                               '
+	ls_new = left(ls_source, 97)	
+	ls_export += ls_new
+//else
+//	ls_source = astr.narrstr
+//	ls_source += '                                                                                                                                '
+//	ls_source += '                                                                                                                                               '
+//	ls_new = left(ls_source, 92)	
+//	ls_export += ls_new
+//	ls_source = astr.recagcy + '      '
+//	ls_new = left(ls_source, 5)	
+//	ls_export += ls_new
+//end if
+//
+//// bkno
+//if isnull(astr.bkmed) then
+	ls_export += '   '
+//else
+//	ls_source = astr.bkmed + '  '
+//	ls_new = left(ls_source, 3)
+//	ls_export += ls_new
+//end if
+//
+//if (isnull(astr.bkseq) or astr.bkseq = 0) then
+	ls_export += '     '
+//else
+//	ls_source = string(astr.bkseq)
+//	ls_source += '      '
+//	ls_new = left(ls_source, 5)
+//	ls_export += ls_new
+//end if
+//
+//// dewey
+ls_export += '                  '
+//
+//// narrcomp
+//if (isnull(astr.actenddt)  or (string(astr.actenddt) = ' ')) then
+	ls_export += '      '
+//else
+//	ls_date = string(astr.actenddt, 'mm/yy')
+//	ls_new = ls_date + '      '
+//	ls_export += left(ls_new, 6)
+//end if
+//
+//// dupl                  
+//if isnull(astr.prdr) then
+	ls_export += '     '
+//else
+//	ls_source = astr.prdr + '      '
+//	ls_new = left(ls_source, 5)
+//	ls_export += ls_new
+//end if
+//
+// ricd
+if isnull(astr.ricd) then
+	ls_source = '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_new = left(ls_source, 175)
+	ls_export += ls_new
+else
+   ls_source = astr.ricd
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_new = left(ls_source, 175)
+	ls_export += ls_new
+end if
+
+// note
+if isnull(astr.note) then
+	ls_source = '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_new = left(ls_source, 293)
+	ls_export += ls_new
+else
+   ls_source = astr.note
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_source += '                                                                                                                                                                                                                                                 '
+	ls_new = left(ls_source, 293)
+	ls_export += ls_new
+end if
+
+// lcno
+if isnull(astr.lcno) then
+	ls_export += '                  '
+else
+   ls_source = astr.lcno
+	ls_source += '                  '
+	ls_new = left(ls_source, 18)
+	ls_export += ls_new
+end if
+
+// annotation (only if Stage 2)
+If bcs_stage = 2 then
+	if isnull(astr.anno) then
+		ls_source = '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_source += '                                                                                                                                                                                                                                                 '
+		ls_new = left(ls_source, 752)
+		ls_export += ls_new
+	else // anno has a value, so get to work...
+
+		// strip the anno of all the pipe characters
+		ls_source = f_remove_pipe(astr.anno)
+	
+		// Separate the anno into multiple words,
+		// Separated by SPACES
+		li_numstats = lnv_string.of_Parsetoarray(ls_source, ' ', ls_anno_words)
+
+		// Initialize the variables also used for ttl manipulation earlier
+		temp = ''
+		line_num = 1
+	
+		// For each element in the array...
+		For i = 1 to li_numstats
+			// Check to see if the length is within limits
+			// and if it is, concatenate the next word from the array
+			li_len = len(temp) + len(ls_anno_words[i])
+			if (li_len < 47) then
+				temp = temp + ls_anno_words[i] + ' '
+			END IF
+			// if not or if it is the last word in the annotation, start writing out the lines to the 
+			// export string
+			IF (li_len >= 47) or (i = li_numstats) then
+				temp += '                                                                                                                            '
+				ls_export += left(temp, 47)
+				line_num += 1
+				temp = ''
+				// Decrement i if this IF block was entered only to write the string to ls_export
+				IF (li_len >= 47) THEN
+					i = i - 1
+				END IF
+			END IF
+		NEXT
+	
+		// Make sure all sixteen lines for the anno have been written
+		// If not, write blank lines of appropriate lengths
+		For i = line_num to 16
+			ls_new = '                                                                                                                '
+			ls_export += left(ls_new, 47)
+		NEXT
+		
+	END IF
+   	
+end if	
+
+// put new line at the end of the record
+ls_export += '~r' + '~n'
+
+// return to the calling object
+RETURN ls_export
+end function
+

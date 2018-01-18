@@ -1,0 +1,34 @@
+﻿$PBExportHeader$d_rs20_batch_tbl.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=libcd dbname="LIBCD" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=cabdt dbname="CABDT" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=bkno dbname="BKNO" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=selqty dbname="SELQTY" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=defqty dbname="DEFQTY" )
+ column=(type=datetime update=yes updatewhereclause=yes name=rtndt dbname="RTNDT" )
+ retrieve="SELECT  		batch.libcd ,
+           batch.cabdt ,
+           batch.bkno ,
+           batch.selqty ,
+           batch.defqty ,
+           batch.rtndt     
+        FROM batch@pic_link    " update="batch" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Cabdt" border="0" color="0" x="9" y="8" height="64" width="603"  name=cabdt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkno" border="0" color="0" x="622" y="8" height="64" width="247"  name=bkno_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Selqty" border="0" color="0" x="878" y="8" height="64" width="329"  name=selqty_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defqty" border="0" color="0" x="1216" y="8" height="64" width="329"  name=defqty_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rtndt" border="0" color="0" x="1554" y="8" height="64" width="603"  name=rtndt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Libcd" border="0" color="0" x="2167" y="4" height="76" width="206"  name=t_1  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="0" x="9" y="8" height="76" width="603" format="[shortdate] [time]"  name=cabdt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="0" color="0" x="622" y="8" height="76" width="247" format="[general]"  name=bkno edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=30 border="0" color="0" x="878" y="8" height="76" width="329" format="[general]"  name=selqty edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=40 border="0" color="0" x="1216" y="8" height="76" width="329" format="[general]"  name=defqty edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="0" color="0" x="1554" y="8" height="76" width="603" format="[shortdate] [time]"  name=rtndt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2167" y="0" height="64" width="206" format="[general]"  name=libcd edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

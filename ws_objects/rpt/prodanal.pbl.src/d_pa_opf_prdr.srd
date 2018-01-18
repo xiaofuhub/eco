@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_pa_opf_prdr.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="ancntr.prdr" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="ancntr.cntr" )
+ column=(type=char(1) updatewhereclause=yes name=cntrtype dbname="ancntr.cntrtype" )
+ column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="ancntr.cntrmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=cntrfy dbname="ancntr.cntrfy" )
+ retrieve="  SELECT DISTINCT PRDR,   
+         CNTR,   
+         CNTRTYPE,   
+         CNTRMED,
+			CNTRFY  
+    FROM ANCNTR
+WHERE CNTRMED NOT IN ('BR','P/B')
+ORDER BY PRDR,CNTRFY DESC
+" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="33554432" x="5" y="4" height="76" width="283" format="[general]" html.valueishtml="0"  name=prdr visible="1" dddw.name=d_pa_prdr_cntr dddw.displaycolumn=prdr dddw.datacolumn=prdr dddw.percentwidth=400 dddw.lines=10 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="288" y="0" height="64" width="192" format="[general]" html.valueishtml="0"  name=cntr visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="480" y="0" height="64" width="27" format="[general]" html.valueishtml="0"  name=cntrtype visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="507" y="0" height="64" width="82" format="[general]" html.valueishtml="0"  name=cntrmed visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="33554432" x="590" y="0" height="64" width="110" html.valueishtml="0"  name=cntrfy visible="0"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

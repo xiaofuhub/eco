@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_isbn_bkno.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="553648127"  height.autosize=yes)
+table(column=(type=char(44) updatewhereclause=yes name=bkno dbname="bkno" )
+ column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ column=(type=char(34) updatewhereclause=yes name=sttl dbname="ttlinit.sttl" )
+ retrieve="  SELECT bkmed||' '||bkseq bkno,
+			conno,
+			sttl
+    FROM mchar, ttlinit 
+   WHERE ttlinit.chno = mchar.chno  
+			
+" retrieve.asneeded=yes )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="16711680" x="23" y="12" height="64" width="302" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="16711680" x="379" y="8" height="64" width="325" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="16711680" x="759" y="12" height="64" width="709" format="[general]" html.valueishtml="0"  name=sttl visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

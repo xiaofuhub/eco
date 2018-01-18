@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_add_sub_cntr.srd
+$PBExportComments$Add Subcontractor
+release 10;
+datawindow(units=0 timer_interval=0 color=78164112 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=128 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes key=yes name=cntr dbname="sub.cntr" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=cntrmed dbname="sub.cntrmed" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=subprdr dbname="sub.subprdr" )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=prodstage dbname="sub.prodstage" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=default_sub dbname="sub.default_sub" values="	Y/	N" )
+ retrieve="  SELECT cntr,   
+         cntrmed,   
+         subprdr,
+			prodstage,
+			default_sub
+    FROM sub
+WHERE cntr = :lcntr
+AND cntrmed = :lcntrmed   
+" update="sub" updatewhere=1 updatekeyinplace=yes arguments=(("lcntr", string),("lcntrmed", string)) )
+text(band=header alignment="2" text="ContractNumber" border="0" color="0" x="32" y="4" height="128" width="261" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Medium" border="0" color="0" x="357" y="4" height="128" width="247" html.valueishtml="0"  name=cntrmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ProductionStage" border="0" color="0" x="713" y="4" height="128" width="352" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SubContractor" border="0" color="0" x="1157" y="4" height="128" width="347" html.valueishtml="0"  name=subprdr_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Default" border="0" color="0" x="1563" y="68" height="64" width="247" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="37" y="4" height="76" width="325" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="407" y="4" height="76" width="133" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="658" y="8" height="72" width="471" format="[general]" html.valueishtml="0"  name=prodstage visible="1" dddw.name=dddw_prodstage dddw.displaycolumn=proddesc dddw.datacolumn=prodstage dddw.percentwidth=100 dddw.lines=3 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=40 border="5" color="0" x="1198" y="8" height="76" width="302" format="[general]" html.valueishtml="0"  name=subprdr visible="1" dddw.name=dddw_prdr dddw.displaycolumn=prdr dddw.datacolumn=prdr dddw.percentwidth=100 dddw.lines=10 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="1618" y="16" height="64" width="78" format="[general]" html.valueishtml="0"  name=default_sub visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

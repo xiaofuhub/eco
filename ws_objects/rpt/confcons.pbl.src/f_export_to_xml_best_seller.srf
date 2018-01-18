@@ -1,0 +1,149 @@
+﻿$PBExportHeader$f_export_to_xml_best_seller.srf
+global type f_export_to_xml_best_seller from function_object
+end type
+
+forward prototypes
+global function string f_export_to_xml_best_seller (str_pms_data_extract astr)
+end prototypes
+
+global function string f_export_to_xml_best_seller (str_pms_data_extract astr);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  f_export_to_xml
+//
+//	Description:
+//	export text to xml format
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			01/31/2008      002 PICS Modifications	 PICS PMS 2.0 Modifications
+//																			PMS B.2, PMS B.2.1
+//																Introduce flash books media DB
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+string ls_export,ls_endfield,ls_endrecord, ls_temp
+
+ls_endfield =  '~n'
+
+// bibliography tag
+ls_export += "<bibliography>"
+
+// ttlinit.ttlart
+
+ls_export += "<Article>"
+if NOT IsNull(astr.ttlart) THEN
+  ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ttlart)))+"</Article>"
+else
+  ls_export += "</Article>"
+end if
+
+
+// ttlinit.ttlart and ttlinit.ttl
+
+ls_export += "<Title>"
+if not isnull(astr.ttl) THEN
+  ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ttl)))+"</Title>"
+else
+  ls_export += "</Title>"
+end if
+
+// mchar.bkmed
+
+ls_export += "<BookMedium>"
+CHOOSE CASE trim(astr.bkmed)
+	CASE "RC"
+		ls_export += ' RC '
+	CASE "BR"
+		ls_export += ' BR '
+	CASE "P/B"
+		ls_export += ' BR '
+	// 01/31/2008
+		CASE "DB"
+		ls_export += ' DB '
+
+END CHOOSE
+
+ls_export += "</BookMedium>" 
+
+// mchar.bkseq
+
+ls_export += "<BookNumber>"
+if not isnull(astr.bkseq) then
+  ls_export += trim(astr.bkmed)+'_'+trim(string(astr.bkseq))+"</BookNumber>"+ls_endfield
+else
+  ls_export += "</BookNumber>"+ls_endfield
+end if
+
+// Author and Coauthor information
+
+ls_export += "<Author>"
+
+// ttlinit.aepcd
+
+ls_export += "<AttributionTag>"
+CHOOSE CASE trim(astr.aepcd)
+	CASE 'A'
+		ls_export += 'by '
+	CASE 'E'
+		ls_export += 'edited by '
+	CASE 'S'
+		ls_export += 'selected by '
+	CASE 'T'
+		ls_export += 'translated by '
+	CASE 'R'
+		ls_export += 'retold by '
+	CASE 'C'
+		ls_export += 'compiled by' 
+	CASE 'P'
+		ls_export += ''
+	CASE 'N'
+		ls_export += ''
+	CASE 'I'
+		ls_export += 'by '
+	CASE 'L'
+		ls_export += 'by '
+END CHOOSE
+
+ls_export += "</AttributionTag>" 
+
+// ttlinit.authfn
+
+ls_export += "<AuthorFirstName>"
+if not isnull(astr.authfn) then
+	ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.authfn)))+" "+"</AuthorFirstName>"
+else
+	ls_export += "</AuthorFirstName>"
+end if
+
+//ttlinit.auth 
+
+ls_temp = ""
+
+ls_export += "<AuthorLastName>"
+if not isnull(astr.auth) then
+	if not isnull(astr.ahonorific) then
+		ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.auth))) + " "+ f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.ahonorific))) + "</AuthorLastName>" 
+	else
+		ls_export += f_change_pipe_italics_tags(f_replace_nonprn_html_tags(trim(astr.auth))) +"</AuthorLastName>" 
+	end if
+else
+	ls_export += "</AuthorLastName>"
+end if
+
+// Coauthors only shows if it exist
+if not isnull(astr.coauthstr) then
+	ls_export += "<CoAttributionTag>"+"and"+"</CoAttributionTag>"
+	ls_export += "<CoauthorFirstName>"+f_replace_nonprn_html_tags(trim(astr.coauthfn))+"</CoauthorFirstName>"+ ls_endfield
+	ls_export += "<CoauthorLastName>"+f_replace_nonprn_html_tags(trim(astr.coauth))+"</CoauthorLastName>"+ ls_endfield
+end if
+
+ls_export += "</Author>"
+
+ls_export += "</bibliography>"
+
+RETURN ls_export
+end function
+

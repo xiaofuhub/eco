@@ -1,0 +1,46 @@
+﻿$PBExportHeader$d_book_query_qa_stg_nest.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes name=qastg dbname="qastg.qastg" dbalias=".qastg" )
+ column=(type=datetime updatewhereclause=yes name=qarecdt dbname="qastg.qarecdt" dbalias=".qarecdt" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt dbname="qastg.qacompdt" dbalias=".qacompdt" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="qastg.qastatcd" dbalias=".qastatcd" )
+ column=(type=char(8) updatewhereclause=yes name=qainit dbname="qastg.qainit" dbalias=".qainit" )
+ column=(type=char(8) updatewhereclause=yes name=qarejcd dbname="qastg.qarejcd" dbalias=".qarejcd" values="Pronunciation	P/Interpretation	I/Announcement	E/Tape Damage	T/Duplicate Problem	D/Label Problem	L/Container Damage	C/Any NLS-cause rejections	N/Style of Narration Braille	S/Omissions and insertions	O/Binding	B/Technical problem	T/Format (br. specs)	F/Braille code violations	V/" )
+ retrieve="  SELECT qastg.qastg,   
+         qastg.qarecdt,   
+         qastg.qacompdt,   
+         qastg.qastatcd,   
+         qastg.qainit,   
+         qastg.qarejcd 
+ 
+    FROM qastg 
+	where qastg.bkseq= :as_bkseq 
+AND qastg.bkmed in (:as_bkmed)" arguments=(("as_bkseq", number),("as_bkmed", stringlist))  sort="qastg A qarecdt A " )
+text(band=header alignment="2" text="QA Stage " border="0" color="0" x="18" y="20" height="64" width="293" html.valueishtml="0"  name=qastg_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Received Date" border="0" color="0" x="411" y="20" height="64" width="421" html.valueishtml="0"  name=qarecdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Review Date" border="0" color="0" x="933" y="20" height="64" width="393" html.valueishtml="0"  name=qacompdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="A/B/R" border="0" color="0" x="1454" y="20" height="64" width="251" html.valueishtml="0"  name=qastatcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reviewer" border="0" color="0" x="1829" y="20" height="64" width="311" html.valueishtml="0"  name=qainit_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reject Reason" border="0" color="0" x="2245" y="20" height="64" width="416" html.valueishtml="0"  name=qarejcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="91" y="4" height="76" width="82" format="[general]" html.valueishtml="0"  name=qastg visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="457" y="4" height="76" width="329" format="mm/dd/yyyy" html.valueishtml="0"  name=qarecdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="951" y="4" height="76" width="329" format="mm/dd/yyyy" html.valueishtml="0"  name=qacompdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1545" y="4" height="76" width="78" format="[general]" html.valueishtml="0"  name=qastatcd visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1870" y="4" height="76" width="247" format="[general]" html.valueishtml="0"  name=qainit visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2258" y="4" height="76" width="855" format="[general]" html.valueishtml="0"  name=qarejcd visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

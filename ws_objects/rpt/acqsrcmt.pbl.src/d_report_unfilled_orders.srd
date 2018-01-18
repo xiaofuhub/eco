@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_report_unfilled_orders.srd
+$PBExportComments$Datawindow for unfilled orders
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=140 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="553648127"  height.autosize=yes)
+table(column=(type=char(6) updatewhereclause=yes name=ttlinit_chno dbname="ttlinit.chno" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=datetime updatewhereclause=yes name=acquist_pbordt dbname="acquist.pbordt" )
+ column=(type=decimal(0) updatewhereclause=yes name=acquist_pbneed dbname="acquist.pbneed" )
+ column=(type=char(3) updatewhereclause=yes name=acquist_pbdlrcd dbname="acquist.pbdlrcd" )
+ retrieve="  SELECT  ttlinit.chno,
+    ttlinit.ttl,
+    ttlinit.auth,
+    acquist.pbordt,
+    acquist.pbneed,
+    acquist.pbdlrcd     
+ FROM acquist,
+      ttlinit     
+ WHERE acquist.chno = ttlinit.chno  and 
+ 		ttlinit.chno = acquist.chno and
+		acquist.pbordt between :ld_order_date1 AND :ld_order_date2  and
+		acquist.pbrecdt is NULL   " arguments=(("ld_order_date1", date),("ld_order_date2", date)) )
+text(band=header alignment="2" text="Chart
+Number" border="0" color="0" x="32" y="4" height="104" width="169" html.valueishtml="0"  name=ttlinit_chno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title" border="0" color="0" x="887" y="8" height="52" width="91" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Author" border="0" color="0" x="1705" y="4" height="52" width="142" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Order
+Date" border="0" color="0" x="2002" y="0" height="104" width="119" html.valueishtml="0"  name=acquist_pbordt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Copies
+Ordered" border="0" color="0" x="2290" y="0" height="104" width="174" html.valueishtml="0"  name=acquist_pbneed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Vendor
+Code" border="0" color="0" x="2478" y="0" height="104" width="155" html.valueishtml="0"  name=acquist_pbdlrcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="16711680" x="5" y="4" height="76" width="224" format="[general]" html.valueishtml="0"  name=ttlinit_chno  tag="Chart Number" visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1893" y="4" height="76" width="389" format="[general]" html.valueishtml="0"  name=acquist_pbordt  tag="Order Date" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="2295" y="4" height="76" width="169" format="[general]" html.valueishtml="0"  name=acquist_pbneed  tag="Copies Ordered" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="0" x="2482" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=acquist_pbdlrcd  tag="Vendor Code" visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1248" y="4" height="76" width="622" format="[general]" html.valueishtml="0"  name=ttlinit_auth  tag="Magazine Author" visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="247" y="4" height="76" width="983" format="[general]" html.valueishtml="0"  name=ttlinit_ttl  tag="Magazine Title" visible="1" height.autosize=yes edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

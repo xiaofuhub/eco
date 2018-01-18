@@ -1,0 +1,22 @@
+﻿$PBExportHeader$d_pcs_tone_text_stat.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=224 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=col1 dbname="compute_0001" )
+ retrieve=" select count(*) from conversionbooks
+where action_type in ('C','P')
+" )
+text(band=detail alignment="1" text="Total number of books available for assignment:" border="0" color="33554432" x="133" y="4" height="68" width="1417" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="1573" y="8" height="64" width="302" format="[general]" html.valueishtml="0"  name=col1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Books which have tone index:" border="0" color="33554432" x="672" y="76" height="68" width="878" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_count_pcs_tone_index()"border="0" color="33554432" x="1573" y="76" height="76" width="256" format="[GENERAL]" html.valueishtml="0"  name=col2 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="1" expression="round(( col2 /  col1 ) * 100,0)"border="0" color="33554432" x="1833" y="76" height="76" width="215" format="[GENERAL]" html.valueishtml="0"  name=pct_tone visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="%" border="0" color="33554432" x="2057" y="76" height="68" width="69" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Books which have Text available:" border="0" color="33554432" x="571" y="148" height="68" width="978" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_count_pcs_text_avail()"border="0" color="33554432" x="1573" y="148" height="76" width="256" format="[GENERAL]" html.valueishtml="0"  name=col3 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="1" expression="round(( col3 /  col1 ) * 100,0)"border="0" color="33554432" x="1838" y="148" height="76" width="215" format="[GENERAL]" html.valueishtml="0"  name=pct_text visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="%" border="0" color="33554432" x="2057" y="148" height="68" width="69" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

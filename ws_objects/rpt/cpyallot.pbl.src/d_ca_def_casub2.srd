@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_ca_def_casub2.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=132 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=libcd dbname="LIBCD" )
+ column=(type=char(3) updatewhereclause=yes name=med dbname="MED" )
+ column=(type=char(3) updatewhereclause=yes name=casub dbname="CASUB" )
+ column=(type=char(50) updatewhereclause=yes name=casub_desc dbname="CASUBJ2_DESC" )
+ column=(type=char(1) updatewhereclause=yes name=priority dbname="PRIORITY" )
+ column=(type=decimal(0) updatewhereclause=yes name=defqty dbname="DEFQTY" )
+ column=(type=datetime updatewhereclause=yes name=defdt dbname="DEFDT" )
+ retrieve="  SELECT def.libcd,   
+         def.med,   
+         def.casub,
+			casubj2.casubj2_desc,
+         def.priority,   
+         def.defqty,   
+         def.defdt  
+    FROM def,
+			casubj2
+WHERE def.casub = casubj2.casubj2_code
+AND def.libcd = :llibcd
+ORDER BY 1,2,3,5
+" arguments=(("llibcd", string)) )
+text(band=header alignment="2" text="Library Code" border="0" color="0" x="18" y="0" height="128" width="201" html.valueishtml="0"  name=def_libcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Med" border="0" color="0" x="229" y="0" height="128" width="151" html.valueishtml="0"  name=def_med_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Casub" border="0" color="0" x="384" y="0" height="128" width="206" html.valueishtml="0"  name=def_casub_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Priority" border="0" color="0" x="1312" y="0" height="128" width="224" html.valueishtml="0"  name=def_priority_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Default Qty" border="0" color="0" x="1536" y="0" height="128" width="215" html.valueishtml="0"  name=def_defqty_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date" border="0" color="0" x="1760" y="0" height="128" width="233" html.valueishtml="0"  name=def_defdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CasubDescription" border="0" color="0" x="773" y="4" height="128" width="343" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="398" y="4" height="76" width="169" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=3 edit.case=upper edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=40 border="5" color="0" x="1376" y="4" height="76" width="87" format="[general]" html.valueishtml="0"  name=priority visible="1" edit.limit=1 edit.case=upper edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="255~tif( isRowModified(), RGB(0,0,255), RGB(255,0,0) )" x="1563" y="4" height="76" width="123" format="[general]" html.valueishtml="0"  name=defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="5" color="0" x="1737" y="4" height="76" width="334" format="[general]" html.valueishtml="0"  name=defdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="613" y="4" height="76" width="736" format="[general]" html.valueishtml="0"  name=casub_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="5" color="0" x="242" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=3 edit.case=upper edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="23" y="4" height="76" width="183" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

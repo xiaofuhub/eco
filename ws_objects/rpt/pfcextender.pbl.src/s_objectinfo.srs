@@ -1,0 +1,12 @@
+﻿$PBExportHeader$s_objectinfo.srs
+$PBExportComments$(PB70Base) - Holds object information from LibraryDirectory
+global type s_objectinfo from structure
+	string		sobject
+	string		sdatetimemodified
+	string		scomments
+	string		slibrary
+	integer		iobjtype
+	integer		iselected
+	integer		isortanc
+end type
+

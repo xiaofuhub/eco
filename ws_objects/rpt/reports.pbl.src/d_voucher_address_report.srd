@@ -1,0 +1,42 @@
+﻿$PBExportHeader$d_voucher_address_report.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=645 color="553648127"  height.autosize=yes)
+table(column=(type=char(34) updatewhereclause=yes name=producer_prdr_name dbname="producer.prdr_name" )
+ column=(type=char(24) updatewhereclause=yes name=producer_prdr_addr dbname="producer.prdr_addr" )
+ column=(type=char(24) updatewhereclause=yes name=producer_prdr_city dbname="producer.prdr_city" )
+ column=(type=char(2) updatewhereclause=yes name=producer_prdr_state dbname="producer.prdr_state" )
+ column=(type=char(10) updatewhereclause=yes name=producer_prdr_zip dbname="producer.prdr_zip" )
+ retrieve="  SELECT distinct producer.prdr_name,
+         producer.prdr_addr,   
+         producer.prdr_city,   
+         producer.prdr_state,   
+         producer.prdr_zip
+  
+    FROM producer,   
+         ancntr,   
+         inv  
+   WHERE ( producer.prdr = ancntr.prdr ) and  
+         ( ancntr.cntr = inv.cntr ) and  
+         ( ( trim(inv.cntr) = :ls_contract ) AND  
+         ( inv.admdt = :ld_admin_date ) )    
+  UNION SELECT distinct producer.prdr_name,
+         producer.prdr_addr,   
+         producer.prdr_city,   
+         producer.prdr_state,   
+         producer.prdr_zip  
+    FROM producer,   
+         magcntr,   
+         maginv  
+   WHERE ( producer.prdr = magcntr.prdr ) and  
+         ( magcntr.cntr = maginv.cntr ) and  
+         ( ( trim(maginv.cntr) = :ls_contract ) AND  
+         ( maginv.admdt = :ld_admin_date ) )    
+" arguments=(("ls_contract", string),("ld_admin_date", datetime)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="72" y="229" height="197" width="5395" format="[general]" html.valueishtml="0"  name=producer_prdr_addr visible="1" height.autosize=yes edit.limit=24 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="RightTrim(producer_prdr_city)+ ~",  ~" + producer_prdr_state + ' ' + producer_prdr_zip  "border="0" color="0" x="72" y="458" height="166" width="5802" format="[general]" html.valueishtml="0"  name=c_multiples visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912"  height.autosize=yes)
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="72" y="21" height="166" width="4947" format="[general]" html.valueishtml="0"  name=producer_prdr_name visible="1" height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

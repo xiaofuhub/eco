@@ -1,0 +1,48 @@
+﻿$PBExportHeader$f_check_dberror.srf
+global type f_check_dberror from function_object
+end type
+
+forward prototypes
+global function boolean f_check_dberror (transaction sqltrans, string module)
+end prototypes
+
+global function boolean f_check_dberror (transaction sqltrans, string module);String ls_message,ls_msgparm[1],ls_moreinfo
+
+IF sqltrans.SQLCode < 0 THEN
+	
+	IF sqltrans.SQLDBCode = -195 OR sqltrans.SQLDBCode = 233 Then
+ 		ls_moreinfo = 'Table does not allow null values...! Please enter all the details and proceed'
+	ELSEIF sqltrans.SQLDBCode = -193 Then
+ 		ls_moreinfo = 'Value you entered already exists in the DataBase....! Please enter different value and proceed'
+	ELSEIF sqltrans.SQLDBCode = 546 Then
+ 		ls_moreinfo = 'Parent Table data does not exists, Check the Value in Parent Table ...! Please enter correct value and proceed'
+	ELSEIF sqltrans.SQLDBCode = -198 Then
+	 	ls_moreinfo = 'Value you have changed is reffered in the other table ...! Please do not change this value, Create a new record and proceed'
+	ELSEIF sqltrans.SQLDBCode = -209 Then
+	 	ls_moreinfo = 'Value you have enterd is validated by Check Constraint...! Please enter 4 Chars for all Codes in case you have not entered 4 Chars'
+	ELSEIF sqltrans.SQLDBCode = 28000 Then 
+	 	ls_moreinfo = Left(sqltrans.SQLErrText,100)
+	ELSE
+		ls_moreinfo = 'Please refer to your system administrator for more information...'
+	END IF
+	
+	ls_message = "A database error has occurred in "+module+"~n" + &
+					 "Database error code:  " + String (sqltrans.sqldbcode) + "~r~n" + &
+					 "Database error message:~r~n" + sqltrans.sqlerrtext+ "~r~n" + &
+					 "Additional Information:~r~n" +ls_moreinfo 
+					 
+	IF IsValid(gnv_app.inv_error) THEN
+		ls_msgparm[1] = ls_message
+		gnv_app.inv_error.of_Message ("pfc_dwdberror", ls_msgparm[1], StopSign!, Ok!, 1, 100, TRUE, TRUE)		
+	ELSE
+		Messagebox (gnv_app.iapp_object.DisplayName, ls_message, StopSign!, Ok!)
+	End If
+	ROLLBACK USING sqltrans;
+	RETURN FALSE
+ELSE
+	RETURN TRUE
+END IF
+
+
+end function
+

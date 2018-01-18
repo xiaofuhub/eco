@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_qa_email_resend.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1636 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=message_id dbname="qa_email_log.message_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="qa_email_log.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="qa_email_log.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=message_counter dbname="qa_email_log.message_counter" )
+ column=(type=char(50) updatewhereclause=yes name=email_from dbname="qa_email_log.email_from" )
+ column=(type=char(50) updatewhereclause=yes name=email_to dbname="qa_email_log.email_to" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="qa_email_log.prdr" )
+ column=(type=datetime updatewhereclause=yes name=date_sent dbname="qa_email_log.date_sent" )
+ column=(type=char(150) updatewhereclause=yes name=subject dbname="qa_email_log.subject" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=message dbname="qa_email_log.message" )
+ column=(type=char(20) updatewhereclause=yes name=created_by dbname="qa_email_log.created_by" )
+ column=(type=datetime updatewhereclause=yes name=created_date dbname="qa_email_log.created_date" )
+ column=(type=char(1) updatewhereclause=yes name=test_status_code dbname="qa_email_log.test_status_code" values="Approved	A/Rejected	R/" )
+ column=(type=char(4000) updatewhereclause=yes name=ttlinit_ttl dbname="ttl" )
+ column=(type=char(85) updatewhereclause=yes name=email dbname="email" )
+ column=(type=char(128) updatewhereclause=yes name=name dbname="qa_email_log.name" )
+ retrieve="  SELECT QA_EMAIL_LOG.MESSAGE_ID,   
+         QA_EMAIL_LOG.BKSEQ,   
+         QA_EMAIL_LOG.BKMED,   
+         QA_EMAIL_LOG.MESSAGE_COUNTER,   
+         QA_EMAIL_LOG.EMAIL_FROM,   
+         QA_EMAIL_LOG.EMAIL_TO,   
+         QA_EMAIL_LOG.PRDR,   
+         QA_EMAIL_LOG.DATE_SENT,   
+         QA_EMAIL_LOG.SUBJECT,   
+         QA_EMAIL_LOG.MESSAGE,   
+         QA_EMAIL_LOG.CREATED_BY,   
+         QA_EMAIL_LOG.CREATED_DATE  ,
+		QA_EMAIL_LOG.TEST_STATUS_CODE,
+		F_GET_TITLE(QA_EMAIL_LOG.BKSEQ, QA_EMAIL_LOG.BKMED) AS TTL,
+		QA_EMAIL_LOG.PRDR || QA_EMAIL_LOG.BKSEQ || '_' || QA_EMAIL_LOG.MESSAGE_ID AS EMAIL,
+		QA_EMAIL_LOG.NAME
+    FROM QA_EMAIL_LOG   
+WHERE MESSAGE_ID = :message_id" update="QA_EMAIL_LOG" updatewhere=0 updatekeyinplace=yes arguments=(("message_id", number)) )
+text(band=detail alignment="0" text="Subject" border="0" color="33554432" x="229" y="268" height="64" width="494" html.valueishtml="0"  name=t_3 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=detail alignment="0" text="To" border="0" color="33554432" x="229" y="160" height="64" width="494" html.valueishtml="0"  name=t_2 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=detail alignment="0" text="Message Number" border="0" color="33554432" x="229" y="12" height="64" width="494" html.valueishtml="0"  name=t_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="2" color="33554432" x="805" y="12" height="76" width="512" format="[general]" html.valueishtml="0"  name=message_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="2" color="33554432" x="805" y="268" height="148" width="1833" format="[general]" html.valueishtml="0"  name=subject visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=10 alignment="0" tabsequence=10 border="5" color="33554432" x="800" y="508" height="1012" width="3008" format="[general]" html.valueishtml="0"  name=message visible="1" edit.limit=4000 edit.case=any edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Message" border="0" color="33554432" x="229" y="508" height="64" width="494" html.valueishtml="0"  name=t_4 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="2" color="33554432" x="805" y="160" height="64" width="1349" format="[general]" html.valueishtml="0"  name=email_to visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=16 alignment="0" tabsequence=20 border="0" color="33554432" x="800" y="1548" height="64" width="1349" html.valueishtml="0"  name=name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=detail alignment="0" text="Attachment" border="0" color="33554432" x="242" y="1548" height="64" width="494" html.valueishtml="0"  name=t_5 visible="1"  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

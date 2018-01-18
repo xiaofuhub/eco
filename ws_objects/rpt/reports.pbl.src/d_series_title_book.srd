@@ -1,0 +1,59 @@
+﻿$PBExportHeader$d_series_title_book.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=152 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(43) updatewhereclause=yes name=bkno dbname="BKNO" )
+ column=(type=char(8) updatewhereclause=yes name=conno dbname="CONNO" )
+ column=(type=char(70) updatewhereclause=yes name=serttl dbname="SERTTL" )
+ column=(type=char(34) updatewhereclause=yes name=narrfn dbname="NARRFN" )
+ column=(type=char(34) updatewhereclause=yes name=narr dbname="NARR" )
+ column=(type=char(34) updatewhereclause=yes name=authfn dbname="AUTHFN" )
+ column=(type=char(34) updatewhereclause=yes name=auth dbname="AUTH" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="PRDR" )
+ retrieve="  SELECT distinct trim(mchar.bkmed)|| mchar.bkseq bkno, 
+         mchar.conno,   
+         ttlinit.serttl,   
+         narr.narrfn,   
+         narr.narr,   
+         ttlinit.authfn,   
+         ttlinit.auth,   
+         ancntr.prdr
+  
+    FROM ancntr,   
+         mchar,   
+         narr,   
+         ttlinit,
+			prod 
+   WHERE ( mchar.bkseq = narr.bkseq ) and 
+			(mchar.bkmed= narr.bkmed   ) and
+			(mchar.bkseq=prod.bkseq  ) and
+			(mchar.bkmed=prod.bkmed  ) and
+			(prod.cntr= ancntr.cntr  ) and
+         ( mchar.chno = ttlinit.chno ) and
+			ancntr.cntrlc is not null and 
+			ancntr.cntr_status ='A' and
+			(arflag  is null or arflag <>'A' ) and
+			(	serttl is not null)
+
+" )
+text(band=header alignment="2" text="BOOK #" border="0" color="0" x="270" y="60" height="64" width="311"  name=bkno_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CONNO" border="0" color="0" x="594" y="60" height="64" width="297"  name=conno_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SERIES TITLE" border="0" color="0" x="905" y="60" height="64" width="672"  name=serttl_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="PRDR" border="0" color="0" x="4315" y="60" height="64" width="215"  name=prdr_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="NARRFN" border="0" color="0" x="1888" y="60" height="64" width="466"  name=narrfn_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="NARRLN" border="0" color="0" x="2377" y="60" height="64" width="599"  name=narr_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="AUTHFN" border="0" color="0" x="3003" y="60" height="64" width="576"  name=authfn_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="AUTHLN" border="0" color="0" x="3625" y="60" height="64" width="603"  name=auth_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="265" y="4" height="64" width="306" format="[general]"  name=bkno edit.limit=43 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="901" y="4" height="64" width="960" format="[general]"  name=serttl edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2391" y="4" height="64" width="590" format="[general]"  name=narr edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3630" y="4" height="64" width="663" format="[general]"  name=auth edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="585" y="4" height="64" width="302" format="[general]"  name=conno edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1883" y="4" height="64" width="485" format="[general]"  name=narrfn edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3008" y="4" height="64" width="576" format="[general]"  name=authfn edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4357" y="4" height="64" width="183" format="[general]"  name=prdr edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_exist_inv.srs
+global type str_exist_inv from structure
+	string		ls_magcd
+	date		ld_issdt
+end type
+

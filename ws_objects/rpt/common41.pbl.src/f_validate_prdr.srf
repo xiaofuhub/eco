@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_validate_prdr.srf
+global type f_validate_prdr from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_prdr (string Lprdr)
+end prototypes
+
+global function boolean f_validate_prdr (string Lprdr);int cnt=0
+
+select count(*) into :cnt 
+from ancntr
+where prdr = :Lprdr
+using sqlservertrans;
+
+IF cnt = 0 THEN
+	return FALSE
+ELSE
+	return TRUE
+END IF
+end function
+

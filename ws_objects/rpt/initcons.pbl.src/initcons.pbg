@@ -1,0 +1,30 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "initcons.pbl" "";
+@end;
+@begin Objects 
+ "d_acquist_copy_permission.srd" "initcons.pbl";
+ "d_add_publisher.srd" "initcons.pbl";
+ "d_add_sources.srd" "initcons.pbl";
+ "d_coauthor.srd" "initcons.pbl";
+ "d_copyright_cr.srd" "initcons.pbl";
+ "d_copyright_permission.srd" "initcons.pbl";
+ "d_crrest.srd" "initcons.pbl";
+ "d_initial_title.srd" "initcons.pbl";
+ "d_initial_title_new.srd" "initcons.pbl";
+ "d_next_avail_conno.srd" "initcons.pbl";
+ "d_spanish_books.srd" "initcons.pbl";
+ "d_src.srd" "initcons.pbl";
+ "d_ttlinit_soundex_auth.srd" "initcons.pbl";
+ "dddw_pub.srd" "initcons.pbl";
+ "dddw_src.srd" "initcons.pbl";
+ "f_call_label_app.srf" "initcons.pbl";
+ "f_create_sttl.srf" "initcons.pbl";
+ "f_get_label_data.srf" "initcons.pbl";
+ "w_add_publisher.srw" "initcons.pbl";
+ "w_add_sources.srw" "initcons.pbl";
+ "w_copyright_permission.srw" "initcons.pbl";
+ "w_sheet_initial_title.srw" "initcons.pbl";
+ "w_sheet_initial_title_new.srw" "initcons.pbl";
+ "w_sheet_spanish_books.srw" "initcons.pbl";
+@end;

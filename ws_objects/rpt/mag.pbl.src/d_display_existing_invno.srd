@@ -1,0 +1,51 @@
+﻿$PBExportHeader$d_display_existing_invno.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=invno dbname="INVNO" )
+ column=(type=char(4) updatewhereclause=yes name=magcd dbname="MAGCD" )
+ column=(type=datetime updatewhereclause=yes name=issdt dbname="ISSDT" )
+ column=(type=char(1) updatewhereclause=yes name=invtype dbname="INVTYPE" values="Mastering	M/Duplication	D/" )
+ column=(type=decimal(0) updatewhereclause=yes name=fy dbname="FY" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="CNTR" )
+ column=(type=decimal(2) updatewhereclause=yes name=invamt dbname="INVAMT" )
+ column=(type=datetime updatewhereclause=yes name=admdt dbname="ADMDT" )
+ column=(type=datetime updatewhereclause=yes name=pcsdt dbname="PCSDT" )
+ column=(type=char(30) updatewhereclause=yes name=magovrcd_desc_ dbname="DESC_" )
+ retrieve="  SELECT maginv.invno,
+         maginv.magcd,
+			maginv.issdt,
+			maginv.invtype,
+         maginv.fy,
+			maginv.cntr,
+			maginv.invamt,
+			maginv.admdt,
+			maginv.pcsdt,
+			magovrcd.desc_
+    FROM maginv,
+			magovrcd  
+   WHERE maginv.ovrcd=magovrcd.ovrcd(+) and
+			( maginv.magcd = :ls_magcd ) AND  
+         ( maginv.issdt = :ld_issdt )    
+" arguments=(("ls_magcd", string),("ld_issdt", date)) )
+text(band=header alignment="2" text="MagCode" border="0" color="0" x="1001" y="4" height="104" width="187" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="IssueDate" border="0" color="0" x="1198" y="4" height="104" width="320" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="InvoiceAmount" border="0" color="0" x="1527" y="4" height="104" width="343" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="InvoiceNumber" border="0" color="0" x="9" y="4" height="104" width="320" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="InvoiceType" border="0" color="0" x="672" y="4" height="104" width="320" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="0" text="Admin DateAdmdt" border="0" color="0" x="338" y="4" height="104" width="325" html.valueishtml="0"  name=t_10 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="PCSDate" border="0" color="0" x="1879" y="8" height="104" width="325" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Magovrcd Desc " border="0" color="0" x="2213" y="4" height="52" width="681" html.valueishtml="0"  name=magovrcd_desc__t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0" x="9" y="4" height="76" width="320" format="[general]" html.valueishtml="0"  name=invno visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1001" y="4" height="76" width="187" format="[general]" html.valueishtml="0"  name=magcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="672" y="4" height="76" width="320" format="[general]" html.valueishtml="0"  name=invtype visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="338" y="4" height="76" width="325" format="[general]" html.valueishtml="0"  name=admdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1198" y="0" height="76" width="320" format="[general]" html.valueishtml="0"  name=issdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="1527" y="4" height="76" width="343" format="[general]" html.valueishtml="0"  name=invamt visible="1" editmask.mask="$###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="1879" y="4" height="76" width="325" format="[general]" html.valueishtml="0"  name=pcsdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2213" y="0" height="52" width="681" format="[general]" html.valueishtml="0"  name=magovrcd_desc_ visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

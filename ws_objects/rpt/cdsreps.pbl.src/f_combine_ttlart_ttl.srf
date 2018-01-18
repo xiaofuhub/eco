@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_combine_ttlart_ttl.srf
+global type f_combine_ttlart_ttl from function_object
+end type
+
+forward prototypes
+global function string f_combine_ttlart_ttl (string ttlart, string ttl)
+end prototypes
+
+global function string f_combine_ttlart_ttl (string ttlart, string ttl);string lttl
+ttlart = trim(ttlart)
+ttl = trim(ttl)
+IF	(Not IsNull(ttlart) and (ttlart <>'' ) and Not IsNull(ttl)) THEN
+	lttl = ttlart +'  ' + ttl
+	
+ELSEIF	(Not IsNull(ttlart) and (IsNull(TRIM(ttl)) or TRIM(ttl) = '' )) THEN
+	lttl = ttlart
+
+ELSEIF	((IsNull(TRIM(ttlart)) or TRIM(ttlart) = '' ) and Not IsNull(ttl)) THEN
+	lttl = ttl
+
+END IF
+// lttl = f_remove_pipe(lttl)
+RETURN (lttl)
+
+
+
+end function
+

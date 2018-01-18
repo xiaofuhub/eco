@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_bcs_s2in.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=104 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=cconno dbname="mchar.conno" )
+ column=(type=char(8) updatewhereclause=yes name=cs1init dbname="catalog.s1init" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=datetime updatewhereclause=yes name=cs2out dbname="catalog.s2out" )
+ column=(type=datetime updatewhereclause=yes name=cs2in dbname="catalog.s2in" )
+ retrieve="SELECT mchar.conno, catalog.s1init,
+	 mchar.bkseq, 
+	mchar.bkmed,
+		ttlinit.ttl,
+		catalog.s2out, 
+		catalog.s2in 
+FROM catalog, mchar, ttlinit 
+WHERE ( catalog.conno = mchar.conno ) and 
+		( mchar.chno = ttlinit.chno ) " retrieve.asneeded=yes  sort="cconno A " )
+line(band=header x1="110" y1="96" x2="3410" y2="96"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Initial" border="5" color="0" x="475" y="16" height="64" width="229" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Book Number" border="5" color="0" x="731" y="16" height="64" width="453" html.valueishtml="0"  name=cbkno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title" border="5" color="0" x="1787" y="16" height="64" width="165" html.valueishtml="0"  name=cttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Stage II in" border="5" color="0" x="2523" y="16" height="64" width="334" html.valueishtml="0"  name=ccat_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Stage II out" border="5" color="0" x="2885" y="16" height="64" width="489" html.valueishtml="0"  name=cs2out_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Control #" border="5" color="0" x="119" y="16" height="64" width="325" html.valueishtml="0"  name=cconno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="466" y="8" height="76" width="238" format="[general]" html.valueishtml="0"  name=cs1init visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="5" color="0" x="2894" y="8" height="76" width="475" format="[general]" html.valueishtml="0"  name=cs2out visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="119" y="8" height="76" width="320" format="[general]" html.valueishtml="0"  name=cconno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="722" y="8" height="76" width="101" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="841" y="8" height="76" width="357" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="5" color="0" x="1211" y="8" height="72" width="1298" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="2528" y="8" height="76" width="338" format="[general]" html.valueishtml="0"  name=cs2in visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

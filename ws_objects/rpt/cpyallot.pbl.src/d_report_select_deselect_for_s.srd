@@ -1,0 +1,176 @@
+﻿$PBExportHeader$d_report_select_deselect_for_s.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=456 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=84 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(7) updatewhereclause=yes name=ancntr_cntr dbname="ancntr.cntr" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ column=(type=datetime updatewhereclause=yes name=prod_schstdt dbname="prod.schstdt" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_priority dbname="mchar.priority" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_cascd dbname="mchar.cascd" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=number updatewhereclause=yes name=mchar_len dbname="mchar.len" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_qastatcd dbname="mchar.qastatcd" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_ordqty_flg dbname="mchar.ordqty_flg" )
+ column=(type=datetime updatewhereclause=yes name=prod_actstdt dbname="prod.actstdt" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ retrieve="  SELECT prod.bkseq, 
+			ancntr.cntr,
+			ancntr.prdr,   
+         prod.schstdt,   
+         prod.bkmed,   
+         mchar.priority,   
+         mchar.cascd,   
+         mchar.conno,   
+         mchar.len,
+         mchar.qastatcd,   
+         mchar.ordqty_flg,   
+         prod.actstdt,   
+         prod.actenddt,
+			ttlinit.ttl
+    FROM prod,
+			ancntr,   
+         mchar,
+			ttlinit 
+   WHERE ttlinit.chno = mchar.chno and  
+         prod.bkseq = mchar.bkseq and
+			prod.bkmed = mchar.bkmed and
+         prod.cntr = ancntr.cntr and 
+			(prod.prodstage in ('MA','PU','AB') OR 
+			(prod.prodstage='DU' and mchar.ricd='RI')) and
+			ancntr.cntrcvcd in ('N','V') and
+         mchar.cascd in ('N','Q','X') AND 
+			mchar.arflag is Null 
+union all SELECT prod.bkseq, 
+			ancntr.cntr,
+			ancntr.prdr,   
+			prod.schstdt,   
+         prod.bkmed,   
+         mchar.priority,   
+         mchar.cascd,   
+         mchar.conno,   
+         mchar.len,
+         mchar.qastatcd,   
+         mchar.ordqty_flg,   
+         prod.actstdt,   
+         prod.actenddt,
+			ttlinit.ttl
+   FROM prod,
+			ancntr,   
+         mchar,
+			ttlinit  
+   WHERE ttlinit.chno = mchar.chno and  
+         prod.bkseq = mchar.bkseq and
+			prod.bkmed = mchar.bkmed and
+         prod.cntr = ancntr.cntr and 
+			prod.prodstage in ('DU','PR','PB','EM') and
+			ancntr.cntrcvcd = 'C' and
+			mchar.cascd in ('N','Q','X') AND 
+			mchar.arflag is Null 
+	union all SELECT prod.bkseq, 
+			ancntr.cntr,
+			ancntr.prdr,   
+			prod.schstdt,   
+         prod.bkmed,   
+         mchar.priority,   
+         mchar.cascd,   
+         mchar.conno,   
+         mchar.len,
+         mchar.qastatcd,   
+         mchar.ordqty_flg,   
+         prod.actstdt,   
+         prod.actenddt,
+			ttlinit.ttl
+   FROM prod,
+			ancntr,   
+         mchar,
+			ttlinit  
+   WHERE ttlinit.chno = mchar.chno and  
+         prod.bkseq = mchar.bkseq and
+			prod.bkmed = mchar.bkmed and
+         prod.cntr = ancntr.cntr and 
+			(prod.prodstage in ('MA','PU','AB') OR 
+			(prod.prodstage='DU' and mchar.ricd='RI')) and
+			ancntr.cntrcvcd in ('N','V') and
+			mchar.cabdt =:ad_date AND
+         mchar.cascd in ('S') AND
+			mchar.arflag is Null
+union all SELECT prod.bkseq, 
+			ancntr.cntr,
+			ancntr.prdr,   
+			prod.schstdt,   
+         prod.bkmed,   
+         mchar.priority,   
+         mchar.cascd,   
+         mchar.conno,   
+         mchar.len,
+         mchar.qastatcd,   
+         mchar.ordqty_flg,   
+         prod.actstdt,   
+         prod.actenddt,
+			ttlinit.ttl
+   FROM prod,
+			ancntr,   
+         mchar,
+			ttlinit  
+   WHERE ttlinit.chno = mchar.chno and  
+         prod.bkseq = mchar.bkseq and
+			prod.bkmed = mchar.bkmed and
+         prod.cntr = ancntr.cntr and 
+			prod.prodstage in ('DU','PR','PB','EM') and
+			ancntr.cntrcvcd = 'C' and
+			mchar.cabdt =:ad_date AND
+         mchar.cascd in ('S') AND
+			mchar.arflag is Null
+
+
+" arguments=(("ad_date", datetime))  sort="mchar_cascd A prod_bkseq A " )
+group(level=1 header.height=0 trailer.height=128 by=("mchar_cascd" ) newpage=yes header.color="536870912" trailer.color="536870912"  sort="count(mchar_cascd for group 1) A " )
+text(band=header alignment="0" text="COPY ALLOTMENT BATCH CREATION REPORT" border="0" color="0" x="686" y="44" height="80" width="1792" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="2656" y="136" height="72" width="503" format="mm/dd/yyyy " html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-12" font.weight="700"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="AS OF" border="0" color="0" x="2359" y="128" height="80" width="242" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="(NOT SELECTED FOR THIS BATCH)" border="0" color="0" x="923" y="128" height="80" width="1362" html.valueishtml="0"  name=t_3 visible="1~tif( mchar_cascd ='X', 1,0)"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="( QUALIFIED FOR NEXT BATCH )" border="0" color="0" x="896" y="128" height="80" width="1385" html.valueishtml="0"  name=t_4 visible="1~tif( mchar_cascd ='Q' or  mchar_cascd ='S', 1, 0)"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Stage" border="0" color="0" x="96" y="340" height="52" width="128" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="PRDR" border="0" color="0" x="347" y="340" height="52" width="142" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Priority" border="0" color="0" x="1253" y="340" height="52" width="142" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Title" border="0" color="0" x="1737" y="340" height="52" width="91" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="APPLEN" border="0" color="0" x="2322" y="340" height="52" width="192" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Actual End Date" border="0" color="0" x="2907" y="280" height="112" width="251" html.valueishtml="0"  name=t_10 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Actual Start Date" border="0" color="0" x="2560" y="280" height="112" width="224" html.valueishtml="0"  name=t_11 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Schedule Start Date" border="0" color="0" x="613" y="280" height="112" width="219" html.valueishtml="0"  name=t_12 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Book" border="0" color="0" x="1006" y="340" height="52" width="114" html.valueishtml="0"  name=t_13 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Ord qtyUpd" border="0" color="0" x="2112" y="288" height="104" width="192" html.valueishtml="0"  name=t_15 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="2336" y="16" height="52" width="151" format="[general]" html.valueishtml="0"  name=mchar_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="rightTrim( prod_bkmed ) + '' +  prod_bkseq "border="0" color="0" x="928" y="16" height="52" width="329" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="535" y="16" height="52" width="366" format="[general]" html.valueishtml="0"  name=prod_schstdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="347" y="16" height="52" width="169" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="ttlinit_ttl "border="0" color="0" x="1399" y="16" height="52" width="786" format="[general]" html.valueishtml="0"  name=title visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="0" x="123" y="16" height="52" width="142" format="[general]" html.valueishtml="0"  name=mchar_cascd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1289" y="16" height="52" width="78" format="[general]" html.valueishtml="0"  name=mchar_priority visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="2" tabsequence=32766 border="0" color="0" x="2505" y="16" height="52" width="366" format="[general]" html.valueishtml="0"  name=prod_actstdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="2" tabsequence=32766 border="0" color="0" x="2907" y="16" height="52" width="366" format="[general]" html.valueishtml="0"  name=prod_actenddt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="2213" y="16" height="52" width="87" format="[general]" html.valueishtml="0"  name=mchar_ordqty_flg visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2743" y="4" height="52" width="96" format="[general]" html.valueishtml="0"  name=ancntr_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2368" y="12" height="52" width="114" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2651" y="4" height="52" width="37" format="[general]" html.valueishtml="0"  name=mchar_qastatcd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=trailer.1 alignment="1" text="Total Books:" border="0" color="0" x="1371" y="60" height="52" width="439" html.valueishtml="0"  name=t_14 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="count(  prod_bkseq + prod_bkmed  for group 1 )"border="0" color="0" x="1824" y="60" height="52" width="293" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=14 alignment="0" tabsequence=32766 border="0" color="0" x="187" y="24" height="52" width="82" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="1449" y="16" height="60" width="654" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

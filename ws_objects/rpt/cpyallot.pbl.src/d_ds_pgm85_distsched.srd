@@ -1,0 +1,115 @@
+﻿$PBExportHeader$d_ds_pgm85_distsched.srd
+$PBExportComments$Distribution Schedule - datastore, all books
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=140 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" dbalias=".prdr" )
+ column=(type=number updatewhereclause=yes name=mchar_bkseq dbname="sched.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="sched.bkmed" dbalias=".bkmed" )
+ column=(type=char(4) updatewhereclause=yes name=lib_libcd dbname="sched.libcd" dbalias=".libcd" )
+ column=(type=number updatewhereclause=yes name=sched_ordqty dbname="sched.ordqty" dbalias=".ordqty" )
+ column=(type=number updatewhereclause=yes name=sched_selqty dbname="sched.selqty" dbalias=".selqty" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_casub dbname="ttlinit.casub" dbalias=".casub" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" dbalias=".ttl" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" dbalias=".med" )
+ column=(type=number updatewhereclause=yes name=def_defqty dbname="def.defqty" dbalias=".defqty" )
+ retrieve="  SELECT ancntr.prdr,   
+         sched.bkseq,   
+         sched.bkmed,   
+         sched.libcd,   
+         sched.ordqty, 
+			sched.selqty, 
+         ttlinit.casub,  
+			ttlinit.ttl, 
+         mchar.med,	
+			def.defqty
+    FROM ancntr,   
+         mchar,   
+         prod,   
+         sched,   
+         ttlinit,
+			lib,
+			def
+   WHERE ( sched.cabdt = :ad_mydate ) and
+			( mchar.chno = ttlinit.chno ) and 
+			( sched.ordqty >= 0 ) AND  
+			( prod.prodstage in ('DU','PR','PB','EM','FC') ) AND 
+			( ancntr.cntrtype in ('T','D')) and
+			libstcd in ('A','E','N') and 
+         ( ancntr.cntr = prod.cntr ) and  
+         ( prod.bkseq = mchar.bkseq ) and  
+         ( prod.bkmed = mchar.bkmed ) and  
+         ( mchar.bkseq = sched.bkseq ) and  
+         ( mchar.bkmed = sched.bkmed ) and
+			def.libcd = sched.libcd and
+			def.priority = mchar.priority and
+         def.med = mchar.med and
+			def.casub = ttlinit.casub and
+         sched.libcd = lib.libcd and
+			mchar.arflag is null
+UNION ALL SELECT ancntr.prdr,   
+         sched.bkseq,   
+         sched.bkmed,   
+         sched.libcd,    
+         sched.ordqty, 
+			sched.selqty, 
+         ttlinit.casub,  
+			ttlinit.ttl, 
+         mchar.med,	
+			def.defqty
+    FROM ancntr,   
+         mchar,   
+         prod,   
+         sched,   
+         ttlinit,
+			lib,
+			def
+   WHERE ( sched.cabdt = :ad_mydate ) and
+			( mchar.chno = ttlinit.chno ) and 
+			( sched.ordqty >= 0 ) AND  
+			( prod.prodstage in ('MA','PU') ) AND 
+  			(ancntr.cntrtype in ('M','P')) and
+			libstcd in ('A','E','N') and 
+         ( ancntr.cntr = prod.cntr ) and  
+         ( prod.bkseq = mchar.bkseq ) and  
+         ( prod.bkmed = mchar.bkmed ) and  
+         ( mchar.bkseq = sched.bkseq ) and  
+         ( mchar.bkmed = sched.bkmed ) and
+			def.libcd = sched.libcd and
+			def.priority = mchar.priority and
+         def.med = mchar.med and
+			def.casub = ttlinit.casub and
+         sched.libcd = lib.libcd and
+			mchar.arflag is null" arguments=(("ad_mydate", datetime))  sort="lib_libcd A mchar_bkmed A mchar_bkseq A " )
+text(band=header alignment="0" text="L" border="0" color="0" x="64" y="48" height="64" width="32" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="T" border="0" color="0" x="1138" y="48" height="64" width="41" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="M" border="0" color="0" x="882" y="48" height="64" width="50" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="M" border="0" color="0" x="288" y="48" height="64" width="50" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="M" border="0" color="0" x="571" y="48" height="64" width="50" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="A" border="0" color="0" x="2053" y="48" height="64" width="41" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="S" border="0" color="0" x="2277" y="48" height="64" width="41" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="T" border="0" color="0" x="2661" y="48" height="64" width="41" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="430" y="8" height="76" width="389" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2633" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=ttlinit_casub visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="859" y="12" height="64" width="101" format="[general]" html.valueishtml="0"  name=mchar_med visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="960" y="12" height="64" width="983" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=512 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1989" y="4" height="76" width="160" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="2185" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sched_ordqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2761" y="0" height="64" width="1422" format="[general]" html.valueishtml="0"  name=sched_selqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="4183" y="0" height="64" width="1417" format="[general]" html.valueishtml="0"  name=def_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="242" y="8" height="76" width="128" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="210" format="[general]" html.valueishtml="0"  name=lib_libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

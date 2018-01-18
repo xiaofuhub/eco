@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_cds_cdforsale_br.srs
+global type str_cds_cdforsale_br from structure
+	string		prdr
+	string		title
+	string		author
+	string		publisher
+	integer		pages
+end type
+

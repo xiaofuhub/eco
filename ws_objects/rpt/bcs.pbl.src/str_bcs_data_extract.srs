@@ -1,0 +1,33 @@
+﻿$PBExportHeader$str_bcs_data_extract.srs
+global type str_bcs_data_extract from structure
+	string		prdr
+	string		anno
+	string		conno
+	string		chno
+	string		med
+	integer		len
+	integer		vols
+	integer		minlastside
+	string		bkmed
+	long		bkseq
+	string		ricd
+	date		actenddt
+	string		prodstage
+	date		ttldt
+	string		aepcd
+	string		auth
+	string		authfn
+	string		ttl
+	string		publisher
+	integer		pubyr
+	string		lang
+	string		dewey
+	string		note
+	string		lcno
+	string		narr
+	string		narrfn
+	string		recagcy
+	boolean		live
+	string		narrstr
+end type
+

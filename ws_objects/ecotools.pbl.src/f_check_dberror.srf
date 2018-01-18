@@ -1,0 +1,29 @@
+﻿$PBExportHeader$f_check_dberror.srf
+global type f_check_dberror from function_object
+end type
+
+forward prototypes
+global function boolean f_check_dberror (transaction sqltrans, string module)
+end prototypes
+
+global function boolean f_check_dberror (transaction sqltrans, string module);String ls_message,ls_msgparm[1]
+
+IF sqltrans.SQLCode < 0 THEN
+	ls_message = "A database error has occurred in "+module+"~n" + &
+					 "Database error code:  " + String (sqltrans.sqldbcode) + "~r~n" + &
+					 "Database error message:~r~n" + sqltrans.sqlerrtext
+	IF IsValid(gnv_app.inv_error) THEN
+		ls_msgparm[1] = ls_message
+		gnv_app.inv_error.of_Message ('pfc_dwdberror', ls_msgparm, &
+		gnv_app.iapp_object.DisplayName)
+	ELSE
+		Messagebox (gnv_app.iapp_object.DisplayName, ls_message, StopSign!, Ok!)
+		ROLLBACK USING sqltrans;
+		RETURN FALSE
+	End If
+	RETURN FALSE
+ELSE
+	RETURN TRUE
+END IF
+end function
+

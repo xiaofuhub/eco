@@ -1,0 +1,2 @@
+﻿$PBExportHeader$d_arrsn.srq
+PBSELECT( VERSION(400) TABLE(NAME="informix.arrsn" )  TABLE(NAME="informix.mchar" ) COLUMN(NAME="informix.mchar.med") COLUMN(NAME="informix.arrsn.conno") COLUMN(NAME="informix.arrsn.reason")    JOIN (LEFT="informix.arrsn.conno"    OP ="="RIGHT="informix.mchar.conno" )) ARG(NAME = "s_arrsn" TYPE = string)

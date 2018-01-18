@@ -1,0 +1,24 @@
+﻿$PBExportHeader$f_validate_med.srf
+$PBExportComments$Function to validate book medium
+global type f_validate_med from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_med (string lmed)
+end prototypes
+
+global function boolean f_validate_med (string lmed);CHOOSE CASE Lmed	
+	CASE 'RC'
+		RETURN TRUE
+	CASE 'BR'
+		RETURN TRUE
+	CASE 'P/B'
+		RETURN TRUE
+	CASE ''
+		RETURN TRUE
+	CASE ELSE
+		RETURN FALSE
+END CHOOSE
+
+end function
+

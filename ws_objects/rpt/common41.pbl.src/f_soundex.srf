@@ -1,0 +1,136 @@
+﻿$PBExportHeader$f_soundex.srf
+global type f_soundex from function_object
+end type
+
+forward prototypes
+global function string f_soundex (string sndx_in, string ttl_or_auth)
+end prototypes
+
+global function string f_soundex (string sndx_in, string ttl_or_auth);//************************************************************
+//
+//  f_soundex(string sndx_in)
+//  Returns 5 character representation of sndx_in
+//
+//************************************************************
+ 
+string  sndx_out, s_char, s_charcode[26], s_holdchar
+integer  i_len, idx, i, j, alpha_char, li_pos
+boolean  b_exit = FALSE
+n_cst_string 	inv_string
+
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, ".", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, ",", "")
+//sndx_in =  inv_string.of_GlobalReplace(sndx_in, ":", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, ";", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "?", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "!", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "~"", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "\", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "|", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "~~", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "(", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, ")", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "{", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "}", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "+", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "-", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "_", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "=", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "/", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "\\", "")
+sndx_in =  inv_string.of_GlobalReplace(sndx_in, "'", "")
+
+sndx_in = inv_string.of_RemoveNonPrint(sndx_in)
+
+sndx_in = inv_string.of_RemoveWhiteSpace(sndx_in)
+li_pos=Pos(sndx_in,':')
+if li_pos>=1 and ttl_or_auth ='ttl' then
+	sndx_in=mid(sndx_in,1, li_pos - 1)
+end if
+
+// Weighted significance value of each character in the input string 
+
+s_charcode[1 ] = 'x' //a
+s_charcode[2 ] = '1' //b
+s_charcode[3 ] = '2' //c
+s_charcode[4 ] = '3' //d
+s_charcode[5 ] = 'x' //e
+s_charcode[6 ] = '1' //f
+s_charcode[7 ] = '2' //g
+s_charcode[8 ] = 'x' //h
+s_charcode[9 ] = 'x' //i
+s_charcode[10] = '2' //j
+s_charcode[11] = '2' //k
+s_charcode[12] = '4' //l
+s_charcode[13] = '5' //m
+s_charcode[14] = '5' //n
+s_charcode[15] = 'x' //o
+s_charcode[16] = '1' //p
+s_charcode[17] = '2' //q
+s_charcode[18] = '6' //r
+s_charcode[19] = '2' //s
+s_charcode[20] = '3' //t
+s_charcode[21] = 'x' //u
+s_charcode[22] = '1' //v
+s_charcode[23] = 'x' //w
+s_charcode[24] = '2' //x
+s_charcode[25] = 'x' //y
+s_charcode[26] = '2' //z
+ 
+i_len = len(trim(sndx_in))
+sndx_in = UPPER(sndx_in)
+ 
+// Compute Soundex
+if i_len < 1 then RETURN "ERROR"
+sndx_out = left(sndx_in,1)
+if i_len = 1 then RETURN sndx_out + fill(' ',(40 - len(sndx_out)))
+for i = 1 to i_len
+	alpha_char = asc(mid(sndx_in, i, 1)) - 64
+	if alpha_char > 0 and alpha_char < 27 then
+		s_holdchar = s_holdchar + s_charcode[alpha_char] 
+		if b_exit then 
+			RETURN sndx_out
+		end if
+	else
+		alpha_char= alpha_char+ 64
+		if alpha_char >=48 and alpha_char<=57 then
+			s_holdchar= s_holdchar +string(alpha_char - 48)
+		end if
+	end if	
+next
+i = 1
+j = 1
+if ttl_or_auth='ttl' then
+	do while ((i < 40) and (j <= i_len))
+	if ((mid(s_holdchar, j, 1) <> 'x') and (mid(s_holdchar, j, 1) <> (mid(s_holdchar, j - 1, 1)))) then
+	  sndx_out = sndx_out + mid(s_holdchar, j, 1)
+	  i = i + 1
+	end if
+	j = j + 1
+	if b_exit then RETURN sndx_out
+	loop
+	 
+	// Round out all soundex codes to 5 positions
+	 
+	sndx_out = sndx_out + fill(' ',(40 - len(sndx_out)))
+elseif ttl_or_auth='auth' then
+	do while ((i < 10) and (j <= i_len))
+	if ((mid(s_holdchar, j, 1) <> 'x') and (mid(s_holdchar, j, 1) <> (mid(s_holdchar, j - 1, 1)))) then
+	  sndx_out = sndx_out + mid(s_holdchar, j, 1)
+	  i = i + 1
+	end if
+	j = j + 1
+	if b_exit then RETURN sndx_out
+	loop
+	 
+	// Round out all soundex codes to 5 positions
+	 
+	sndx_out = sndx_out + fill(' ',(10 - len(sndx_out)))
+end if
+RETURN sndx_out
+ 
+//************************************************************
+ 
+
+end function
+

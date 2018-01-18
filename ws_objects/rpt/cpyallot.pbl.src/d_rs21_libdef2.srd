@@ -1,0 +1,77 @@
+﻿$PBExportHeader$d_rs21_libdef2.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=libcd dbname="libdef.libcd" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=med dbname="libdef.med" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=casub dbname="libdef.casub" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=casub_desc dbname="libdef.casub_desc" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=curr_n_defqty dbname="libdef.curr_n_defqty" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sel_n_defqty dbname="libdef.sel_n_defqty" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=curr_p_defqty dbname="libdef.curr_p_defqty" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sel_p_defqty dbname="libdef.sel_p_defqty" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=curr_r_defqty dbname="libdef.curr_r_defqty" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sel_r_defqty dbname="libdef.sel_r_defqty" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=sent_flag dbname="libdef.sent_flag" )
+ column=(type=datetime update=yes updatewhereclause=yes name=defdt dbname="libdef.defdt" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=status dbname="libdef.status" )
+ column=(type=datetime update=yes updatewhereclause=yes name=mod_date dbname="libdef.mod_date" )
+ retrieve="  SELECT  	libdef.libcd,  
+         libdef.med,   
+         libdef.casub,      
+         libdef.casub_desc,   
+         libdef.curr_n_defqty,   
+         libdef.sel_n_defqty, 
+			libdef.curr_p_defqty,   
+         libdef.sel_p_defqty,
+			libdef.curr_r_defqty,   
+         libdef.sel_r_defqty,    
+         libdef.sent_flag,   
+         libdef.defdt,   
+         libdef.status,   
+         libdef.mod_date  
+    FROM libdef
+WHERE libdef.libcd = :llibcd
+" update="libdef" updatewhere=0 updatekeyinplace=no arguments=(("llibcd", string)) )
+text(band=header alignment="2" text="Curr N Defqty" border="0" color="0" x="2121" y="4" height="64" width="384" html.valueishtml="0"  name=curr_n_defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sel N Defqty" border="0" color="0" x="2514" y="4" height="64" width="384" html.valueishtml="0"  name=sel_n_defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Curr P Defqty" border="0" color="0" x="2903" y="4" height="64" width="384" html.valueishtml="0"  name=curr_p_defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sel P Defqty" border="0" color="0" x="3291" y="4" height="64" width="384" html.valueishtml="0"  name=sel_p_defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Curr R Defqty" border="0" color="0" x="3680" y="4" height="64" width="384" html.valueishtml="0"  name=curr_r_defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sel R Defqty" border="0" color="0" x="4069" y="4" height="64" width="384" html.valueishtml="0"  name=sel_r_defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sent Flag" border="0" color="0" x="4457" y="4" height="64" width="261" html.valueishtml="0"  name=sent_flag_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Defdt" border="0" color="0" x="4722" y="4" height="64" width="704" html.valueishtml="0"  name=defdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="0" color="0" x="5431" y="4" height="64" width="169" html.valueishtml="0"  name=status_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mod Date" border="0" color="0" x="5605" y="4" height="64" width="704" html.valueishtml="0"  name=mod_date_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Casub Desc" border="0" color="0" x="658" y="4" height="64" width="1458" html.valueishtml="0"  name=casub_desc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Med" border="0" color="0" x="338" y="4" height="64" width="128" html.valueishtml="0"  name=med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Casub" border="0" color="0" x="471" y="4" height="64" width="178" html.valueishtml="0"  name=casub_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Libcd" border="0" color="0" x="5" y="4" height="64" width="297" html.valueishtml="0"  name=libcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="0" color="0" x="2121" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=curr_n_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="0" x="2514" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sel_n_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=70 border="0" color="0" x="2903" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=curr_p_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=80 border="0" color="0" x="3291" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sel_p_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=90 border="0" color="0" x="3680" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=curr_r_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=100 border="0" color="0" x="4069" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sel_r_defqty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="0" color="0" x="4457" y="4" height="76" width="64" format="[general]" html.valueishtml="0"  name=sent_flag visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="0" color="0" x="4722" y="4" height="76" width="704" format="[shortdate] [time]" html.valueishtml="0"  name=defdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=130 border="0" color="0" x="5431" y="4" height="76" width="64" format="[general]" html.valueishtml="0"  name=status visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="0" color="0" x="5605" y="4" height="76" width="704" format="[shortdate] [time]" html.valueishtml="0"  name=mod_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="658" y="4" height="76" width="1458" format="[general]" html.valueishtml="0"  name=casub_desc visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="338" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="471" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="64" width="297" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

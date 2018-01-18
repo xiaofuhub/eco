@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_date.srs
+global type str_date from structure
+	string		ls_bkseq
+	string		ls_cntr
+end type
+

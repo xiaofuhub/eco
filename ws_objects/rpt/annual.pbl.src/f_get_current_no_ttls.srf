@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_get_current_no_ttls.srf
+$PBExportComments$Function to get the most current number of titles in the contract
+global type f_get_current_no_ttls from function_object
+end type
+
+forward prototypes
+global function integer f_get_current_no_ttls (string lcntr, string lcntrmed)
+end prototypes
+
+global function integer f_get_current_no_ttls (string lcntr, string lcntrmed);int totttls=0
+
+select sum(chttl)
+into :totttls
+from addcost
+where cntr=:lcntr
+and  cntrmed =:lcntrmed
+using sqlservertrans;
+
+if totttls > 0 then
+	return totttls
+else
+	return 0
+end if
+
+end function
+

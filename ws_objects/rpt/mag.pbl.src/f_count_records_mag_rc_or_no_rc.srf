@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_count_records_mag_rc_or_no_rc.srf
+global type f_count_records_mag_rc_or_no_rc from function_object
+end type
+
+forward prototypes
+global function integer f_count_records_mag_rc_or_no_rc (integer ai_fy, string as_cntr)
+end prototypes
+
+global function integer f_count_records_mag_rc_or_no_rc (integer ai_fy, string as_cntr);  int li_count
+  SELECT  count(*)	into :li_count
+        FROM mag ,magttl
+        WHERE   (mag.magcd= magttl.magcd) and (mag.fy = :ai_fy) and (mag.cntr = :as_cntr ) 
+		  using SQLServerTrans;
+	return li_count		
+	
+
+end function
+

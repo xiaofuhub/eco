@@ -1,0 +1,28 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "pfcsecsc.pbl" "";
+@end;
+@begin Objects 
+ "d_pfcsecurity_allcontrollist.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_applookup.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_controllist.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_grouplookup.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_groupverify.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_objectlist.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_templateupdate.srd" "pfcsecsc.pbl";
+ "d_pfcsecurity_userlookup.srd" "pfcsecsc.pbl";
+ "f_setfilesrv.srf" "pfcsecsc.pbl";
+ "base_librarylist.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_filesrv.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_filesrvaix.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_filesrvhpux.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_filesrvsol2.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_filesrvunicode.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_filesrvwin32.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_securityscanner.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_cst_string.sru" "pfcsecsc.pbl";
+ "pfcscanner_n_ds.sru" "pfcsecsc.pbl";
+ "pfcscanner_u_dw.sru" "pfcsecsc.pbl";
+ "w_pfcsecurity_objectlist.srw" "pfcsecsc.pbl";
+ "w_pfcsecurity_targetselection.srw" "pfcsecsc.pbl";
+@end;

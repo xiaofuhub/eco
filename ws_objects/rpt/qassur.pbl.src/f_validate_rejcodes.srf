@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_validate_rejcodes.srf
+global type f_validate_rejcodes from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_rejcodes (string lrejstr, string lmed)
+end prototypes
+
+global function boolean f_validate_rejcodes (string lrejstr, string lmed);String Lrejchar
+Integer i,lcnt
+n_cst_string inv_string
+
+FOR i=1 TO len(Lrejstr)
+	Lrejchar = Mid ( Lrejstr,i,1)
+	IF Lmed = 'RC' OR Lmed = 'FD' THEN
+		lcnt = inv_string.of_CountOccurrences(Lrejchar, 'PIETDLCNS', TRUE)
+	ELSE
+		lcnt = inv_string.of_CountOccurrences(Lrejchar, 'OBTFV', TRUE)
+	END IF
+	IF lcnt <> 0 THEN
+		RETURN TRUE
+	ELSE
+		RETURN FALSE
+	END IF
+NEXT
+
+end function
+

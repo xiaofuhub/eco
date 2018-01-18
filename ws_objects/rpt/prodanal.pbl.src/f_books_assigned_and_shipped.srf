@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_books_assigned_and_shipped.srf
+global type f_books_assigned_and_shipped from function_object
+end type
+
+forward prototypes
+global function integer f_books_assigned_and_shipped (string ls_cntr)
+end prototypes
+
+global function integer f_books_assigned_and_shipped (string ls_cntr);integer li_books
+
+select count(*)
+into :li_books
+from conversionbooks
+where cntr = :ls_cntr
+and action_type in ('A','V')
+using sqlservertrans;
+
+return li_books
+end function
+

@@ -1,0 +1,25 @@
+﻿$PBExportHeader$d_bcs_editinfo_with_no_s2out.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1664 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="editinfo.conno" )
+ column=(type=char(4000) updatewhereclause=yes name=edit_info dbname="editinfo.edit_info" )
+ column=(type=char(8) updatewhereclause=yes name=initials dbname="editinfo.initials" )
+ column=(type=char(1) updatewhereclause=yes name=lockflag dbname="editinfo.lockflag" values="Locked	Y/Not Locked	N/" )
+ retrieve="  SELECT editinfo.conno,   
+         editinfo.edit_info,   
+         editinfo.initials,   
+         editinfo.lockflag 
+ 
+    FROM editinfo
+	WHERE editinfo.s2in is NULL
+" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="46" y="248" height="1368" width="2391" format="[general]" html.valueishtml="0"  name=edit_info visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="46" y="96" height="76" width="315" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Control No" border="0" color="0" x="23" y="0" height="64" width="352" html.valueishtml="0"  name=conno_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="466" y="96" height="76" width="247" format="[general]" html.valueishtml="0"  name=initials visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Initials" border="0" color="0" x="453" y="0" height="64" width="265" html.valueishtml="0"  name=initials_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

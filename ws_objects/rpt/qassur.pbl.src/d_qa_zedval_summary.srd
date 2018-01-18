@@ -1,0 +1,74 @@
+﻿$PBExportHeader$d_qa_zedval_summary.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=212 color="536870912" height.autosize=yes )
+table(column=(type=number updatewhereclause=yes name=bkseq dbname="dtb_data.bkseq" dbalias="a.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="dtb_data.bkmed" dbalias="a.bkmed" )
+ column=(type=char(8) updatewhereclause=yes name=qainit dbname="dtb_data.qainit" dbalias="a.qainit" )
+ column=(type=char(1) updatewhereclause=yes name=playbook_chk dbname="dtb_data.playbook_chk" dbalias="a.playbook_chk" )
+ column=(type=char(1) updatewhereclause=yes name=nlsreportxml_chk dbname="dtb_data.nlsreportxml_chk" dbalias="a.nlsreportxml_chk" )
+ column=(type=char(1) updatewhereclause=yes name=reportxml_chk dbname="dtb_data.reportxml_chk" dbalias="a.reportxml_chk" )
+ column=(type=char(1) updatewhereclause=yes name=smil_chk dbname="dtb_data.smil_chk" dbalias="a.smil_chk" )
+ column=(type=char(1) updatewhereclause=yes name=ncx_chk dbname="dtb_data.ncx_chk" dbalias="a.ncx_chk" )
+ column=(type=char(1) updatewhereclause=yes name=opf_chk dbname="dtb_data.opf_chk" dbalias="a.opf_chk" )
+ column=(type=char(4000) updatewhereclause=yes name=comments dbname="dtb_data.comments" dbalias="a.comments" )
+ column=(type=datetime updatewhereclause=yes name=dt_time dbname="dtb_data.dt_time" dbalias="a.dt_time" )
+ column=(type=char(1) updatewhereclause=yes name=status dbname="dtb_data.status" dbalias="a.status" values="Finish Later	H/Rejected	R/Approved	A/" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_sttl dbname="ttlinit.sttl" dbalias="b.sttl" )
+ retrieve="  SELECT a.BKSEQ,   
+         a.BKMED,   
+         a.QAINIT,   
+         a.PLAYBOOK_CHK,   
+         a.NLSREPORTXML_CHK,   
+         a.REPORTXML_CHK,   
+         a.SMIL_CHK,   
+         a.NCX_CHK,   
+         a.OPF_CHK,   
+         a.COMMENTS,   
+         a.DT_TIME,
+         a.STATUS,
+	  b.STTL
+    FROM DTB_DATA a, ttlinit b, mchar c
+WHERE a.BKSEQ = c.BKSEQ
+AND        a.BKMED = c.BKMED
+AND        b.CHNO = c.CHNO
+AND 	  to_date( a.DT_TIME) = :ldt_time
+" arguments=(("ldt_time", date)) )
+text(band=header alignment="2" text="Book No" border="0" color="33554432" x="101" y="4" height="112" width="238" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QASInitial" border="0" color="33554432" x="1024" y="4" height="112" width="329" html.valueishtml="0"  name=qainit_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tile" border="0" color="33554432" x="453" y="4" height="112" width="329" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Play The book" border="0" color="33554432" x="1541" y="4" height="112" width="274" html.valueishtml="0"  name=playbook_chk_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="NLSVal XML" border="0" color="33554432" x="1783" y="4" height="112" width="233" html.valueishtml="0"  name=nlsreportxml_chk_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Zedval XML" border="0" color="33554432" x="1989" y="4" height="112" width="201" html.valueishtml="0"  name=reportxml_chk_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SMIL File" border="0" color="33554432" x="2158" y="4" height="112" width="192" html.valueishtml="0"  name=smil_chk_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="NCXFile" border="0" color="33554432" x="2299" y="4" height="112" width="174" html.valueishtml="0"  name=ncx_chk_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="OPFFile" border="0" color="33554432" x="2423" y="4" height="112" width="215" html.valueishtml="0"  name=opf_chk_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="0" color="33554432" x="1353" y="4" height="112" width="160" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="33554432" x="2615" y="8" height="60" width="69" format="[shortdate] [time]" html.valueishtml="0"  name=dt_time visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="33554432" x="434" y="4" height="60" width="658" format="[general]" html.valueishtml="0"  name=ttlinit_sttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="33554432" x="1120" y="4" height="60" width="178" format="[general]" html.valueishtml="0"  name=qainit visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=20 border="5" color="33554432" x="137" y="132" height="60" width="3154" format="[general]" html.valueishtml="0"  name=comments visible="1" height.autosize=yes edit.limit=4000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="33554432~tif( trim(status) = ~"R~", RGB(255,0,0), RGB(0,0,0) )" x="1317" y="4" height="60" width="302" format="[general]" html.valueishtml="0"  name=status visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="33554432" x="1646" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=playbook_chk visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="5" color="33554432" x="1865" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=nlsreportxml_chk visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="33554432" x="2048" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=reportxml_chk visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="5" color="33554432" x="2226" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=smil_chk visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="5" color="33554432" x="2354" y="4" height="60" width="59" format="[general]" html.valueishtml="0"  name=ncx_chk visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="2" tabsequence=32766 border="5" color="33554432" x="2491" y="4" height="60" width="55" format="[general]" html.valueishtml="0"  name=opf_chk visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Comments" border="0" color="33554432" x="137" y="76" height="56" width="357" html.valueishtml="0"  name=comments_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554432" x="256" y="4" height="60" width="165" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554432" x="137" y="4" height="60" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

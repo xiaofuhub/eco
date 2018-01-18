@@ -1,0 +1,93 @@
+﻿$PBExportHeader$d_magazine_maintenance_rc.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=176 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=magcd dbname="mag.magcd" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=ucmast dbname="mag.ucmast" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=ucdupls dbname="mag.ucdupls" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=ucdupl dbname="mag.ucdupl" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=ucdupll dbname="mag.ucdupll" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=estmail dbname="mag.estmail" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=cntcso dbname="mag.cntcso" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=cntcsadjc dbname="mag.cntcsadjc" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=cntcsc dbname="mag.cntcsc" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=fy dbname="mag.fy" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=cntr dbname="mag.cntr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estsubs dbname="mag.estsubs" initial="0" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=estsz dbname="mag.estsz" initial="0" validation="DEC(gettext()) < 9999.9" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=estszs dbname="mag.estszs" initial="0" validation="DEC(gettext()) < 9999.9" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=estszl dbname="mag.estszl" initial="0" validation="DEC(gettext()) < 9999.9" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estiss dbname="mag.estiss" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estmin dbname="mag.estmin" initial="0" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=ucothr dbname="mag.ucothr" )
+ column=(type=char(34) updatewhereclause=yes name=magttl_title dbname="magttl.title" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=freq dbname="mag.freq" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ccd dbname="mag.ccd" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=magst dbname="mag.magst" initial="A" )
+ column=(type=datetime update=yes updatewhereclause=yes name=mag_firstissue dbname="mag.firstissue" )
+ retrieve="SELECT mag.magcd, mag.ucmast, mag.ucdupls, mag.ucdupl, mag.ucdupll,
+       mag.estmail, mag.cntcso, mag.cntcsadjc, mag.cntcsc, mag.fy, mag.cntr,
+       mag.estsubs, mag.estsz, mag.estszs, mag.estszl, mag.estiss, mag.estmin,
+       mag.ucothr, magttl.title, mag.freq, mag.ccd, mag.magst, mag.firstissue
+  FROM mag, magttl
+ WHERE (mag.fy = :li_fy)
+   AND (mag.cntr = :ls_contract)
+   AND (mag.magcd = magttl.magcd) " update="mag" updatewhere=1 updatekeyinplace=no arguments=(("li_fy", number),("ls_contract", string))  sort="magttl_title A " )
+text(band=header alignment="2" text="Magazine
+Code" border="0" color="0" x="9" y="4" height="104" width="297" html.valueishtml="0"  name=magcd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est. Size
+ Large" border="0" color="0" x="2117" y="4" height="104" width="256" html.valueishtml="0"  name=estszl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est.
+Minutes" border="0" color="0" x="2368" y="4" height="104" width="274" html.valueishtml="0"  name=estmin_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est. Size
+ Medium" border="0" color="0" x="1861" y="4" height="104" width="261" html.valueishtml="0"  name=estsz_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est. Size
+ Small" border="0" color="0" x="1609" y="4" height="104" width="247" html.valueishtml="0"  name=estszs_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Est.
+Subscribers" border="0" color="0" x="1317" y="4" height="104" width="288" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Est.
+Issues" border="0" color="0" x="1065" y="4" height="104" width="224" html.valueishtml="0"  name=estiss_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mag
+Freq" border="0" color="0" x="791" y="4" height="104" width="224" html.valueishtml="0"  name=freq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="CCD" border="0" color="0" x="3031" y="4" height="52" width="133" html.valueishtml="0"  name=ccd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mag. 
+Status" border="0" color="0" x="3186" y="4" height="104" width="178" html.valueishtml="0"  name=magst_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="First
+Issue" border="0" color="0" x="2665" y="4" height="104" width="274" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title
+" border="0" color="0" x="434" y="4" height="104" width="224" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="5" color="0" x="283" y="4" height="68" width="503" html.valueishtml="0"  name=magttl_title visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.displayonly=yes  font.face="Small Fonts" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="0" x="9" y="4" height="68" width="261" format="[general]" html.valueishtml="0"  name=magcd visible="1" dddw.name=dddw_magcd_rc dddw.displaycolumn=magcd dddw.datacolumn=magcd dddw.percentwidth=400 dddw.lines=0 dddw.limit=5 dddw.allowedit=yes dddw.useasborder=no dddw.case=upper dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3648" y="4" height="68" width="37" format="[general]" html.valueishtml="0"  name=cntcsadjc visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3698" y="4" height="68" width="46" format="[general]" html.valueishtml="0"  name=cntcsc visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="3758" y="4" height="68" width="50" format="[general]" html.valueishtml="0"  name=ucothr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3337" y="4" height="68" width="41" format="[general]" html.valueishtml="0"  name=ucmast visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3438" y="4" height="68" width="41" format="[general]" html.valueishtml="0"  name=ucdupl visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3493" y="4" height="68" width="32" format="[general]" html.valueishtml="0"  name=ucdupll visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3543" y="4" height="68" width="41" format="[general]" html.valueishtml="0"  name=estmail visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3602" y="4" height="68" width="32" format="[general]" html.valueishtml="0"  name=cntcso visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3392" y="4" height="68" width="37" format="[general]" html.valueishtml="0"  name=ucdupls visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=20 alignment="1" tabsequence=20 border="5" color="0" x="795" y="4" height="68" width="256" format="[general]" html.valueishtml="0"  name=freq visible="1" editmask.mask="###" editmask.focusrectangle=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=16 alignment="1" tabsequence=30 border="5" color="0" x="1074" y="4" height="68" width="238" format="[general]" html.valueishtml="0"  name=estiss visible="1" editmask.mask="###" editmask.focusrectangle=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="1" tabsequence=40 border="5" color="0" x="1335" y="4" height="68" width="256" format="[general]" html.valueishtml="0"  name=estsubs visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=14 alignment="1" tabsequence=50 border="5" color="0" x="1614" y="4" height="68" width="233" format="[general]" html.valueishtml="0"  name=estszs visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="1" tabsequence=60 border="5" color="0" x="1870" y="4" height="68" width="233" format="[general]" html.valueishtml="0"  name=estsz visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=15 alignment="1" tabsequence=70 border="5" color="0" x="2117" y="4" height="68" width="233" format="[general]" html.valueishtml="0"  name=estszl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=17 alignment="1" tabsequence=80 border="5" color="0" x="2373" y="4" height="68" width="274" format="[general]" html.valueishtml="0"  name=estmin visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=23 alignment="0" tabsequence=90 border="5" color="0" x="2670" y="4" height="68" width="302" format="[shortdate] [time]" html.valueishtml="0"  name=mag_firstissue visible="1" editmask.mask="mm/dd/yy" editmask.focusrectangle=no  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=21 alignment="1" tabsequence=100 border="5" color="0" x="2994" y="4" height="68" width="206" format="[general]" html.valueishtml="0"  name=ccd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="5" color="0" x="3218" y="4" height="68" width="101" format="[general]" html.valueishtml="0"  name=magst visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,28 @@
+﻿$PBExportHeader$dddw_cntrmed.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="CNTRMED" )
+ retrieve="
+ SELECT distinct 
+         ancntr.cntrmed 		
+    FROM ancntr, 
+			prod, 
+			mchar
+	where ancntr.cntr= prod.cntr and
+			prod.bkseq= mchar.bkseq and
+			prod.bkmed= mchar.bkmed and 
+			ancntr.cntrlc is not null and 
+			ancntr.cntr_status ='A' and
+			trim(ancntr.prdr)=:as_prdr and
+			(arflag  is null or arflag <>'A' ) and
+		(prodstage in('PR','PB','DU' ) or ( prodstage in ('MA','AB') and cntrtype ='M'))
+		and		(actenddt is  null or actenddt >=:ad_before_start_date30 )
+
+
+" arguments=(("ad_before_start_date30", datetime),("as_prdr", string)) )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="0" y="0" height="76" width="174" format="[general]"  name=cntrmed edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

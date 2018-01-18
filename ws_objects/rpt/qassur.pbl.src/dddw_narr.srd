@@ -1,0 +1,25 @@
+﻿$PBExportHeader$dddw_narr.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=116 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(34) update=yes updatewhereclause=yes name=narr dbname="narrtbl.narr" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=narrfn dbname="narrtbl.narrfn" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=recagcy dbname="narrtbl.recagcy" )
+ retrieve="  SELECT narrtbl.narr,   
+         narrtbl.narrfn,   
+         narrtbl.recagcy
+    FROM narrtbl  
+ORDER BY narrtbl.narr ASC,   
+         narrtbl.narrfn ASC   
+" )
+text(band=header alignment="2" text="Narrator'sLast Name" border="0" color="0" x="9" y="8" height="112" width="503"  name=t_1  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Narrator'sFirst Name" border="0" color="0" x="521" y="8" height="112" width="425"  name=t_2  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Record Agency" border="0" color="0" x="955" y="8" height="112" width="187"  name=t_3  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="521" y="4" height="76" width="425" format="[general]"  name=narrfn edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="955" y="4" height="76" width="187" format="[general]"  name=recagcy edit.limit=4 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="9" y="4" height="76" width="503" format="[general]"  name=narr edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

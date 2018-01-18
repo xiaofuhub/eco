@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_message.srf
+global type f_message from function_object
+end type
+
+forward prototypes
+global subroutine f_message (string as_title, string as_message, string as_object, string as_context, icon ae_icon, button ae_button, integer ai_default)
+end prototypes
+
+global subroutine f_message (string as_title, string as_message, string as_object, string as_context, icon ae_icon, button ae_button, integer ai_default);//*------------------------------------------------*/
+//*    f_Error:  Displays Error Message				*/
+//*------------------------------------------------*/
+If IsNull ( as_Message ) Then as_Message = ""
+If IsNull ( ae_Icon ) Then ae_Icon = Information!
+If IsNull ( ae_Button ) Then ae_Button = Ok!
+If IsNull ( ai_Default ) Then ai_Default = 1
+
+MessageBox ( as_title, as_Message, ae_Icon, ae_Button, ai_Default )
+end subroutine
+

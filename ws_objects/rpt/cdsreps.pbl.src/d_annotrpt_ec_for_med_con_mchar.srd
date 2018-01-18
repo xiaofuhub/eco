@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_annotrpt_ec_for_med_con_mchar.srd
+release 10.5;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=177 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ column=(type=char(3) updatewhereclause=yes name=med dbname="mchar.med" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=ri_prevbkseq dbname="ri.prevbkseq" )
+ column=(type=char(3) updatewhereclause=yes name=ri_prevbkmed dbname="ri.prevbkmed" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_flash_indicator dbname="mchar.flash_indicator" values="	Y/	N" )
+ retrieve="  SELECT mchar.conno,mchar.med,mchar.bkmed,ri.prevbkseq,ri.prevbkmed,flash_indicator
+    FROM mchar,ri
+   WHERE mchar.chno = :ls_chno  
+   and mchar.conno = ri.conno(+)
+ORDER BY mchar.conno 
+" arguments=(("ls_chno", string)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="83" y="0" height="135" width="416" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1520" y="0" height="135" width="822" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2656" y="0" height="135" width="281" format="[general]" html.valueishtml="0"  name=ri_prevbkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2958" y="0" height="135" width="1104" format="[general]" html.valueishtml="0"  name=ri_prevbkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="510" y="0" height="135" width="281" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1052" y="0" height="166" width="187" format="[general]" html.valueishtml="0"  name=mchar_flash_indicator visible="1~tif(  mchar_bkmed = 'DB', 1, 0 )" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=no  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_archival_control.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 107 print.margin.right = 107 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=20 color="536870912" )
+detail(height=472 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_frflag dbname="mchar.frflag" )
+ column=(type=char(6) updatewhereclause=yes name=ttlinit_chno dbname="ttlinit.chno" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=datetime updatewhereclause=yes name=ttlinit_ttldt dbname="ttlinit.ttldt" )
+ retrieve="  SELECT mchar.conno,
+			mchar.frflag, 
+         ttlinit.chno,   
+       	ttlinit.ttl,   
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.ttldt  
+    FROM mchar,   
+         ttlinit  
+   WHERE ( mchar.chno = ttlinit.chno ) and  
+         ( ( mchar.chno = :s_chno ) )    
+" arguments=(("s_chno", string)) )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="1810" y="56" height="72" width="462" format="[general]" html.valueishtml="0"  name=ttlinit_chno  tag="Enter the Valid Chart Number of the Record here" visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="571" y="48" height="72" width="489" format="[general]" html.valueishtml="0"  name=mchar_conno  tag="Enter the Valid Control Number of the Record here" visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Chart No" border="0" color="0" x="1550" y="56" height="64" width="238" html.valueishtml="0"  name=ttlinit_chno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="2295" y="152" height="76" width="329" format="[general]" html.valueishtml="0"  name=ttlinit_ttldt  tag="Title Date" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="576" y="368" height="76" width="1705" format="[general]" html.valueishtml="0"  name=ttlinit_authfn  tag="Author's First Name" visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="0" text="Control No" border="0" color="0" x="261" y="48" height="64" width="288" html.valueishtml="0"  name=mchar_conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Title" border="0" color="0" x="430" y="152" height="64" width="119" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Author" border="0" color="0" x="375" y="272" height="64" width="174" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Author First Name" border="0" color="0" x="64" y="372" height="64" width="485" html.valueishtml="0"  name=ttlinit_authfn_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="576" y="260" height="76" width="1705" format="[general]" html.valueishtml="0"  name=ttlinit_auth  tag="Author of the Book" visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="576" y="152" height="76" width="1705" format="[general]" html.valueishtml="0"  name=ttlinit_ttl  tag="Book's Title" visible="1" edit.limit=512 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1234" y="52" height="64" width="187" format="[general]" html.valueishtml="0"  name=mchar_frflag visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

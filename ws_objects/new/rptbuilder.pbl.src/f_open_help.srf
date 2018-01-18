@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_open_help.srf
+$PBExportComments$opens the w_help window
+global type f_open_help from function_object
+end type
+
+forward prototypes
+global function integer f_open_help (string as_key)
+end prototypes
+
+global function integer f_open_help (string as_key);//////////////////////////////////////////////////////////////////////
+//
+// Function: f_open_help
+//
+// Purpose: starts the help engine and opens the appropriate topic
+//
+//	Scope: public
+//
+//	Arguments: as_key		the key (window name) that determines which
+//								help will be displayed
+//		
+//	Returns:  1		indicates success
+//				-1		error (problem reading from database)
+//
+//////////////////////////////////////////////////////////////////////
+
+ShowHelp("exampl50.hlp", KeyWord!, as_Key)
+
+Return 1
+
+end function
+

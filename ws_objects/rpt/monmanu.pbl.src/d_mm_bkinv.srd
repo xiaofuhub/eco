@@ -1,0 +1,58 @@
+﻿$PBExportHeader$d_mm_bkinv.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(5) updatewhereclause=yes name=anucost_unitcost dbname="anucost.unitcost" )
+ column=(type=char(3) updatewhereclause=yes name=anucost_uom dbname="anucost.uom" values="Minutes	MIN/Sub-master Reel	SMR/Cassettes	CAS/Inter-master Reels	IMR/Master Pages	MPG/Pressing	PRS/Print Copies	PCP/Copies	CPY/Disks	DSK/" )
+ column=(type=decimal(5) updatewhereclause=yes name=anucost_subunitcost dbname="anucost.subunitcost" )
+ column=(type=char(3) updatewhereclause=yes name=anucost_subuom dbname="anucost.subuom" values="Minutes	MIN/Sub-master Reels	SMR/Cassettes	CAS/Inter-master Reels	IMR/Master Pages	MPG/Pressing	PRS/Print Copies	PCP/Copies	CPY/Disks	DSK/" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_units dbname="prod.units" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_subunits dbname="prod.subunits" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" values="Mastering	MA/Duplication	DU/Abstruse	AB/Editing	ED/Sub-mastering	SM/Inter-mastering	IM/Pressing	PR/Binding	BI/Purchasing	PU/Print Braille	PB/" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" )
+ retrieve="  SELECT anucost.unitcost,   
+         anucost.uom,   
+         anucost.subunitcost,   
+         anucost.subuom,   
+         prod.units,   
+         prod.subunits,   
+         prod.bkseq,   
+         prod.bkmed,   
+         prod.prodstage,   
+         prod.cntr  
+    FROM prod, anucost
+   WHERE prod.cntr = anucost.cntr(+)  and  
+         prod.prodstage = anucost.prodstage(+) and
+			prod.bkseq = :Lbkseq and
+			prod.cntr = :Lcntr
+ORDER BY prod.prodstage DESC   
+" arguments=(("Lbkseq", number),("Lcntr", string)) )
+group(level=1 header.height=0 trailer.height=92 by=("prod_bkseq" , "prod_bkmed" , "prod_cntr" ) newpage=yes resetpagecount=yes header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=84 trailer.height=0 by=("prod_prodstage" ) header.color="536870912" trailer.color="536870912"  sort="count(prod_prodstage for group 2) A " )
+line(band=header x1="32" y1="80" x2="2720" y2="80"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Prod. Stage" border="0" color="0" x="87" y="16" height="52" width="256" html.valueishtml="0"  name=inv_prodstage_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Unit Cost" border="0" color="0" x="1019" y="16" height="52" width="197" html.valueishtml="0"  name=anucost_unitcost_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Cost" border="0" color="0" x="2418" y="16" height="52" width="96" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subunit Cost" border="0" color="0" x="1993" y="16" height="52" width="274" html.valueishtml="0"  name=anucost_subunitcost_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subunits" border="0" color="0" x="1344" y="16" height="52" width="187" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Units" border="0" color="0" x="434" y="16" height="52" width="110" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.2 id=9 alignment="0" tabsequence=32766 border="5" color="0" x="27" y="12" height="60" width="425" format="[general]" html.valueishtml="0"  name=prod_prodstage visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="585" y="12" height="60" width="370" format="[general]" html.valueishtml="0"  name=anucost_uom visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1989" y="12" height="60" width="306" format="[general]" html.valueishtml="0"  name=anucost_subunitcost visible="1" editmask.mask="$###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="5" color="0" x="366" y="12" height="60" width="192" format="[general]" html.valueishtml="0"  name=prod_units visible="1" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1554" y="12" height="60" width="411" format="" html.valueishtml="0"  name=anucost_subuom visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="0" x="1298" y="12" height="60" width="229" format="[general]" html.valueishtml="0"  name=prod_subunits visible="1" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if( isNull(prod_subunits),( prod_units * anucost_unitcost ),(prod_units * anucost_unitcost) + (  prod_subunits  *  anucost_subunitcost ))"border="5" color="0" x="2331" y="12" height="60" width="402" format="$##,###.00" html.valueishtml="0"  name=invcost visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="987" y="12" height="60" width="293" format="[general]" html.valueishtml="0"  name=anucost_unitcost visible="1" editmask.mask="$###,###.000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="137" y="8" height="64" width="64" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="233" y="8" height="64" width="64" format="[general]" html.valueishtml="0"  name=prod_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="32" y="8" height="64" width="73" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=trailer.1 alignment="0" text="Total Cost:" border="0" color="0" x="2007" y="12" height="52" width="233" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="0" expression="sum(  invcost for group 1 )"border="5" color="0" x="2331" y="12" height="64" width="402" format="$###,###.00" html.valueishtml="0"  name=invtot visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_cds_report.srs
+global type str_cds_report from structure
+	date		ld_stdt
+	date		ld_enddt
+	date		d_date
+	string		ls_string
+end type
+

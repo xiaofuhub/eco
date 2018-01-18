@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_magazine_due_date_extensions.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=584 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes key=yes name=magiss_magcd dbname="magiss.magcd" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=magiss_issdt dbname="magiss.issdt" )
+ column=(type=decimal(0) updatewhereclause=yes name=magcntr_fy dbname="magcntr.fy" )
+ column=(type=char(4) updatewhereclause=yes name=magcntr_prdr dbname="magcntr.prdr" )
+ column=(type=char(7) updatewhereclause=yes name=magcntr_cntr dbname="magcntr.cntr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=magiss_extc dbname="magiss.extc" initial="0" )
+ column=(type=char(34) updatewhereclause=yes name=magttl_title dbname="magttl.title" )
+ retrieve="  SELECT MAGISS.MAGCD,   
+         MAGISS.ISSDT,   
+         MAGCNTR.FY,   
+         MAGCNTR.PRDR,   
+         MAGCNTR.CNTR,   
+         MAGISS.EXTC,   
+         MAGTTL.TITLE  
+    FROM MAGCNTR,   
+         MAGISS,   
+         MAGTTL  
+   WHERE ( MAGCNTR.FY = MAGISS.FY ) and  
+         ( MAGISS.MAGCD = MAGTTL.MAGCD ) and  
+         ( ( magiss.magcd = :ls_magcd ) AND  
+         ( magiss.issdt = :ldt_issuedate ) AND  
+         ( magcntr.fy = magiss.fy ) AND  
+         ( magcntr.cntr = magiss.cntr ) AND  
+         ( magiss.magcd = magttl.magcd ) )    
+" update="MAGISS" updatewhere=1 updatekeyinplace=no arguments=(("ls_magcd", string),("ldt_issuedate", datetime)) )
+text(band=detail alignment="1" text="Issue Date" border="0" color="0" x="197" y="248" height="64" width="293" html.valueishtml="0"  name=magiss_issdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Magazine Code" border="0" color="0" x="50" y="36" height="64" width="434" html.valueishtml="0"  name=magiss_magcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Title" border="0" color="0" x="366" y="144" height="64" width="119" html.valueishtml="0"  name=magttl_title_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="507" y="36" height="76" width="334" format="[general]" html.valueishtml="0"  name=magiss_magcd  tag="Enter Magazine Code" visible="1" dddw.name=ddw_magcd dddw.displaycolumn=magcd dddw.datacolumn=magcd dddw.percentwidth=100 dddw.lines=0 dddw.limit=4 dddw.allowedit=yes dddw.useasborder=no dddw.case=upper dddw.required=yes dddw.nilisnull=yes dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="507" y="144" height="76" width="850" format="[general]" html.valueishtml="0"  name=magttl_title  tag="Magazine Title" visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="5" color="0" x="507" y="248" height="76" width="329" format="[general]" html.valueishtml="0"  name=magiss_issdt  tag="Enter Issue Date" visible="1" editmask.required=yes editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Fiscal Year" border="0" color="0" x="1454" y="36" height="64" width="311" html.valueishtml="0"  name=magcntr_fy_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Producer" border="0" color="0" x="1509" y="172" height="64" width="256" html.valueishtml="0"  name=magcntr_prdr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Contract" border="0" color="0" x="1536" y="312" height="64" width="229" html.valueishtml="0"  name=magcntr_cntr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cumulative Extension Days" border="0" color="0" x="1024" y="452" height="64" width="741" html.valueishtml="0"  name=magiss_extc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="0" x="1787" y="36" height="76" width="224" format="[general]" html.valueishtml="0"  name=magcntr_fy  tag="Fiscal Year" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="0" x="1787" y="172" height="76" width="187" format="[general]" html.valueishtml="0"  name=magcntr_prdr  tag="Producer" visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1787" y="312" height="76" width="407" format="[general]" html.valueishtml="0"  name=magcntr_cntr  tag="Contract" visible="1" edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="0" x="1787" y="448" height="76" width="261" format="[general]" html.valueishtml="0"  name=magiss_extc  tag="Cumulative Extension Days" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

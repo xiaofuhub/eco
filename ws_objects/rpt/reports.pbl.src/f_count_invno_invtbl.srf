@@ -1,0 +1,32 @@
+﻿$PBExportHeader$f_count_invno_invtbl.srf
+global type f_count_invno_invtbl from function_object
+end type
+
+forward prototypes
+global function integer f_count_invno_invtbl (string ls_contract, string ls_admin_date, string ls_pcsdt)
+end prototypes
+
+global function integer f_count_invno_invtbl (string ls_contract, string ls_admin_date, string ls_pcsdt);datetime ld_admdt, ld_pcsdt
+date ld_date, ld_pcs
+int count1
+time lt_time=time('00:00:00')
+
+SetNull(count1)
+
+ld_date = date(ls_admin_date)
+ld_pcs=date(ls_pcsdt)
+ld_admdt=datetime(ld_date,lt_time)
+ld_pcsdt=datetime(ld_pcs, lt_time)
+select count (distinct invno) into :count1
+from inv
+where inv.admdt = :ld_admdt and trim(inv.cntr) = :ls_contract and inv.pcsdt = :ld_pcsdt
+using sqlserverTrans;
+
+IF IsNull(count1) THEN
+	return 0
+ELSE
+	return count1
+END IF
+
+end function
+

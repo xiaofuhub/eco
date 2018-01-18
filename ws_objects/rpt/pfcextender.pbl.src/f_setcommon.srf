@@ -1,0 +1,77 @@
+﻿$PBExportHeader$f_setcommon.srf
+$PBExportComments$(PB70Base) - Creates/Destroys the Common Routines service
+global type f_setcommon from function_object
+end type
+
+forward prototypes
+global function ostypes f_setcommon (ref common_routines anv_commsrv, boolean ab_switch)
+end prototypes
+
+global function ostypes f_setcommon (ref common_routines anv_commsrv, boolean ab_switch);//*---------------------------------------------------------*/
+//*    f_SetCommon:  Creates/Destroys the common   			*/
+//*                  routines service based on platform		*/ 
+//*---------------------------------------------------------*/
+environment le_env
+contextinformation lcx_key
+int li_PBVers, li_PBMinorVers
+string ls_PBVersion, ls_PBUserRegKey, ls_PBMachineRegKey, ls_Suffix, ls_ExeName
+
+If IsNull ( ab_switch ) Then Return Windows!
+
+If ab_switch Then
+	
+	GetEnvironment ( le_env ) 
+	
+	le_env.GetContextService ( "ContextInformation", lcx_key)
+	lcx_key.GetMajorVersion ( li_PBVers )
+	lcx_key.GetMinorVersion ( li_PBMinorVers )
+
+	/*  jcantz - Changed following code to construct a 7.5 version */
+	Choose Case le_env.Charset
+		Case CharSetUnicode! 
+			ls_Suffix = "." + String ( li_PBMinorVers)
+			ls_ExeName = "pb" + String ( li_PBVers ) + String ( li_PBMinorVers) + ".exe"
+		Case Else
+			ls_Suffix = "." + String ( li_PBMinorVers) 
+			ls_ExeName = "pb" + String ( li_PBVers ) + String ( li_PBMinorVers) + ".exe"
+	End Choose
+	
+	ls_PBVersion = String ( li_PBVers ) + ls_Suffix
+	ls_PBUserRegKey = "HKEY_CURRENT_USER\Software\Sybase\PowerBuilder\" + ls_PBVersion + "\"
+	ls_PBMachineRegKey = "HKEY_LOCAL_MACHINE\Software\Sybase\PowerBuilder\" + ls_PBVersion + "\"
+
+	If IsNull ( anv_commsrv ) Or Not IsValid ( anv_commsrv ) Then
+				
+		/*  Create common routines service  */
+		Choose Case le_env.OSType
+				
+			Case Windows!, WindowsNT!
+				If le_env.CharSet = CharSetUnicode! Then
+					anv_commsrv = Create common_routines_unicode
+				Else
+					anv_commsrv = Create common_routines_win32
+				End If
+				
+			Case Else
+				anv_commsrv = Create common_routines
+				
+		End Choose
+		
+		If IsValid ( anv_commsrv ) Then
+			anv_commsrv.f_SetPBConstants ( ls_ExeName, li_PBVers, li_PBMinorVers, ls_PBUserRegKey, ls_PBMachineRegKey )
+		End If
+		
+	End If
+	
+Else
+	
+	If IsValid ( anv_commsrv ) Then
+		Destroy anv_commsrv
+		Return le_env.OSType
+	End If
+	
+End If
+
+Return le_env.OSType
+end function
+

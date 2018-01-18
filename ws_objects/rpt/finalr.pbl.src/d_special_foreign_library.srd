@@ -1,0 +1,260 @@
+﻿$PBExportHeader$d_special_foreign_library.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=2192 color="536870912"  height.autosize=yes)
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=bookno_ dbname="BOOKNO_" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=conno_ dbname="CONNO_" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=dlrno_ dbname="DLRNO_" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=obn_ dbname="OBN_" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=ta_ dbname="TA_" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=title_ dbname="TITLE_" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=engttl_ dbname="ENGTTL_" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=orittl_ dbname="ORITTL_" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=author_ dbname="AUTHOR_" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=trans_ dbname="TRANS_" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=pub_date_ dbname="PUB_DATE_" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=pro_date_ dbname="PRO_DATE_" )
+ column=(type=char(14) update=yes updatewhereclause=yes name=lg dbname="LG" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=v dbname="V" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=fm dbname="FM" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pt dbname="PT" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=gr dbname="GR" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=dm dbname="DM" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=af dbname="AF" )
+ column=(type=char(9) update=yes updatewhereclause=yes name=sb dbname="SB" )
+ column=(type=datetime update=yes updatewhereclause=yes name=o_ dbname="O_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=r_ dbname="R_" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=ms_ dbname="MS_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cpo_ dbname="CPO_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cpr_ dbname="CPR_" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=dlr_ dbname="DLR_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=ao_ dbname="AO_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=ar_ dbname="AR_" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=ams_ dbname="AMS_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=acpo_ dbname="ACPO_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=acpr_ dbname="ACPR_" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=adlr_ dbname="ADLR_" )
+ column=(type=char(11) update=yes updatewhereclause=yes name=po_ dbname="PO_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=c_c_ dbname="C_C_" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=cu_ dbname="CU_" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=dlrv_ dbname="DLRV_" )
+ column=(type=char(11) update=yes updatewhereclause=yes name=apo_ dbname="APO_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ac_c_ dbname="AC_C_" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=acu_ dbname="ACU_" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=adlrv_ dbname="ADLRV_" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=pk_ dbname="PK_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pk1_ dbname="PK1_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pk2_ dbname="PK2_" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=pkv_ dbname="PKV_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cpk_ dbname="CPK_" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=apk_ dbname="APK_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=apk1_ dbname="APK1_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=apk2_ dbname="APK2_" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=apkv_ dbname="APKV_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=acpk dbname="ACPK" )
+ column=(type=char(13) update=yes updatewhereclause=yes name=bib_ dbname="BIB_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=bib1_ dbname="BIB1_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=bib2_ dbname="BIB2_" )
+ column=(type=char(9) update=yes updatewhereclause=yes name=bibv_ dbname="BIBV_" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=bn dbname="BN" )
+ column=(type=datetime update=yes updatewhereclause=yes name=cc_ dbname="CC_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=ea_ dbname="EA_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=fr_ dbname="FR_" )
+ column=(type=datetime update=yes updatewhereclause=yes name=cat_ dbname="CAT_" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=note_ dbname="NOTE_" )
+ column=(type=char(65) update=yes updatewhereclause=yes name=oneliner_ dbname="ONELINER_" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=anno_ dbname="ANNO_" )
+ retrieve="  SELECT brflog.bookno_,   
+         brflog.conno_,   
+         brflog.dlrno_,   
+         brflog.obn_,   
+         brflog.ta_,   
+         brflog.title_,   
+         brflog.engttl_,   
+         brflog.orittl_,   
+         brflog.author_,   
+         brflog.trans_,   
+         brflog.pub_date_,   
+         brflog.pro_date_,   
+         brflog.lg,   
+         brflog.v,   
+         brflog.fm,   
+         brflog.pt,   
+         brflog.gr,   
+         brflog.dm,   
+         brflog.af,   
+         brflog.sb,   
+         brflog.o_,   
+         brflog.r_,   
+         brflog.ms_,   
+         brflog.cpo_,   
+         brflog.cpr_,   
+         brflog.dlr_,   
+         brflog.ao_,   
+         brflog.ar_,   
+         brflog.ams_,   
+         brflog.acpo_,   
+         brflog.acpr_,   
+         brflog.adlr_,   
+         brflog.po_,   
+         brflog.c_c_,   
+         brflog.cu_,   
+         brflog.dlrv_,   
+         brflog.apo_,   
+         brflog.ac_c_,   
+         brflog.acu_,   
+         brflog.adlrv_,   
+         brflog.pk_,   
+         brflog.pk1_,   
+         brflog.pk2_,   
+         brflog.pkv_,   
+         brflog.cpk_,   
+         brflog.apk_,   
+         brflog.apk1_,   
+         brflog.apk2_,   
+         brflog.apkv_,   
+         brflog.acpk,   
+         brflog.bib_,   
+         brflog.bib1_,   
+         brflog.bib2_,   
+         brflog.bibv_,   
+         brflog.bn,   
+         brflog.cc_,   
+         brflog.ea_,   
+         brflog.fr_,   
+         brflog.cat_,   
+         brflog.note_,   
+         brflog.oneliner_,   
+         brflog.anno_  
+
+    FROM brflog   
+	WHERE bookno_ = :lbkno
+" update="brflog" updatewhere=1 updatekeyinplace=yes arguments=(("Lbkno", string)) )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="1010" y="20" height="76" width="347" format="[general]"  name=conno_ edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Conno :" border="0" color="0" x="745" y="20" height="64" width="247"  name=conno__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="1627" y="20" height="76" width="302" format="[general]"  name=dlrno_ edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Dlrno :" border="0" color="0" x="1394" y="20" height="64" width="215"  name=dlrno__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="2190" y="20" height="76" width="247" format="[general]"  name=obn_ edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Obn :" border="0" color="0" x="1979" y="20" height="64" width="192"  name=obn__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="2651" y="20" height="76" width="165" format="[general]"  name=ta_ edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Ta :" border="0" color="0" x="2482" y="20" height="64" width="137"  name=ta__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Trans :" border="0" color="0" x="1559" y="400" height="64" width="215"  name=trans__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="5" color="0" x="1787" y="400" height="76" width="1038" format="[general]"  name=trans_ edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Pro Date :" border="0" color="0" x="1554" y="492" height="64" width="288"  name=pro_date__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="5" color="0" x="1861" y="492" height="76" width="969" format="[general]"  name=pro_date_ height.autosize=yes edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="5" color="0" x="896" y="588" height="76" width="110" format="[general]"  name=v edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="V:" border="0" color="0" x="777" y="588" height="64" width="101"  name=v_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Af:" border="0" color="0" x="2446" y="588" height="64" width="110"  name=af_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="5" color="0" x="1239" y="588" height="76" width="82" format="[general]"  name=fm edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Fm:" border="0" color="0" x="1074" y="588" height="64" width="146"  name=fm_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=170 border="5" color="0" x="1801" y="588" height="76" width="96" format="[general]"  name=gr edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Gr:" border="0" color="0" x="1655" y="588" height="64" width="128"  name=gr_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="5" color="0" x="1509" y="588" height="76" width="87" format="[general]"  name=pt edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Pt:" border="0" color="0" x="1376" y="588" height="64" width="119"  name=pt_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=210 border="5" color="0" x="782" y="688" height="76" width="329" format="[general]"  name=o_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="O :" border="0" color="0" x="654" y="688" height="64" width="110"  name=o__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=220 border="5" color="0" x="1289" y="688" height="76" width="256" format="[general]"  name=r_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="R :" border="0" color="0" x="1147" y="688" height="64" width="123"  name=r__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=230 border="5" color="0" x="1742" y="688" height="76" width="82" format="[general]"  name=ms_ edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Ms :" border="0" color="0" x="1577" y="688" height="64" width="146"  name=ms__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="1" tabsequence=240 border="5" color="0" x="2043" y="688" height="76" width="329" format="[general]"  name=cpo_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Cpo :" border="0" color="0" x="1856" y="688" height="64" width="169"  name=cpo__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cpr :" border="0" color="0" x="2405" y="688" height="64" width="155"  name=cpr__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Ao :" border="0" color="0" x="722" y="780" height="64" width="142"  name=ao__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=270 border="5" color="0" x="878" y="780" height="76" width="279" format="[general]"  name=ao_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=28 alignment="0" tabsequence=280 border="5" color="0" x="1367" y="780" height="76" width="251" format="[general]"  name=ar_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Ar :" border="0" color="0" x="1216" y="780" height="64" width="133"  name=ar__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=370 border="5" color="0" x="1618" y="980" height="76" width="329" format="[general]"  name=apo_ edit.limit=11 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Apo :" border="0" color="0" x="1417" y="980" height="64" width="183"  name=apo__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Ac C :" border="0" color="0" x="2030" y="980" height="64" width="197"  name=ac_c__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Adlr :" border="0" color="0" x="745" y="880" height="64" width="283"  name=adlr__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=320 border="5" color="0" x="1047" y="880" height="76" width="357" format="[general]"  name=adlr_ edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Po :" border="0" color="0" x="1440" y="880" height="64" width="133"  name=po__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=330 border="5" color="0" x="1586" y="880" height="76" width="279" format="[general]"  name=po_ edit.limit=11 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=34 alignment="1" tabsequence=340 border="5" color="0" x="2080" y="880" height="76" width="247" format="[general]"  name=c_c_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="C C :" border="0" color="0" x="1897" y="880" height="64" width="165"  name=c_c__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cu :" border="0" color="0" x="2363" y="880" height="64" width="142"  name=cu__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="1" tabsequence=380 border="5" color="0" x="2245" y="980" height="76" width="329" format="[general]"  name=ac_c_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Adlrv :" border="0" color="0" x="805" y="1080" height="64" width="283"  name=adlrv__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=40 alignment="0" tabsequence=400 border="5" color="0" x="1106" y="1080" height="76" width="1225" format="[general]"  name=adlrv_ edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=47 alignment="0" tabsequence=470 border="5" color="0" x="1865" y="1380" height="76" width="329" format="[general]"  name=apk1_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Apk1 :" border="0" color="0" x="1646" y="1380" height="64" width="201"  name=apk1__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=50 alignment="1" tabsequence=500 border="5" color="0" x="1865" y="1484" height="76" width="329" format="[general]"  name=acpk edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Acpk:" border="0" color="0" x="1664" y="1484" height="64" width="183"  name=acpk_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=48 alignment="0" tabsequence=480 border="5" color="0" x="2459" y="1380" height="76" width="329" format="[general]"  name=apk2_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Apk2 :" border="0" color="0" x="2222" y="1380" height="64" width="219"  name=apk2__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Pk1 :" border="0" color="0" x="1687" y="1184" height="64" width="283"  name=pk1__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=42 alignment="0" tabsequence=420 border="5" color="0" x="1989" y="1184" height="76" width="329" format="[general]"  name=pk1_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=43 alignment="0" tabsequence=430 border="5" color="0" x="2523" y="1184" height="76" width="329" format="[general]"  name=pk2_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Pk2 :" border="0" color="0" x="2350" y="1184" height="64" width="155"  name=pk2__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cpk :" border="0" color="0" x="1394" y="1280" height="64" width="174"  name=cpk__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=45 alignment="1" tabsequence=450 border="5" color="0" x="1586" y="1280" height="76" width="329" format="[general]"  name=cpk_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Bib2 :" border="0" color="0" x="1230" y="1584" height="64" width="283"  name=bib2__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=54 alignment="0" tabsequence=540 border="5" color="0" x="2121" y="1584" height="76" width="274" format="[general]"  name=bibv_ edit.limit=9 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Bibv :" border="0" color="0" x="1906" y="1584" height="64" width="197"  name=bibv__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=53 alignment="0" tabsequence=530 border="5" color="0" x="1531" y="1584" height="76" width="329" format="[general]"  name=bib2_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Bib1 :" border="0" color="0" x="704" y="1584" height="64" width="174"  name=bib1__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=52 alignment="0" tabsequence=520 border="5" color="0" x="896" y="1584" height="76" width="311" format="[general]"  name=bib1_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=56 alignment="0" tabsequence=560 border="5" color="0" x="704" y="1684" height="76" width="329" format="[general]"  name=cc_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Cc :" border="0" color="0" x="544" y="1684" height="64" width="142"  name=cc__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=57 alignment="0" tabsequence=570 border="5" color="0" x="1230" y="1684" height="76" width="329" format="[general]"  name=ea_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Ea :" border="0" color="0" x="1061" y="1684" height="64" width="151"  name=ea__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=58 alignment="0" tabsequence=580 border="5" color="0" x="1778" y="1684" height="76" width="329" format="[general]"  name=fr_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Fr :" border="0" color="0" x="1632" y="1684" height="64" width="128"  name=fr__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Note :" border="0" color="0" x="759" y="1792" height="64" width="229"  name=note__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=60 alignment="0" tabsequence=600 border="5" color="0" x="1010" y="1788" height="76" width="1842" format="[general]"  name=note_ height.autosize=yes edit.limit=250 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="338" y="20" height="76" width="370" format="[general]"  name=bookno_ edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no edit.required=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="0" x="338" y="116" height="76" width="2478" format="[general]"  name=title_ height.autosize=yes edit.limit=250 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="5" color="0" x="338" y="212" height="76" width="2482" format="[general]"  name=engttl_ edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="5" color="0" x="338" y="304" height="76" width="2482" format="[general]"  name=orittl_ edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="5" color="0" x="338" y="400" height="76" width="1189" format="[general]"  name=author_ edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="5" color="0" x="338" y="492" height="76" width="1184" format="[general]"  name=pub_date_ edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=130 border="5" color="0" x="338" y="588" height="76" width="411" format="[general]"  name=lg edit.limit=14 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=20 alignment="0" tabsequence=200 border="5" color="0" x="338" y="688" height="76" width="274" format="[general]"  name=sb edit.limit=9 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=26 alignment="0" tabsequence=260 border="5" color="0" x="338" y="780" height="76" width="357" format="[general]"  name=dlr_ edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=36 alignment="0" tabsequence=360 border="5" color="0" x="338" y="980" height="76" width="1047" format="[general]"  name=dlrv_ edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=31 alignment="1" tabsequence=310 border="5" color="0" x="338" y="880" height="76" width="329" format="[general]"  name=acpr_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=39 alignment="0" tabsequence=390 border="5" color="0" x="338" y="1076" height="76" width="302" format="[general]"  name=acu_ edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=41 alignment="0" tabsequence=410 border="5" color="0" x="338" y="1180" height="76" width="1312" format="[general]"  name=pk_ edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=46 alignment="0" tabsequence=460 border="5" color="0" x="338" y="1380" height="76" width="1271" format="[general]"  name=apk_ edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=49 alignment="0" tabsequence=490 border="5" color="0" x="338" y="1484" height="76" width="1275" format="[general]"  name=apkv_ edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=44 alignment="0" tabsequence=440 border="5" color="0" x="338" y="1280" height="76" width="1015" format="[general]"  name=pkv_ edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=51 alignment="0" tabsequence=510 border="5" color="0" x="338" y="1584" height="76" width="329" format="[general]"  name=bib_ edit.limit=13 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=55 alignment="0" tabsequence=550 border="5" color="0" x="338" y="1684" height="76" width="165" format="[general]"  name=bn edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=59 alignment="0" tabsequence=590 border="5" color="0" x="338" y="1780" height="76" width="329" format="[general]"  name=cat_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=61 alignment="0" tabsequence=610 border="5" color="0" x="338" y="1884" height="76" width="2510" format="[general]"  name=oneliner_  resizeable=1 height.autosize=yes edit.limit=65 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=62 alignment="0" tabsequence=620 border="5" color="0" x="338" y="1980" height="188" width="2505" format="[general]"  name=anno_ height.autosize=yes edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Bookno :" border="0" color="0" x="37" y="20" height="64" width="283"  name=bookno__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Title :" border="0" color="0" x="37" y="116" height="64" width="283"  name=title__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Engttl :" border="0" color="0" x="37" y="212" height="64" width="283"  name=engttl__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Orittl :" border="0" color="0" x="37" y="304" height="64" width="283"  name=orittl__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Author :" border="0" color="0" x="37" y="400" height="64" width="283"  name=author__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Pub Date :" border="0" color="0" x="18" y="492" height="64" width="302"  name=pub_date__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Lg:" border="0" color="0" x="37" y="588" height="64" width="283"  name=lg_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Sb:" border="0" color="0" x="37" y="688" height="64" width="283"  name=sb_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Dlr :" border="0" color="0" x="37" y="780" height="64" width="283"  name=dlr__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Dlrv :" border="0" color="0" x="37" y="980" height="64" width="283"  name=dlrv__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Acpr :" border="0" color="0" x="114" y="880" height="64" width="206"  name=acpr__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Acu :" border="0" color="0" x="160" y="1076" height="64" width="160"  name=acu__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Pk :" border="0" color="0" x="165" y="1180" height="64" width="155"  name=pk__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Apk :" border="0" color="0" x="37" y="1380" height="64" width="283"  name=apk__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Apkv :" border="0" color="0" x="37" y="1484" height="64" width="283"  name=apkv__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Pkv :" border="0" color="0" x="151" y="1280" height="64" width="169"  name=pkv__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Bn:" border="0" color="0" x="201" y="1684" height="64" width="119"  name=bn_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Bib :" border="0" color="0" x="133" y="1584" height="64" width="187"  name=bib__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cat :" border="0" color="0" x="146" y="1780" height="64" width="174"  name=cat__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Oneliner :" border="0" color="0" x="37" y="1888" height="64" width="283"  name=oneliner__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Anno :" border="0" color="0" x="69" y="1984" height="64" width="251"  name=anno__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=180 border="5" color="0" x="2139" y="588" height="76" width="247" format="[general]"  name=dm edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Dm:" border="0" color="0" x="1966" y="588" height="64" width="155"  name=dm_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Acpo :" border="0" color="0" x="2318" y="780" height="64" width="215"  name=acpo__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=290 border="5" color="0" x="1943" y="784" height="76" width="233" format="[general]"  name=ams_ edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Ams :" border="0" color="0" x="1719" y="784" height="64" width="206"  name=ams__t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=190 border="5" color="0" x="2578" y="588" height="76" width="247" format="[general]"  name=af edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=25 alignment="1" tabsequence=250 border="5" color="0" x="2569" y="688" height="76" width="256" format="[general]"  name=cpr_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=35 alignment="0" tabsequence=350 border="5" color="0" x="2523" y="880" height="76" width="302" format="[general]"  name=cu_ edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=30 alignment="1" tabsequence=300 border="5" color="0" x="2546" y="780" height="76" width="279" format="[general]"  name=acpo_ edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

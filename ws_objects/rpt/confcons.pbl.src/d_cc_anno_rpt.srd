@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_cc_anno_rpt.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1560 color="536870912" )
+table(column=(type=char(6) update=yes updatewhereclause=yes key=yes name=chno dbname="annotation.chno" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=anno dbname="annotation.anno" )
+ retrieve="  SELECT annotation.chno,   
+         annotation.anno  
+    FROM annotation   
+	WHERE annotation.chno = :Lchno
+
+" update="annotation" updatewhere=1 updatekeyinplace=yes arguments=(("Lchno", string)) )
+text(band=detail alignment="1" text="Annotation" border="0" color="0" x="1408" y="176" height="80" width="448" html.valueishtml="0"  name=anno_t visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="905" y="44" height="76" width="288" format="[general]" html.valueishtml="0"  name=chno visible="1" edit.limit=6 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Chart Number:" border="0" color="0" x="293" y="40" height="80" width="590" html.valueishtml="0"  name=chno_t visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_anno_with_ds( anno )"border="0" color="0" x="631" y="288" height="1244" width="2235" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1618" y="40" height="80" width="987" format="[general]" html.valueishtml="0"  name=anno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

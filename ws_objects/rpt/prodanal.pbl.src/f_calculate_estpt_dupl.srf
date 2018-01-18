@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_calculate_estpt_dupl.srf
+global type f_calculate_estpt_dupl from function_object
+end type
+
+forward prototypes
+global function integer f_calculate_estpt_dupl (string lpriority)
+end prototypes
+
+global function integer f_calculate_estpt_dupl (string lpriority);IF Lpriority="N" THEN
+	RETURN 70
+ELSEIF Lpriority="P" THEN
+	RETURN 40
+ELSEIF Lpriority="R" THEN
+	RETURN 20
+ELSe
+	RETURN 0
+END IF
+
+end function
+

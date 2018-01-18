@@ -1,0 +1,41 @@
+﻿$PBExportHeader$f_monthname.srf
+$PBExportComments$Create Library/Cards file - used to get names of months
+global type f_monthname from function_object
+end type
+
+forward prototypes
+global function string f_monthname (long al_month)
+end prototypes
+
+global function string f_monthname (long al_month);
+CHOOSE CASE al_month
+	CASE 1
+		return "JANUARY"
+	Case 2
+		return "FEBRUARY"
+	Case 3
+		return "MARCH"
+	Case 4
+		return "APRIL"
+	Case 5
+		return "MAY"
+	Case 6
+		return "JUNE"
+	Case 7
+		return "JULY"
+	Case 8
+		return "AUGUST"
+	Case 9
+		return "SEPTEMBER"
+	Case 10
+		return "OCTOBER"
+	CASE 11
+		return "NOVEMBER"
+	Case 12
+		return "DECEMBER"
+	CASE ELSE
+		return "UNKNOWN MONTH"
+END CHOOSE
+
+end function
+

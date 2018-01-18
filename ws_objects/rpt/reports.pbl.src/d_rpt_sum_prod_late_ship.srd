@@ -1,0 +1,63 @@
+﻿$PBExportHeader$d_rpt_sum_prod_late_ship.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="ancntr.prdr" )
+ column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="ancntr.cntrmed" )
+ column=(type=char(11) updatewhereclause=yes name=cntrlc dbname="ancntr.cntrlc" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="ancntr.cntr" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="prod.actenddt" )
+ column=(type=datetime updatewhereclause=yes name=schenddt dbname="prod.schenddt" )
+ retrieve="  SELECT ancntr.prdr,   
+         ancntr.cntrmed,   
+         ancntr.cntrlc,   
+         ancntr.cntr,   
+         prod.bkseq,   
+         prod.bkmed,   
+       	prod.actenddt,
+			prod.schenddt
+
+    FROM ancntr,   
+         prod,
+			mchar
+   WHERE ancntr.cntr = prod.cntr and
+			prod.bkseq =mchar.bkseq and
+			prod.bkmed =mchar.bkmed and
+			ancntr.cntrlc is not null and 
+			ancntr.cntr_status ='A' and
+			(mchar.arflag is null or arflag<>'A' ) and
+			prdr=:as_prdr and actenddt<=:ad_end_date and actenddt>= :ad_start_date and
+			(prod.prodstage in ('DU','PR','PB' ) 
+				OR  prod.prodstage in ('MA','AB') and ancntr.cntrtype ='M' ) and 
+			prod.actenddt > prod.schenddt
+   
+ " arguments=(("as_prdr", string),("ad_start_date", datetime),("ad_end_date", datetime))  sort="prdr A cntrmed A cntrlc A cntr A bkseq A bkmed A " )
+text(band=header alignment="2" text="Ancntr
+Prdr" border="0" color="0" x="9" y="8" height="128" width="247" html.valueishtml="0"  name=ancntr_prdr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ancntr
+Cntrmed" border="0" color="0" x="265" y="8" height="128" width="224" html.valueishtml="0"  name=ancntr_cntrmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ancntr
+Cntrlc" border="0" color="0" x="498" y="8" height="128" width="517" html.valueishtml="0"  name=ancntr_cntrlc_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ancntr
+Cntr" border="0" color="0" x="1024" y="8" height="128" width="443" html.valueishtml="0"  name=ancntr_cntr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Bkseq" border="0" color="0" x="1477" y="8" height="128" width="329" html.valueishtml="0"  name=prod_bkseq_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prod
+Bkmed" border="0" color="0" x="1815" y="8" height="128" width="187" html.valueishtml="0"  name=prod_bkmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="ActEnddt" border="0" color="0" x="2011" y="4" height="128" width="352" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="SchEnddt" border="0" color="0" x="2373" y="16" height="128" width="325" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="247" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="265" y="8" height="76" width="224" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="498" y="8" height="76" width="517" format="[general]" html.valueishtml="0"  name=cntrlc visible="1" edit.limit=11 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1024" y="8" height="76" width="443" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="1477" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1815" y="8" height="76" width="187" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2011" y="8" height="76" width="352" format="[general]" html.valueishtml="0"  name=actenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2373" y="8" height="76" width="325" format="[general]" html.valueishtml="0"  name=schenddt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

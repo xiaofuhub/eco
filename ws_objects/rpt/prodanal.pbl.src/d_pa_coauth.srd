@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_pa_coauth.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=120 color="536870912" )
+table(column=(type=char(34) update=yes updatewhereclause=yes key=yes name=coauth dbname="coauth.coauth" )
+ column=(type=char(34) update=yes updatewhereclause=yes key=yes name=coauthfn dbname="coauth.coauthfn" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=chonorific dbname="coauth.chonorific" )
+ column=(type=char(6) update=yes updatewhereclause=yes key=yes name=chno dbname="coauth.chno" )
+ retrieve="  SELECT coauth.coauth,   
+         coauth.coauthfn,   
+         coauth.chonorific,   
+         coauth.chno
+    FROM coauth  
+   WHERE coauth.chno = :Lchno
+" update="coauth" updatewhere=1 updatekeyinplace=yes arguments=(("Lchno", string))  sort="coauth A " )
+text(band=header alignment="2" text="First Name" border="0" color="0" x="622" y="12" height="52" width="229" html.valueishtml="0"  name=coauthfn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Coauthor's Last Name" border="0" color="0" x="50" y="12" height="52" width="475" html.valueishtml="0"  name=coauth_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Honorific" border="0" color="0" x="901" y="12" height="52" width="192" html.valueishtml="0"  name=chonorific_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="12632256" x="1134" y="28" height="52" width="55" format="[general]" html.valueishtml="0"  name=chno visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="46" y="24" height="68" width="507" format="[general]" html.valueishtml="0"  name=coauth visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="581" y="24" height="68" width="315" format="[general]" html.valueishtml="0"  name=coauthfn visible="1" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="914" y="24" height="68" width="165" format="[general]" html.valueishtml="0"  name=chonorific visible="1" edit.limit=5 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+
+sparse(names="chno")htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

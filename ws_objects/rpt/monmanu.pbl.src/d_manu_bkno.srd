@@ -1,0 +1,70 @@
+﻿$PBExportHeader$d_manu_bkno.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=148 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=108 color="553648127" )
+table(column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" validationmsg="~"You must enter a book number~"" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" )
+ column=(type=datetime updatewhereclause=yes name=prod_actstdt dbname="prod.actstdt" )
+ column=(type=datetime updatewhereclause=yes name=ccompdate dbname="prod.compdate" )
+ column=(type=datetime updatewhereclause=yes name=cshipdate dbname="prod.shipdate" )
+ column=(type=datetime updatewhereclause=yes name=mchar_pcrecmstdt dbname="mchar.pcrecmstdt" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_len dbname="mchar.len" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(1) updatewhereclause=yes name=dupflg dbname="mchar.dupflg" values="	Y/	N" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ column=(type=char(1) updatewhereclause=yes name=ancntr_cntrtype dbname="ancntr.cntrtype" )
+ retrieve="   SELECT prod1.bkseq,   
+         prod1.bkmed, 
+			prod1.cntr,  
+         prod1.actstdt,   
+         prod1.actenddt compdate,
+			prod2.actenddt shipdate,   
+         mchar.pcrecmstdt,
+			mchar.len,
+			mchar.conno,
+			mchar.siflag dupflg,
+			ttlinit.ttl,
+			ancntr.prdr,
+			ancntr.cntrtype
+    FROM prod prod1,prod prod2,ttlinit,mchar,ancntr
+   WHERE prod1.bkseq = prod2.bkseq  and
+			prod1.bkmed = prod2.bkmed  and
+			prod1.cntr = prod2.cntr  and
+			prod2.prodstage in ('DU','PR') and
+			prod1.actstdt is NOT NULL  and 
+			prod1.bkseq = mchar.bkseq  and  
+			mchar.chno = ttlinit.chno  and
+			prod1.cntr = ancntr.cntr  and 
+			ancntr.prdr = :Lprdr
+" retrieve.asneeded=yes arguments=(("Lprdr", string)) )
+line(band=header x1="41" y1="140" x2="3022" y2="140"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1090519039" )
+compute(band=header alignment="0" expression="RGB(255,255,255)"border="0" color="12632256" x="1458" y="16" height="56" width="23" format="[general]" html.valueishtml="0"  name=whitecolor visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="12632256" x="869" y="16" height="76" width="18" format="[general]" html.valueishtml="0"  name=prod_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Book Number" border="0" color="0" x="59" y="16" height="104" width="169" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Master TapeReceived Date" border="0" color="0" x="2478" y="16" height="104" width="329" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="ShipDateOnly (T,D) Cntrs" border="0" color="0" x="2075" y="16" height="104" width="375" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="MCMDate" border="0" color="0" x="1591" y="16" height="104" width="114" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Start Date" border="0" color="0" x="1189" y="16" height="104" width="219" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Title" border="0" color="0" x="667" y="16" height="104" width="91" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Track/Br. Pg." border="0" color="0" x="1897" y="16" height="104" width="151" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="RGB(192,192,192)"border="0" color="12632256" x="1074" y="16" height="56" width="23" format="[general]" html.valueishtml="0"  name=graycolor visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=9 alignment="0" tabsequence=32766 border="0" color="12632256" x="942" y="24" height="76" width="50" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="12632256" x="434" y="32" height="76" width="50" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=13 alignment="0" tabsequence=32766 border="0" color="12632256" x="517" y="36" height="76" width="32" format="[general]" html.valueishtml="0"  name=ancntr_cntrtype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="DupOnly" border="0" color="0" x="2825" y="16" height="104" width="178" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="46" y="12" height="76" width="206" format="[general]" html.valueishtml="0"  name=prod_bkseq  tag="Enter the Book number" visible="1" editmask.mask="#######" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tIf( isRowNew(),  whitecolor   ,  graycolor  )" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="279" y="12" height="76" width="96" format="[general]" html.valueishtml="0"  name=prod_bkmed  tag="Book Media" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0~tif(   ancntr_cntrtype  ='M' and  dupflg <> 'Y', graycolor, RGB(0,0,0) )" x="2098" y="12" height="76" width="347" format="[general]" html.valueishtml="0" protect="0~tif(   ancntr_cntrtype  ='M' and  dupflg <> 'Y', 1, 0 )"  name=cshipdate visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.spinrange="~~" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1073741824~tif(   ancntr_cntrtype  ='M' and  dupflg <> 'Y', graycolor, whitecolor )" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0~tif(   ancntr_cntrtype  ='D', graycolor, RGB(0,0,0) )" x="1550" y="12" height="76" width="343" format="[general]" html.valueishtml="0" protect="0~tif(  ancntr_cntrtype ='D', 1, 0 )"  name=ccompdate visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.spinrange="~~" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1073741824~tif(   ancntr_cntrtype  ='D', graycolor, whitecolor )" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1184" y="12" height="76" width="334" format="mm/dd/yyyy" html.valueishtml="0"  name=prod_actstdt  tag="Enter Actual Start Date" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.spinrange="~~" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="33554432" x="2473" y="12" height="76" width="366" format="[general]" html.valueishtml="0"  name=mchar_pcrecmstdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="33554432" x="1906" y="12" height="76" width="174" format="[general]" html.valueishtml="0"  name=mchar_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="12632256" x="2880" y="20" height="60" width="55" format="[general]" html.valueishtml="0"  name=dupflg visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="33554432" x="389" y="12" height="76" width="773" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="0" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

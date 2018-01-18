@@ -1,0 +1,64 @@
+﻿$PBExportHeader$d_qa_prod_recv_by_autotest_rejected.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=208 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="553648127" height.autosize=yes )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="vw_qa_autotest_rejected_books.bkmed" dbalias=".bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="vw_qa_autotest_rejected_books.bkseq" dbalias=".bkseq" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="vw_qa_autotest_rejected_books.qastg" dbalias=".qastg" )
+ column=(type=char(20) updatewhereclause=yes name=qa_stage_description dbname="vw_qa_autotest_rejected_books.qa_stage_description" dbalias=".qa_stage_description" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="vw_qa_autotest_rejected_books.qastatcd" dbalias=".qastatcd" )
+ column=(type=datetime updatewhereclause=yes name=qastg_qarecdt dbname="vw_qa_autotest_rejected_books.qarecdt" dbalias=".qarecdt" )
+ column=(type=datetime updatewhereclause=yes name=created_date dbname="vw_qa_autotest_rejected_books.created_date" dbalias=".created_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=total_minutes dbname="vw_qa_autotest_rejected_books.total_minutes" dbalias=".total_minutes" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="vw_qa_autotest_rejected_books.prdr" dbalias=".prdr" )
+ column=(type=char(35) updatewhereclause=yes name=narrator_last_name dbname="vw_qa_autotest_rejected_books.narrator_last_name" dbalias=".narrator_last_name" )
+ column=(type=char(35) updatewhereclause=yes name=narrator_first_name dbname="vw_qa_autotest_rejected_books.narrator_first_name" dbalias=".narrator_first_name" )
+ column=(type=char(512) updatewhereclause=yes name=ttl dbname="vw_qa_autotest_rejected_books.ttl" dbalias=".ttl" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt dbname="vw_qa_autotest_rejected_books.qacompdt" dbalias=".qacompdt" )
+ column=(type=char(4000) updatewhereclause=yes name=qacomments dbname="vw_qa_autotest_rejected_books.qacomments" dbalias=".qacomments" )
+ retrieve="    SELECT ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"BKMED~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"BKSEQ~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"QASTG~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"QA_STAGE_DESCRIPTION~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"QASTATCD~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"QARECDT~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"CREATED_DATE~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"TOTAL_MINUTES~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"PRDR~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"NARRATOR_LAST_NAME~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"NARRATOR_FIRST_NAME~",   
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"TTL~"  ,
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"QACOMPDT~"  ,
+         ~"VW_QA_AUTOTEST_REJECTED_BOOKS~".~"QACOMMENTS~"  
+    FROM  ~"VW_QA_AUTOTEST_REJECTED_BOOKS~"
+" )
+text(band=header alignment="2" text="Book Number" border="6" color="0" x="9" y="96" height="104" width="366" html.valueishtml="0"  name=mchar_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Books that failed Autotest" border="0" color="33554432" x="14" y="4" height="52" width="1499" html.valueishtml="0"  name=t_7 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="TotalMinutes" border="6" color="0" x="1545" y="96" height="104" width="315" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Narrator" border="6" color="0" x="1883" y="96" height="104" width="722" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Producer" border="6" color="0" x="2629" y="96" height="104" width="219" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Rejected" border="6" color="0" x="2866" y="96" height="104" width="338" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Book Title" border="6" color="0" x="393" y="96" height="104" width="1129" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reason" border="6" color="0" x="3218" y="96" height="104" width="1266" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="33554432" x="9" y="4" height="64" width="73" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="33554432" x="105" y="4" height="64" width="256" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=9 alignment="2" tabsequence=0 border="0" color="33554432" x="2642" y="4" height="64" width="192" html.valueishtml="0"  name=prdr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=12 alignment="0" tabsequence=0 border="0" color="33554432" x="389" y="4" height="64" width="1111" html.valueishtml="0"  name=ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=13 alignment="0" tabsequence=0 border="0" color="33554432" x="2857" y="4" height="64" width="334" html.valueishtml="0"  name=qacompdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=14 alignment="0" tabsequence=0 border="0" color="33554432" x="3218" y="4" height="64" width="1262" html.valueishtml="0"  name=qacomments visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=8 alignment="2" tabsequence=0 border="0" color="33554432" x="1522" y="4" height="64" width="361" html.valueishtml="0"  name=total_minutes visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+compute(band=detail alignment="2" expression=" narrator_first_name + ' ' +  narrator_last_name "border="0" color="33554432" x="1906" y="4" height="64" width="663" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

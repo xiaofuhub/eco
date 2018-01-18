@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_book_orc.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=15780518 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes key=yes name=bkmed dbname="PRDRBK.BKMED" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bkseq dbname="PRDRBK.BKSEQ" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=vols dbname="PRDRBK.VOLS" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=len dbname="PRDRBK.LEN" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=applen dbname="PRDRBK.APPLEN" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=minlastside dbname="PRDRBK.MINLASTSIDE" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=qnty dbname="PRDRBK.QNTY" )
+ column=(type=datetime updatewhereclause=yes name=mod_date dbname="PRDRBK.MOD_DATE" )
+ retrieve="  SELECT PRDRBK.BKMED,   
+         PRDRBK.BKSEQ,   
+         PRDRBK.VOLS,   
+         PRDRBK.LEN,   
+         PRDRBK.APPLEN,   
+         PRDRBK.MINLASTSIDE,   
+         PRDRBK.QNTY,
+			prdrbk.mod_date  
+    FROM PRDRBK 
+	where prdrbk.arflag is null or prdrbk.arflag<>'A'  
+" update="PRDRBK" updatewhere=1 updatekeyinplace=no  sort="bkmed A bkseq A " )
+text(band=header alignment="2" text="Bkmed" border="0" color="0" x="325" y="16" height="64" width="242"  name=bkmed_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkseq" border="0" color="0" x="585" y="16" height="64" width="265"  name=bkseq_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Vols" border="0" color="0" x="850" y="16" height="64" width="329"  name=vols_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Len" border="0" color="0" x="1189" y="16" height="64" width="329"  name=len_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Applen" border="0" color="0" x="1522" y="16" height="64" width="297"  name=applen_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Minlastside" border="0" color="0" x="1815" y="16" height="64" width="411"  name=minlastside_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qnty" border="0" color="0" x="2254" y="16" height="64" width="329"  name=qnty_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Mod date" border="0" color="0" x="2752" y="16" height="64" width="334"  name=t_1  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="329" y="8" height="68" width="137" format="[general]"  name=bkmed edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="0" x="494" y="8" height="68" width="274" format="[general]"  name=bkseq edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="5" color="0" x="905" y="8" height="68" width="210" format="[general]"  name=vols edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="5" color="0" x="1189" y="8" height="68" width="206" format="[general]"  name=len edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="5" color="0" x="1463" y="8" height="68" width="270" format="[general]"  name=applen edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="5" color="0" x="1883" y="8" height="68" width="229" format="[general]"  name=minlastside edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="1" tabsequence=70 border="5" color="0" x="2286" y="8" height="68" width="233" format="[general]"  name=qnty edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="2583" y="8" height="68" width="695" format="[shortdate] "  name=mod_date edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

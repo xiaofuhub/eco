@@ -1,0 +1,34 @@
+﻿$PBExportHeader$f_validate_casub.srf
+global type f_validate_casub from function_object
+end type
+
+forward prototypes
+global function boolean f_validate_casub (string casub)
+end prototypes
+
+global function boolean f_validate_casub (string casub);string Local_casub
+
+IF (casub="" OR IsNull(casub)) THEN
+	casub = "???"
+END IF
+
+Select casubj_code into :Local_casub from casubj
+where casubj_code = :casub
+using sqlservertrans;
+	// MessageBox("casub","local_casub = "+ Local_casub + " casub = "+ casub)
+IF f_check_dberror(sqlservertrans,"casub")=FALSE THEN
+	RETURN FALSE
+END IF
+
+IF (TRIM(casub)=TRIM(Local_casub)) THEN
+	RETURN TRUE
+ELSEIF casub<>"???" THEN
+	RETURN FALSE
+ELSEIF casub="???" THEN
+	RETURN TRUE
+ELSE
+	RETURN TRUE
+END IF
+
+end function
+

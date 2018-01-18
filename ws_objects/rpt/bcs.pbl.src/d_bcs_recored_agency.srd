@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_bcs_recored_agency.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(34) updatewhereclause=yes name=narr dbname="narr.narr" )
+ column=(type=char(34) updatewhereclause=yes name=narrfn dbname="narr.narrfn" )
+ column=(type=char(4) updatewhereclause=yes name=recagcy dbname="narr.recagcy" )
+ retrieve="  SELECT narr.narr,   
+         narr.narrfn,   
+         narr.recagcy
+  
+    FROM narr  
+   WHERE ( narr.bkseq = :Lbkseq ) AND  
+         ( narr.bkmed = :Lbkmed )    
+" arguments=(("Lbkseq", number),("Lbkmed", string)) )
+text(band=header alignment="2" text="Lastname" border="0" color="0" x="9" y="4" height="52" width="471" html.valueishtml="0"  name=narr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Firstname" border="0" color="0" x="489" y="4" height="52" width="334" html.valueishtml="0"  name=narrfn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rec. Agency" border="0" color="0" x="832" y="4" height="52" width="288" html.valueishtml="0"  name=recagcy_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="832" y="4" height="76" width="288" format="[general]" html.valueishtml="0"  name=recagcy visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="76" width="471" format="[general]" html.valueishtml="0"  name=narr visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="489" y="4" height="76" width="334" format="[general]" html.valueishtml="0"  name=narrfn visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

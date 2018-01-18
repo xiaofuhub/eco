@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_add_sources.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=248 color="536870912" )
+table(column=(type=char(5) update=yes updatewhereclause=yes key=yes name=src_code dbname="src_code" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=src_desc dbname="src_desc" )
+ retrieve="  SELECT  srccode.src_code ,   
+          srccode.src_desc     
+     FROM srccode    
+	WHERE src_code = :Lsrc_code" update="srccode" updatewhere=1 updatekeyinplace=yes arguments=(("Lsrc_code", string)) )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="645" y="36" height="80" width="576" format="[general]"  name=src_code dddw.name=dddw_src dddw.displaycolumn=src_code dddw.datacolumn=src_code dddw.percentwidth=100 dddw.lines=20 dddw.limit=5 dddw.allowedit=yes dddw.useasborder=yes dddw.case=upper dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Source Description:" border="0" color="0" x="101" y="148" height="64" width="521"  name=scr_desc_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Source Code:" border="0" color="0" x="261" y="36" height="64" width="361"  name=src_code_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="645" y="148" height="72" width="1399" format="[general]"  name=src_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

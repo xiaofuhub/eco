@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_batch_data.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=datetime update=yes updatewhereclause=yes name=cabdt dbname="cabdt" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=batch_announced_yn dbname="batch_announced_yn" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=batch_status_code dbname="batch_status_code" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=batch_neg_cond_yn dbname="batch_neg_cond_yn" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=created_by dbname="created_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=created_date dbname="created_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=modified_by dbname="modified_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=modified_date dbname="modified_date" )
+ retrieve="  SELECT CABDT,   
+         BATCH_ANNOUNCED_YN,   
+         BATCH_STATUS_CODE,   
+         BATCH_NEG_COND_YN,   
+         CREATED_BY,   
+         CREATED_DATE,   
+         MODIFIED_BY,   
+         MODIFIED_DATE  
+    FROM BATCH_DATA@PIC_LINK   
+WHERE CABDT = :BATCH_DATE" arguments=(("batch_date", date)) )
+text(band=header alignment="2" text="Cabdt" border="0" color="33554432" x="5" y="4" height="52" width="603" html.valueishtml="0"  name=cabdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batch Announced Yn" border="0" color="33554432" x="549" y="4" height="52" width="686" html.valueishtml="0"  name=batch_announced_yn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batch Status Code" border="0" color="33554432" x="1106" y="4" height="52" width="654" html.valueishtml="0"  name=batch_status_code_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Batch Neg Cond Yn" border="0" color="33554432" x="1609" y="4" height="52" width="681" html.valueishtml="0"  name=batch_neg_cond_yn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Created By" border="0" color="33554432" x="2217" y="4" height="52" width="576" html.valueishtml="0"  name=created_by_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Created Date" border="0" color="33554432" x="2802" y="4" height="52" width="599" html.valueishtml="0"  name=created_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Modified By" border="0" color="33554432" x="3410" y="4" height="52" width="576" html.valueishtml="0"  name=modified_by_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Modified Date" border="0" color="33554432" x="3991" y="4" height="52" width="603" html.valueishtml="0"  name=modified_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="33554432" x="5" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=cabdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="33554432" x="613" y="4" height="76" width="55" format="[general]" html.valueishtml="0"  name=batch_announced_yn visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="33554432" x="1179" y="4" height="76" width="55" format="[general]" html.valueishtml="0"  name=batch_status_code visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="33554432" x="1687" y="4" height="76" width="55" format="[general]" html.valueishtml="0"  name=batch_neg_cond_yn visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="33554432" x="2217" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=created_by visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="33554432" x="2802" y="4" height="76" width="599" format="[shortdate] [time]" html.valueishtml="0"  name=created_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="33554432" x="3410" y="4" height="76" width="576" format="[general]" html.valueishtml="0"  name=modified_by visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="33554432" x="3991" y="4" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=modified_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

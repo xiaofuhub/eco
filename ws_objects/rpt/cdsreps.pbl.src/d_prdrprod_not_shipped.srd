@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_prdrprod_not_shipped.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=bkmed dbname="PRDRPROD.BKMED" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="PRDRPROD.BKSEQ" )
+ column=(type=char(8) updatewhereclause=yes name=bkno dbname="PRDRPROD.BKNO" )
+ column=(type=char(2) updatewhereclause=yes name=prodstage dbname="PRDRPROD.PRODSTAGE" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="PRDRPROD.CNTR" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="PRDRPROD.PRDR" )
+ column=(type=datetime updatewhereclause=yes name=schstdt dbname="PRDRPROD.SCHSTDT" )
+ column=(type=datetime updatewhereclause=yes name=schenddt dbname="PRDRPROD.SCHENDDT" )
+ column=(type=datetime updatewhereclause=yes name=actstdt dbname="PRDRPROD.ACTSTDT" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="PRDRPROD.ACTENDDT" )
+ retrieve="  SELECT PRDRPROD.BKMED,   
+         PRDRPROD.BKSEQ,   
+         PRDRPROD.BKNO,   
+         PRDRPROD.PRODSTAGE,   
+         PRDRPROD.CNTR,   
+         PRDRPROD.PRDR,   
+         PRDRPROD.SCHSTDT,   
+         PRDRPROD.SCHENDDT,   
+         PRDRPROD.ACTSTDT,   
+         PRDRPROD.ACTENDDT  
+    FROM PRDRPROD 
+WHERE ACTENDDT IS NULL  
+" )
+text(band=header alignment="2" text="Bkmed" border="0" color="0" x="9" y="8" height="64" width="187"  name=bkmed_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkseq" border="0" color="0" x="206" y="8" height="64" width="329"  name=bkseq_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkno" border="0" color="0" x="544" y="8" height="64" width="247"  name=bkno_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prodstage" border="0" color="0" x="800" y="8" height="64" width="270"  name=prodstage_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cntr" border="0" color="0" x="1079" y="8" height="64" width="219"  name=cntr_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prdr" border="0" color="0" x="1307" y="8" height="64" width="137"  name=prdr_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schstdt" border="0" color="0" x="1454" y="8" height="64" width="603"  name=schstdt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Schenddt" border="0" color="0" x="2066" y="8" height="64" width="603"  name=schenddt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actstdt" border="0" color="0" x="2679" y="8" height="64" width="603"  name=actstdt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actenddt" border="0" color="0" x="3291" y="8" height="64" width="603"  name=actenddt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="187" format="[general]"  name=bkmed edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="206" y="8" height="76" width="329" format="[general]"  name=bkseq edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="544" y="8" height="76" width="247" format="[general]"  name=bkno edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="800" y="8" height="76" width="270" format="[general]"  name=prodstage edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1079" y="8" height="76" width="219" format="[general]"  name=cntr edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1307" y="8" height="76" width="137" format="[general]"  name=prdr edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1454" y="8" height="76" width="603" format="[shortdate] [time]"  name=schstdt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2066" y="8" height="76" width="603" format="[shortdate] [time]"  name=schenddt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2679" y="8" height="76" width="603" format="[shortdate] [time]"  name=actstdt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3291" y="8" height="76" width="603" format="[shortdate] [time]"  name=actenddt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

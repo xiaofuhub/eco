@@ -1,0 +1,53 @@
+﻿$PBExportHeader$f_display_rec_locked.srf
+global type f_display_rec_locked from function_object
+end type
+
+forward prototypes
+global function boolean f_display_rec_locked (string initial, string lconno)
+end prototypes
+
+global function boolean f_display_rec_locked (string initial, string lconno);//**********************************************************************
+// Checks if initial exists as a s1init in the catalog table where lockfalg was set to yes,
+// by issuing an SQL SELECT statement
+//
+// Returns TRUE if initial is found; otherwise, returns FALSE
+//
+// Assumes that sqlservertrans has been initialized and connected
+//**********************************************************************
+
+String Linit,Lflag
+
+SELECT lockflag,s1init             
+INTO   :Lflag,:Linit              
+FROM   catalog                  
+WHERE  catalog.conno = :Lconno
+USING SQLServerTrans;   
+
+IF sqlservertrans.SQLCode < 0 THEN
+	String ls_message,ls_msgparm[1]
+	ls_message = 'A database error has occurred.~n' + &
+					 'Database error code:  ' + String (sqlservertrans.sqldbcode) + '~r~n' + &
+					 'Database error message:~r~n' + sqlservertrans.sqlerrtext
+	If IsValid(gnv_app.inv_error) Then
+		ls_msgparm[1] = ls_message
+		gnv_app.inv_error.of_Message ('pfc_dwdberror', ls_msgparm, &
+		gnv_app.iapp_object.DisplayName)
+	Else
+		Messagebox (gnv_app.iapp_object.DisplayName, ls_message, StopSign!, Ok!)
+		ROLLBACK USING sqlservertrans;
+	End If
+	RETURN FALSE
+END IF
+
+Lflag = RightTrim(Lflag)
+Linit = RightTrim(Linit)
+
+IF IsNull(Lflag)=TRUE AND IsNull(Linit)=TRUE THEN
+	RETURN FALSE
+ELSEIF IsNull(Lflag)=TRUE AND IsNull(Linit)=FALSE THEN
+	RETURN FALSE
+ELSE
+	RETURN TRUE
+END IF
+end function
+

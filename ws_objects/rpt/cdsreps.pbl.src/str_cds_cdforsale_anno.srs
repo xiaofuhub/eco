@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_cds_cdforsale_anno.srs
+global type str_cds_cdforsale_anno from structure
+	string		prdr
+	string		title
+	string		author
+	string		publisher
+	integer		pages
+	string		producer
+	long		bkseq
+	string		bkmed
+	string		onliner
+	string		annotation
+end type
+

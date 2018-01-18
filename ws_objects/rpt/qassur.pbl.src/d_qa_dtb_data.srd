@@ -1,0 +1,104 @@
+﻿$PBExportHeader$d_qa_dtb_data.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=dc_date dbname="dtb_data.dc_date" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=dc_format dbname="dtb_data.dc_format" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=dtb_multimediatype dbname="dtb_data.dtb_multimediatype" )
+ column=(type=number update=yes updatewhereclause=yes name=dtb_totaltime dbname="dtb_data.dtb_totaltime" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=dtb_audioformat dbname="dtb_data.dtb_audioformat" )
+ column=(type=number update=yes updatewhereclause=yes key=yes name=bkseq dbname="dtb_data.bkseq" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=bkmed dbname="dtb_data.bkmed" )
+ column=(type=datetime update=yes updatewhereclause=yes name=dtb_produceddate dbname="dtb_data.dtb_produceddate" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=dtb_depth dbname="dtb_data.dtb_depth" )
+ column=(type=datetime update=yes updatewhereclause=yes name=dt_time dbname="dtb_data.dt_time" )
+ column=(type=number update=yes updatewhereclause=yes name=navpoints dbname="dtb_data.navpoints" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=opf_chk dbname="dtb_data.opf_chk" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=ncx_chk dbname="dtb_data.ncx_chk" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=smil_chk dbname="dtb_data.smil_chk" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=reportxml_chk dbname="dtb_data.reportxml_chk" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=nlsreportxml_chk dbname="dtb_data.nlsreportxml_chk" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=playbook_chk dbname="dtb_data.playbook_chk" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=status dbname="dtb_data.status" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=qainit dbname="dtb_data.qainit" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=comments dbname="dtb_data.comments" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=dirlist_chk dbname="dtb_data.dirlist_chk" )
+ retrieve="  SELECT ~"DTB_DATA~".~"DC_DATE~",   
+         ~"DTB_DATA~".~"DC_FORMAT~",   
+         ~"DTB_DATA~".~"DTB_MULTIMEDIATYPE~",   
+         ~"DTB_DATA~".~"DTB_TOTALTIME~",   
+         ~"DTB_DATA~".~"DTB_AUDIOFORMAT~",   
+         ~"DTB_DATA~".~"BKSEQ~",   
+         ~"DTB_DATA~".~"BKMED~",   
+         ~"DTB_DATA~".~"DTB_PRODUCEDDATE~",   
+         ~"DTB_DATA~".~"DTB_DEPTH~",   
+         ~"DTB_DATA~".~"DT_TIME~",   
+         ~"DTB_DATA~".~"NAVPOINTS~",   
+         ~"DTB_DATA~".~"OPF_CHK~",   
+         ~"DTB_DATA~".~"NCX_CHK~",   
+         ~"DTB_DATA~".~"SMIL_CHK~",   
+         ~"DTB_DATA~".~"REPORTXML_CHK~",   
+         ~"DTB_DATA~".~"NLSREPORTXML_CHK~",   
+         ~"DTB_DATA~".~"PLAYBOOK_CHK~",   
+         ~"DTB_DATA~".~"STATUS~",   
+         ~"DTB_DATA~".~"QAINIT~",   
+         ~"DTB_DATA~".~"COMMENTS~",   
+         ~"DTB_DATA~".~"DIRLIST_CHK~"  
+    FROM ~"DTB_DATA~"   
+" update="DTB_DATA" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Dc Date" border="0" color="33554432" x="9" y="8" height="64" width="302" html.valueishtml="0"  name=dc_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dc Format" border="0" color="33554432" x="320" y="8" height="64" width="1399" html.valueishtml="0"  name=dc_format_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dtb Multimediatype" border="0" color="33554432" x="1728" y="8" height="64" width="576" html.valueishtml="0"  name=dtb_multimediatype_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dtb Totaltime" border="0" color="33554432" x="2313" y="8" height="64" width="352" html.valueishtml="0"  name=dtb_totaltime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dtb Audioformat" border="0" color="33554432" x="2674" y="8" height="64" width="425" html.valueishtml="0"  name=dtb_audioformat_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkseq" border="0" color="33554432" x="3109" y="8" height="64" width="329" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bkmed" border="0" color="33554432" x="3447" y="8" height="64" width="187" html.valueishtml="0"  name=bkmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dtb Produceddate" border="0" color="33554432" x="3643" y="8" height="64" width="603" html.valueishtml="0"  name=dtb_produceddate_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dtb Depth" border="0" color="33554432" x="4256" y="8" height="64" width="265" html.valueishtml="0"  name=dtb_depth_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dt Time" border="0" color="33554432" x="4530" y="8" height="64" width="603" html.valueishtml="0"  name=dt_time_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Navpoints" border="0" color="33554432" x="5143" y="8" height="64" width="329" html.valueishtml="0"  name=navpoints_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Opf Chk" border="0" color="33554432" x="5481" y="8" height="64" width="215" html.valueishtml="0"  name=opf_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ncx Chk" border="0" color="33554432" x="5705" y="8" height="64" width="229" html.valueishtml="0"  name=ncx_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Smil Chk" border="0" color="33554432" x="5943" y="8" height="64" width="242" html.valueishtml="0"  name=smil_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reportxml Chk" border="0" color="33554432" x="6194" y="8" height="64" width="393" html.valueishtml="0"  name=reportxml_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nlsreportxml Chk" border="0" color="33554432" x="6597" y="8" height="64" width="457" html.valueishtml="0"  name=nlsreportxml_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Playbook Chk" border="0" color="33554432" x="7063" y="8" height="64" width="370" html.valueishtml="0"  name=playbook_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="0" color="33554432" x="7442" y="8" height="64" width="174" html.valueishtml="0"  name=status_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qainit" border="0" color="33554432" x="7625" y="8" height="64" width="247" html.valueishtml="0"  name=qainit_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dirlist Chk" border="0" color="33554432" x="7881" y="8" height="64" width="274" html.valueishtml="0"  name=dirlist_chk_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="8" height="76" width="302" format="[general]" html.valueishtml="0"  name=dc_date visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="33554432" x="320" y="8" height="76" width="1399" format="[general]" html.valueishtml="0"  name=dc_format visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="33554432" x="1728" y="8" height="76" width="576" format="[general]" html.valueishtml="0"  name=dtb_multimediatype visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="33554432" x="2313" y="8" height="76" width="352" format="[general]" html.valueishtml="0"  name=dtb_totaltime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="33554432" x="2674" y="8" height="76" width="425" format="[general]" html.valueishtml="0"  name=dtb_audioformat visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="33554432" x="3109" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="33554432" x="3447" y="8" height="76" width="187" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="33554432" x="3643" y="8" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=dtb_produceddate visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="0" color="33554432" x="4256" y="8" height="76" width="265" format="[general]" html.valueishtml="0"  name=dtb_depth visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="0" color="33554432" x="4530" y="8" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=dt_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=110 border="0" color="33554432" x="5143" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=navpoints visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="0" color="33554432" x="5481" y="8" height="76" width="215" format="[general]" html.valueishtml="0"  name=opf_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=130 border="0" color="33554432" x="5705" y="8" height="76" width="229" format="[general]" html.valueishtml="0"  name=ncx_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="0" color="33554432" x="5943" y="8" height="76" width="242" format="[general]" html.valueishtml="0"  name=smil_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="0" color="33554432" x="6194" y="8" height="76" width="393" format="[general]" html.valueishtml="0"  name=reportxml_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="0" color="33554432" x="6597" y="8" height="76" width="457" format="[general]" html.valueishtml="0"  name=nlsreportxml_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=170 border="0" color="33554432" x="7063" y="8" height="76" width="370" format="[general]" html.valueishtml="0"  name=playbook_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=180 border="0" color="33554432" x="7442" y="8" height="76" width="174" format="[general]" html.valueishtml="0"  name=status visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=190 border="0" color="33554432" x="7625" y="8" height="76" width="247" format="[general]" html.valueishtml="0"  name=qainit visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=200 border="0" color="33554432" x="7881" y="8" height="76" width="274" format="[general]" html.valueishtml="0"  name=dirlist_chk visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=210 border="0" color="33554432" x="8169" y="0" height="64" width="3502" html.valueishtml="0"  name=comments visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Comments" border="0" color="33554432" x="8165" y="4" height="76" width="3506" html.valueishtml="0"  name=comments_t visible="1"  font.face="Tahoma" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

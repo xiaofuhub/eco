@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_catalogcheck_sql.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=885 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=125 color="536870912" )
+detail(height=125 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=catalog_conno dbname="catalog.conno" )
+ column=(type=datetime updatewhereclause=yes name=catalog_s1 dbname="catalog.s1" )
+ column=(type=datetime updatewhereclause=yes name=catalog_s2out dbname="catalog.s2out" )
+ column=(type=char(8) updatewhereclause=yes name=catalog_s1init dbname="catalog.s1init" )
+ column=(type=char(1) updatewhereclause=yes name=catalog_s2cd dbname="catalog.s2cd" )
+ column=(type=char(4) updatewhereclause=yes name=ttlinit_dewey dbname="ttlinit.dewey" )
+ retrieve="  SELECT catalog.conno,   
+         catalog.s1,   
+         catalog.s2out,   
+         catalog.s1init,   
+         catalog.s2cd,   
+         ttlinit.dewey  
+    FROM catalog,   
+         mchar,   
+         ttlinit  
+   WHERE ( mchar.conno = catalog.conno ) and 			
+         ( ttlinit.chno = mchar.chno ) and  
+         ( catalog.s1 = :ld_date )
+			order by catalog.conno    
+" arguments=(("ld_date", date)) )
+text(band=header alignment="2" text="CATALOG CHECK REPORT" border="0" color="0" x="2385" y="250" height="166" width="2000" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="S1" border="0" color="0" x="1729" y="625" height="166" width="312" html.valueishtml="0"  name=catalog_s1_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="S2OUT" border="0" color="0" x="2812" y="625" height="166" width="552" html.valueishtml="0"  name=catalog_s2out_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="S2CD" border="0" color="0" x="3854" y="625" height="166" width="416" html.valueishtml="0"  name=catalog_s2cd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="S1INIT" border="0" color="0" x="5760" y="625" height="166" width="489" html.valueishtml="0"  name=catalog_s1init_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="DEWEY" border="0" color="0" x="4750" y="625" height="166" width="593" html.valueishtml="0"  name=ttlinit_dewey_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CONNO" border="0" color="0" x="427" y="625" height="166" width="552" html.valueishtml="0"  name=catalog_conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="2635" y="0" height="114" width="875" format="mm/dd/yyyy" html.valueishtml="0"  name=catalog_s2out visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0" x="3822" y="0" height="114" width="500" format="[general]" html.valueishtml="0"  name=catalog_s2cd visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="4750" y="0" height="114" width="614" format="[general]" html.valueishtml="0"  name=ttlinit_dewey visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="260" y="0" height="114" width="895" format="[general]" html.valueishtml="0"  name=catalog_conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0" x="1447" y="0" height="114" width="875" format="mm/dd/yyyy" html.valueishtml="0"  name=catalog_s1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="5729" y="0" height="135" width="812" format="[general]" html.valueishtml="0"  name=catalog_s1init visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="5864" y="0" height="125" width="1322" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

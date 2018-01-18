@@ -1,0 +1,53 @@
+﻿$PBExportHeader$d_library_information.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1056 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=libcd dbname="LIBCD" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=libtyp dbname="LIBTYP" values="Regional Library	RL /Subregional Library	SRL/Multi State Center	MSC/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=libstcd dbname="LIBSTCD" values="Active, selecting Library (A)	A/Dead, inactive library (D)	D/Active, non-selection library (N)	N/Electronic (E)	E/" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=lendcd dbname="LENDCD" values="ALL	ALL/Braille	BR/Recording	REC/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=msc dbname="MSC" values="East	E/West	W/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_added dbname="DATE_ADDED" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_dropped dbname="DATE_DROPPED" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=reason dbname="REASON" )
+ retrieve="  SELECT  libcd,  
+         libtyp,   
+         libstcd,   
+         lendcd,   
+         msc,
+			date_added,
+			date_dropped,
+			reason
+
+    FROM lib  
+   WHERE (libcd = :s_libcd)    
+" update="lib" updatewhere=1 updatekeyinplace=yes arguments=(("s_libcd", string)) )
+text(band=detail alignment="1" text="Enter Library Code" border="0" color="0" x="64" y="28" height="64" width="507" html.valueishtml="0"  name=libcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Library Type" border="0" color="0" x="224" y="148" height="64" width="347" html.valueishtml="0"  name=libtyp_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Library Status Code" border="0" color="0" x="37" y="268" height="64" width="535" html.valueishtml="0"  name=libstcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Lendor Code" border="0" color="0" x="215" y="392" height="64" width="357" html.valueishtml="0"  name=lendcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Multi-State Center Code(E/W)" border="0" color="0" x="55" y="508" height="128" width="517" html.valueishtml="0"  name=msc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Date Added" border="0" color="0" x="238" y="692" height="64" width="334" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="0" x="603" y="140" height="76" width="709" format="[general]" html.valueishtml="0"  name=libtyp  tag="Please select library type from dropdown listbox" visible="1" ddlb.limit=1 ddlb.allowedit=no ddlb.case=upper ddlb.nilisnull=yes ddlb.autohscroll=yes ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="5" color="0" x="599" y="264" height="76" width="1166" format="[general]" html.valueishtml="0"  name=libstcd  tag="Please select library status code from dropdown listbox" visible="1" ddlb.limit=1 ddlb.allowedit=no ddlb.case=upper ddlb.nilisnull=yes ddlb.autohscroll=yes ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="5" color="0" x="599" y="384" height="76" width="603" format="[general]" html.valueishtml="0"  name=lendcd  tag="Please select lendor code from dropdown listbox" visible="1" ddlb.limit=1 ddlb.allowedit=no ddlb.case=upper ddlb.nilisnull=yes ddlb.autohscroll=yes ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="5" color="0" x="599" y="560" height="76" width="302" format="[general]" html.valueishtml="0"  name=msc  tag="Please select multi-state center code either E or W" visible="1" ddlb.limit=1 ddlb.allowedit=no ddlb.case=upper ddlb.nilisnull=yes ddlb.autohscroll=yes ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="0" x="599" y="696" height="76" width="471" format="[general]" html.valueishtml="0"  name=date_added visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Date Dropped" border="0" color="0" x="178" y="820" height="64" width="393" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="5" color="0" x="599" y="824" height="76" width="471" format="[general]" html.valueishtml="0"  name=date_dropped visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Reason" border="0" color="0" x="352" y="944" height="64" width="219" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="5" color="0" x="603" y="948" height="76" width="1531" format="[general]" html.valueishtml="0"  name=reason visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="255" x="608" y="32" height="64" width="297" format="[general]" html.valueishtml="0"  name=libcd visible="1" dddw.name=dddw_libcode dddw.displaycolumn=libcd dddw.datacolumn=libcd dddw.percentwidth=100 dddw.lines=10 dddw.limit=6 dddw.allowedit=yes dddw.useasborder=yes dddw.case=upper dddw.nilisnull=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,22 @@
+﻿$PBExportHeader$d_objects.srd
+$PBExportComments$(PB70Base) - Holds Object List from LibraryDirectory
+release 7;
+datawindow(units=0 timer_interval=0 color=1073807359 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(1024) updatewhereclause=no name=objectname dbname="objectname" )
+ column=(type=char(20) updatewhereclause=no name=dtetmemod dbname="dtetmemod" )
+ column=(type=char(256) updatewhereclause=no name=comments dbname="comments" )
+ column=(type=number updatewhereclause=no name=type dbname="type" values="	Y/	N" )
+ column=(type=char(1024) updatewhereclause=no name=library dbname="library" )
+  sort="library A objectname A " )
+bitmap(band=detail filename="datawin.bmp" x="18" y="4" height="64" width="73" border="0"  name=dw_pic visible="1~t0" )
+bitmap(band=detail filename="appl.bmp" x="18" y="4" height="64" width="73" border="0"  name=app_pic visible="1~t0" )
+bitmap(band=detail filename="window.bmp" x="18" y="4" height="64" width="73" border="0"  name=win_pic visible="1~t0" )
+bitmap(band=detail filename="userobj.bmp" x="18" y="4" height="64" width="73" border="0"  name=uo_pic visible="1~t0" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554687" x="114" y="4" height="64" width="2377" format="[general]" html.valueishtml="0"  name=objectname accelerator="w" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Tahoma" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )
+  

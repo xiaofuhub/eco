@@ -1,0 +1,83 @@
+﻿$PBExportHeader$f_call_label_app.srf
+global type f_call_label_app from function_object
+end type
+
+forward prototypes
+global function byte f_call_label_app (string as_conno)
+end prototypes
+
+global function byte f_call_label_app (string as_conno);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  f_get_label_data
+//
+//	Description:
+//	For a given conno get the DTB Label data
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			11/04/2009    	5.0			DTB Label Composer project
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+string ls_print, ls_braille, ls_data, ls_session, ls_user, ls_path,ls_registrypath
+int li_count
+boolean lb_found
+
+// validate conno
+select count(*)  into :li_count from mchar where conno = :as_conno using sqlservertrans ;
+
+IF li_count = 0 THEN
+	Messagebox('Error',' Control # ' + as_conno + '  does not exist in the database.')
+	RETURN -1
+END IF
+
+// validate if the c++ app exist in the Pc, if not throw error
+ls_path = 'c:\program files\the library of congress\dtb label composer\dtblabel.exe'
+lb_found =  FileExists(ls_path)
+IF NOT lb_found THEN
+	// validate from the registry
+	RegistryGet(  "HKEY_LOCAL_MACHINE\Software\The Library of Congress\DTB Label Composer",  "Application", RegString!, ls_registrypath)
+	IF Isnull(ls_registrypath) or Len(Trim(ls_registrypath)) = 0 THEN
+		lb_found=FALSE
+	ELSE
+		lb_found =  FileExists(ls_registrypath)
+		IF NOT lb_found THEN
+			Messagebox('Error', 'DTB Label Composer Program not found, contact system administrator.')
+			RETURN -1
+		ELSE
+			lb_found=TRUE
+			ls_path = ls_registrypath
+		END IF
+	END IF
+	IF NOT lb_found THEN
+		Messagebox('Error', 'DTB Label Composer Program not found, contact system administrator.')
+		RETURN -1
+	END IF
+END IF
+//////////////
+
+// picsuser table dblabel_edit settings - do we need it? 
+// ?? check with  Katzmann
+
+// get user logged in
+ls_user = gnv_app.of_getuserid()
+
+// get session id 
+select f_get_sessionid(:ls_user) into  :ls_session from dual using sqlserveroracletrans;
+
+// call c++ app
+//  session id , user id, conno  are command line parameters with a space after the switches
+ls_data = ls_path + ' -s ' + ls_session + ' -u ' + ls_user + ' -c ' + as_conno
+Run(ls_data )
+
+RETURN 1
+
+
+
+
+end function
+

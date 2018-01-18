@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_xml_export.srs
+$PBExportComments$PMS data extract - structure to hold export variables
+global type str_xml_export from structure
+	string		ls_catalog
+	date		ld_rc_stdate
+	date		ld_rc_enddt
+	date		ld_br_stdate
+	date		ld_br_enddt
+end type
+

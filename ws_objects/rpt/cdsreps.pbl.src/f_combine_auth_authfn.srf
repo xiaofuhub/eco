@@ -1,0 +1,39 @@
+﻿$PBExportHeader$f_combine_auth_authfn.srf
+global type f_combine_auth_authfn from function_object
+end type
+
+forward prototypes
+global function string f_combine_auth_authfn (string auth, string authfn, string ahonorific)
+end prototypes
+
+global function string f_combine_auth_authfn (string auth, string authfn, string ahonorific);IF	(IsNull(auth) or auth='') and (IsNull(authfn) or authfn='') THEN
+	RETURN ('')
+ELSE
+	IF	(Not IsNull(auth) and Not IsNull(authfn) and Not IsNull(ahonorific)) THEN
+		Return (auth + ',' + ' ' + authfn + ' ' + ' ' + ahonorific)
+		
+	ELSEIF	(Not IsNull(auth) and (IsNull(authfn) or TRIM(authfn) = '' ) and (IsNull(ahonorific) or ahonorific = '') ) THEN
+		Return (auth)
+	
+	ELSEIF	(Not IsNull(auth) and (IsNull(authfn) or authfn = '' ) and Not IsNull(ahonorific) ) THEN
+		return(auth + ' ' + ' ' + ahonorific)
+	
+	ELSEIF	((IsNull(auth) or auth = '' ) and Not IsNull(authfn) and (IsNull(ahonorific) or ahonorific = '' )) THEN
+		return(authfn)
+		
+	ELSEIF   ((IsNull(auth) or auth = '' ) and (IsNull(authfn) or authfn = '' ) and Not IsNull(ahonorific) ) THEN
+		return(ahonorific)
+		
+	ELSEIF   (NOT IsNull(auth) and NOT IsNull(authfn) and (IsNull(ahonorific) or ahonorific = '' )) THEN
+		return(auth + ',' + ' ' + authfn)
+		
+	ELSE
+		return(auth + ',' + ' ' + authfn)
+	END IF
+END IF
+
+
+
+
+end function
+

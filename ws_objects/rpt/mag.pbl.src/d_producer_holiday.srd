@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_producer_holiday.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=datetime update=yes updatewhereclause=yes key=yes name=holdt dbname="prdrhol.holdt" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=holdesc dbname="prdrhol.holdesc" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=holdur dbname="prdrhol.holdur" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=prdr dbname="prdrhol.prdr" )
+ retrieve="  SELECT PRDRHOL.HOLDT,   
+         PRDRHOL.HOLDESC,   
+         PRDRHOL.HOLDUR,   
+         PRDRHOL.PRDR  
+    FROM PRDRHOL  
+   WHERE prdrhol.prdr = :ls_prdr    
+" update="PRDRHOL" updatewhere=1 updatekeyinplace=no arguments=(("ls_prdr", string))  sort="holdesc A " )
+text(band=header alignment="2" text="Holiday Description" border="0" color="0" x="841" y="8" height="64" width="1733" html.valueishtml="0"  name=holdesc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Holiday Duration" border="0" color="0" x="2583" y="8" height="64" width="558" html.valueishtml="0"  name=holdur_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Prdr" border="0" color="0" x="3150" y="8" height="64" width="155" html.valueishtml="0"  name=prdr_t visible="1~t0"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Holiday Date" border="0" color="0" x="9" y="8" height="64" width="823" html.valueishtml="0"  name=holdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="841" y="8" height="76" width="1733" format="[general]" html.valueishtml="0"  name=holdesc visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="5" color="0" x="2583" y="8" height="76" width="558" format="[general]" html.valueishtml="0"  name=holdur visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="3150" y="8" height="76" width="155" format="[general]" html.valueishtml="0"  name=prdr visible="1~t0" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="0" x="9" y="8" height="76" width="823" format="mm/dd/yyyy" html.valueishtml="0"  name=holdt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_books_unusable_by_prdr.srf
+global type f_books_unusable_by_prdr from function_object
+end type
+
+forward prototypes
+global function integer f_books_unusable_by_prdr (string ls_cntr)
+end prototypes
+
+global function integer f_books_unusable_by_prdr (string ls_cntr);integer li_books
+
+select count(*)
+into :li_books
+from conversionbooks
+where cntr = :ls_cntr
+and action_type = 'U'
+using sqlservertrans;
+
+return li_books
+end function
+

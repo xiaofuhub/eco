@@ -1,0 +1,70 @@
+﻿$PBExportHeader$d_rpt_fram_prod_qc_tbl_and_bar.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=184 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=3824 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="monrpt.prdr" )
+ column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="monrpt.cntrmed" )
+ column=(type=datetime updatewhereclause=yes name=start_date dbname="monrpt.start_date" )
+ column=(type=datetime updatewhereclause=yes name=end_date dbname="monrpt.end_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=fy dbname="monrpt.fy" )
+ column=(type=char(1) updatewhereclause=yes name=foreign_lang dbname="monrpt.foreign_lang" )
+ retrieve="  SELECT DISTINCT monrpt.prdr,   
+         monrpt.cntrmed,   
+         monrpt.start_date,   
+         monrpt.end_date,   
+         monrpt.fy,
+			monrpt.foreign_lang
+    FROM monrpt
+	where start_date=:ad_start_date and
+			end_date =:ad_end_date and
+			fy= :ai_fy and
+			prdr =:as_prdr and
+			cntrmed =:as_cntrmed and
+			foreign_lang=:as_lang 
+
+
+" arguments=(("as_prdr", string),("as_cntrmed", string),("ad_start_date", datetime),("ad_end_date", datetime),("ai_fy", number),("as_lang", string))  sort="prdr A cntrmed A start_date A end_date A " )
+compute(band=header alignment="0" expression=" ' Delivery & Quality Performance Summary'"border="0" color="0" x="1317" y="8" height="56" width="1152" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=header alignment="1" expression=" prdr "border="0" color="0" x="1047" y="8" height="72" width="251" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Media:" border="0" color="0" x="82" y="100" height="56" width="242" html.valueishtml="0"  name=t_6 visible="1~t0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=header id=2 alignment="0" tabsequence=32766 border="0" color="0" x="366" y="100" height="56" width="151" format="[general]" html.valueishtml="0"  name=cntrmed_1 visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="" border="0" color="0" x="1600" y="132" height="44" width="507" html.valueishtml="0"  name=t_myr visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="" border="0" color="0" x="1312" y="76" height="44" width="1097" html.valueishtml="0"  name=t_book visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="1" text="" border="0" color="0" x="2496" y="8" height="56" width="965" html.valueishtml="0"  name=t_datetime visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3520" y="0" height="56" width="23" format="[general]" html.valueishtml="0"  name=foreign_lang visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+report(band=detail dataobject="d_rpt_detail_show" x="23" y="4" height="780" width="2258" border="0"  height.autosize=yes criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" start_date "),(" end_date "),(" foreign_lang ")) trail_footer = yes  name=dw_1 visible="1" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="3095" y="668" height="76" width="46" format="[general]" html.valueishtml="0"  name=prdr visible="1~t0" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3159" y="668" height="76" width="32" format="[general]" html.valueishtml="0"  name=cntrmed visible="1~t0" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3205" y="664" height="76" width="18" format="[general]" html.valueishtml="0"  name=start_date visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3232" y="668" height="76" width="18" format="[general]" html.valueishtml="0"  name=end_date visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="3264" y="664" height="76" width="27" format="[general]" html.valueishtml="0"  name=fy visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+report(band=detail dataobject="d_rpt_sum_prod_data_show" x="18" y="796" height="488" width="3497" border="0"  height.autosize=yes criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" fy "),(" foreign_lang ")) trail_footer = yes  name=dw_2 visible="1" )
+report(band=detail dataobject="d_rpt_qc_rej_bar" x="23" y="3012" height="548" width="3497" border="0"  height.autosize=yes criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" fy "),(" foreign_lang ")) trail_footer = yes  name=dw_5 visible="1" )
+report(band=detail dataobject="d_rpt_qc_apr_rej_show" x="23" y="2092" height="908" width="3497" border="0" criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" fy "),(" foreign_lang ")) trail_footer = yes  name=dw_4 visible="1" )
+report(band=detail dataobject="d_rpt_late_and_reg_bar" x="23" y="1296" height="524" width="3497" border="0"  height.autosize=yes criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" fy "),(" foreign_lang ")) trail_footer = yes  name=dw_3 visible="1" )
+report(band=detail dataobject="d_rpt_prd_commts_show" x="18" y="1828" height="252" width="3502" border="0" criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" start_date "),(" end_date "),(" foreign_lang ")) trail_footer = yes  name=dw_6 visible="1" )
+report(band=detail dataobject="d_rpt_qa_commts_show" x="32" y="3572" height="136" width="3493" border="0"  height.autosize=yes criteria="" nest_arguments=((" prdr "),(" cntrmed "),(" start_date "),(" end_date "),(" foreign_lang ")) trail_footer = yes  name=dw_7 visible="0" )
+text(band=detail alignment="0" text="**" border="0" color="0" x="210" y="3776" height="44" width="3305" html.valueishtml="0"  name=t_3 visible="1~t0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Notes:" border="0" color="0" x="32" y="3724" height="56" width="160" html.valueishtml="0"  name=t_5 visible="1~t0"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="*" border="0" color="0" x="215" y="3720" height="48" width="3305" html.valueishtml="0"  name=t_1 visible="1~t0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+line(band=detail x1="3264" y1="244" x2="3264" y2="316"  name=l_6 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="3264" y1="420" x2="3264" y2="500"  name=l_7 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="0" y1="0" x2="0" y2="0"  name=l_8 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="0" y1="0" x2="0" y2="0"  name=l_5 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="3438" y1="244" x2="3438" y2="320"  name=l_9 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="3438" y1="424" x2="3438" y2="500"  name=l_12 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Overall Delivery Performance:" border="0" color="0" x="2295" y="260" height="56" width="672" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Overall Quality Performance:" border="0" color="0" x="2295" y="428" height="56" width="654" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+line(band=detail x1="2962" y1="244" x2="2962" y2="320"  name=l_10 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="2967" y1="420" x2="2967" y2="496"  name=l_11 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="2962" y1="244" x2="3438" y2="244"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="2962" y1="316" x2="3438" y2="316"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="2962" y1="420" x2="3438" y2="420"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+line(band=detail x1="2962" y1="496" x2="3438" y2="496"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="" border="0" color="0" x="2985" y="252" height="60" width="443" html.valueishtml="0"  name=t_pd_yes visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="" border="0" color="0" x="2985" y="428" height="60" width="443" html.valueishtml="0"  name=t_qa_yes visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

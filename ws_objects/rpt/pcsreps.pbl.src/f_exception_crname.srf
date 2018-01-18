@@ -1,0 +1,16 @@
+﻿$PBExportHeader$f_exception_crname.srf
+global type f_exception_crname from function_object
+end type
+
+forward prototypes
+global function boolean f_exception_crname (string crname, string med)
+end prototypes
+
+global function boolean f_exception_crname (string crname, string med);IF ( (mid(med,1,2)='FD' OR mid(med,1,2)='RC') AND &
+	  (IsNull(crname) or crname='') ) THEN
+	RETURN TRUE
+ELSE
+	RETURN FALSE
+END IF
+end function
+

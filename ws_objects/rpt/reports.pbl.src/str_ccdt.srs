@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_ccdt.srs
+global type str_ccdt from structure
+	datetime		sd_stdt
+	datetime		sd_enddt
+	datetime		d_date
+end type
+

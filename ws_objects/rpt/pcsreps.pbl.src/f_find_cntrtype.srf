@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_find_cntrtype.srf
+global type f_find_cntrtype from function_object
+end type
+
+forward prototypes
+global function string f_find_cntrtype (string lcntr)
+end prototypes
+
+global function string f_find_cntrtype (string lcntr);string ltype
+
+select cntrtype
+into :ltype
+from ancntr
+where cntr=:lcntr
+using sqlservertrans;
+
+return ltype
+end function
+

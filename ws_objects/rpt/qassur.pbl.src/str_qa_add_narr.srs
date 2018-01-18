@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_qa_add_narr.srs
+global type str_qa_add_narr from structure
+	long		bkseq
+	string		bkmed
+	string		recagcy
+end type
+

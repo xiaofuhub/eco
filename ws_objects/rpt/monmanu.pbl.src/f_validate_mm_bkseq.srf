@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_validate_mm_bkseq.srf
+global type f_validate_mm_bkseq from function_object
+end type
+
+forward prototypes
+global function string f_validate_mm_bkseq (long Lbkseq)
+end prototypes
+
+global function string f_validate_mm_bkseq (long Lbkseq);string Lcntrtype
+
+select cntrtype into :Lcntrtype
+from ancntr
+where cntr in (select cntr from prod where bkseq = :Lbkseq)
+using sqlservertrans;
+
+IF f_check_dberror(sqlservertrans,"PROD") = TRUE THEN
+	return Lcntrtype
+ELSE
+	return "T"
+END IF
+end function
+

@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_qas_cards_comments.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=78164112 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=488 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes name=qastg dbname="qastg.qastg" values="Comments for Stage 1	1/Comments for Stage 2	2/Comments for Stage 3	3/" )
+ column=(type=char(32766) updatewhereclause=no name=qacomments dbname="qastg.qacomments" )
+ retrieve="  SELECT qastg.qastg,
+         qastg.qacomments   
+    FROM qastg 
+   WHERE ( qastg.bkseq = :lbkseq) and
+			( qastg.bkmed = :lbkmed)
+	ORDER BY qastg.qastg   
+" arguments=(("lbkseq", number),("lbkmed", string)) )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0" x="37" y="20" height="76" width="677" format="[general]" html.valueishtml="0"  name=qastg visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="78164112" )
+text(band=detail alignment="2" text="View Only" border="0" color="0" x="1243" y="28" height="64" width="270" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="78164112" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="37" y="108" height="364" width="2898" format="[general]" html.valueishtml="0"  name=qacomments visible="1" edit.limit=0 edit.case=any edit.autoselect=no edit.autohscroll=yes edit.autovscroll=yes edit.hscrollbar=yes edit.imemode=0 edit.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

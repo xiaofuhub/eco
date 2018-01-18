@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_qa_comments.srs
+global type str_qa_comments from structure
+	string		qastg
+	date		qacompdt
+	string		qainit
+	string		bkmed
+	long		bkseq
+end type
+

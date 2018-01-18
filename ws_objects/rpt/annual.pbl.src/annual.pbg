@@ -1,0 +1,28 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "annual.pbl" "";
+@end;
+@begin Objects 
+ "d_add_producer.srd" "annual.pbl";
+ "d_add_sub_cntr.srd" "annual.pbl";
+ "d_addcost.srd" "annual.pbl";
+ "d_annual_anucost.srd" "annual.pbl";
+ "d_cntrsub.srd" "annual.pbl";
+ "d_contract_init.srd" "annual.pbl";
+ "d_mm_get_all_titles.srd" "annual.pbl";
+ "d_org_producer.srd" "annual.pbl";
+ "d_producer_code.srd" "annual.pbl";
+ "dddw_booktype.srd" "annual.pbl";
+ "dddw_cntrtype.srd" "annual.pbl";
+ "dddw_prdr.srd" "annual.pbl";
+ "dddw_prodstage.srd" "annual.pbl";
+ "dddw_uom.srd" "annual.pbl";
+ "f_get_current_no_ttls.srf" "annual.pbl";
+ "f_get_current_tot_amount.srf" "annual.pbl";
+ "str_ancntrall.srs" "annual.pbl";
+ "w_add_org_producer.srw" "annual.pbl";
+ "w_add_producer.srw" "annual.pbl";
+ "w_addcost.srw" "annual.pbl";
+ "w_addsub.srw" "annual.pbl";
+ "w_sheet_annual_contract_init.srw" "annual.pbl";
+@end;

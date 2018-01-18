@@ -1,0 +1,38 @@
+﻿$PBExportHeader$f_change_pipe_italics_tags.srf
+global type f_change_pipe_italics_tags from function_object
+end type
+
+forward prototypes
+global function string f_change_pipe_italics_tags (string ltxt)
+end prototypes
+
+global function string f_change_pipe_italics_tags (string ltxt);int  cnt,cnt_pipes,i
+string 			ls_source,ls_pipe[]
+n_cst_string 	inv_string
+
+ls_source = ltxt
+
+// Count the number of pipes
+cnt_pipes = inv_string.of_CountOccurrences(ls_source, "|", TRUE)
+IF mod(cnt_pipes,2) <> 0 THEN
+	return(ltxt)
+ELSE
+	// Separate the text into multiple statements,
+	// Separated by pipes
+	cnt = inv_string.of_Parsetoarray	(ls_source, "|", ls_pipe)
+	IF cnt=1 THEN
+		return(ltxt)
+	END IF	
+	
+	FOR i=1 TO cnt_pipes STEP 2
+		ls_pipe[i]=ls_pipe[i]+'<Italics>'
+		ls_pipe[i+1]=ls_pipe[i+1]+'</Italics>'	
+	NEXT
+
+	inv_string.of_ArrayToString ( ls_pipe[], "", ls_source) 
+END IF
+
+RETURN ls_source
+
+end function
+

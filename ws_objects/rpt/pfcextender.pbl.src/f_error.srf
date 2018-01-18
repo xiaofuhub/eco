@@ -1,0 +1,11 @@
+﻿$PBExportHeader$f_error.srf
+global type f_error from function_object
+end type
+
+forward prototypes
+global subroutine f_error (string as_message, string as_object, string as_context, icon ae_icon, button ae_button, integer ai_default)
+end prototypes
+
+global subroutine f_error (string as_message, string as_object, string as_context, icon ae_icon, button ae_button, integer ai_default);f_message ( "Wizard Error", as_message, as_object, as_context, ae_icon, ae_button, ai_default )
+end subroutine
+

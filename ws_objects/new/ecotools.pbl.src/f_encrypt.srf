@@ -1,0 +1,40 @@
+﻿$PBExportHeader$f_encrypt.srf
+global type f_encrypt from function_object
+end type
+
+forward prototypes
+global function string f_encrypt (string as_data, string as_password)
+end prototypes
+
+global function string f_encrypt (string as_data, string as_password);//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function :  f_encrypt
+// Args		: String data - same as plain password text based on which session key is generated
+//				: String password - plain password text
+//	Description:
+//	String - Returns MS Cryptography 1.0 API encrypted password 
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			06/24/2009      4.2							2214
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+string ls_ret
+n_cst_crypto lnv_crypto 
+blob lbl
+
+IF NOT Isvalid( lnv_crypto) THEN
+	lnv_crypto = CREATE n_cst_crypto
+END IF
+ls_ret =  lnv_crypto.of_hash_p( as_password)
+destroy lnv_crypto
+RETURN  ls_ret
+
+
+end function
+

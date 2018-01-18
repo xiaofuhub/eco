@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_pcs_get_prdr_no.srf
+global type f_pcs_get_prdr_no from function_object
+end type
+
+forward prototypes
+global function string f_pcs_get_prdr_no (string lcntr)
+end prototypes
+
+global function string f_pcs_get_prdr_no (string lcntr);string prdr_no
+
+select prdr
+into :prdr_no
+from ancntr
+where cntr=:lcntr
+using sqlservertrans;
+
+return prdr_no
+end function
+

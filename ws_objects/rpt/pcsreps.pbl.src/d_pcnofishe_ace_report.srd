@@ -1,0 +1,69 @@
+﻿$PBExportHeader$d_pcnofishe_ace_report.srd
+release 10;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=927 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=156 color="536870912" )
+detail(height=177 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=catalog_s2in dbname="catalog.s2in" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=char(80) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=char(5) updatewhereclause=yes name=ttlinit_ahonorific dbname="ttlinit.ahonorific" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ retrieve=" SELECT catalog.s2in,   
+         prod.bkseq,   
+         prod.bkmed,   
+         prod.actenddt,   
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.ahonorific,
+			ttlinit.ttl
+    FROM catalog,   
+         mchar,   
+         ttlinit,   
+         prod,
+			 ancntr  
+   WHERE ( mchar.conno = catalog.conno ) and  
+         ( ttlinit.chno = mchar.chno ) and  
+         ( prod.bkseq = mchar.bkseq ) and 
+			( prod.bkmed = mchar.bkmed ) and
+			( ancntr.cntr = prod.cntr ) and
+			( ancntr.cntrtype in ('D','T')) and
+			( prod.prodstage in ('DU','PR','PB','EM')) and
+			( catalog.s2in >= :ld_stdt ) and
+			( prod.actenddt <= :ld_enddt )
+			order by 8     
+
+
+" arguments=(("ld_stdt", date),("ld_enddt", date)) )
+text(band=header alignment="0" text="TITLES SHIPPED BUT NOT YET ON CD-ROM" border="0" color="0" x="2354" y="187" height="166" width="3843" html.valueishtml="0"  name=ttlinit_authfn_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="TITLE" border="0" color="0" x="1062" y="666" height="166" width="479" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=7 alignment="0" tabsequence=32766 border="0" color="0" x="260" y="20" height="197" width="114" format="[general]" html.valueishtml="0"  name=ttlinit_ahonorific visible="1~t0" edit.limit=5 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=6 alignment="0" tabsequence=32766 border="0" color="0" x="572" y="20" height="197" width="156" format="[general]" html.valueishtml="0"  name=ttlinit_authfn visible="1~t0" edit.limit=34 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="0" x="395" y="20" height="197" width="156" format="[general]" html.valueishtml="0"  name=ttlinit_auth visible="1~t0" edit.limit=34 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="3750" y="375" height="145" width="875" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="AS OF" border="0" color="0" x="3208" y="375" height="145" width="510" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1166" y="62" height="125" width="166" format="mm/dd/yyyy" html.valueishtml="0"  name=prod_actenddt visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="BOOK NO." border="0" color="0" x="6708" y="666" height="166" width="677" html.valueishtml="0"  name=prod_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="AUTHOR" border="0" color="0" x="4052" y="666" height="166" width="677" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=8 alignment="0" tabsequence=32766 border="0" color="0" x="927" y="52" height="166" width="208" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="0" x="750" y="52" height="166" width="114" format="[general]" html.valueishtml="0"  name=catalog_s2in visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="6916" y="0" height="135" width="854" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="6677" y="0" height="135" width="229" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_combine_auth_authfn( ttlinit_auth , ttlinit_authfn , ttlinit_ahonorific )"border="0" color="0" x="3885" y="0" height="135" width="2750" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_remove_pipe( ttlinit_ttl )"border="0" color="0" x="31" y="0" height="135" width="3791" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="6572" y="0" height="135" width="1239" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

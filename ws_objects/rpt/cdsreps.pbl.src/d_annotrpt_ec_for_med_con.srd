@@ -1,0 +1,25 @@
+﻿$PBExportHeader$d_annotrpt_ec_for_med_con.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=177 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ column=(type=char(3) updatewhereclause=yes name=med dbname="mchar.med" )
+ column=(type=decimal(0) updatewhereclause=yes name=cprevbkseq dbname="ri.prevbkseq" )
+ column=(type=char(3) updatewhereclause=yes name=cprevbkmed dbname="ri.prevbkmed" )
+ retrieve="  SELECT MCHAR.CONNO,   
+         MCHAR.MED,   
+         RI.PREVBKSEQ,   
+         RI.PREVBKMED  
+    FROM MCHAR,   
+         RI  
+   WHERE ( ri.conno (+) = mchar.conno) and  
+         ( ( mchar.chno = :ls_chno ) )    
+" arguments=(("ls_chno", string)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="83" y="0" height="135" width="416" format="[general]" html.valueishtml="0"  name=med visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1083" y="0" height="135" width="1156" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="2406" y="0" height="135" width="604" format="[general]" html.valueishtml="0"  name=cprevbkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3083" y="0" height="135" width="1093" format="[general]" html.valueishtml="0"  name=cprevbkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-12" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

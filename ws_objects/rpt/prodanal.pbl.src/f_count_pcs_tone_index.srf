@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_count_pcs_tone_index.srf
+global type f_count_pcs_tone_index from function_object
+end type
+
+forward prototypes
+global function integer f_count_pcs_tone_index ()
+end prototypes
+
+global function integer f_count_pcs_tone_index ();integer li_cnt_tone
+
+select count(*)
+into :li_cnt_tone
+from conversionbooks
+where conno in (select conno from mchar where mchar.toning = 'tones')
+and action_type in ('C','P')
+using sqlservertrans;
+
+return li_cnt_tone
+
+
+end function
+

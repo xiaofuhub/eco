@@ -1,0 +1,56 @@
+﻿$PBExportHeader$d_create_contract_type_new.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(1) update=yes updatewhereclause=yes key=yes name=cntrtype dbname="prodstage.cntrtype" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=cntrmed dbname="prodstage.cntrmed" )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=prodstage dbname="prodstage.prodstage" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=proddesc dbname="prodstage.proddesc" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=substage dbname="prodstage.substage" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=alternate dbname="prodstage.alternate" initial="N" values="	Y/	N" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=stageorder dbname="prodstage.stageorder" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=cntrtypedesc dbname="prodstage.cntrtypedesc" )
+ column=(type=char(36) updatewhereclause=yes name=compute_0009 dbname="compute_0009" values="Cassette	Cassette/Flash	Flash/Flash//Cassette	Flash//Cassette/" )
+ retrieve="  SELECT CNTRTYPE,   
+         CNTRMED,   
+         PRODSTAGE,   
+         PRODDESC,   
+         SUBSTAGE,   
+         ALTERNATE,   
+         STAGEORDER,   
+         CNTRTYPEDESC , '                                    '
+    FROM PRODSTAGE  
+   WHERE cntrtype = :Lcntrtype  AND  
+         cntrmed = :Lcntrmed    
+ORDER BY STAGEORDER ASC,   
+         ALTERNATE ASC   
+" update="PRODSTAGE" updatewhere=1 updatekeyinplace=yes arguments=(("Lcntrtype", string),("Lcntrmed", string)) )
+text(band=header alignment="2" text="ProductionStage" border="0" color="0" x="23" y="8" height="128" width="293" html.valueishtml="0"  name=prodstage_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ProductionOrder" border="0" color="0" x="347" y="12" height="128" width="293" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="ProductionDescription" border="0" color="0" x="896" y="8" height="128" width="311" html.valueishtml="0"  name=proddesc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Alternate" border="0" color="0" x="1362" y="60" height="64" width="242" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SubStage" border="0" color="0" x="1646" y="4" height="128" width="165" html.valueishtml="0"  name=substage_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Media Flag" border="0" color="0" x="1957" y="40" height="64" width="311" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="640" y="8" height="80" width="750" format="[general]" html.valueishtml="0"  name=proddesc visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="1682" y="8" height="80" width="96" format="[general]" html.valueishtml="0"  name=substage visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="0" x="1458" y="8" height="80" width="73" format="[general]" html.valueishtml="0"  name=alternate visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=yes checkbox.threed=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="59" y="8" height="80" width="146" format="[general]" html.valueishtml="0"  name=prodstage visible="1" editmask.required=yes editmask.mask="!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="12632256" x="302" y="8" height="80" width="50" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="12632256" x="247" y="8" height="80" width="50" format="[general]" html.valueishtml="0"  name=cntrtype visible="1" edit.limit=1 edit.case=upper edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=7 alignment="0" tabsequence=20 border="5" color="0" x="379" y="8" height="80" width="155" format="[general]" html.valueishtml="0"  name=stageorder visible="1" editmask.required=yes editmask.mask="#" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="12632256" x="1582" y="8" height="80" width="69" format="[general]" html.valueishtml="0"  name=cntrtypedesc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=9 alignment="0" tabsequence=60 border="5" color="0" x="1883" y="8" height="80" width="512" format="[general]" html.valueishtml="0"  name=compute_0009 visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

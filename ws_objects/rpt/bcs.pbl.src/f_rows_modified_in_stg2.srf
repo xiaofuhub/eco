@@ -1,0 +1,15 @@
+﻿$PBExportHeader$f_rows_modified_in_stg2.srf
+global type f_rows_modified_in_stg2 from function_object
+end type
+
+forward prototypes
+global function integer f_rows_modified_in_stg2 ()
+end prototypes
+
+global function integer f_rows_modified_in_stg2 ();//Return (w_sheet_bcs_stage2.dw_bcs_stage2.ModifiedCount())
+
+Long ll_SelectedCount
+ll_SelectedCount = Long(w_sheet_bcs_stage2.dw_summary.Describe("Evaluate('sum(if (IsSelected(),1, 0) for all)',1)"))
+Return ll_SelectedCount
+end function
+

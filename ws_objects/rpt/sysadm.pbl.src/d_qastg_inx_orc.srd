@@ -1,0 +1,58 @@
+﻿$PBExportHeader$d_qastg_inx_orc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=15780518 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=148 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="qastg.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="qastg.bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="qastg.cntr" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="qastg.qastg" )
+ column=(type=datetime updatewhereclause=yes name=qarecdt dbname="qastg.qarecdt" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="qastg.qastatcd" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt dbname="qastg.qacompdt" )
+ column=(type=char(7) updatewhereclause=yes name=cntr_orc dbname="cntr_orc" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_orc dbname="qastg_orc" )
+ column=(type=datetime updatewhereclause=yes name=qarecdt_orc dbname="qarecdt_orc" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd_orc dbname="qastatcd_orc" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt_orc dbname="qacompdt_orc" )
+ column=(type=char(20) updatewhereclause=yes name=cmts dbname="cmts" )
+ retrieve="  SELECT bkseq,   
+         bkmed,   
+         cntr,   
+         qastg,   
+         qarecdt,   
+         qastatcd,   
+         qacompdt,
+			'       ' cntr_orc,
+			' ' qastg_orc,
+			to_date('01/01/1800','MM/DD/YYYY') qarecdt_orc,
+			' ' qastatcd_orc,
+			to_date('01/01/1800','MM/DD/YYYY') qacompdt_orc,
+			'                    ' cmts
+    FROM qastg   
+
+" )
+text(band=header alignment="2" text="QAComments " border="0" color="0" x="3785" y="8" height="128" width="389" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="BookNumber" border="0" color="0" x="366" y="12" height="128" width="274" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CntractPICS/Web" border="0" color="0" x="750" y="12" height="128" width="544" html.valueishtml="0"  name=cntr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QastgPICS/Web" border="0" color="0" x="1335" y="8" height="128" width="544" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QarecdtPICS/Web" border="0" color="0" x="1870" y="12" height="128" width="544" html.valueishtml="0"  name=qarecdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QastatcdPICS/Web " border="0" color="0" x="2478" y="12" height="128" width="567" html.valueishtml="0"  name=qastatcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QacompdtPICS/Web" border="0" color="0" x="3063" y="12" height="128" width="544" html.valueishtml="0"  name=qacompdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="0" x="320" y="8" height="64" width="256" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="590" y="8" height="64" width="110" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="2656" y="8" height="64" width="78" format="[general]" html.valueishtml="0"  name=qastatcd visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="2821" y="8" height="64" width="69" format="[general]" html.valueishtml="0"  name=qastatcd_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  qastatcd   <> qastatcd_orc  , RGB(255,255,0),if(isnull(  qastatcd  ) and (not isnull(   qastatcd_orc   )),rgb(255,255,0),if(isnull(  qastatcd_orc  ) and (not isnull(  qastatcd )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="0" x="3689" y="8" height="64" width="677" format="[general]" html.valueishtml="0"  name=cmts visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1472" y="8" height="64" width="110" format="[general]" html.valueishtml="0"  name=qastg visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="1632" y="8" height="64" width="110" format="[general]" html.valueishtml="0"  name=qastg_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  qastg   <>  qastg_orc  , RGB(255,255,0),if(isnull( qastg  ) and (not isnull(   qastg_orc   )),rgb(255,255,0),if(isnull(  qastg_orc  ) and (not isnull(  qastg  )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1815" y="8" height="64" width="347" format="[general]" html.valueishtml="0"  name=qarecdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="0" x="2185" y="8" height="64" width="347" format="[general]" html.valueishtml="0"  name=qarecdt_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  qarecdt  <>  qarecdt_orc , RGB(255,255,0),if(isnull( qarecdt ) and (not isnull(  qarecdt_orc  )),rgb(255,255,0),if(isnull(  qarecdt_orc ) and (not isnull(  qarecdt )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="1074" y="12" height="64" width="334" format="[general]" html.valueishtml="0"  name=cntr_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  cntr   <>  cntr_orc  , RGB(255,255,0),if(isnull( cntr  ) and (not isnull(   cntr_orc   )),rgb(255,255,0),if(isnull(  cntr_orc  ) and (not isnull(  cntr  )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="722" y="8" height="64" width="334" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="2953" y="8" height="64" width="343" format="[general]" html.valueishtml="0"  name=qacompdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="0" x="3319" y="8" height="64" width="343" format="[general]" html.valueishtml="0"  name=qacompdt_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  qacompdt   <>  qacompdt_orc  , RGB(255,255,0),if(isnull( qacompdt  ) and (not isnull(  qacompdt_orc   )),rgb(255,255,0),if(isnull(  qacompdt_orc  ) and (not isnull(   qacompdt  )),rgb(255,255,0), RGB(255,255,255))))" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

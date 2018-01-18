@@ -1,0 +1,60 @@
+﻿$PBExportHeader$d_magazine_contract_adjustments_mag.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=744 color="553648127"  height.autosize=yes)
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mag_fy dbname="mag.fy" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=mag_cntr dbname="mag.cntr" )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=mag_magcd dbname="mag.magcd" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcso dbname="mag.cntcso" initial="0" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsc dbname="mag.cntcsc" initial="0" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_invamtc dbname="mag.invamtc" initial="0" )
+ column=(type=char(4) updatewhereclause=yes name=magcntr_prdr dbname="magcntr.prdr" )
+ column=(type=char(3) updatewhereclause=yes name=magcntr_format dbname="magcntr.format" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mag_cntcsadjc dbname="mag.cntcsadjc" )
+ column=(type=decimal(2) updatewhereclause=yes name=mag_estmail dbname="mag.estmail" )
+ column=(type=char(34) updatewhereclause=yes name=magttl_title dbname="magttl.title" )
+ retrieve="  SELECT MAG.FY,   
+         MAG.CNTR,   
+         MAG.MAGCD,   
+         MAG.CNTCSO,   
+         MAG.CNTCSC,   
+         MAG.INVAMTC,   
+         MAGCNTR.PRDR,   
+         MAGCNTR.FORMAT,   
+         MAG.CNTCSADJC,   
+         MAG.ESTMAIL,   
+         MAGTTL.TITLE  
+    FROM MAG,   
+         MAGCNTR,   
+         MAGTTL  
+   WHERE ( MAG.FY = MAGCNTR.FY ) and  
+         ( MAG.MAGCD = MAGTTL.MAGCD ) and  
+         ( ( mag.fy = :li_fy ) AND  
+         ( mag.cntr = :ls_contract ) AND  
+         ( mag.magcd = :ls_magcode ) AND  
+         ( mag.fy = magcntr.fy ) AND  
+         ( mag.cntr = magcntr.cntr ) AND  
+         ( mag.magcd = magttl.magcd ) )    
+" update="MAG" updatewhere=1 updatekeyinplace=no arguments=(("li_fy", number),("ls_contract", string),("ls_magcode", string)) )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="0" x="745" y="36" height="64" width="238" format="[general]" html.valueishtml="0"  name=mag_fy  tag="Enter Fiscal Year" visible="1" editmask.required=yes editmask.autoskip=yes editmask.mask="0000" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="745" y="460" height="64" width="146" format="[general]" html.valueishtml="0"  name=magcntr_prdr  tag="Producer" visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="5" color="0" x="745" y="564" height="64" width="91" format="[general]" html.valueishtml="0"  name=magcntr_format  tag="Format" visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="1797" y="280" height="64" width="709" format="[general]" html.valueishtml="0"  name=magttl_title  tag="Magazine Title" visible="1" height.autosize=yes edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="1797" y="28" height="64" width="489" format="[general]" html.valueishtml="0"  name=mag_cntr  tag="Enter Contract" visible="1" edit.limit=7 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="5" color="0" x="1797" y="152" height="64" width="347" format="[general]" html.valueishtml="0"  name=mag_magcd  tag="Enter Magazine Code" visible="1" dddw.name=ddw_magcd dddw.displaycolumn=magcd dddw.datacolumn=magcd dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=no dddw.case=upper dddw.required=yes dddw.nilisnull=yes dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=detail alignment="1" text="Magazine Code" border="0" color="0" x="1307" y="156" height="64" width="434" html.valueishtml="0"  name=mag_magcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Contract" border="0" color="0" x="1518" y="28" height="64" width="224" html.valueishtml="0"  name=mag_cntr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Title" border="0" color="0" x="1623" y="280" height="64" width="119" html.valueishtml="0"  name=magttl_title_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="745" y="144" height="64" width="389" format="[general]" html.valueishtml="0"  name=mag_cntcso  tag="Contract Cost Original" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="745" y="252" height="64" width="389" format="[general]" html.valueishtml="0"  name=mag_cntcsc  tag="Contract Cost Cumulative" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="745" y="356" height="64" width="389" format="[general]" html.valueishtml="0"  name=mag_invamtc  tag="Invoice Amount" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Format" border="0" color="0" x="507" y="560" height="64" width="197" html.valueishtml="0"  name=magcntr_format_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Producer" border="0" color="0" x="453" y="452" height="64" width="251" html.valueishtml="0"  name=magcntr_prdr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Invoice Amount" border="0" color="0" x="288" y="352" height="64" width="416" html.valueishtml="0"  name=mag_invamtc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Contract Cost Cumulative" border="0" color="0" x="27" y="248" height="64" width="677" html.valueishtml="0"  name=mag_cntcsc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Contract Cost Original" border="0" color="0" x="119" y="140" height="64" width="585" html.valueishtml="0"  name=mag_cntcso_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Fiscal Year" border="0" color="0" x="393" y="36" height="64" width="311" html.valueishtml="0"  name=mag_fy_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

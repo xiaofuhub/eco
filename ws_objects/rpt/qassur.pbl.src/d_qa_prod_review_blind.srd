@@ -1,0 +1,111 @@
+﻿$PBExportHeader$d_qa_prod_review_blind.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=412 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_units dbname="prod.units" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_vols dbname="mchar.vols" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_applen dbname="mchar.applen" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_len dbname="mchar.len" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_qnty dbname="mchar.qnty" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_priority dbname="mchar.priority" )
+ column=(type=char(2) updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=mchar_minlastside dbname="mchar.minlastside" validationmsg="~"You must enter the Min. Last Side. (Not greater than 88)~"" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_andigcd dbname="mchar.andigcd" values="Digital	Y/Analog	N/Either	M/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_digitalprd dbname="mchar.digitalprd" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_g1br dbname="mchar.g1br" )
+ column=(type=char(7) updatewhereclause=yes name=ancntr_cntr dbname="ancntr.cntr" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ column=(type=char(1) updatewhereclause=yes name=ancntr_cntrtype dbname="ancntr.cntrtype" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=char(5) updatewhereclause=yes name=ttlinit_ahonorific dbname="ttlinit.ahonorific" )
+ column=(type=datetime updatewhereclause=yes name=ttlinit_ttldt dbname="ttlinit.ttldt" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ retrieve="  SELECT	prod.bkseq,
+			prod.bkmed,
+			prod.prodstage,
+   		prod.cntr,
+			prod.units,
+			prod.actenddt,
+         mchar.conno,
+			mchar.med,
+			mchar.vols,   
+         mchar.applen, 
+         mchar.len, 
+			mchar.qnty,  
+         mchar.priority,   
+         mchar.ricd,   
+			mchar.minlastside,
+			mchar.andigcd,
+			mchar.digitalprd,
+		mchar.g1br,
+			ancntr.cntr,
+         ancntr.prdr,
+			ancntr.cntrtype,   
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.ahonorific,   
+         ttlinit.ttldt,
+         ttlinit.ttl
+    FROM prod,mchar,ttlinit,ancntr
+   WHERE ( mchar.chno = ttlinit.chno ) and
+			( prod.bkseq = mchar.bkseq ) and
+			( prod.bkmed = mchar.bkmed ) and
+			( prod.cntr = ancntr.cntr) and
+         ( prod.bkseq = :lbkseq ) and
+			( prod.cntr = :lcntr) and
+			( 	( prod.prodstage = :lprodstage) OR
+				( prod.prodstage = :lprodstage2)) 
+" update="mchar" updatewhere=0 updatekeyinplace=yes arguments=(("lbkseq", number),("lcntr", string),("Lprodstage", string),("Lprodstage2", string)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2999" y="16" height="52" width="119" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2286" y="20" height="52" width="119" format="[general]" html.valueishtml="0"  name=prod_prodstage visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2418" y="20" height="52" width="119" format="[general]" html.valueishtml="0"  name=prod_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="2661" y="20" height="52" width="41" format="[general]" html.valueishtml="0"  name=ancntr_cntrtype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2569" y="20" height="52" width="64" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2752" y="20" height="52" width="91" format="[general]" html.valueishtml="0"  name=mchar_applen visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="2857" y="20" height="52" width="119" format="[general]" html.valueishtml="0"  name=ancntr_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3218" y="20" height="52" width="119" format="[general]" html.valueishtml="0"  name=prod_units visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3145" y="20" height="52" width="37" format="[general]" html.valueishtml="0"  name=mchar_qnty visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2409" y="76" height="52" width="315" format="[general]" html.valueishtml="0"  name=prod_actenddt visible="1~t0" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="2757" y="80" height="52" width="178" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2194" y="80" height="52" width="197" format="[general]" html.valueishtml="0"  name=mchar_med visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="3278" y="80" height="52" width="82" format="[general]" html.valueishtml="0"  name=mchar_priority visible="1~t0" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="2967" y="80" height="56" width="283" format="[general]" html.valueishtml="0"  name=mchar_andigcd visible="1~t0" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3063" y="168" height="52" width="315" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="2272" y="168" height="60" width="270" format="[general]" html.valueishtml="0"  name=ttlinit_ahonorific visible="1~t0" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="2583" y="184" height="52" width="137" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="1~t0" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="2743" y="164" height="60" width="283" format="[general]" html.valueishtml="0"  name=ttlinit_ttldt visible="1~t0" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="78164112" )
+text(band=detail alignment="1" text="Author" border="0" color="0" x="110" y="28" height="60" width="142" html.valueishtml="0"  name=ttlinit_auth_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Title" border="0" color="0" x="155" y="112" height="60" width="91" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="2" tabsequence=40 border="5" color="0" x="270" y="192" height="52" width="329" format="[general]" html.valueishtml="0"  name=mchar_len  tag="tracks" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Tracks" border="0" color="0" x="46" y="192" height="52" width="201" html.valueishtml="0"  name=mchar_len_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="2" tabsequence=50 border="5" color="0" x="270" y="264" height="52" width="311" format="[general]" html.valueishtml="0"  name=mchar_vols  tag="cassettes" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Cassettes" border="0" color="0" x="37" y="260" height="52" width="210" html.valueishtml="0"  name=mchar_vols_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="2" tabsequence=60 border="5" color="0" x="430" y="340" height="52" width="224" format="[general]" html.valueishtml="0"  name=mchar_minlastside  tag="minute last side" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Minutes Last Side" border="0" color="0" x="27" y="340" height="52" width="384" html.valueishtml="0"  name=mchar_minlastside_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=20 border="5" color="0" x="1051" y="32" height="60" width="398" format="[general]" html.valueishtml="0"  name=ttlinit_authfn  tag="Author First Name" visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=26 alignment="0" tabsequence=30 border="5" color="0" x="270" y="116" height="52" width="965" format="[general]" html.valueishtml="0"  name=ttlinit_ttl  tag="Title" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=22 alignment="0" tabsequence=10 border="5" color="0" x="274" y="28" height="60" width="745" format="[general]" html.valueishtml="0"  name=ttlinit_auth  tag="Author Last Name" visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="3378" y="32" height="52" width="229" format="[general]" html.valueishtml="0"  name=mchar_digitalprd visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="3401" y="160" height="52" width="78" format="[general]" html.valueishtml="0"  name=mchar_g1br visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

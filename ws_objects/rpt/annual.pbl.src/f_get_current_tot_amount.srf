@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_get_current_tot_amount.srf
+$PBExportComments$Function to get the most current total amount of the contract
+global type f_get_current_tot_amount from function_object
+end type
+
+forward prototypes
+global function decimal f_get_current_tot_amount (string lcntr, string lcntrmed)
+end prototypes
+
+global function decimal f_get_current_tot_amount (string lcntr, string lcntrmed);decimal totamt_changed=0
+
+select sum(chcost)
+into  :totamt_changed
+from addcost
+where cntr = :lcntr
+and  cntrmed = :lcntrmed
+using sqlservertrans;
+
+
+return totamt_changed
+end function
+

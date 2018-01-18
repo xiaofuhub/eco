@@ -1,0 +1,22 @@
+﻿$PBExportHeader$k90_hierarchy.srd
+$PBExportComments$(K90) - PFC Extender Object Hierarchies
+release 7;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(50) updatewhereclause=no name=sobject dbname="sobject" )
+ column=(type=char(256) updatewhereclause=no name=slibrary dbname="slibrary" )
+ column=(type=char(50) updatewhereclause=no name=sprefix dbname="sprefix" )
+ column=(type=number updatewhereclause=no name=ilevel dbname="ilevel" )
+ column=(type=number updatewhereclause=no name=iobjtype dbname="iobjtype" )
+ column=(type=char(50) updatewhereclause=no name=sprefixdown dbname="sprefixdown" )
+ column=(type=char(50) updatewhereclause=no name=sobjprefix dbname="sobjprefix" )
+ column=(type=number updatewhereclause=no name=ianccount dbname="ianccount" )
+  sort="slibrary A ianccount A iobjtype A sobject A ilevel A " )
+group(level=1 header.height=72 trailer.height=0 by=("slibrary" ) header.color="536870912" trailer.color="536870912" )
+bitmap(band=header.1 filename="library.bmp" x="23" y="4" height="64" width="73" border="0"  name=p_1 )
+column(band=header.1 id=2 alignment="0" tabsequence=32766 border="0" color="0" x="110" y="8" height="56" width="2295" format="[general]"  name=slibrary edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="110" y="4" height="56" width="2304" format="[general]"  name=sobject edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="1" clientscriptable="0" generatejavascript="0" )

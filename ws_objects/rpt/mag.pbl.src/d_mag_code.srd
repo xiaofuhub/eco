@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_mag_code.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=magcd dbname="magttl.magcd" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=title dbname="magttl.title" )
+ column=(type=char(1) updatewhereclause=yes name=msc dbname="magttl.msc" )
+ retrieve="  SELECT magcd,   
+         title,msc  
+    FROM magttl
+ORDER BY 1" update="magttl" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Code" border="0" color="0" x="50" y="8" height="64" width="151"  name=ovrcd_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title" border="0" color="0" x="663" y="8" height="64" width="311"  name=description_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="41" y="4" height="76" width="215" format="[general]"  name=magcd edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="293" y="4" height="76" width="1088" format="[general]"  name=title edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1426" y="4" height="76" width="87" format="[general]"  name=msc visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

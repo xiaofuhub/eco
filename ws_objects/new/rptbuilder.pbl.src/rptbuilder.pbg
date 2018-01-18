@@ -1,0 +1,16 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "rptbuilder.pbl" "";
+@end;
+@begin Objects 
+ "d_column_list.srd" "rptbuilder.pbl";
+ "d_table_list.srd" "rptbuilder.pbl";
+ "f_open_help.srf" "rptbuilder.pbl";
+ "f_parse_obj_string.srf" "rptbuilder.pbl";
+ "m_quick_select.srm" "rptbuilder.pbl";
+ "m_quick_select_sheet.srm" "rptbuilder.pbl";
+ "u_tab_dir.sru" "rptbuilder.pbl";
+ "w_mdi_quick_select.srw" "rptbuilder.pbl";
+ "w_quick_select.srw" "rptbuilder.pbl";
+ "w_quick_select_sheet.srw" "rptbuilder.pbl";
+@end;

@@ -1,0 +1,27 @@
+﻿$PBExportHeader$f_combine_auth_authfn_no_mr.srf
+global type f_combine_auth_authfn_no_mr from function_object
+end type
+
+forward prototypes
+global function string f_combine_auth_authfn_no_mr (string auth, string authfn)
+end prototypes
+
+global function string f_combine_auth_authfn_no_mr (string auth, string authfn);// This function combine auth and authfn and
+// return it to calling function.
+
+IF	(Not IsNull(auth) and trim(auth)<>'' and Not IsNull(authfn) and trim(authfn) <> '') THEN
+	Return (trim(auth) + "," + " " +(authfn) )
+ELSEIF	((IsNull(auth) or TRIM(auth) = "") and (IsNull(authfn) or TRIM(authfn) = "")) THEN
+	return("")
+	
+ELSEIF	(Not IsNull(auth) and (IsNull(authfn) or TRIM(authfn) = "" )  ) THEN
+	Return trim(auth)
+ELSEIF	(Not IsNull(authfn)) and (IsNull(auth) or TRIM(auth) = "" ) then
+	return trim(authfn)
+END IF
+
+
+
+
+end function
+

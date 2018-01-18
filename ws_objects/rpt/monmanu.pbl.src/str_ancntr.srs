@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_ancntr.srs
+global type str_ancntr from structure
+	string		cntr
+	string		cntrmed
+end type
+

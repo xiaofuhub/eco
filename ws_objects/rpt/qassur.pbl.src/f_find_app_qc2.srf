@@ -1,0 +1,23 @@
+﻿$PBExportHeader$f_find_app_qc2.srf
+global type f_find_app_qc2 from function_object
+end type
+
+forward prototypes
+global function boolean f_find_app_qc2 ()
+end prototypes
+
+global function boolean f_find_app_qc2 ();String qastg,qastatcd
+SetNull(qastg)
+SetNull(qastatcd)
+int i
+FOR i=1 TO w_qa_product_review.dw_qa_qastg.rowcount() 
+	qastg= w_qa_product_review.dw_qa_qastg.object.qastg[i]
+	qastatcd = w_qa_product_review.dw_qa_qastg.object.qastatcd[i]
+	IF ( qastg='2' AND Not(IsNull(qastatcd)) ) THEN
+//		 MessageBox("QA","QC2 Exist"+" "+qastg+" "+qastatcd)
+		RETURN TRUE
+	END IF
+NEXT
+RETURN FALSE
+end function
+

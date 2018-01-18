@@ -1,0 +1,101 @@
+﻿$PBExportHeader$f_address.srf
+$PBExportComments$Return formatted address
+global type f_address from function_object
+end type
+
+forward prototypes
+global function string f_address (string as_string)
+global function string f_address (string as_adr1, string as_adr2, string as_city, string as_state, string as_zip)
+end prototypes
+
+global function string f_address (string as_string);long li_cnt, i, li_cur, li_linecnt
+string ls_char, ls_word, ls_line, ls_wordold, ls_lineold, ls_out
+
+ls_line = ""
+ls_word = ""
+ls_out=""
+li_cur = 1
+li_cnt=len(as_string)
+n_cst_string		lnv_string
+
+
+// First remove the newline characters from annotation.
+as_string=trim(as_string)
+as_string = lnv_string.of_GlobalReplace(as_string, '~r~n', " ")
+for i = 1 to li_cnt
+	ls_char = mid(as_string, i, 1)
+	if ls_char = " "  then
+		// just ended a word
+		if len(ls_word) + len(ls_line) + 1 > 50  then
+			// this word would make the line too long so wrap
+			ls_out =ls_out+ trim(ls_line)+"~r~n~r~n"
+			if ls_char=' ' then
+				ls_line = ls_word + " "
+			end if
+			ls_word = ""
+		else
+			// not too long, so add it to line
+			if ls_char=' ' then
+				ls_line = ls_line +  ls_word + " "
+			end if
+			ls_word = ""
+		end if
+	else
+		// still in a word
+		ls_word = ls_word + ls_char
+	end if// ls_char=" " or ls_char=","
+	if i=li_cnt then
+		ls_line=ls_line +ls_word
+		ls_out=ls_out+ls_line
+	end if
+next
+return ls_out
+
+end function
+
+global function string f_address (string as_adr1, string as_adr2, string as_city, string as_state, string as_zip);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Global Function: f_address
+//  Args : strings - address line 1, line 2, city, state, zip
+//	Description: Returns the formatted address as a single string in 2 lines padded with 
+//					line feed chars
+//
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	Revision History
+//
+//	Developed by 	Date 				Version						Tracking#
+//									
+// Murali K.			01/25/2008      005 PICS Modifications	 Reqs: CDS.A.PTB2,ptb2.1
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+string ls_adr1, ls_adr2, ls_city, ls_state, ls_zip, ls_formatted_address=''
+
+
+IF Len(Trim(as_adr1)) > 0 THEN
+	ls_formatted_address  += ' ' + as_adr1 + '~r '
+END IF
+
+IF Len(Trim(as_adr2)) > 0 THEN
+	ls_formatted_address  += as_adr2 + '~r '
+END IF
+
+IF Len(Trim(as_city)) > 0 THEN
+	ls_formatted_address  += as_city + '  '
+END IF
+
+IF Len(Trim(as_state)) > 0 THEN
+	ls_formatted_address  += as_state + '  '
+END IF
+
+IF Len(Trim(as_zip)) > 0 THEN
+	ls_formatted_address  += as_zip
+END IF
+
+
+RETURN ls_formatted_address
+
+
+end function
+

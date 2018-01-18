@@ -1,0 +1,20 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "finalr.pbl" "";
+@end;
+@begin Objects 
+ "d_anno_foreign.srd" "finalr.pbl";
+ "d_copyright.srd" "finalr.pbl";
+ "d_final_approval.srd" "finalr.pbl";
+ "d_final_approval_test.srd" "finalr.pbl";
+ "d_final_coauth.srd" "finalr.pbl";
+ "d_final_review.srd" "finalr.pbl";
+ "d_fr_ace.srd" "finalr.pbl";
+ "d_ri.srd" "finalr.pbl";
+ "d_special_foreign_library.srd" "finalr.pbl";
+ "d_special_foreign_library_no_criteria.srd" "finalr.pbl";
+ "dddw_bkno.srd" "finalr.pbl";
+ "w_anno_foreign.srw" "finalr.pbl";
+ "w_sheet_final_review.srw" "finalr.pbl";
+ "w_special_foreign_library.srw" "finalr.pbl";
+@end;

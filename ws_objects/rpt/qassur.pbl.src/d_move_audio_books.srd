@@ -1,0 +1,61 @@
+﻿$PBExportHeader$d_move_audio_books.srd
+$PBExportComments$Move audio books to local web
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=160 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="vw_move_books_lws.prdr" dbalias=".prdr" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="vw_move_books_lws.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="vw_move_books_lws.bkmed" dbalias=".bkmed" )
+ column=(type=char(72) updatewhereclause=yes name=narrn dbname="narrn" )
+ column=(type=datetime updatewhereclause=yes name=created_date dbname="vw_move_books_lws.created_date" dbalias=".created_date" )
+ column=(type=char(1) updatewhereclause=yes name=check_box dbname="check_box" values="	Y/	N" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="vw_move_books_lws.cntr" dbalias=".cntr" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="vw_move_books_lws.qastg" dbalias=".qastg" )
+ column=(type=char(1) updatewhereclause=yes name=request_status_code dbname="request_status_code" )
+ retrieve="  SELECT DISTINCT  ~"VW_MOVE_BOOKS_LWS~".~"PRDR~",   
+					         ~"VW_MOVE_BOOKS_LWS~".~"BKSEQ~",   
+					         ~"VW_MOVE_BOOKS_LWS~".~"BKMED~",   
+					        coalesce( ~"VW_MOVE_BOOKS_LWS~".~"NARRATOR_LAST_NAME~",' ') || ', ' || COALESCE( ~"VW_MOVE_BOOKS_LWS~".~"NARRATOR_FIRST_NAME~",' ') AS NARRN,   
+					         ~"VW_MOVE_BOOKS_LWS~".~"CREATED_DATE~"  ,
+							' ' as check_box,
+							~"VW_MOVE_BOOKS_LWS~".~"CNTR~",
+							~"VW_MOVE_BOOKS_LWS~".~"QASTG~",
+							(SELECT REQUEST_STATUS_CODE
+							FROM QA_MOVER_REQUESTS
+							WHERE REQUEST_NO IN ( SELECT MAX(REQUEST_NO) FROM QA_MOVER_REQUESTS
+									WHERE QA_MOVER_REQUESTS.BKSEQ = VW_MOVE_BOOKS_LWS.BKSEQ
+									AND QA_MOVER_REQUESTS.BKMED = VW_MOVE_BOOKS_LWS.BKMED 
+										AND QA_MOVER_REQUESTS.PROGRAM_ID = 'ARM' 
+										AND 	QA_MOVER_REQUESTS.REQUEST_STATUS_CODE = 'P'	) )  AS request_status_code
+			   FROM 				~"VW_MOVE_BOOKS_LWS~"   
+ ORDER BY VW_MOVE_BOOKS_LWS.BKSEQ" )
+button(band=header text="All" enabled=yes action="0" border="0" color="33554432" x="3986" y="84" height="72" width="128" vtextalign="0" htextalign="0"  name=b_all visible="1~tif ( rowcount() > 0 ,1, 0)"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Book " border="6" color="33554432" x="23" y="4" height="64" width="430" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="2" text="Narrator" border="6" color="33554432" x="1632" y="4" height="64" width="1573" html.valueishtml="0"  name=narrator_last_name_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="PCSID" border="6" color="33554432" x="471" y="4" height="64" width="430" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Completed QA Test" border="6" color="33554432" x="919" y="4" height="64" width="695" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="2" text="Select" border="6" color="33554432" x="3945" y="4" height="64" width="229" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="2" text="Producer" border="6" color="33554432" x="3200" y="4" height="64" width="430" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Status" border="6" color="33554432" x="3648" y="4" height="64" width="283" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="14" y="8" height="76" width="87" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="114" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="462" y="4" height="76" width="434" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="919" y="4" height="76" width="695" format="[general]" html.valueishtml="0"  name=qastg visible="1" dddw.name=dddw_ref_qa_stages dddw.displaycolumn=qa_stage_description dddw.datacolumn=qastg dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="33554432" x="1623" y="4" height="76" width="1573" format="[general]" html.valueishtml="0"  name=narrn visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=10 border="0" color="33554432" x="4032" y="20" height="56" width="69" format="[general]" html.valueishtml="0" protect="0~tIF (request_status_code = 'P' ,1 ,0)"  name=check_box visible="1~tIF ( request_status_code = 'P', 0,1)" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="33554432" x="3209" y="4" height="76" width="416" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="3648" y="4" height="76" width="297" format="[general]" html.valueishtml="0"  name=request_status_code visible="1" dddw.name=dddw_ref_request_status dddw.displaycolumn=description dddw.datacolumn=request_status_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

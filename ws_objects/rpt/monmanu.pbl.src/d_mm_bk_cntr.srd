@@ -1,0 +1,80 @@
+﻿$PBExportHeader$d_mm_bk_cntr.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=78164112 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" height.autosize=yes )
+table(column=(type=number updatewhereclause=yes name=anucost_unitcost dbname="anucost.unitcost" dbalias=".unitcost" )
+ column=(type=char(3) updatewhereclause=yes name=anucost_uom dbname="anucost.uom" dbalias=".uom" )
+ column=(type=number updatewhereclause=yes name=anucost_subunitcost dbname="anucost.subunitcost" dbalias=".subunitcost" )
+ column=(type=char(3) updatewhereclause=yes name=anucost_subuom dbname="anucost.subuom" dbalias=".subuom" )
+ column=(type=char(25) updatewhereclause=yes name=ancntr_cntrlc dbname="ancntr.cntrlc" dbalias=".cntrlc" )
+ column=(type=number updatewhereclause=yes name=prod_units dbname="prod.units" dbalias=".units" )
+ column=(type=number updatewhereclause=yes name=prod_subunits dbname="prod.subunits" dbalias=".subunits" )
+ column=(type=number updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" dbalias=".bkmed" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" dbalias=".prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" dbalias=".cntr" )
+ column=(type=datetime updatewhereclause=yes name=prod_actenddt dbname="prod.actenddt" dbalias=".actenddt" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" dbalias=".ttl" )
+ column=(type=number updatewhereclause=yes name=mchar_qnty dbname="mchar.qnty" dbalias=".qnty" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" dbalias=".med" )
+ retrieve="SELECT anucost.unitcost, anucost.uom, anucost.subunitcost, anucost.subuom,
+       ancntr.cntrlc, prod.units, prod.subunits, prod.bkseq, prod.bkmed,
+       prod.prodstage, prod.cntr, prod.actenddt, ttlinit.ttl, mchar.qnty,
+       mchar.med
+  FROM anucost, prod, ttlinit, mchar, ancntr
+ WHERE anucost.cntr = prod.cntr
+   AND anucost.prodstage = prod.prodstage
+   AND anucost.cntr = ancntr.cntr
+   AND ancntr.cntrtype = 'A'
+   AND anucost.cntrmed = ancntr.cntrmed
+   AND mchar.bkseq = prod.bkseq
+   AND prod.bkmed = 'DB'
+   AND mchar.chno = ttlinit.chno
+   AND prod.bkseq = :book_number
+   AND prod.cntr = :cntr
+UNION ALL
+SELECT anucost.unitcost, anucost.uom, anucost.subunitcost, anucost.subuom,
+       ancntr.cntrlc, prod.units, prod.subunits, prod.bkseq, prod.bkmed,
+       prod.prodstage, prod.cntr, prod.actenddt, ttlinit.ttl, mchar.qnty,
+       mchar.med
+  FROM anucost, prod, ttlinit, mchar, ancntr
+ WHERE anucost.cntr = prod.cntr
+   AND anucost.prodstage = prod.prodstage
+   AND anucost.cntr = ancntr.cntr
+   AND ancntr.cntrtype <> 'A'
+   AND anucost.cntrmed = ancntr.cntrmed
+   AND mchar.bkseq = prod.bkseq
+   AND mchar.bkmed = prod.bkmed
+   AND mchar.chno = ttlinit.chno
+   AND prod.bkseq = :book_number
+   AND prod.cntr = :cntr
+" arguments=(("Book_Number", number),("Cntr", string)) )
+group(level=1 header.height=0 trailer.height=0 by=("prod_bkseq" , "prod_bkmed" , "prod_cntr" ) newpage=yes resetpagecount=yes header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=4 trailer.height=0 by=("prod_prodstage" ) header.color="536870912" trailer.color="536870912" )
+text(band=detail alignment="2" text="Book No" border="0" color="0" x="27" y="12" height="52" width="210" html.valueishtml="0"  name=prod_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Cntr No" border="0" color="0" x="667" y="12" height="52" width="187" html.valueishtml="0"  name=prod_cntr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3369" y="12" height="76" width="37" format="[general]" html.valueishtml="0"  name=prod_prodstage visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3419" y="20" height="64" width="37" format="[general]" html.valueishtml="0"  name=prod_actenddt visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="3305" y="16" height="64" width="37" format="[general]" html.valueishtml="0"  name=mchar_med visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Qnty" border="0" color="0" x="2949" y="12" height="52" width="101" html.valueishtml="0"  name=t_2 visible="1~tif(  mchar_med ='P/B', 1, 0 )"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Title" border="0" color="0" x="1687" y="12" height="68" width="91" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="5" color="0" x="3072" y="12" height="72" width="151" format="[general]" html.valueishtml="0"  name=mchar_qnty visible="1~tif(  mchar_med ='P/B', 1, 0 )" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="0" x="1801" y="12" height="72" width="1125" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" height.autosize=yes edit.limit=512 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="0" x="1353" y="12" height="72" width="306" format="[general]" html.valueishtml="0"  name=prod_cntr visible="1" edit.limit=0 edit.case=upper edit.format="*******" edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="0" x="873" y="12" height="72" width="462" format="[general]" html.valueishtml="0"  name=ancntr_cntrlc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="0" x="503" y="12" height="72" width="133" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1" editmask.mask="!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="5" color="0" x="256" y="12" height="72" width="229" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1" editmask.required=yes editmask.mask="######" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

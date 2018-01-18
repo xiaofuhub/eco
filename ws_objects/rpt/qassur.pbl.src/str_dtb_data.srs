@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_dtb_data.srs
+global type str_dtb_data from structure
+	string		dc_date
+	string		dc_format
+	string		dtb_multimediatype
+	integer		dtb_totaltime
+	string		dtb_audioformat
+	date		dtb_produceddate
+	string		dtb_depth
+	integer		navpoint
+end type
+

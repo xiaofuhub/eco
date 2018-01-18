@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_qa_special_pub_qastg.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912"  height.autosize=yes)
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=magcode dbname="special_pub.magcode" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=issdt dbname="special_pub.issdt" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=cntr dbname="special_pub.cntr" )
+ column=(type=datetime update=yes updatewhereclause=yes name=qarecdt dbname="special_pub.qarecdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=qacompdt dbname="special_pub.qacompdt" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=qastatcd dbname="special_pub.qastatcd" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=qainit dbname="special_pub.qainit" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=qacomments dbname="special_pub.qacomments" )
+ retrieve="  SELECT special_pub.magcode,
+         special_pub.issdt,   
+         special_pub.cntr, 
+         special_pub.qarecdt,   
+         special_pub.qacompdt,   
+         special_pub.qastatcd,   
+         special_pub.qainit,   
+			special_pub.qacomments
+    FROM special_pub 
+" update="special_pub" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="0" text="Mag Code" border="0" color="33554432" x="9" y="4" height="60" width="311" html.valueishtml="0"  name=magcode_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Issue Date" border="0" color="33554432" x="329" y="4" height="60" width="329" html.valueishtml="0"  name=issdt_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Cntr No" border="0" color="33554432" x="667" y="4" height="60" width="325" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Received Date" border="0" color="33554432" x="1001" y="4" height="60" width="389" html.valueishtml="0"  name=qarecdt_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Review Date" border="0" color="33554432" x="1399" y="4" height="60" width="343" html.valueishtml="0"  name=qacompdt_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="A,R,B" border="0" color="33554432" x="1751" y="4" height="60" width="151" html.valueishtml="0"  name=qastatcd_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Reviewer" border="0" color="33554432" x="1911" y="4" height="60" width="247" html.valueishtml="0"  name=qainit_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Comments" border="0" color="33554432" x="2167" y="4" height="60" width="1605" html.valueishtml="0"  name=qacomments_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="0" height="76" width="311" format="[general]" html.valueishtml="0"  name=magcode visible="1" dddw.name=ddw_magcd dddw.displaycolumn=magcd dddw.datacolumn=magcd dddw.percentwidth=100 dddw.lines=10 dddw.limit=10 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="329" y="0" height="76" width="329" format="[shortdate] [time]" html.valueishtml="0"  name=issdt visible="1" editmask.mask="mm/dd/yy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="667" y="0" height="76" width="325" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="0" color="33554432" x="1001" y="0" height="76" width="389" format="[shortdate] [time]" html.valueishtml="0"  name=qarecdt visible="1" editmask.mask="mm/dd/yy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="0" color="33554432" x="1399" y="0" height="76" width="343" format="[shortdate] [time]" html.valueishtml="0"  name=qacompdt visible="1" editmask.mask="mm/dd/yy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="0" color="33554432" x="1751" y="0" height="76" width="151" format="[general]" html.valueishtml="0"  name=qastatcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=50 border="0" color="33554432" x="1911" y="0" height="76" width="247" format="[general]" html.valueishtml="0"  name=qainit visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=60 border="0" color="33554432" x="2167" y="0" height="76" width="1605" format="[general]" html.valueishtml="0"  name=qacomments visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

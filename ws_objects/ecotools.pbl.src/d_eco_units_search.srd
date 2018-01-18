@@ -1,0 +1,51 @@
+﻿$PBExportHeader$d_eco_units_search.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=116 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=patron_id dbname="PATRON_ID" )
+ column=(type=char(34) updatewhereclause=yes name=eco_patron_lastname dbname="LASTNAME" )
+ column=(type=char(34) updatewhereclause=yes name=eco_patron_firstname dbname="FIRSTNAME" )
+ column=(type=char(1) updatewhereclause=yes name=device dbname="DEVICE" values="R	R/A	A/" )
+ column=(type=char(8) updatewhereclause=yes name=model dbname="MODEL" )
+ column=(type=char(10) updatewhereclause=yes name=serial dbname="SERIAL" )
+ column=(type=datetime updatewhereclause=yes name=rdate dbname="RDATE" )
+ column=(type=datetime updatewhereclause=yes name=idate dbname="IDATE" )
+ column=(type=char(3) updatewhereclause=yes name=color dbname="COLOR" )
+ retrieve="  SELECT eco_units.patron_id,
+			eco_patron.lastname,
+			eco_patron.firstname,   
+			eco_units.device,
+			eco_units.model,
+			eco_units.serial,
+			eco_units.rdate,
+			eco_units.idate,
+			eco_units.color
+    FROM eco_units,eco_patron
+WHERE eco_units.patron_id = eco_patron.patron_id
+" )
+text(band=header alignment="2" text="Patron ID" border="0" color="0" x="27" y="4" height="104" width="210" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Lastname" border="0" color="0" x="343" y="4" height="104" width="293" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Firstname" border="0" color="0" x="814" y="4" height="104" width="297" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Device" border="0" color="0" x="1129" y="4" height="104" width="169" html.valueishtml="0"  name=device_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ModelNumber" border="0" color="0" x="1312" y="4" height="104" width="233" html.valueishtml="0"  name=model_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SerialNumber" border="0" color="0" x="1563" y="4" height="104" width="233" html.valueishtml="0"  name=serial_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recieve Date" border="0" color="0" x="1870" y="4" height="104" width="261" html.valueishtml="0"  name=rdate_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Issuedate" border="0" color="0" x="2235" y="4" height="104" width="165" html.valueishtml="0"  name=idate_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Color" border="0" color="0" x="2514" y="4" height="104" width="155" html.valueishtml="0"  name=color_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="255" x="27" y="12" height="68" width="219" format="[general]" html.valueishtml="0"  name=patron_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="283" y="12" height="64" width="498" format="[general]" html.valueishtml="0"  name=eco_patron_lastname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="818" y="12" height="64" width="302" format="[general]" html.valueishtml="0"  name=eco_patron_firstname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="1152" y="12" height="68" width="128" format="[general]" html.valueishtml="0"  name=device visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.codetable=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=50 border="5" color="0" x="1307" y="12" height="68" width="233" format="[general]" html.valueishtml="0"  name=model visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="2" tabsequence=60 border="5" color="0" x="1568" y="12" height="68" width="265" format="[general]" html.valueishtml="0"  name=serial visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="2" tabsequence=70 border="5" color="0" x="1861" y="12" height="68" width="279" format="[general]" html.valueishtml="0"  name=rdate visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="2" tabsequence=80 border="5" color="0" x="2171" y="12" height="68" width="297" format="[general]" html.valueishtml="0"  name=idate visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="3" tabsequence=90 border="5" color="0" x="2501" y="12" height="68" width="160" format="[general]" html.valueishtml="0"  name=color visible="1" editmask.mask="^^^" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,107 @@
+﻿$PBExportHeader$d_qa_prod_recv-06162008.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=204 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="553648127" height.autosize=yes )
+table(column=(type=number updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=number update=yes updatewhereclause=yes name=mchar_len dbname="mchar.len" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(8) updatewhereclause=yes name=other_media_conno dbname="mchar.other_media_conno" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=number update=yes updatewhereclause=yes name=mchar_vols dbname="mchar.vols" )
+ column=(type=number update=yes updatewhereclause=yes name=mchar_minlastside dbname="mchar.minlastside" )
+ column=(type=number updatewhereclause=yes name=mchar_qnty dbname="mchar.qnty" )
+ column=(type=number updatewhereclause=yes name=prod_units dbname="prod.units" )
+ column=(type=number updatewhereclause=yes name=qastg_bkseq dbname="qastg.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=qastg_bkmed dbname="qastg.bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=qastg_cntr dbname="qastg.cntr" )
+ column=(type=datetime updatewhereclause=yes name=qastg_qarecdt dbname="qastg_qarecdt" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_qastg dbname="qastg.qastg" )
+ column=(type=char(1) updatewhereclause=yes name=qastg_qastatcd dbname="qastg.qastatcd" )
+ column=(type=char(2) updatewhereclause=yes name=prod_prodstage dbname="prod.prodstage" )
+ column=(type=char(7) updatewhereclause=yes name=prod_cntr dbname="prod.cntr" )
+ column=(type=number updatewhereclause=yes name=prod_bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=prod_bkmed dbname="prod.bkmed" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ retrieve="SELECT mchar.bkseq, mchar.bkmed, mchar.med, mchar.len, mchar.conno,mchar.other_media_conno,
+       ttlinit.ttl, mchar.vols, mchar.minlastside, mchar.qnty, prod.units,
+       qastg.bkseq, qastg.bkmed, qastg.cntr,
+       ROUND (qastg.qarecdt) qastg_qarecdt, qastg.qastg, qastg.qastatcd,
+       prod.prodstage, prod.cntr, prod.bkseq, prod.bkmed,
+	ancntr.prdr
+  FROM mchar, prod, qastg, ttlinit, ancntr
+ WHERE  mchar.bkseq = :as_bkseq
+ AND mchar.bkmed = :as_bkmed
+   AND mchar.chno = ttlinit.chno
+   AND prod.bkseq = mchar.bkseq
+   AND prod.bkmed = mchar.bkmed
+   AND prod.prodstage IN ('PU', 'MA', 'AB', 'AD', 'DT', 'XD')
+   AND mchar.bkseq = qastg.bkseq(+)
+   AND mchar.bkmed = qastg.bkmed(+)
+AND ancntr.cntr = prod.cntr
+UNION ALL
+SELECT mchar.bkseq, mchar.bkmed, mchar.med, mchar.len, mchar.conno,mchar.other_media_conno,
+       ttlinit.ttl, mchar.vols, mchar.minlastside, mchar.qnty, prod.units,
+       qastg.bkseq, qastg.bkmed, qastg.cntr,
+       ROUND (qastg.qarecdt) qastg_qarecdt, qastg.qastg, qastg.qastatcd,
+       prod.prodstage, prod.cntr, prod.bkseq, prod.bkmed,
+	ancntr.prdr
+  FROM mchar, prod, qastg, ttlinit, ancntr
+ WHERE  mchar.bkseq = :as_bkseq
+   AND mchar.bkmed = :as_bkmed
+   AND mchar.chno = ttlinit.chno
+   AND prod.bkseq = mchar.bkseq
+   AND prod.bkmed = mchar.bkmed
+   AND prod.prodstage IN ('DU', 'FC')
+   AND mchar.bkseq = qastg.bkseq
+   AND mchar.bkmed = qastg.bkmed
+   AND prod.cntr = qastg.cntr
+   AND mchar.ricd = 'RI'
+  AND ancntr.cntr = prod.cntr" update="mchar" updatewhere=0 updatekeyinplace=yes arguments=(("as_bkseq", string),("as_bkmed", string)) )
+text(band=header alignment="2" text="Book
+Number" border="6" color="0" x="18" y="84" height="104" width="416" html.valueishtml="0"  name=mchar_bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Book Title" border="6" color="0" x="466" y="84" height="104" width="768" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Received" border="6" color="0" x="2258" y="84" height="104" width="338" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MinutesLast Side" border="6" color="0" x="1934" y="84" height="104" width="297" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Cassettes/Cartridges Vols" border="6" color="0" x="1568" y="84" height="104" width="347" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tracks BPages" border="6" color="0" x="1253" y="84" height="104" width="293" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QA Stage" border="6" color="0" x="2615" y="84" height="104" width="553" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Producer" border="6" color="0" x="3186" y="84" height="104" width="215" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Shipped Books (Hard Medium)" border="0" color="33554432" x="27" y="8" height="52" width="846" html.valueishtml="0"  name=t_8 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3511" y="12" height="52" width="270" format="[general]" html.valueishtml="0"  name=other_media_conno visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="4370" y="12" height="52" width="128" format="[general]" html.valueishtml="0"  name=mchar_med visible="1~t0" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="4101" y="12" height="52" width="251" format="[general]" html.valueishtml="0"  name=prod_units visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="4517" y="12" height="52" width="224" format="[general]" html.valueishtml="0"  name=qastg_bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="5216" y="12" height="52" width="78" format="[general]" html.valueishtml="0"  name=qastg_qastatcd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="5129" y="12" height="52" width="64" format="[general]" html.valueishtml="0"  name=prod_prodstage visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="5321" y="12" height="52" width="233" format="[general]" html.valueishtml="0"  name=prod_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="5577" y="12" height="52" width="119" format="[general]" html.valueishtml="0"  name=prod_bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="4878" y="12" height="52" width="229" format="[general]" html.valueishtml="0"  name=qastg_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="4759" y="12" height="52" width="101" format="[general]" html.valueishtml="0"  name=qastg_bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="5719" y="12" height="52" width="101" format="[general]" html.valueishtml="0"  name=prod_bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="5838" y="12" height="52" width="174" format="[general]" html.valueishtml="0"  name=mchar_qnty visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3803" y="12" height="52" width="274" format="[general]" html.valueishtml="0"  name=mchar_conno visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="453" y="8" height="52" width="786" format="[general]" html.valueishtml="0" protect="0~t1"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~trgb(192,192,192)" )
+column(band=detail id=4 alignment="1" tabsequence=30 border="5" color="0" x="1271" y="8" height="52" width="288" format="[general]" html.valueishtml="0" protect="0~tif(isnull(qastg_qastg) OR qastg_qastg = '0',if(isnull(ttlinit_ttl),1,if(mchar_bkmed=~"BR~",0,if(mchar_bkmed=~"RC~" or mchar_bkmed=~"DB~",0,1))),1)"  name=mchar_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(isnull(qastg_qastg),if(isnull(ttlinit_ttl),rgb(192,192,192),if(mchar_bkmed=~"BR~",rgb(255,255,255),if(mchar_bkmed=~"RC~" or mchar_bkmed=~"DB~",rgb(255,255,255),rgb(192,192,192)))),rgb(192,192,192))" )
+column(band=detail id=15 alignment="0" tabsequence=60 border="5" color="0" x="2267" y="8" height="52" width="329" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif(isnull(qastg_qastg),if (isnull(ttlinit_ttl) ,1,0),1)"  name=qastg_qarecdt visible="1" editmask.useformat=yes editmask.ddcalendar=yes editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(isnull(qastg_qastg),if (isnull(ttlinit_ttl) ,rgb(192,192,192),rgb(255,255,255)),rgb(192,192,192))" )
+column(band=detail id=8 alignment="1" tabsequence=40 border="5" color="0" x="1568" y="8" height="52" width="329" format="[general]" html.valueishtml="0" protect="0~tif(isnull(qastg_qastg) or qastg_qastg = '0',if(isnull(ttlinit_ttl),1,if(mchar_bkmed=~"BR~",0,1)),1)"  name=mchar_vols visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(isnull(qastg_qastg),if(isnull(ttlinit_ttl),rgb(192,192,192),if(mchar_bkmed=~"BR~",rgb(255,255,255),rgb(192,192,192))),rgb(192,192,192))" )
+column(band=detail id=9 alignment="1" tabsequence=50 border="5" color="0" x="1938" y="8" height="52" width="306" format="[general]" html.valueishtml="0" protect="0~tif(isnull(qastg_qastg),if(isnull(ttlinit_ttl),1,if(mchar_bkmed=~"RC~" or mchar_bkmed=~"DB~",0,1)),1)"  name=mchar_minlastside visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(isnull(qastg_qastg),if(isnull(ttlinit_ttl),rgb(192,192,192),if(mchar_bkmed=~"RC~" or mchar_bkmed=~"DB~",rgb(255,255,255),rgb(192,192,192))),rgb(192,192,192))" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="0" x="18" y="8" height="52" width="247" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1"  hidesnaked=1 edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="288" y="8" height="52" width="128" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1"  hidesnaked=1 editmask.mask="!!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="0" x="2610" y="8" height="52" width="549" format="[general]" html.valueishtml="0" protect="0~t1"  name=qastg_qastg visible="1" dddw.name=dddw_ref_qa_stages dddw.displaycolumn=qa_stage_description dddw.datacolumn=qastg dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="79741120~trgb(192,192,192)" )
+column(band=detail id=22 alignment="0" tabsequence=70 border="5" color="0" x="3182" y="8" height="52" width="224" format="[general]" html.valueishtml="0" protect="0~t1"  name=ancntr_prdr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1073741824~trgb(192,192,192)" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

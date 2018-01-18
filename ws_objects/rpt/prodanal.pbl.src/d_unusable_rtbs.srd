@@ -1,0 +1,53 @@
+﻿$PBExportHeader$d_unusable_rtbs.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conno dbname="conversionbooks.conno" )
+ column=(type=decimal(0) updatewhereclause=yes name=booksequence dbname="conversionbooks.booksequence" )
+ column=(type=char(8) updatewhereclause=yes name=action_type dbname="action_type" )
+ column=(type=char(4) updatewhereclause=yes name=prdr dbname="conversionbooks.prdr" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="conversionbooks.cntr" )
+ column=(type=char(500) updatewhereclause=yes name=comments dbname="conversionbooks.comments" )
+ column=(type=char(1) updatewhereclause=yes name=delete_bk dbname="delete_bk" values="	Y/	N" )
+ column=(type=char(12) updatewhereclause=yes name=no_inv dbname="no_inv" )
+ retrieve="  SELECT CONNO,   
+         BOOKSEQUENCE,
+         DECODE(ACTION_TYPE,'U','Unusable') ACTION_TYPE,   
+         PRDR,   
+         CNTR,   
+         COMMENTS,   
+        ' ' DELETE_BK,
+        'No Invoicing' NO_INV
+    FROM CONVERSIONBOOKS  a
+   WHERE ACTION_TYPE = 'U'
+AND a.BOOKSEQUENCE||a.CNTR NOT IN (SELECT b.BKSEQ||b.CNTR FROM INV b)
+" )
+text(band=header alignment="2" text="Conno" border="0" color="33554432" x="37" y="4" height="64" width="279" html.valueishtml="0"  name=conno_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="BookNo" border="0" color="33554432" x="233" y="4" height="64" width="425" html.valueishtml="0"  name=booksequence_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Delete from PROD table(Y/N)" border="0" color="33554432" x="585" y="4" height="64" width="823" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Comments" border="0" color="33554432" x="2254" y="4" height="64" width="617" html.valueishtml="0"  name=comments_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contract" border="0" color="33554432" x="1865" y="4" height="64" width="242" html.valueishtml="0"  name=cntr_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Producer" border="0" color="33554432" x="1504" y="4" height="64" width="265" html.valueishtml="0"  name=prdr_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="23" y1="76" x2="3781" y2="76"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="33554432"  background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="32" y="4" height="76" width="293" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="347" y="4" height="76" width="229" format="[general]" html.valueishtml="0"  name=booksequence visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=10 border="5" color="33554432" x="745" y="4" height="64" width="73" format="[general]" html.valueishtml="0"  name=delete_bk visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1577" y="4" height="76" width="137" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1874" y="4" height="76" width="338" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2171" y="4" height="76" width="1358" format="[general]" html.valueishtml="0"  name=comments visible="1" edit.limit=500 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=detail x1="23" y1="68" x2="3771" y2="68"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="33554432"  background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=20 border="0" color="33554432" x="3456" y="0" height="64" width="389" html.valueishtml="0"  name=no_inv visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

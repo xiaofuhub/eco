@@ -1,0 +1,71 @@
+﻿$PBExportHeader$d_rpt_qc_apr_rej_get.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=prdr dbname="ancntr.prdr" )
+ column=(type=char(3) updatewhereclause=yes name=cntrmed dbname="ancntr.cntrmed" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="ancntr.cntr" )
+ column=(type=char(11) updatewhereclause=yes name=cntrlc dbname="ancntr.cntrlc" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="qastg.qastatcd" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="qastg.qastg" )
+ column=(type=datetime updatewhereclause=yes name=qacompdt dbname="qastg.qacompdt" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="qastg.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="qastg.bkmed" )
+ retrieve="  SELECT distinct ancntr.prdr,   
+         ancntr.cntrmed,
+			ancntr.cntr, 
+  			ancntr.cntrlc,
+         qastg.qastatcd,   
+         qastg.qastg,   
+         qastg.qacompdt,
+			qastg.bkseq,
+			qastg.bkmed  
+    FROM ancntr,
+			prod,
+			mchar,   
+         qastg  
+   WHERE ancntr.cntr= prod.cntr and
+			prod.bkseq= mchar.bkseq and
+			prod.bkmed= mchar.bkmed and
+			prod.bkseq=qastg.bkseq and
+			prod.bkmed=qastg.bkmed and
+			( ancntr.cntr = qastg.cntr ) and
+			( mchar.arflag is null or arflag <> 'A' ) and
+			ancntr.cntrlc is not null and 
+			ancntr.cntr_status ='A' and
+			prdr=:as_prdr and 
+			qacompdt<= :ad_end_date and qacompdt>=:ad_start_date and
+			(prodstage in('PR','PB','DU' ) or ( prodstage in ('MA','AB')
+					and cntrtype ='M')) and
+					(actenddt is  null or actenddt >=:ad_before_date30 )
+			
+
+
+ 
+" arguments=(("as_prdr", string),("ad_start_date", datetime),("ad_end_date", datetime),("ad_before_date30", datetime))  sort="prdr A cntrmed A cntr A qastatcd A qastg A bkseq A bkmed A qacompdt A " )
+group(level=1 header.height=0 trailer.height=0 by=("prdr" , "cntrmed" , "cntr" , "qastatcd" , "qastg" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Ancntr
+Prdr" border="0" color="0" x="5" y="4" height="128" width="174" html.valueishtml="0"  name=ancntr_prdr_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ancntr
+Cntrmed" border="0" color="0" x="183" y="4" height="128" width="224" html.valueishtml="0"  name=ancntr_cntrmed_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qastg
+Qastatcd" border="0" color="0" x="411" y="4" height="128" width="242" html.valueishtml="0"  name=qastg_qastatcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qastg
+Qastg" border="0" color="0" x="658" y="4" height="128" width="160" html.valueishtml="0"  name=qastg_qastg_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qastg
+Qacompdt" border="0" color="0" x="823" y="4" height="128" width="338" html.valueishtml="0"  name=qastg_qacompdt_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="137" format="[general]" html.valueishtml="0"  name=prdr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="183" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=cntrmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="411" y="4" height="76" width="55" format="[general]" html.valueishtml="0"  name=qastatcd visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="658" y="4" height="76" width="55" format="[general]" html.valueishtml="0"  name=qastg visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="823" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=qacompdt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" count( prdr +cntrmed+cntr+string( bkseq )+ bkmed + qastatcd + qastg +string( qacompdt ) for group 1) "border="0" color="0" x="1175" y="4" height="76" width="256" format="[GENERAL]" html.valueishtml="0"  name=counter visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="1472" y="12" height="64" width="357" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="1847" y="12" height="64" width="128" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1998" y="16" height="64" width="379" format="[general]" html.valueishtml="0"  name=cntrlc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2437" y="16" height="64" width="325" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

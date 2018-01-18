@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_qastg_inx.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=15780518 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=bkseq dbname="bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="bkmed" )
+ column=(type=char(7) updatewhereclause=yes name=cntr dbname="cntr" )
+ column=(type=char(1) updatewhereclause=yes name=qastg dbname="qastg" )
+ column=(type=date updatewhereclause=yes name=qarecdt dbname="qarecdt" )
+ column=(type=char(1) updatewhereclause=yes name=qastatcd dbname="qastatcd" )
+ column=(type=date updatewhereclause=yes name=qacompdt dbname="qacompdt" )
+ retrieve="  SELECT a.bkseq,   
+         a.bkmed,   
+        	a.cntr,   
+         a.qastg,   
+         a.qarecdt,   
+         a.qastatcd,   
+         a.qacompdt
+    FROM qastg a, mchar b 
+	where	a.bkseq in ( select bkseq from prdrbk_compare )  and
+			a.bkseq=b.bkseq and a.bkmed=b.bkmed and 
+			a.qastatcd<>'I' and a.qastatcd<>'R' and
+			(b.arflag is null or b.arflag<>'A' )
+"  sort="bkmed A bkseq A cntr A qastg A qarecdt A qastatcd A qacompdt A " )
+text(band=header alignment="2" text="Bkmed" border="0" color="0" x="672" y="8" height="64" width="242"  name=bkmed_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qastg" border="0" color="0" x="1582" y="4" height="64" width="210"  name=qastg_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cntr" border="0" color="0" x="1326" y="4" height="64" width="219"  name=cntr_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qarecdt" border="0" color="0" x="1833" y="4" height="64" width="329"  name=qarecdt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Bkseq" border="0" color="0" x="937" y="4" height="64" width="329"  name=bkseq_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qastatcd" border="0" color="0" x="2181" y="4" height="64" width="320"  name=qastatcd_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qacompdt" border="0" color="0" x="2519" y="4" height="64" width="361"  name=qacompdt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="713" y="8" height="64" width="142" format="[general]"  name=bkmed edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1641" y="4" height="64" width="101" format="[general]"  name=qastg edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1294" y="4" height="64" width="288" format="[general]"  name=cntr edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="2281" y="4" height="64" width="101" format="[general]"  name=qastatcd edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="0" x="937" y="4" height="64" width="329" format="[general]"  name=bkseq edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1833" y="4" height="64" width="379" format="[general]"  name=qarecdt edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="2519" y="4" height="64" width="379" format="[general]"  name=qacompdt edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

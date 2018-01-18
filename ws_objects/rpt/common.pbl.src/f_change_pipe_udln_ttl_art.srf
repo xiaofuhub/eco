@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_change_pipe_udln_ttl_art.srf
+global type f_change_pipe_udln_ttl_art from function_object
+end type
+
+forward prototypes
+global function string f_change_pipe_udln_ttl_art (string ltxt)
+end prototypes
+
+global function string f_change_pipe_udln_ttl_art (string ltxt);int  cnt,cnt_pipes,i
+string 			ls_source,ls_pipe[]
+n_cst_string 	inv_string
+
+ls_source = ltxt
+
+// Count the number of pipes
+cnt_pipes = inv_string.of_CountOccurrences(ls_source, "|", TRUE)
+
+// if there are two pipes
+IF cnt_pipes <> 2 THEN
+	return(ltxt)
+ELSE
+	RETURN '`~h26~h64~h44'+ltxt+'`~h26~h64~h40'	
+END IF
+
+end function
+

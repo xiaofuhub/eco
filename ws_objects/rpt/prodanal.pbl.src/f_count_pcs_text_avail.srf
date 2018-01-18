@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_count_pcs_text_avail.srf
+global type f_count_pcs_text_avail from function_object
+end type
+
+forward prototypes
+global function integer f_count_pcs_text_avail ()
+end prototypes
+
+global function integer f_count_pcs_text_avail ();integer li_cnt_text
+
+select count(*)
+into :li_cnt_text
+from mchar
+where conno in (select conno from conversionbooks where action_type in ('C','P'))
+and mchar.book is not NULL
+using sqlservertrans;
+
+return li_cnt_text
+end function
+

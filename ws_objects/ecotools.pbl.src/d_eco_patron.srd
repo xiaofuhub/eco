@@ -1,0 +1,59 @@
+﻿$PBExportHeader$d_eco_patron.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=888 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=patron_id dbname="PATRON_ID" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=lastname dbname="LASTNAME" )
+ column=(type=char(34) update=yes updatewhereclause=yes name=firstname dbname="FIRSTNAME" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=initial_ dbname="INITIAL_" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=age dbname="AGE" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=street dbname="STREET" )
+ column=(type=char(24) update=yes updatewhereclause=yes name=city dbname="CITY" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=state dbname="STATE" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=zip dbname="ZIP" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=phone dbname="PHONE" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=memo dbname="MEMO" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=libcode dbname="LIBCODE" )
+ retrieve="  SELECT eco_patron.patron_id,   
+         eco_patron.lastname,   
+         eco_patron.firstname,   
+         eco_patron.initial_,   
+         eco_patron.age,   
+         eco_patron.street,   
+         eco_patron.city,   
+         eco_patron.state,   
+         eco_patron.zip,   
+         eco_patron.phone,   
+         eco_patron.memo,   
+         eco_patron.libcode
+    FROM eco_patron
+ORDER BY 1" update="eco_patron" updatewhere=1 updatekeyinplace=yes )
+text(band=detail alignment="0" text="MI:" border="0" color="0" x="1083" y="264" height="64" width="91" html.valueishtml="0"  name=initial_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Age:" border="0" color="0" x="1413" y="264" height="64" width="151" html.valueishtml="0"  name=age_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=50 border="5" color="0" x="1591" y="264" height="76" width="169" format="[general]" html.valueishtml="0"  name=age visible="1" editmask.mask="###" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="State:" border="0" color="0" x="1157" y="524" height="64" width="174" html.valueishtml="0"  name=state_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="5" color="0" x="1362" y="524" height="76" width="256" format="[general]" html.valueishtml="0"  name=state visible="1" dddw.name=d_state_lookup dddw.displaycolumn=state_id dddw.datacolumn=state_id dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Zip:" border="0" color="0" x="1669" y="524" height="64" width="283" html.valueishtml="0"  name=zip_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="5" color="0" x="1979" y="524" height="76" width="352" format="[general]" html.valueishtml="0"  name=zip visible="1" editmask.mask="#####-####" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="425" y="264" height="76" width="590" format="[general]" html.valueishtml="0"  name=firstname visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="0" x="425" y="388" height="76" width="1198" format="[general]" html.valueishtml="0"  name=street visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="5" color="0" x="425" y="524" height="76" width="681" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=24 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="5" color="0" x="425" y="660" height="76" width="672" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="5" color="0" x="425" y="784" height="76" width="1952" format="[general]" html.valueishtml="0"  name=memo visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Firstname:" border="0" color="0" x="110" y="264" height="64" width="283" html.valueishtml="0"  name=firstname_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Street:" border="0" color="0" x="110" y="396" height="64" width="283" html.valueishtml="0"  name=street_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="City:" border="0" color="0" x="110" y="524" height="64" width="283" html.valueishtml="0"  name=city_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Phone:" border="0" color="0" x="110" y="660" height="64" width="283" html.valueishtml="0"  name=phone_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Memo:" border="0" color="0" x="110" y="784" height="64" width="283" html.valueishtml="0"  name=memo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="425" y="144" height="76" width="1440" format="[general]" html.valueishtml="0"  name=lastname visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Lastname:" border="0" color="0" x="110" y="144" height="64" width="283" html.valueishtml="0"  name=lastname_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Patron ID:" border="0" color="0" x="101" y="36" height="64" width="293" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="255" x="425" y="36" height="64" width="302" format="[general]" html.valueishtml="0"  name=patron_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="0" x="1198" y="264" height="64" width="101" format="[general]" html.valueishtml="0"  name=initial_ visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

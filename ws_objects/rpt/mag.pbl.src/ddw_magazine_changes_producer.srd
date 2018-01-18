@@ -1,0 +1,12 @@
+﻿$PBExportHeader$ddw_magazine_changes_producer.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=77 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes key=yes name=prdr dbname="producer.prdr" )
+ retrieve="  SELECT producer.prdr  
+    FROM producer   
+" update="producer" updatewhere=0 updatekeyinplace=no  sort="prdr A " )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="1" y="4" height="69" width="334" format="[general]"  name=prdr dddw.name=ddw_magazine_changes_producer dddw.displaycolumn=prdr dddw.datacolumn=prdr dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=upper dddw.nilisnull=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )

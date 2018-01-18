@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_email_search.srs
+global type str_email_search from structure
+	string		prdr
+	double		bkseq
+	string		ttl
+	date		from_dt
+	date		to_dt
+end type
+

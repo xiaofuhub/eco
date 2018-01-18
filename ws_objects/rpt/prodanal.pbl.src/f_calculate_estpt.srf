@@ -1,0 +1,78 @@
+﻿$PBExportHeader$f_calculate_estpt.srf
+global type f_calculate_estpt from function_object
+end type
+
+forward prototypes
+global function integer f_calculate_estpt (string lmed, string lpriority, integer lapplen, string lcntrcvcd, decimal ldf)
+end prototypes
+
+global function integer f_calculate_estpt (string lmed, string lpriority, integer lapplen, string lcntrcvcd, decimal ldf);double Ltrk_pg
+integer Lestpt,Ltrk_pg_int
+string Lvol_nls
+
+IF (Lmed="P/B") THEN
+	Lestpt = 90
+	RETURN Lestpt
+ELSEIF (Lmed="BR") THEN
+	Ltrk_pg = Lapplen / 100
+	IF (Ltrk_pg < 10) THEN
+		IF (Ltrk_pg - Ceiling(Ltrk_pg)) > 0 THEN
+			Ltrk_pg = Ltrk_pg + 1
+		END IF
+	ELSEIF (Ltrk_pg >= 10 AND Ltrk_pg <= 50) THEN
+		IF (Ltrk_pg - Ceiling(Ltrk_pg)) > 0 THEN
+			Ltrk_pg = Ltrk_pg + 10
+		END IF
+	END IF
+	Ltrk_pg_int = Ceiling(Ltrk_pg)
+	Lvol_nls = "C"
+ELSEIF (Lmed = "RC" OR Lmed = "RTB") THEN
+	//RTB addition: for contract type of RTB(Recorded talking book), we will behave the same way as RC books
+	IF Lmed = "RTB" THEN
+		Lmed = "RC"
+	END IF
+	IF Lcntrcvcd = "V" THEN
+		Lestpt = 120
+	END IF
+	Ltrk_pg_int = Lapplen
+	IF Lcntrcvcd = "C" THEN
+		Lvol_nls = "C"
+	ELSE
+		Lvol_nls = "N"
+	END IF
+ELSEIF(Lmed = "FD") THEN
+	IF Lapplen < 16 THEN
+		Ltrk_pg = 16
+	ELSE
+		Ltrk_pg = Lapplen
+	END IF
+	Ltrk_pg_int = Ceiling(Ltrk_pg)
+	Lvol_nls = "C"
+END IF
+IF Lcntrcvcd <> "V" THEN
+	IF (Ldf=1.00) THEN
+		SELECT estpt1 INTO :Lestpt 
+		FROM estpt
+		WHERE med=:Lmed AND priority=:Lpriority AND cntrcvcd=:Lvol_nls AND applen=:Ltrk_pg_int
+		USING SQLServerTrans;
+	ELSEIF (Ldf=1.25) THEN
+		SELECT estpt2 INTO :Lestpt 
+		FROM estpt
+		WHERE med=:Lmed AND priority=:Lpriority AND cntrcvcd=:Lvol_nls AND applen=:Ltrk_pg_int
+		USING SQLServerTrans;
+	ELSEIF (Ldf=1.50) THEN
+		SELECT estpt3 INTO :Lestpt 
+		FROM estpt
+		WHERE med=:Lmed AND priority=:Lpriority AND cntrcvcd=:Lvol_nls AND applen=:Ltrk_pg_int
+		USING SQLServerTrans;
+	ELSEIF (Ldf=2.00) THEN
+		SELECT estpt3 INTO :Lestpt 
+		FROM estpt
+		WHERE med=:Lmed AND priority=:Lpriority AND cntrcvcd=:Lvol_nls AND applen=:Ltrk_pg_int
+		USING SQLServerTrans;
+	END IF	
+END IF
+RETURN Lestpt
+
+end function
+

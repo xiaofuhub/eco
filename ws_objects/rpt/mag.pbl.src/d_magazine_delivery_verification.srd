@@ -1,0 +1,40 @@
+﻿$PBExportHeader$d_magazine_delivery_verification.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=148 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=char(4) update=yes updatewhereclause=yes key=yes name=magiss_magcd dbname="magiss.magcd" )
+ column=(type=char(3) updatewhereclause=yes name=magcntr_format dbname="magcntr.format" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=magiss_issdt dbname="magiss.issdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=magiss_dlvrdt dbname="magiss.dlvrdt" )
+ column=(type=char(34) updatewhereclause=yes name=magttl_title dbname="magttl.title" )
+ retrieve="SELECT  magiss.magcd ,
+           magcntr.format ,
+           magiss.issdt ,
+           magiss.dlvrdt ,
+           magttl.title     
+        FROM magcntr ,
+           magiss ,
+           magttl     
+        WHERE ( magcntr.fy = magiss.fy ) and          
+			( magcntr.cntr = magiss.cntr ) and          
+			( magiss.magcd = magttl.magcd ) and          
+			( magiss.fy = :li_fy) and          
+			( magiss.shipdt is not null) and          
+			( magiss.dlvrdt is null)   " update="magiss" updatewhere=1 updatekeyinplace=no arguments=(("li_fy", number)) )
+text(band=header alignment="2" text="Magazine Code" border="6" color="0" x="9" y="8" height="140" width="334" html.valueishtml="0"  name=magiss_magcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Title" border="6" color="0" x="352" y="8" height="140" width="1093" html.valueishtml="0"  name=magttl_title_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Format" border="6" color="0" x="1454" y="8" height="140" width="206" html.valueishtml="0"  name=magcntr_format_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Issue
+Date" border="6" color="0" x="1669" y="8" height="140" width="315" html.valueishtml="0"  name=magiss_issdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Delivery
+Date" border="6" color="0" x="1993" y="8" height="140" width="389" html.valueishtml="0"  name=magiss_dlvrdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="5" color="0" x="9" y="8" height="76" width="334" format="[general]" html.valueishtml="0"  name=magiss_magcd  tag="Magazine Code" visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="352" y="8" height="76" width="1093" format="[general]" html.valueishtml="0"  name=magttl_title  tag="Title" visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="5" color="0" x="1454" y="8" height="76" width="206" format="[general]" html.valueishtml="0"  name=magcntr_format  tag="Format" visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="0" x="1669" y="8" height="76" width="315" format="[general]" html.valueishtml="0"  name=magiss_issdt  tag="Issue Date" visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="2" tabsequence=10 border="5" color="0" x="1993" y="8" height="76" width="389" format="[general]" html.valueishtml="0"  name=magiss_dlvrdt  tag="Enter Delivery Date" visible="1" editmask.autoskip=yes editmask.mask="mm/dd/yyyy" editmask.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

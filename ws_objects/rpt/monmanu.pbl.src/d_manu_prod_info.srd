@@ -1,0 +1,71 @@
+﻿$PBExportHeader$d_manu_prod_info.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=216 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=schstdt dbname="prod.schstdt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=schenddt dbname="prod.schenddt" )
+ column=(type=datetime updatewhereclause=yes name=actstdt dbname="prod.actstdt" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="prod.actenddt" )
+ column=(type=char(2) updatewhereclause=yes key=yes name=prodstage dbname="prod.prodstage" values="Mastering	MA/Duplication	DU/Print Books	PB/Pressing	PR/Abstruse Mastering	AB/Purchase Books	PU/" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=bkseq dbname="prod.bkseq" )
+ column=(type=char(3) updatewhereclause=yes key=yes name=bkmed dbname="prod.bkmed" )
+ column=(type=char(7) updatewhereclause=yes key=yes name=cntr dbname="prod.cntr" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=ssdflag dbname="prod.ssdflag" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=char(1) updatewhereclause=yes name=mchar_priority dbname="mchar.priority" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_applen dbname="mchar.applen" )
+ column=(type=decimal(2) updatewhereclause=yes name=mchar_df dbname="mchar.df" )
+ column=(type=char(1) updatewhereclause=yes name=ancntr_cntrcvcd dbname="ancntr.cntrcvcd" )
+ column=(type=char(1) updatewhereclause=yes name=ancntr_cntrtype dbname="ancntr.cntrtype" )
+ retrieve="  SELECT prod.schstdt,   
+         prod.schenddt,   
+         prod.actstdt,   
+         prod.actenddt,   
+         prod.prodstage,   
+         prod.bkseq,   
+         prod.bkmed,   
+         prod.cntr,   
+         prod.ssdflag,
+			mchar.med,
+			mchar.priority,
+			mchar.applen,
+			mchar.df,
+			ancntr.cntrcvcd,
+			ancntr.cntrtype
+    FROM prod,mchar,ancntr
+   WHERE ( prod.bkseq = :Lbkseq ) AND  
+         ( prod.cntr = :Lcntr ) AND  
+         ( prod.bkmed = :Lbkmed ) AND
+			( mchar.bkseq = prod.bkseq) and
+			( mchar.bkmed = prod.bkmed) and
+			( ancntr.cntr = prod.cntr) and
+			( ancntr.cntrmed = mchar.med)
+ORDER BY prod.actstdt ASC   
+" update="prod" updatewhere=1 updatekeyinplace=yes arguments=(("Lbkseq", number),("Lcntr", string),("Lbkmed", string)) )
+text(band=header alignment="0" text="Production Information" border="0" color="0" x="631" y="4" height="56" width="581" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+line(band=header x1="69" y1="204" x2="2501" y2="204"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Schedule Start Date" border="0" color="0" x="110" y="92" height="104" width="366" html.valueishtml="0"  name=schstdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Production Stage" border="0" color="0" x="2030" y="92" height="104" width="343" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Schedule End Date" border="0" color="0" x="517" y="88" height="104" width="357" html.valueishtml="0"  name=schenddt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actual Start Date" border="0" color="0" x="1202" y="88" height="104" width="402" html.valueishtml="0"  name=actstdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Actual End Date" border="0" color="0" x="1650" y="88" height="104" width="302" html.valueishtml="0"  name=actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="OriginalSSD" border="0" color="0" x="937" y="88" height="104" width="192" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2423" y="104" height="52" width="69" format="[general]" html.valueishtml="0"  name=mchar_med visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=11 alignment="0" tabsequence=32766 border="0" color="0" x="2720" y="104" height="52" width="50" format="[general]" html.valueishtml="0"  name=mchar_priority visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="0" x="2528" y="100" height="52" width="59" format="[general]" html.valueishtml="0"  name=mchar_applen visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2629" y="104" height="52" width="46" format="[general]" html.valueishtml="0"  name=mchar_df visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=14 alignment="0" tabsequence=32766 border="0" color="0" x="2816" y="104" height="52" width="46" format="[general]" html.valueishtml="0"  name=ancntr_cntrcvcd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="41" y="12" height="52" width="55" format="[general]" html.valueishtml="0"  name=ssdflag visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="2030" y="8" height="60" width="370" format="[general]" html.valueishtml="0" protect="0~t1"  name=prodstage visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~trgb(192,192,192)" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="521" y="8" height="60" width="329" format="mm/dd/yyyy" html.valueishtml="0" protect="0~t1"  name=schenddt visible="1" edit.limit=0 edit.case=any edit.format="mm/dd/yyyy" edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~trgb(192,192,192)" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="1262" y="8" height="60" width="329" format="mm/dd/yyyy" html.valueishtml="0" protect="0~t1"  name=actstdt visible="1" edit.limit=0 edit.case=any edit.format="mm/dd/yyyy" edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~trgb(192,192,192)" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1641" y="8" height="60" width="334" format="mm/dd/yyyy" html.valueishtml="0" protect="0~t1"  name=actenddt visible="1" edit.limit=0 edit.case=any edit.format="mm/dd/yyyy" edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~trgb(192,192,192)" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="133" y="8" height="60" width="329" format="mm/dd/yyyy" html.valueishtml="0" protect="0~t1"  name=schstdt visible="1" edit.limit=0 edit.case=any edit.format="mm/dd/yyyy" edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~trgb(192,192,192)" )
+compute(band=detail alignment="0" expression="max(schenddt for all)"border="0" color="0" x="2565" y="12" height="60" width="78" format="[shortdate] [time]" html.valueishtml="0"  name=max_schenddt visible="1~t0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(  ancntr_cntrtype = 'D', relativedate( schstdt , f_calculate_estpt_dupl(mchar_priority)), relativedate(  schstdt , f_calculate_estpt( mchar_med , mchar_priority , mchar_applen , ancntr_cntrcvcd , mchar_df ) ))"border="5" color="0" x="896" y="4" height="60" width="315" format="mm/dd/yyyy" html.valueishtml="0"  name=original_ssd visible="1~tif( IsNull( schstdt ), 0, 1 )"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="2450" y="12" height="52" width="82" format="[general]" html.valueishtml="0"  name=ancntr_cntrtype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

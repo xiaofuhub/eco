@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_import_cp_allotbatch_rush.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=libcd dbname="libcd" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=cabdt dbname="cabdt" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bkseq dbname="bkseq" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=bkmed dbname="bkmed" )
+ column=(type=char(8) updatewhereclause=yes name=bkno dbname="bkno" )
+ column=(type=decimal(0) updatewhereclause=yes name=selqty dbname="selqty" )
+ column=(type=decimal(0) updatewhereclause=yes name=defqty dbname="defqty" )
+ column=(type=decimal(0) updatewhereclause=yes name=actual_qty dbname="actual_qty" )
+ retrieve="SELECT   libcd, batch.cabdt as cabdt,batch.bkseq as bkseq, batch.bkmed as bkmed, bkno, selqty, defqty, actual_qty
+    FROM batch, mchar@pcs_link
+   WHERE actual_qty IS NOT NULL AND actual_qty <> defqty AND batch.cabdt  <=:ad_date
+and mchar.bkseq = batch.bkseq and mchar.bkmed = batch.bkmed and mchar.priority = 'R'
+ORDER BY bkno, libcd
+" update="batch" updatewhere=0 updatekeyinplace=no arguments=(("ad_date", datetime))  sort="bkno A libcd A " )
+text(band=header alignment="2" text="BookNumber" border="0" color="0" x="1536" y="4" height="128" width="247" html.valueishtml="0"  name=books_bkno_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="SelectedQuantity" border="0" color="0" x="2171" y="4" height="128" width="329" html.valueishtml="0"  name=batch_selqty_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="LibraryCode" border="0" color="0" x="329" y="4" height="128" width="242" html.valueishtml="0"  name=batch_libcd_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text=" Batch Date  (CABDT)" border="0" color="0" x="823" y="4" height="128" width="343" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2802" y="4" height="60" width="366" format="[general]" html.valueishtml="0"  name=defqty visible="0~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="315" y="4" height="56" width="261" format="[general]" html.valueishtml="0"  name=libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="850" y="4" height="56" width="329" format="[shortdate] [time]" html.valueishtml="0"  name=cabdt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2976" y="0" height="64" width="201" format="[general]" html.valueishtml="0"  name=bkseq visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3223" y="0" height="64" width="82" format="[general]" html.valueishtml="0"  name=bkmed visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="3346" y="4" height="56" width="329" format="[general]" html.valueishtml="0"  name=selqty visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1536" y="4" height="56" width="256" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2199" y="4" height="56" width="329" format="[general]" html.valueishtml="0"  name=actual_qty visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

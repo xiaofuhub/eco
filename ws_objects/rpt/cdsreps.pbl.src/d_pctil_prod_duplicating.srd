@@ -1,0 +1,66 @@
+﻿$PBExportHeader$d_pctil_prod_duplicating.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=12 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=616 color="536870912" )
+table(column=(type=char(7) updatewhereclause=yes name=cntr dbname="prod.cntr" )
+ column=(type=datetime updatewhereclause=yes name=assigndt dbname="prod.assigndt" )
+ column=(type=datetime updatewhereclause=yes name=schstdt dbname="prod.schstdt" )
+ column=(type=datetime updatewhereclause=yes name=schenddt dbname="prod.schenddt" )
+ column=(type=datetime updatewhereclause=yes name=actstdt dbname="prod.actstdt" )
+ column=(type=datetime updatewhereclause=yes name=actenddt dbname="prod.actenddt" )
+ column=(type=char(1) updatewhereclause=yes name=ssdflag dbname="prod.ssdflag" )
+ column=(type=char(4) updatewhereclause=yes name=ancntr_prdr dbname="ancntr.prdr" )
+ retrieve="  SELECT prod.cntr,
+			prod.assigndt,   
+			prod.schstdt,   
+         prod.schenddt,   
+         prod.actstdt,   
+         prod.actenddt,   
+         prod.ssdflag,
+			ancntr.prdr  
+    FROM prod,ancntr
+
+	WHERE prod.cntr = ancntr.cntr and
+			prod.bkseq = :Lbkseq and
+			prod.bkmed = :Lbkmed and
+			prod.prodstage in ('DU','PR','PB','EM')
+	
+" arguments=(("Lbkseq", number),("Lbkmed", string)) )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="4" height="64" width="32" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Contract No (Dupl.)" border="0" color="0" x="73" y="4" height="64" width="635" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="4" height="64" width="379" format="[general]" html.valueishtml="0"  name=cntr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="76" height="64" width="247" format="[general]" html.valueishtml="0"  name=ancntr_prdr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="76" height="64" width="32" html.valueishtml="0"  name=t_10 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Producer (Dupl.)" border="0" color="0" x="73" y="72" height="64" width="635" html.valueishtml="0"  name=t_11 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="368" height="64" width="32" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="292" height="64" width="32" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="524" height="64" width="32" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="216" height="64" width="32" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Sched St. Dt. (Dupl.)" border="0" color="0" x="73" y="216" height="64" width="599" html.valueishtml="0"  name=schstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Sched End Dt. (Dupl.)" border="0" color="0" x="73" y="296" height="64" width="631" html.valueishtml="0"  name=schenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="SSDFlag (Dupl.):" border="0" color="0" x="73" y="532" height="64" width="507" html.valueishtml="0"  name=ssdflag_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Actual St. Dt. (Dupl.)" border="0" color="0" x="73" y="372" height="64" width="581" html.valueishtml="0"  name=actstdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="144" height="64" width="379" format="[general]" html.valueishtml="0"  name=assigndt visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="216" height="72" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=schstdt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="296" height="68" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=schenddt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="376" height="68" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=actstdt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="532" height="76" width="64" format="[general]" html.valueishtml="0"  name=ssdflag visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Assignment Date (Dupl.)" border="0" color="0" x="73" y="144" height="64" width="713" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="144" height="64" width="32" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text=":" border="0" color="0" x="800" y="448" height="64" width="32" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Actual End Dt. (Dupl.)" border="0" color="0" x="73" y="452" height="64" width="626" html.valueishtml="0"  name=actenddt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="456" height="64" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=actenddt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

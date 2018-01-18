@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_ttlart_process.srf
+global type f_ttlart_process from function_object
+end type
+
+forward prototypes
+global function string f_ttlart_process (string as_ttlart)
+end prototypes
+
+global function string f_ttlart_process (string as_ttlart);IF IsNull(as_ttlart) THEN
+	Return ''
+ELSEIF Trim(as_ttlart) <>'' THEN
+	Return Trim(as_ttlart)+' '
+ELSEIF Trim(as_ttlart) ='' THEN
+	Return ''
+END IF
+end function
+

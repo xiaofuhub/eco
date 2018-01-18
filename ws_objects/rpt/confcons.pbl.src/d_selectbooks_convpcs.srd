@@ -1,0 +1,93 @@
+﻿$PBExportHeader$d_selectbooks_convpcs.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=276 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=conno dbname="conversionbooks.conno" dbalias=".conno" )
+ column=(type=char(80) updatewhereclause=yes name=auth dbname="ttlinit.auth" dbalias=".auth" )
+ column=(type=char(34) updatewhereclause=yes name=authfn dbname="ttlinit.authfn" dbalias=".authfn" )
+ column=(type=char(116) updatewhereclause=yes name=aname dbname="aname" )
+ column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" dbalias=".bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="mchar.bkmed" dbalias=".bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=len dbname="mchar.len" dbalias=".len" )
+ column=(type=decimal(0) updatewhereclause=yes name=minlastside dbname="mchar.minlastside" dbalias=".minlastside" )
+ column=(type=char(1) updatewhereclause=yes name=toning dbname="toning" )
+ column=(type=char(1) updatewhereclause=yes name=book dbname="book" )
+ column=(type=char(10) updatewhereclause=yes name=book_format dbname="book_format" )
+ column=(type=char(43) updatewhereclause=yes name=bkno dbname="bkno" )
+ column=(type=datetime updatewhereclause=yes name=convassigndate dbname="conversionbooks.convassigndate" dbalias=".convassigndate" )
+ column=(type=char(4) updatewhereclause=yes name=cyr dbname="cyr" )
+ column=(type=char(1) updatewhereclause=yes name=upd_flag dbname="conversionbooks.upd_flag" dbalias=".upd_flag" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=action_type dbname="conversionbooks.action_type" dbalias=".action_type" )
+ column=(type=char(34) updatewhereclause=yes name=sttl dbname="ttlinit.sttl" dbalias=".sttl" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_length_ dbname="mchar.length_" dbalias=".length_" )
+ retrieve="SELECT conversionbooks.conno, ttlinit.auth, ttlinit.authfn,
+       TRIM (ttlinit.auth) || ', ' || ttlinit.authfn aname, mchar.bkseq,
+       mchar.bkmed, mchar.len, mchar.minlastside,
+       DECODE (mchar.toning, 'tones', 'Y', 'N') toning,
+       DECODE (mchar.book, NULL, 'N', 'Y') book,
+       DECODE (mchar.digitalprd,
+               'V', 'Video Tape',
+               'A', 'Analog',
+               'D', 'Digital',
+               'N', 'NISO',
+               'None'
+              ) book_format,
+       TRIM (mchar.bkmed) || mchar.bkseq bkno, conversionbooks.convassigndate,
+       TO_CHAR (convassigndate, 'yyyy') cyr, conversionbooks.upd_flag,
+       conversionbooks.action_type, ttlinit.sttl, mchar.length_
+  FROM conversionbooks, mchar, ttlinit
+ WHERE conversionbooks.conno = mchar.conno
+   AND conversionbooks.action_type IN ('C', 'P')
+   AND mchar.arflag IS NULL
+   AND mchar.chno = ttlinit.chno(+)
+   AND ROWNUM < 50000" update="conversionbooks" updatewhere=1 updatekeyinplace=yes retrieve.asneeded=yes  sort="authname A sttl A bkno A " )
+group(level=1 header.height=0 trailer.height=12 by=("authname" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="PCS Select Books For Conversion" border="0" color="33554432" x="1394" y="40" height="64" width="1221" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="BKNO" border="0" color="33554432" x="727" y="196" height="64" width="293" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Author Name" border="0" color="33554432" x="46" y="196" height="64" width="457" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="ConvDate" border="0" color="33554432" x="1070" y="132" height="128" width="224" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Convert" border="0" color="33554432" x="1317" y="196" height="64" width="293" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Short Title" border="0" color="33554432" x="1705" y="196" height="64" width="375" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tone Index" border="0" color="33554432" x="3017" y="200" height="64" width="398" html.valueishtml="0"  name=t_10 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Print Book" border="0" color="33554432" x="3424" y="200" height="64" width="411" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tracks" border="0" color="33554432" x="2496" y="196" height="64" width="242" html.valueishtml="0"  name=t_11 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Format" border="0" color="33554432" x="3817" y="200" height="64" width="247" html.valueishtml="0"  name=t_12 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="4306" y="8" height="32" width="14" format="[general]" html.valueishtml="0"  name=bkmed visible="0" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="4357" y="8" height="32" width="14" format="[shortdate] [time]" html.valueishtml="0"  name=convassigndate visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="4430" y="8" height="36" width="5" format="[general]" html.valueishtml="0"  name=auth visible="0" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="4288" y="8" height="32" width="14" format="[general]" html.valueishtml="0"  name=conno visible="0" edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="4453" y="8" height="32" width="14" format="[general]" html.valueishtml="0"  name=aname visible="0" edit.limit=70 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="4256" y="8" height="32" width="23" format="[general]" html.valueishtml="0"  name=action_type visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="4389" y="8" height="32" width="14" format="[general]" html.valueishtml="0"  name=authfn visible="0" edit.limit=34 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=10 border="0" color="33554432" x="1362" y="4" height="56" width="73" format="[general]" html.valueishtml="0"  name=upd_flag visible="1~tif( action_type ='C',1,0)" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="690" y="4" height="32" width="14" format="[general]" html.valueishtml="0"  name=bkseq visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if(not (isnull( auth ) or isnull(authfn)),auth+', '+authfn,if(isnull(authfn),auth,authfn))"border="0" color="33554432" x="46" y="4" height="56" width="626" format="[GENERAL]" html.valueishtml="0"  name=authname visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="1559" y="4" height="60" width="1001" format="[general]" html.valueishtml="0"  name=sttl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="1458" y="4" height="32" width="14" format="[general]" html.valueishtml="0"  name=len visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="1504" y="4" height="32" width="14" format="[general]" html.valueishtml="0"  name=minlastside visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="727" y="4" height="56" width="293" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=43 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432~tif( action_type ='C',rgb(0,0,0),rgb(255,0,0))" x="1070" y="4" height="56" width="242" format="[general]" html.valueishtml="0"  name=cyr visible="1" edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2601" y="4" height="64" width="155" format="[general]" html.valueishtml="0"  name=len_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="3136" y="4" height="60" width="229" format="[general]" html.valueishtml="0"  name=toning visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="3497" y="4" height="60" width="133" format="[general]" html.valueishtml="0"  name=book visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="3835" y="4" height="60" width="384" format="[general]" html.valueishtml="0"  name=book_format visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=trailer.1 x1="18" y1="0" x2="4201" y2="0"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="33554432"  background.mode="2" background.color="1073741824" )
+text(band=footer alignment="2" text="text" border="0" color="33554432" x="677" y="204" height="64" width="91" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if( IsNull(minlastside),  ( len -1)*88,   ( len -1)*88+ minlastside ) "border="0" color="33554432" x="4850" y="12" height="52" width="279" format="[GENERAL]" html.valueishtml="0"  name=minutes visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Minutes" border="0" color="33554432" x="2752" y="200" height="64" width="274" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="2" tabsequence=32766 border="0" color="33554432" x="2752" y="4" height="60" width="279" html.valueishtml="0"  name=mchar_length_ visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Microsoft Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="authname")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

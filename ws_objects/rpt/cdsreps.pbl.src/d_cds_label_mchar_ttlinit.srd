@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_cds_label_mchar_ttlinit.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=16777215 processing=2 HTMLDW=no print.documentname="" print.orientation = 2 print.margin.left = 156 print.margin.right = 156 print.margin.top = 833 print.margin.bottom = 836 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no label.name="Laser Address 1.33 x 4.00 5162,5262" label.width=4000 label.height=1333 label.rows=7 label.rows.spacing=0 label.columns=2 label.columns.spacing=188 label.topdown=no label.sheet=yes label.shape=roundrectangle label.ellipse_height=130 label.ellipse_width=130 )
+detail(height=1333 color="536870912" )
+table(column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_auth dbname="ttlinit.auth" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_authfn dbname="ttlinit.authfn" )
+ column=(type=char(34) updatewhereclause=yes name=ttlinit_publisher dbname="ttlinit.publisher" )
+ column=(type=decimal(0) updatewhereclause=yes name=ttlinit_pubyr dbname="ttlinit.pubyr" )
+ column=(type=char(15) updatewhereclause=yes name=ttlinit_isbn dbname="ttlinit.isbn" )
+ column=(type=char(2) updatewhereclause=yes name=ttlinit_cycle dbname="ttlinit.cycle" )
+ retrieve="  SELECT ttlinit.ttl,  
+         mchar.conno,    
+         ttlinit.auth,   
+         ttlinit.authfn,   
+         ttlinit.publisher,   
+         ttlinit.pubyr,   
+         ttlinit.isbn,   
+         ttlinit.cycle 
+ 
+    FROM mchar,   
+         ttlinit  
+   WHERE ( mchar.chno = ttlinit.chno )   and
+			 not (ttlinit.isbn is null)  and
+			 mchar.chno >=:as_chno and
+			mchar.chno <= :as_chno1
+	" arguments=(("as_chno", string),("as_chno1", string)) )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="3156" y="947" height="135" width="500" format="[general]" html.valueishtml="0"  name=ttlinit_cycle visible="1"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_combine_auth_authfn_no_mr( ttlinit_auth, ttlinit_authfn)"border="0" color="0" x="281" y="354" height="135" width="3375" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="f_combine_auth_authfn_no_mr(Upper(ttlinit_publisher) ,'    '+string(ttlinit_pubyr) )"border="0" color="0" x="281" y="552" height="135" width="3375" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="2208" y="750" height="135" width="1447" format="[general]" html.valueishtml="0"  name=ttlinit_isbn visible="1"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="2770" y="145" height="135" width="885" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="left( trim( ttlinit_ttl ), 30)"border="0" color="0" x="281" y="145" height="135" width="2062" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

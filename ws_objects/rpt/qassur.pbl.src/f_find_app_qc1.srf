@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_find_app_qc1.srf
+global type f_find_app_qc1 from function_object
+end type
+
+forward prototypes
+global function boolean f_find_app_qc1 ()
+end prototypes
+
+global function boolean f_find_app_qc1 ();String qastg,qastatcd
+SetNull(qastg)
+SetNull(qastatcd)
+int i
+FOR i=1 TO w_qa_product_review.dw_qa_qastg.rowcount() 
+	qastg= w_qa_product_review.dw_qa_qastg.object.qastg[i]
+	qastatcd = w_qa_product_review.dw_qa_qastg.object.qastatcd[i]
+	IF ( qastg='1' AND qastatcd='A' ) THEN
+		RETURN TRUE
+	END IF
+NEXT
+RETURN FALSE
+end function
+

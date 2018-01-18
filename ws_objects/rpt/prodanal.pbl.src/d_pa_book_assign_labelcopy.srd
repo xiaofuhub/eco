@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_pa_book_assign_labelcopy.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=1073741824 processing=2 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 500 print.margin.bottom = 500 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no label.name="Laser Address-Clear  1.00 x 2.83 5660" label.width=2833 label.height=1000 label.rows=10 label.rows.spacing=0 label.columns=3 label.columns.spacing=0 label.topdown=no label.sheet=yes label.shape=roundrectangle label.ellipse_height=0 label.ellipse_width=0 )
+detail(height=1000 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=bkno dbname="bkno" )
+ column=(type=char(35) updatewhereclause=yes name=auth dbname="auth" )
+ column=(type=char(10) updatewhereclause=yes name=narr dbname="narr" )
+ column=(type=char(35) updatewhereclause=yes name=sttl dbname="sttl" )
+ column=(type=char(8) updatewhereclause=yes name=conno dbname="mchar.conno" )
+ retrieve="  SELECT '                         ' bkno,   
+         '                                   ' auth,
+         '          ' narr,
+         '                                   ' sttl,
+			conno
+    FROM MCHAR,   
+         PROD,   
+         TTLINIT  
+   WHERE ( MCHAR.BKSEQ = PROD.BKSEQ ) and
+           mchar.bkmed = prod.bkmed and  
+         ( MCHAR.CHNO = TTLINIT.CHNO ) and
+           prod.cntr=:as_cntr and
+           prod.assigndt=:ad_assigndt
+         ORDER BY bkno    
+" arguments=(("as_cntr", string),("ad_assigndt", date)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="31" y="385" height="135" width="2760" format="[general]" html.valueishtml="0"  name=auth visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="31" y="531" height="458" width="2333" format="[general]" html.valueishtml="0"  name=conno visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="IDAutomationCode39" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="41" y="62" height="322" width="1333" format="[general]" html.valueishtml="0"  name=bkno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-20" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1406" y="62" height="322" width="1375" format="[general]" html.valueishtml="0"  name=narr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-20" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

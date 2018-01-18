@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_pmsub_desc.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(6) update=yes updatewhereclause=yes name=pmsub_code dbname="pmsub.pmsub_code" )
+ column=(type=char(40) updatewhereclause=yes name=pmsub_desc dbname="pmsub.pmsub_desc" )
+ retrieve="  SELECT DISTINCT PMSUB_CODE, PMSUB_DESC  
+    FROM PMSUB,TTLINIT
+   WHERE ( 	(PMSUB1 = PMSUB_CODE ) OR  
+         	(PMSUB2 = PMSUB_CODE ) OR  
+         	(PMSUB3 = PMSUB_CODE ) ) 
+		AND   chno in ( :ls_chnos )
+		AND   PMSUB_CODE NOT IN ('Y SPAN', 'YOUN')
+ORDER BY PMSUB_CODE ASC   
+" arguments=(("ls_chnos", stringlist)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="224" format="[general]" html.valueishtml="0"  name=pmsub_code visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="261" y="12" height="64" width="690" format="[general]" html.valueishtml="0"  name=pmsub_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

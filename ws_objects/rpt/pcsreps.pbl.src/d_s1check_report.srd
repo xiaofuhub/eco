@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_s1check_report.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=1062 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=145 color="536870912" )
+detail(height=156 color="536870912" )
+table(column=(type=char(6) updatewhereclause=yes name=ttlinit_chno dbname="ttlinit.chno" )
+ column=(type=char(3) updatewhereclause=yes name=ttlinit_lang dbname="ttlinit.lang" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_med dbname="mchar.med" )
+ column=(type=char(2) updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" )
+ column=(type=datetime updatewhereclause=yes name=catalog_s1 dbname="catalog.s1" )
+ retrieve="  SELECT ttlinit.chno,
+			ttlinit.lang,   
+			ttlinit.ttl,   
+         mchar.conno,   
+         mchar.med,   
+         mchar.ricd,   
+         catalog.s1  
+    FROM catalog,   
+         mchar,   
+         ttlinit  
+   WHERE ( ttlinit.chno = mchar.chno ) and  
+         ( mchar.conno = catalog.conno ) and  
+         ( catalog.s1 = :ld_date )
+			" arguments=(("ld_date", date))  sort="mchar_conno A " )
+text(band=header alignment="0" text="STAGE 1 CHECK REPORT" border="0" color="0" x="2916" y="333" height="166" width="1937" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="MED" border="0" color="0" x="3895" y="750" height="166" width="354" html.valueishtml="0"  name=mchar_med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CHNO" border="0" color="0" x="4333" y="750" height="166" width="468" html.valueishtml="0"  name=ttlinit_chno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="LANG." border="0" color="0" x="239" y="770" height="145" width="416" html.valueishtml="0"  name=ttlinit_lang_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="TITLE" border="0" color="0" x="739" y="770" height="145" width="468" html.valueishtml="0"  name=ttlinit_ttl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CONNO" border="0" color="0" x="5031" y="750" height="166" width="562" html.valueishtml="0"  name=mchar_conno_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="RICD" border="0" color="0" x="5885" y="750" height="166" width="395" html.valueishtml="0"  name=mchar_ricd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="S1" border="0" color="0" x="6427" y="750" height="166" width="208" html.valueishtml="0"  name=catalog_s1_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1729" y="791" height="135" width="395" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3895" y="0" height="145" width="302" format="[general]" html.valueishtml="0"  name=mchar_med visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="4333" y="0" height="145" width="583" format="[general]" html.valueishtml="0"  name=ttlinit_chno visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="5031" y="0" height="145" width="770" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="6427" y="0" height="145" width="875" format="[general]" html.valueishtml="0"  name=catalog_s1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="5885" y="0" height="145" width="218" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="ttlinit_ttl "border="0" color="0" x="687" y="0" height="145" width="3062" format="[general]" html.valueishtml="0"  name=title visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="239" y="0" height="145" width="291" format="[general]" html.valueishtml="0"  name=ttlinit_lang visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Courier" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="6375" y="0" height="125" width="1156" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

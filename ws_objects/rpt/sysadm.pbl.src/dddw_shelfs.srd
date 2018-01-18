@@ -1,0 +1,22 @@
+﻿$PBExportHeader$dddw_shelfs.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(40) updatewhereclause=yes key=yes name=shelf_loc dbname="shelfs.shelf_loc" )
+ column=(type=number updatewhereclause=yes name=sort_by_num dbname="sort_by_num" )
+ column=(type=char(10) updatewhereclause=yes name=sort_by_alpha dbname="sort_by_alpha" )
+ retrieve="SELECT SHELF_LOC,
+		to_number(decode(substr(shelf_loc,1,7),'Section',substr(shelf_loc,9,2),0)) sort_by_num, 
+		substr(shelf_loc,11,10) sort_by_alpha
+FROM SHELFS
+ORDER BY sort_by_num , sort_by_alpha" update="SHELFS" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="0" text="Shelf Loc" border="0" color="33554432" x="9" y="4" height="76" width="873" html.valueishtml="0"  name=shelf_loc_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Sort By Num" border="0" color="33554432" x="891" y="4" height="76" width="169" html.valueishtml="0"  name=sort_by_num_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Sort By Alpha" border="0" color="33554432" x="1070" y="4" height="76" width="137" html.valueishtml="0"  name=sort_by_alpha_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="76" width="873" format="[general]" html.valueishtml="0"  name=shelf_loc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="891" y="0" height="68" width="169" format="[general]" html.valueishtml="0"  name=sort_by_num visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1070" y="0" height="68" width="137" format="[general]" html.valueishtml="0"  name=sort_by_alpha visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

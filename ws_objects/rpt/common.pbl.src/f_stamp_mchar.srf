@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_stamp_mchar.srf
+global type f_stamp_mchar from function_object
+end type
+
+forward prototypes
+global subroutine f_stamp_mchar (string lconno, string bk_table)
+end prototypes
+
+global subroutine f_stamp_mchar (string lconno, string bk_table);DATETIME Tdate
+Tdate = datetime(Today(),time('00:00:00'))
+
+UPDATE mchar  
+SET bk_dttime = :Tdate, bk_table = :bk_table 
+WHERE mchar.conno = :lconno   
+USING SQLServerTrans;
+
+IF f_check_dberror(SQLServerTrans,"MCHAR") THEN
+	COMMIT USING SQLServerTrans;
+ELSE
+	ROLLBACK USING SQLServerTrans;
+END IF
+	
+
+end subroutine
+

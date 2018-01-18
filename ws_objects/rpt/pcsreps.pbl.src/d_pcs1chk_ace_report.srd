@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_pcs1chk_ace_report.srd
+release 8;
+datawindow(units=2 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=666 color="536870912" )
+summary(height=541 color="536870912" )
+footer(height=145 color="536870912" )
+detail(height=20 color="536870912"  height.autosize=yes)
+table(column=(type=char(8) updatewhereclause=yes name=cconno dbname="mchar.conno" )
+ column=(type=datetime updatewhereclause=yes name=cfr dbname="mchar.fr" )
+ column=(type=char(6) updatewhereclause=yes name=cchno dbname="ttlinit.chno" )
+ column=(type=decimal(0) updatewhereclause=yes name=calg dbname="ttlinit.alg" initial="0" )
+ column=(type=char(512) updatewhereclause=yes name=cttl dbname="ttlinit.ttl" )
+ retrieve="  SELECT mchar.conno,
+			mchar.fr,
+			ttlinit.chno,
+			ttlinit.alg,
+			ttlinit.ttl
+    FROM mchar,
+			ttlinit
+   WHERE ( ttlinit.chno = mchar.chno ) and  
+			( mchar.fr = :ld_date )" arguments=(("ld_date", date)) )
+text(band=header alignment="2" text="EXCEPTION  REPORT  FOR  TITLES  PASSING  FINAL  REVIEW" border="0" color="0" x="2510" y="145" height="302" width="2729" html.valueishtml="0"  name=mchar_med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3552" y="468" height="145" width="802" format="[general]" html.valueishtml="0"  name=cfr visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ON" border="0" color="0" x="3281" y="468" height="135" width="250" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="0" x="677" y="114" height="166" width="135" format="[general]" html.valueishtml="0"  name=cconno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1062" y="125" height="166" width="218" format="[general]" html.valueishtml="0"  name=cchno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1458" y="135" height="166" width="322" format="[general]" html.valueishtml="0"  name=calg visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="0" x="468" y="93" height="166" width="135" format="[general]" html.valueishtml="0"  name=cttl visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+report(band=detail dataobject="d_pcs1chk_ace_report_nest" x="0" y="0" height="416" width="7895" border="0"  height.autosize=yes criteria="" nest_arguments=(("cconno")) trail_footer = yes  name=dw_1 visible="1~tif( f_exception_visible( cconno, cchno)=1, 1, 0 )"  slideup=directlyabove )
+text(band=summary alignment="1" text="AND CLEARED:" border="0" color="0" x="1145" y="177" height="135" width="1156" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="1" text="EXCEPTIONS DETECTED:" border="0" color="0" x="375" y="354" height="135" width="1927" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="1" text="BOOKS WITH FINAL REVIEW:" border="0" color="0" x="145" y="0" height="135" width="2156" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="sum(f_exception_visible( cconno , cchno ) )"border="0" color="0" x="2416" y="375" height="135" width="4333" format="[general]" html.valueishtml="0"  name=cntexps visible="1"  slideleft=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="count_ttl - cntexps"border="0" color="0" x="2427" y="166" height="135" width="666" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="count(cttl  for all)"border="0" color="0" x="2427" y="10" height="135" width="2375" format="[general]" html.valueishtml="0"  name=count_ttl visible="1"  slideleft=yes  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="6583" y="0" height="135" width="1333" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Courier" font.height="-10" font.weight="400"  font.family="1" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,15 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "acqsrcmt.pbl" "";
+@end;
+@begin Objects 
+ "d_acquisition_dealer_code_maintenance.srd" "acqsrcmt.pbl";
+ "d_acquisition_orders.srd" "acqsrcmt.pbl";
+ "d_acquisition_receive.srd" "acqsrcmt.pbl";
+ "d_report_unfilled_orders.srd" "acqsrcmt.pbl";
+ "dddw_acquisition_dealer_codes.srd" "acqsrcmt.pbl";
+ "w_acquisition_dealer_codes_response.srw" "acqsrcmt.pbl";
+ "w_acquisition_print_book_orders.srw" "acqsrcmt.pbl";
+ "w_acquisition_print_book_receive.srw" "acqsrcmt.pbl";
+ "w_acquisition_report_orders_unfilled.srw" "acqsrcmt.pbl";
+@end;

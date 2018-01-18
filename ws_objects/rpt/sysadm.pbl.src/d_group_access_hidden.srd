@@ -1,0 +1,19 @@
+﻿$PBExportHeader$d_group_access_hidden.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=116 color="536870912" )
+table(column=(type=char(5) update=yes updatewhereclause=yes key=yes name=group_ dbname="picsgroup.group_" )
+ column=(type=char(100) update=yes updatewhereclause=yes key=yes name=menu dbname="picsgroup.menu" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=access_ dbname="picsgroup.access_" )
+ retrieve="SELECT  picsgroup.group_ ,
+           picsgroup.menu ,
+           picsgroup.access_     
+        FROM picsgroup      
+        WHERE ( picsgroup.group_ = :ls_group )   " update="picsgroup" updatewhere=1 updatekeyinplace=no arguments=(("ls_group", string)) )
+column(band=detail id=2 alignment="0" tabsequence=20 border="1" color="0" x="32" y="24" height="64" width="1856" format="[general]" html.valueishtml="0"  name=menu visible="1" edit.limit=70 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1915" y="32" height="52" width="114" format="[general]" html.valueishtml="0"  name=group_ visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2030" y="32" height="52" width="23" format="[general]" html.valueishtml="0"  name=access_ visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

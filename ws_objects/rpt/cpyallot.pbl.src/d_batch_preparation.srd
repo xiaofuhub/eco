@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_batch_preparation.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=513 color="536870912" )
+table(column=(type=long updatewhereclause=no name=q dbname="Q" )
+ column=(type=long updatewhereclause=no name=n dbname="N" )
+ column=(type=char(7) updatewhereclause=no name=prod_cntr dbname="prod_cntr" )
+ )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="255" x="2076" y="72" height="77" width="321" format="[general]"  name=q edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="255" x="2076" y="224" height="77" width="321" format="[general]"  name=n edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="255" x="2076" y="376" height="77" width="321" format="[general]"  name=prod_cntr edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="The Total Number Of Books With Cascd = ~"Q~" is"border="0" color="0" x="778" y="88" height="53" width="1276"  name=q_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="The Total Number Of Books With Cascd = ~"N~" is"border="0" color="0" x="782" y="240" height="53" width="1271"  name=n_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="The Total Number of Volunteer Books excluded that have actual end date is"border="0" color="0" x="69" y="392" height="53" width="1985"  name=mcm_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )

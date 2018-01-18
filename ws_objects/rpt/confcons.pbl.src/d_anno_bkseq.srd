@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_anno_bkseq.srd
+release 10;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1704 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=anno dbname="annotation.anno" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=anno_foreign dbname="annotation.anno_foreign" )
+ column=(type=char(6) updatewhereclause=yes key=yes name=chno dbname="annotation.chno" )
+ column=(type=char(512) updatewhereclause=yes name=ttlinit_ttl dbname="ttlinit.ttl" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(69) updatewhereclause=yes name=ttlinit_auth dbname="auth" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=char(60) updatewhereclause=yes name=oneliner dbname="ttlinit.oneliner" )
+ retrieve="SELECT bkseq,anno,anno_foreign,annotation.chno chno,ttl, conno, auth||','||authfn auth,bkmed, oneliner
+FROM annotation,mchar, ttlinit
+where annotation.chno = mchar.chno
+and annotation.chno = ttlinit.chno
+and bkseq = :lbkseq
+and bkmed = :lbkmed" update="annotation" updatewhere=0 updatekeyinplace=yes arguments=(("lbkseq", number),("lbkmed", string)) )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1842" y="8" height="64" width="165" format="[general]" html.valueishtml="0"  name=chno visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="2144" y="0" height="76" width="293" format="[general]" html.valueishtml="0"  name=bkseq visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="2021" y="0" height="76" width="105" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Author:" border="0" color="0" x="187" y="100" height="64" width="192" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Title:" border="0" color="0" x="251" y="180" height="64" width="128" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Annotation:" border="0" color="0" x="78" y="388" height="64" width="302" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Conno:" border="0" color="0" x="192" y="12" height="64" width="187" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Foreign Annotation:" border="0" color="0" x="41" y="1028" height="128" width="334" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="One-liner:" border="0" color="0" x="18" y="1496" height="64" width="361" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="33554432" x="411" y="16" height="64" width="443" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1" edit.limit=0 edit.case=any edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=10 border="5" color="33554432" x="411" y="104" height="64" width="2619" format="[general]" html.valueishtml="0"  name=ttlinit_auth visible="1" edit.limit=0 edit.case=any edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=9 alignment="0" tabsequence=50 border="5" color="33554432" x="411" y="1504" height="160" width="2619" format="[general]" html.valueishtml="0"  name=oneliner visible="1" edit.limit=0 edit.case=any edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=40 border="5" color="33554432" x="411" y="1028" height="452" width="2615" format="[General]" html.valueishtml="0"  name=anno_foreign visible="1" edit.limit=0 edit.case=any edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=30 border="5" color="33554432" x="411" y="388" height="620" width="2615" format="[general]" html.valueishtml="0"  name=anno visible="1" edit.limit=0 edit.case=any edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="33554432" x="411" y="184" height="188" width="2615" format="[general]" html.valueishtml="0"  name=ttlinit_ttl visible="1" edit.limit=0 edit.case=any edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

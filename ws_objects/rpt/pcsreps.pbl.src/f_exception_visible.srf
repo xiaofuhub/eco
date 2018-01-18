@@ -1,0 +1,63 @@
+﻿$PBExportHeader$f_exception_visible.srf
+global type f_exception_visible from function_object
+end type
+
+forward prototypes
+global function integer f_exception_visible (string lconno, string lchno)
+end prototypes
+
+global function integer f_exception_visible (string lconno, string lchno);string med,casub,ajyfn,dewey,crname,crflag
+int pbpage
+date crodt,pbrecdt,pbordt,pmedt,crgdt
+
+	SELECT mchar.med,
+			ttlinit.pmedt,
+         ttlinit.dewey,   
+         ttlinit.ajyfn,   
+         ttlinit.crname,
+			ttlinit.crflag,
+         ttlinit.casub,
+			acquist.pbordt,   
+         acquist.pbrecdt,
+			acquist.pbpage,   
+         cr.crodt,   
+         cr.crgdt
+	INTO  :med,
+			:pmedt,
+         :dewey,   
+         :ajyfn,   
+         :crname, 
+			:crflag,
+         :casub,
+			:pbordt,   
+         :pbrecdt,
+			:pbpage,   
+         :crodt,   
+         :crgdt
+    FROM mchar,
+			ttlinit,
+			acquist,   
+         cr
+   WHERE ( ttlinit.chno = mchar.chno ) and  
+			( ttlinit.chno = acquist.chno(+) ) and
+			( ttlinit.chno = cr.chno(+) ) and
+			( mchar.conno = :lconno) and
+			( ttlinit.chno = :lchno)
+	USING SQlServerTrans;
+IF f_check_dberror(sqlservertrans,'MCHAR') THEN	
+	IF (  (IsNull(crgdt) AND crflag = 'Y') OR &
+			(IsNull(crodt) AND crflag = 'Y') OR &
+			IsNull(pmedt) OR &
+			IsNull(pbordt) OR &
+			IsNull(pbrecdt) OR &
+			f_exception_report( dewey,ajyfn,casub) OR &
+			f_exception_crname( crname,med) ) THEN
+				RETURN 1
+	ELSE
+		RETURN 0
+	END IF
+ELSE
+	RETURN 0
+END IF
+end function
+

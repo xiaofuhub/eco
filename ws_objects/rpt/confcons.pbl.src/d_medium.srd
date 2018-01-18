@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_medium.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes name=mchar_med dbname="mchar.med" values="FD	FD /BR	BR /RC	RC /P//B	P//B/CB	CB/RD	RD/TB	TB/BRA	BRA/RTB	RTB/" validationmsg="~"Medium must be selected.~"" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=mchar_conno dbname="mchar.conno" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_priority dbname="mchar.priority" initial="N" values="N	N/P	P/R	R/" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=mchar_ricd dbname="mchar.ricd" values="RR	RR/RI	RI/" validationmsg="~"Valid codes are RR or RI~"" )
+ column=(type=char(6) update=yes updatewhereclause=yes name=mchar_chno dbname="mchar.chno" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_arflag dbname="mchar.arflag" initial="NULL" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=mchar_g1br dbname="mchar.g1br" initial="N" values="Yes	Y/No	N/" )
+ column=(type=char(3) updatewhereclause=yes name=ri_prevbkmed dbname="ri.prevbkmed" values="RC	RC/BR	BR/FD	FD/P//B	BR/CB	CB/RD	RD/TB	TB/BRA	BRA/" )
+ column=(type=decimal(0) updatewhereclause=yes name=ri_prevbkseq dbname="ri.prevbkseq" )
+ column=(type=char(8) updatewhereclause=yes name=ri_conno dbname="ri.conno" )
+ retrieve="  SELECT mchar.med,   
+         mchar.conno,   
+         mchar.priority,   
+         mchar.ricd,   
+         mchar.chno,   
+         mchar.arflag,   
+         mchar.g1br,   
+         ri.prevbkmed,
+         ri.prevbkseq,   
+         ri.conno  
+    FROM mchar, ri
+   WHERE mchar.chno = :Lchno 
+   AND	mchar.conno = ri.conno (+)
+" update="mchar" updatewhere=1 updatekeyinplace=yes arguments=(("Lchno", string)) )
+data(null null null null null null null null null null ) 
+text(band=header alignment="1" text="Control No" border="0" color="0" x="210" y="4" height="56" width="229" html.valueishtml="0"  name=conno_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="1" text="Medium" border="0" color="0" x="18" y="4" height="56" width="165" html.valueishtml="0"  name=med_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="79741120" x="453" y="4" height="44" width="18" format="[general]" html.valueishtml="0"  name=mchar_chno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="1" text="Priority" border="0" color="0" x="485" y="4" height="56" width="151" html.valueishtml="0"  name=priority_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="1" text="G1 Braille" border="0" color="0" x="658" y="4" height="56" width="210" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=header id=10 alignment="0" tabsequence=32766 border="0" color="79741120" x="1312" y="4" height="52" width="23" format="[general]" html.valueishtml="0"  name=ri_conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="0" text="RR/RI" border="0" color="0" x="1394" y="4" height="52" width="146" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="0" text="Previous Book No" border="0" color="0" x="901" y="4" height="52" width="393" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=header id=6 alignment="0" tabsequence=32766 border="0" color="12632256" x="1353" y="4" height="44" width="18" format="[general]" html.valueishtml="0"  name=mchar_arflag visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="197" y="8" height="64" width="251" format="[general]" html.valueishtml="0"  name=mchar_conno  tag="Enter Control number" visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="23" y="8" height="64" width="146" format="[general]" html.valueishtml="0"  name=mchar_med  tag="Enter media " visible="1" ddlb.limit=3 ddlb.allowedit=no ddlb.case=upper ddlb.required=yes ddlb.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="485" y="8" height="64" width="137" format="[general]" html.valueishtml="0"  name=mchar_priority  tag="Enter Priority" visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=upper ddlb.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="654" y="8" height="60" width="201" format="[general]" html.valueishtml="0"  name=mchar_g1br visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes ddlb.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=60 border="5" color="0" x="1125" y="8" height="64" width="251" format="[general]" html.valueishtml="0"  name=ri_prevbkseq visible="1" editmask.mask="######" editmask.imemode=0 editmask.focusrectangle=no  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=50 border="5" color="0" x="882" y="8" height="64" width="219" format="[general]" html.valueishtml="0"  name=ri_prevbkmed visible="1" ddlb.limit=0 ddlb.allowedit=yes ddlb.case=upper ddlb.imemode=0  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=70 border="5" color="0" x="1399" y="8" height="64" width="146" format="[general]" html.valueishtml="0"  name=mchar_ricd visible="1" edit.limit=2 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.imemode=0 edit.codetable=yes edit.validatecode=yes  font.face="Times New Roman" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

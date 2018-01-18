@@ -1,0 +1,55 @@
+﻿$PBExportHeader$f_combine_coauth_coauthfn.srf
+global type f_combine_coauth_coauthfn from function_object
+end type
+
+forward prototypes
+global function string f_combine_coauth_coauthfn (string chno)
+end prototypes
+
+global function string f_combine_coauth_coauthfn (string chno);int rtn,cnt
+string coauth,coauthfn,chonorific
+
+select count(*) into :cnt
+from coauth
+where chno=:chno
+using sqlservertrans;
+
+IF cnt > 1 THEN
+	return ( 'and others.')
+ELSEIF cnt = 1 THEN
+	select coauth,coauthfn,chonorific
+	into :coauth,:coauthfn,:chonorific
+	from coauth
+	where chno=:chno
+	using sqlservertrans;
+	
+	
+	IF	(Not IsNull(coauth)) and trim(coauth)<>'' and( Not IsNull(coauthfn)) and trim(coauthfn) <>'' &
+		and( Not IsNull(chonorific)) and (trim(chonorific)<> '')THEN
+		Return ( 'and '+trim(coauthfn)+' '+trim(coauth)+', '+trim(chonorific)+'. '   )
+	ELSEIF (Not IsNull(coauth)) and trim(coauth)<> '' and (IsNull(coauthfn) or trim(coauthfn) = "") &
+				and (IsNull(chonorific) or trim(chonorific )= "" ) THEN
+		Return ( 'and '+trim(coauth))
+	ELSEIF (IsNull(coauth) or trim( coauth) = "" ) and (Not IsNull(coauthfn) and trim(coauthfn)<> '') &
+		and (IsNull(chonorific) or trim(chonorific) = "" ) THEN
+		return( 'and '+trim(coauthfn) )
+	ELSEIF   (IsNull(coauth) or trim( coauth) = "") and( IsNull(coauthfn) or trim(coauthfn)  = "") &
+		and ( Not IsNull(chonorific)) and trim(chonorific)<> '' THEN
+		return('and '+trim(chonorific))
+	ELSEIF	(Not IsNull(coauth) and trim(coauth)<> '') and (not IsNull(coauthfn) or trim(coauthfn) <> "") & 
+				and (IsNull(chonorific) or trim(chonorific )= "" ) THEN
+		Return ( 'and '+trim(coauthfn)+' '+trim(coauth))
+	ELSEIF	(Not IsNull(coauth)) and trim(coauth)<> '' and (IsNull(coauthfn) or trim(coauthfn) = "") &
+				and (not IsNull(chonorific)) and trim(chonorific )<> ""  THEN
+		Return ( 'and '+trim(chonorific )+'. '+trim(coauth))
+	ELSEIF	( IsNull(coauth) or trim(coauth)= '') and (not IsNull(coauthfn) and trim(coauthfn) <> "") &
+				and (not IsNull(chonorific) and trim(chonorific )<> "" ) THEN
+		Return ( 'and '+trim(chonorific)+'. '+trim(coauthfn))
+	ELSE
+		Return ''
+	END IF
+ELSE
+	Return ''
+END IF
+end function
+

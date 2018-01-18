@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_pcs_report.srs
+global type str_pcs_report from structure
+	date		ld_stdt
+	date		ld_enddt
+	string		ls_cntr
+	string		s_cntr[]
+	boolean		b_cbx_checked
+	integer		i_row
+	boolean		b_ok
+	boolean		b_bks_sorted
+end type
+

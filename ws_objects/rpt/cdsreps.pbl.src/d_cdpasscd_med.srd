@@ -1,0 +1,33 @@
+﻿$PBExportHeader$d_cdpasscd_med.srd
+release 7;
+datawindow(units=2 timer_interval=0 color=12632256 processing=4 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no  crosstab.dynamic = yes grid.lines=0 grid.columnmove=no selected.mouse=no )
+header[1](height=0 color="536870912" )
+header[2](height=343 color="536870912" )
+summary(height=343 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=343 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=med dbname="med" )
+ column=(type=number updatewhereclause=yes name=annoinit dbname="annoinit" )
+ retrieve="  SELECT mchar.med,   
+         ttlinit.annoinit  
+    FROM mchar,   
+         ttlinit
+ 
+   WHERE ( mchar.chno = ttlinit.chno ) and
+			( mchar.med is not NULL ) and  
+         ( ttlinit.ccdt between :ld_stdt and :ld_enddt )    
+			order by annoinit" arguments=(("ld_stdt", datetime),("ld_enddt", datetime))  sort="med A " )
+text(band=header[1] alignment="0" text="Count Of Med" border="0" color="0" x="20" y="0" height="135" width="895"  name=t_1  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[1] alignment="0" text="Med" border="0" color="0" x="937" y="0" height="135" width="479"  name=t_2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[2] alignment="0" text="Annoinit" border="0" color="0" x="20" y="0" height="135" width="895"  name=med_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[2] alignment="0" text="@med" border="0" color="0" x="937" y="0" height="135" width="479"  name=annoinit_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[2] alignment="0" text="Grand Total " border="0" color="0" x="1437" y="0" height="135" width="1562"  name=grand_count_med_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="20" y="333" height="197" width="895" format="[general]"  name=med edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="937" y="83" height="197" width="479" format="[general]"  name=annoinit edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes crosstab.repeat=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="crosstabsum(1)"border="0" color="33554432" x="1437" y="83" height="197" width="1562" format="[general]"  name=grand_count_med  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="~"Grand Total~""border="0" color="0" x="20" y="0" height="197" width="895" format="[general]"  name=compute_1  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(annoinit for all )"border="0" color="33554432" x="937" y="0" height="197" width="479" format="[general]"  name=compute_2  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(grand_count_med for all )"border="0" color="33554432" x="1437" y="0" height="197" width="1562" format="[general]"  name=compute_3  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+ crosstab(band = foreground  crosstabonly = yes 
+ columns = "med" rows = "annoinit" values = "count(med for crosstab)" sourcenames = "med, annoinit")htmltable(border="0" cellpadding="1" cellspacing="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

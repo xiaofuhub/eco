@@ -1,0 +1,15 @@
+﻿$PBExportHeader$f_val_admin_dt.srf
+global type f_val_admin_dt from function_object
+end type
+
+forward prototypes
+global function boolean f_val_admin_dt (date admin_dt)
+end prototypes
+
+global function boolean f_val_admin_dt (date admin_dt);IF admin_dt > today() THEN
+	RETURN FALSE
+ELSE
+	RETURN TRUE
+END IF
+end function
+

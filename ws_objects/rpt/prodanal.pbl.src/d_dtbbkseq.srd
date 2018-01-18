@@ -1,0 +1,142 @@
+﻿$PBExportHeader$d_dtbbkseq.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=2776 color="536870912" )
+table(column=(type=char(6) updatewhereclause=yes name=chno dbname="ttlinit.chno" )
+ column=(type=decimal(0) updatewhereclause=yes name=mchar_bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=mchar_bkmed dbname="mchar.bkmed" )
+ column=(type=char(21) updatewhereclause=yes name=t_xmlver dbname="t_xmlver" )
+ column=(type=char(92) updatewhereclause=yes name=t_doctype dbname="t_doctype" )
+ column=(type=char(123) updatewhereclause=yes name=t_xmlnls dbname="t_xmlnls" )
+ column=(type=char(10) updatewhereclause=yes name=t_metadata dbname="t_metadata" )
+ column=(type=char(106) updatewhereclause=yes name=dc_url dbname="dc_url" )
+ column=(type=char(539) updatewhereclause=yes name=ttl dbname="ttl" )
+ column=(type=char(4000) updatewhereclause=yes name=anno dbname="anno" )
+ column=(type=char(129) updatewhereclause=yes name=pub dbname="pub" )
+ column=(type=char(19) updatewhereclause=yes name=t_date dbname="t_date" )
+ column=(type=char(73) updatewhereclause=yes name=forma dbname="forma" )
+ column=(type=char(104) updatewhereclause=yes name=identifier dbname="identifier" )
+ column=(type=char(38) updatewhereclause=yes name=isbn dbname="isbn" )
+ column=(type=char(29) updatewhereclause=yes name=lang dbname="lang" )
+ column=(type=char(108) updatewhereclause=yes name=t_rights dbname="t_rights" )
+ column=(type=char(14) updatewhereclause=yes name=t_dcmetadata dbname="t_dcmetadata" )
+ column=(type=char(12) updatewhereclause=yes name=t_x_metadata dbname="t_x_metadata" )
+ column=(type=char(80) updatewhereclause=yes name=pubyr dbname="pubyr" )
+ column=(type=char(79) updatewhereclause=yes name=sourcepublisher dbname="sourcepublisher" )
+ column=(type=char(117) updatewhereclause=yes name=sourcerights dbname="sourcerights" )
+ column=(type=char(94) updatewhereclause=yes name=atype dbname="atype" )
+ column=(type=char(108) updatewhereclause=yes name=dtbnarrator dbname="dtbnarrator" )
+ column=(type=char(72) updatewhereclause=yes name=dtbproducer dbname="dtbproducer" )
+ column=(type=char(42) updatewhereclause=yes name=dtbproducedate dbname="dtbproducedate" )
+ column=(type=char(38) updatewhereclause=yes name=dtbrevision dbname="dtbrevision" )
+ column=(type=char(42) updatewhereclause=yes name=dtbrevisiondate dbname="dtbrevisiondate" )
+ column=(type=char(49) updatewhereclause=yes name=dtbrevisiondescription dbname="dtbrevisiondescription" )
+ column=(type=char(39) updatewhereclause=yes name=dtbtotaltime dbname="dtbtotaltime" )
+ column=(type=char(44) updatewhereclause=yes name=dtbaudioformat dbname="dtbaudioformat" )
+ column=(type=char(13) updatewhereclause=yes name=t_xx_metadata dbname="t_xx_metadata" )
+ column=(type=char(11) updatewhereclause=yes name=t_close_metadata dbname="t_close_metadata" )
+ column=(type=char(21) updatewhereclause=yes name=t_manifest dbname="t_manifest" )
+ column=(type=char(15) updatewhereclause=yes name=t_spine dbname="t_spine" )
+ column=(type=char(10) updatewhereclause=yes name=t_package dbname="t_package" )
+ column=(type=char(95) updatewhereclause=yes name=t_creator dbname="t_creator" )
+ column=(type=char(75) updatewhereclause=yes name=t_subject dbname="t_subject" )
+ retrieve="  SELECT ttlinit.chno,
+			mchar.bkseq,
+			mchar.bkmed,			
+			'<?xml version=~"1.0~"?>' t_xmlver,
+			'<!DOCTYPE package PUBLIC ~"+//ISBN 0-9673008-1-9//DTD OEB 1.0.1 Package//EN~" ~"oebpkg101.dtd~">' t_doctype,
+			'<package unique-identifier=~"uid~" xmlns=~"'||DTBFORMAT.OEBPACKAGE_URL||'/~">' t_xmlnls,
+			'<metadata>' t_metadata,
+			'<dc-metadata xmlns:dc=~"'||DTBFORMAT.DC_URL||'/~">' dc_url,
+			'<dc:Title>'||NVL2(TTLINIT.TTLART,TTLART||' '||TTLINIT.TTL,TTLINIT.TTL)||'</dc:Title>' ttl,			   
+			'<dc:Description>'||ANNOTATION.ANNO||'</dc:Description>' anno,			   
+			'<dc:Publisher>'||DTBFORMAT.PUBLISHER||'</dc:Publisher>' pub,
+			'<dc:Date></dc:Date>' t_date,			   
+			'<dc:Format>'||DTBFORMAT.FORMAT||'</dc:Format>' forma,
+			'<dc:Identifier id = ~"uid~" scheme=~"DTB~">us-nls-db'||MCHAR.BKSEQ||'</dc:Identifier>' Identifier,
+			'<dc:Source>'||TTLINIT.ISBN||'</dc:Source>' isbn,			   
+			'<dc:Language>'||SUBSTR(TTLINIT.LANG,1,2)||'</dc:Language>' lang,
+			'<dc:Rights>Further reproduction or distribution in other than a specialized format is prohibited</dc:Rights>' t_rights,
+			'</dc-metadata>' t_dcmetadata,			   
+			'<x-metadata>' t_x_metadata,			   
+			'<meta name=~"dtb:sourceDate~" content=~"'||TTLINIT.PUBYR||'~"/>' pubyr,
+			'<meta name=~"dtb:sourcePublisher~" content=~"'||TTLINIT.PUBLISHER||'~"/>' sourcepublisher,
+			'<meta name=~"dtb:sourceRights~" content=~"'||TTLINIT.PUBYR||' '||TTLINIT.PUBLISHER||'~"/>' sourcerights,
+			'<meta name=~"dtb:multimediaType~" content=~"'||DTBFORMAT.MULTIMEDIA||'~"/>' aType,
+			DECODE(NARR.NARR,NULL,'<meta name=~"dtb:narrator~" content=~"~"/>','<meta name=~"dtb:narrator~" content=~"'||NARR.NARR||', '||NARR.NARRFN||'~"/>') dtbnarrator,
+			'<meta name=~"dtb:producer~" content=~"'||PRODUCER.PRDR_NAME ||'~"/>' dtbproducer,
+			'<meta name=~"dtb:producedDate~" content=~"~"/>' dtbproducedate,
+			'<meta name=~"dtb:revision~" content=~"~"/>' dtbrevision,
+			'<meta name=~"dtb:revisionDate~" content=~"~"/>' dtbrevisiondate,
+			'<meta name=~"dtb:revisionDescription~" content=~"~"/>' dtbrevisiondescription,
+			'<meta name=~"dtb:totalTime~" content=~"~"/>' dtbtotaltime,
+			'<meta name=~"dtb:audioFormat~" content=~"mp3~"/>' dtbaudioformat,
+			'</x-metadata>' t_xx_metadata,			   
+			'</metadata>' t_close_metadata,
+			'<manifest></manifest>' t_manifest,
+			'<spine></spine>' t_spine,
+			'</package>' t_package,
+			'<dc:Creator>'||ttlinit.auth||decode(ttlinit.auth, null, '', ', ')||ttlinit.authfn||'</dc:Creator>' t_creator,
+			'<dc:Subject>'||casubj.casubj_desc||'</dc:Subject>' t_subject
+    FROM ANNOTATION,   
+         DTBFORMAT,   
+         MCHAR,   
+         TTLINIT,   
+         ANCNTR,   
+         PRODUCER,   
+         PROD,
+			CASUBJ,
+			NARR  
+   WHERE ( MCHAR.CHNO = TTLINIT.CHNO ) and  
+			( TTLINIT.CASUB = CASUBJ.CASUBJ_CODE ) and
+         ( ANCNTR.PRDR = PRODUCER.PRDR ) and  
+         ( ANNOTATION.CHNO = TTLINIT.CHNO ) and  
+         ( ANCNTR.CNTR = PROD.CNTR ) and  
+         ( PROD.BKSEQ = MCHAR.BKSEQ ) and  
+         ( PROD.BKSEQ = NARR.BKSEQ(+) ) and  
+         ( PROD.BKMED = NARR.BKMED(+) )  and
+			( PROD.PRODSTAGE IN ('MA','PU','AD') ) and 
+			( MCHAR.BKSEQ IN (:lbkseq))  
+" arguments=(("lbkseq", numberlist)) )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="300" height="64" width="270" format="[general]" html.valueishtml="0"  name=t_metadata visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="101" y="464" height="76" width="2747" format="[general]" html.valueishtml="0"  name=dc_url visible="1"  slideup=allabove edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="82" y="32" height="64" width="567" format="[general]" html.valueishtml="0"  name=t_xmlver visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="78" y="112" height="64" width="2487" format="[general]" html.valueishtml="0"  name=t_doctype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="208" height="64" width="2432" format="[general]" html.valueishtml="0"  name=t_xmlnls visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="980" height="64" width="3493" format="[general]" html.valueishtml="0"  name=t_date visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="1288" height="76" width="2747" format="[general]" html.valueishtml="0"  name=lang visible="1"  slideup=allabove edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="1196" height="76" width="2747" format="[general]" html.valueishtml="0"  name=isbn visible="1"  slideup=allabove edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="82" y="752" height="64" width="3557" format="[general]" html.valueishtml="0"  name=ttl visible="1"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="828" height="64" width="3552" format="[general]" html.valueishtml="0"  name=anno visible="1"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="900" height="64" width="3543" format="[general]" html.valueishtml="0"  name=pub visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="1060" height="64" width="2747" format="[general]" html.valueishtml="0"  name=forma visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="1132" height="64" width="2747" format="[general]" html.valueishtml="0"  name=identifier visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="1380" height="64" width="3438" format="[general]" html.valueishtml="0"  name=t_rights visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="2380" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbtotaltime visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="2456" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbaudioformat visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="1604" height="76" width="2747" format="[general]" html.valueishtml="0"  name=pubyr visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="1700" height="64" width="2747" format="[general]" html.valueishtml="0"  name=sourcepublisher visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="1772" height="64" width="2747" format="[general]" html.valueishtml="0"  name=sourcerights visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="1848" height="64" width="2747" format="[general]" html.valueishtml="0"  name=atype visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="1924" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbnarrator visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="2000" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbproducer visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="2076" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbproducedate visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="2152" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbrevision visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="2228" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbrevisiondate visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="33554432" x="91" y="2304" height="64" width="2747" format="[general]" html.valueishtml="0"  name=dtbrevisiondescription visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="33554432" x="87" y="2524" height="64" width="590" format="[general]" html.valueishtml="0"  name=t_xx_metadata visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="33554432" x="78" y="2600" height="64" width="585" format="[general]" html.valueishtml="0"  name=t_close_metadata visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="33554432" x="82" y="1456" height="64" width="379" format="[general]" html.valueishtml="0"  name=t_dcmetadata visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="33554432" x="96" y="1520" height="64" width="325" format="[general]" html.valueishtml="0"  name=t_x_metadata visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="33554432" x="110" y="700" height="64" width="270" format="[general]" html.valueishtml="0"  name=t_package visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="33554432" x="101" y="548" height="64" width="567" format="[general]" html.valueishtml="0"  name=t_manifest visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="33554432" x="114" y="624" height="64" width="407" format="[general]" html.valueishtml="0"  name=t_spine visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="2839" y="32" height="64" width="398" format="[general]" html.valueishtml="0"  name=mchar_bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="2830" y="108" height="64" width="379" format="[general]" html.valueishtml="0"  name=mchar_bkmed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="33554432" x="3035" y="220" height="64" width="2565" format="[general]" html.valueishtml="0"  name=t_creator visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="33554432" x="3035" y="300" height="64" width="2025" format="[general]" html.valueishtml="0"  name=t_subject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="3054" y="384" height="64" width="325" format="[general]" html.valueishtml="0"  name=chno visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

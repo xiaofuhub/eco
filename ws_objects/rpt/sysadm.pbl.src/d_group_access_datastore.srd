@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_group_access_datastore.srd
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(5) update=yes updatewhereclause=yes key=yes name=group_ dbname="GROUP_" )
+ column=(type=char(100) update=yes updatewhereclause=yes key=yes name=menu dbname="MENU" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=access_ dbname="ACCESS_" values="	Y/	N" )
+ retrieve="SELECT  picsgroup.group_ ,
+           picsgroup.menu ,
+           picsgroup.access_     
+        FROM picsgroup      
+        WHERE ( picsgroup.group_ = :ls_group )   " update="picsgroup" updatewhere=1 updatekeyinplace=no arguments=(("ls_group", string)) )
+text(band=header alignment="2" text="Menu" border="0" color="0" x="224" y="8" height="64" width="2720"  name=menu_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Access " border="0" color="0" x="2958" y="8" height="64" width="215"  name=t_2  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Group " border="0" color="0" x="5" y="4" height="64" width="210"  name=t_1  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="0" x="224" y="8" height="76" width="2720" format="[general]"  name=menu edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=20 border="0" color="0" x="2958" y="8" height="76" width="215"  name=access_ checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="206"  name=group_  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

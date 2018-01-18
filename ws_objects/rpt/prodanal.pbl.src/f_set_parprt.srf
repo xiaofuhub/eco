@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_set_parprt.srf
+global type f_set_parprt from function_object
+end type
+
+forward prototypes
+global subroutine f_set_parprt (string lconno, string laction)
+end prototypes
+
+global subroutine f_set_parprt (string lconno, string laction);update mchar
+set parprt = :laction
+where conno = :lconno
+using sqlservertrans;
+
+if f_check_dberror(sqlservertrans,"MCHAR") then
+	commit using sqlservertrans;
+else
+	rollback using sqlservertrans;
+end if
+
+end subroutine
+

@@ -1,0 +1,161 @@
+﻿$PBExportHeader$f_export_abridged.srf
+global type f_export_abridged from function_object
+end type
+
+forward prototypes
+global function string f_export_abridged (str_pms_data_extract astr)
+end prototypes
+
+global function string f_export_abridged (str_pms_data_extract astr);string ls_export,ls_chno,ls_sexcd,ls_violencecd,ls_stronglang, ls_astres
+string ls_smileyface, ls_endfield_text, ls_endfield
+string ls_temp
+
+ls_endfield =  '~h5c~h70~h61~h72~h0d~h0a~h7d~h7b~h5c~h70~h6c~h61~h69~h6e~h20'
+
+SetNull(ls_sexcd)
+SetNull(ls_violencecd)
+SetNull(ls_stronglang)
+
+
+// ttlinit.ttlart
+
+IF NOT IsNull(astr.ttlart) THEN
+	ls_export += trim(astr.ttlart) + ' '
+END IF
+
+// ttlinit.ttl
+
+if not isnull(astr.ttl) then
+  ls_export += trim(astr.ttl)
+end if
+
+// mchar.bkmed
+// 03/10/2009 if both db and rc row is present for the book #2159
+IF astr.dbrc = 'DB/RC' then
+	ls_export += '--' + trim(astr.dbrc)
+ELSE
+	CHOOSE CASE trim(astr.bkmed)
+		CASE "RC"
+			ls_export += '--RC'
+		CASE "DB"
+			ls_export += '--DB'
+		CASE "BR"
+			ls_export += '--BR'
+		CASE "P/B"
+			ls_export += '--BR'
+	END CHOOSE
+END IF //03/10/2009
+
+// mchar.bkseq
+
+if not isnull(astr.bkseq) then
+  ls_export += trim(string(astr.bkseq))+'--'
+end if
+
+// ttlinit.aepcd
+
+CHOOSE CASE trim(astr.aepcd)
+	CASE 'A'
+		ls_export += 'by '
+	CASE 'E'
+		ls_export += 'edited by ' 
+	CASE 'S'
+		ls_export += 'selected by '
+	CASE 'T'
+		ls_export += 'translated by '
+	CASE 'R'
+		ls_export += 'retold by '
+	CASE 'C'
+		ls_export += 'compiled by '
+	CASE 'P'
+		ls_export += 'published by' // #2248 12/7/2009
+	CASE 'N'
+		ls_export += ''
+	CASE 'I'
+		ls_export += 'by '
+	CASE 'L'
+		ls_export += 'by '
+END CHOOSE
+
+// ttlinit.authfn
+
+if not isnull(astr.authfn) then
+	ls_export += trim(astr.authfn)
+end if
+
+
+//ttlinit.auth & use coauthstr to output authors
+
+ls_temp = ""
+
+if not isnull(astr.auth) then
+	ls_temp += " "+trim(astr.auth)
+	if not isnull(astr.coauthstr) then
+//		ls_temp += " and " + trim(astr.coauthstr)
+		ls_temp +=' ' +  trim(astr.coauthstr)
+	end if
+end if
+
+//#2248 12/7/2009 add honorific
+if not isnull(astr.ahonorific) then
+		ls_temp += ' ' + trim(astr.ahonorific)
+end if
+//12/7/2009
+
+ls_export += ls_temp +', '
+
+// Volumes
+//ls_export += string(astr.vols) + "c. "
+
+//03/10/2009 vols replaced by hours and minutes (Duration derived from Length_
+long ll_length, ll_hours, ll_minutes
+string ls_duration
+ll_length = astr.length_
+IF  isnull(astr.length_) THEN
+	ls_duration =  '0  hours ' +  ' 0 minutes. '
+END IF
+IF ll_length > 0 THEN
+	ll_hours = int(ll_length/ 60) // round(ll_length / 60,2)
+	IF ll_hours < 1 THEN
+		ll_hours =0
+	END IF
+	ll_minutes = round( ll_length - int(ll_length / 60) * 60,3) // mod(ll_length, 60)
+	IF ll_hours = 1 THEN
+		ls_duration = string(ll_hours) + ' hour ' + string(ll_minutes) + ' minutes. '
+	ELSE
+		ls_duration = string(ll_hours) + ' hours ' + string(ll_minutes) + ' minutes. '
+	END IF
+ELSE
+		ls_duration =  '0  hours ' +  ' 0 minutes. '
+END IF
+ ls_export += trim(ls_duration) + " " // leave one space 4/22/09 #2159
+//////////////////////////// 03/10/2009
+
+
+
+if not isnull(astr.oneliner) then 
+	ls_export += trim(astr.oneliner) + "  "
+end if
+
+ls_chno = astr.chno
+ls_astres = "*"
+
+select sexcd, violencecd, stronglang 
+into :ls_sexcd, :ls_violencecd, :ls_stronglang
+from ttlinit
+where chno = :ls_chno
+using sqlservertrans;
+
+IF ls_sexcd <> 'N' and NOT(IsNull(ls_sexcd)) THEN
+	ls_export += ls_astres
+ELSEIF ls_violencecd <> 'N' and NOT(IsNull(ls_violencecd)) THEN
+	ls_export += ls_astres
+ELSEIF ls_stronglang <> 'N' and NOT(IsNull(ls_stronglang)) THEN
+	ls_export += ls_astres	
+END IF
+
+ls_export += ls_endfield+ls_endfield
+
+RETURN ls_export
+end function
+

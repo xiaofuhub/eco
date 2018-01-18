@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_ca_def_insertion.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=8 color="536870912" )
+footer(height=8 color="536870912" )
+detail(height=808 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=libcd dbname="def.libcd" )
+ column=(type=char(3) updatewhereclause=yes name=med dbname="def.med" values="FD	FD/BR	BR/RC	RC/P//B	P//B/" )
+ column=(type=char(3) updatewhereclause=yes name=casub dbname="def.casub" values="000	000/001	001/002	002/003	003/004	004/005	005/006	006/008	008/009	009/10	10/100	100/111	111/200	200/210	210/220	220/230	230/240	240/250	250/300	300/31	31/320	320/330	330/350	350/360	360/370	370/398	398/400	400/500	500/550	550/600	600/610	610/630	630/640	640/643	643/650	650/700	700/780	780/790	790/800	800/811	811/812	812/900	900/91	91/910	910/920	920/930	930/973	973/ADV	ADV/CLA	CLA/FAM	FAM/FAT	FAT/GFI	GFI/GOH	GOH/HIF	HIF/HUM	HUM/HUR	HUR/JF1	JF1/JF2	JF2/JF3	JF3/JF4	JF4/JF5	JF5/JF6	JF6/JN1	JN1/JN2	JN2/JN3	JN3/JN4	JN4/JN5	JN5/JN6	JN6/LIT	LIT/MYS	MYS/OCC	OCC/OFL	OFL/POF	POF/PSF	PSF/REL	REL/ROM	ROM/ROX	ROX/SEA	SEA/SFI	SFI/SHO	SHO/SPA	SPA/SPT	SPT/SPY	SPY/SUS	SUS/WAR	WAR/WES	WES/" )
+ column=(type=decimal(0) updatewhereclause=yes name=defqty dbname="def.defqty" )
+ column=(type=datetime updatewhereclause=yes name=defdt dbname="def.defdt" )
+ column=(type=char(4) updatewhereclause=yes name=lib_libcd dbname="lib.libcd" )
+ retrieve="  SELECT def.libcd,   
+         def.med,   
+         def.casub,   
+         def.defqty,   
+         def.defdt,   
+         lib.libcd 
+ 
+    FROM def,   
+         lib  
+   WHERE ( def.libcd = lib.libcd )    
+" )
+column(band=detail id=4 alignment="2" tabsequence=40 border="5" color="0" x="805" y="516" height="76" width="256" format="[general]" html.valueishtml="0"  name=defqty visible="1" dddw.name=d_ca_def_insertion dddw.displaycolumn=defqty dddw.datacolumn=defqty dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="2" tabsequence=50 border="5" color="0" x="805" y="676" height="76" width="329" format="[general]" html.valueishtml="0"  name=defdt visible="1" dddw.name=d_ca_def_insertion dddw.displaycolumn=defdt dddw.datacolumn=defdt dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="5" color="0" x="805" y="356" height="76" width="329" format="[general]" html.valueishtml="0"  name=casub visible="1" edit.name="casub_code" ddlb.limit=0 ddlb.sorted=yes ddlb.allowedit=yes ddlb.case=upper ddlb.autohscroll=yes ddlb.vscrollbar=yes ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="5" color="0" x="805" y="196" height="76" width="329" format="[general]" html.valueishtml="0"  name=med visible="1" ddlb.limit=4 ddlb.sorted=yes ddlb.allowedit=yes ddlb.case=upper ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="805" y="36" height="76" width="329" format="[general]" html.valueishtml="0"  name=libcd  tag="New code ~"ASIC~"" visible="1" dddw.name=dddw_libcode dddw.displaycolumn=libcd dddw.datacolumn=libcd dddw.percentwidth=100 dddw.lines=0 dddw.limit=4 dddw.allowedit=yes dddw.useasborder=yes dddw.case=upper dddw.autohscroll=yes dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Library code" border="0" color="0" x="329" y="36" height="64" width="453" html.valueishtml="0"  name=libcd_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Medium" border="0" color="0" x="457" y="196" height="64" width="274" html.valueishtml="0"  name=med_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Subject category code" border="0" color="0" x="0" y="356" height="64" width="809" html.valueishtml="0"  name=casub_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Default quantity" border="0" color="0" x="133" y="516" height="64" width="562" html.valueishtml="0"  name=defqty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Default date" border="0" color="0" x="219" y="676" height="64" width="439" html.valueishtml="0"  name=defdt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=summary id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1792" y="4" height="80" width="146" format="[general]" html.valueishtml="0"  name=lib_libcd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,10 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "powerprn.pbl" "";
+@end;
+@begin Objects 
+ "driver_info_2.srs" "powerprn.pbl";
+ "job_info_1.srs" "powerprn.pbl";
+ "systemtime.srs" "powerprn.pbl";
+ "n_powerprinter.sru" "powerprn.pbl";
+@end;

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$f_get_correct_anno_ds.srf
+global type f_get_correct_anno_ds from function_object
+end type
+
+forward prototypes
+global function string f_get_correct_anno_ds (integer ttlinit_anyr, string prop_added_flg, string annotation_anno, string anno_property)
+end prototypes
+
+global function string f_get_correct_anno_ds (integer ttlinit_anyr, string prop_added_flg, string annotation_anno, string anno_property);RETURN( f_anno_with_ds(rightTrim(f_remove_extra_spaces(annotation_anno))) )
+
+end function
+

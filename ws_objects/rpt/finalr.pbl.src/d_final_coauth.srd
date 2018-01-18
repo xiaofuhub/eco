@@ -1,0 +1,32 @@
+﻿$PBExportHeader$d_final_coauth.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(34) update=yes updatewhereclause=yes key=yes name=coauth dbname="coauth.coauth" )
+ column=(type=char(34) update=yes updatewhereclause=yes key=yes name=coauthfn dbname="coauth.coauthfn" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=chonorific dbname="coauth.chonorific" )
+ column=(type=char(6) update=yes updatewhereclause=yes key=yes name=chno dbname="coauth.chno" )
+ column=(type=char(8) updatewhereclause=yes name=mchar_conno dbname="mchar.conno" )
+ retrieve="  SELECT coauth.coauth,   
+         coauth.coauthfn,   
+         coauth.chonorific,
+         coauth.chno, 
+         mchar.conno       
+    FROM coauth,   
+         mchar  
+   WHERE mchar.chno = coauth.chno(+) and 			  
+         mchar.conno =:Lconno
+" update="coauth" updatewhere=0 updatekeyinplace=no arguments=(("Lconno", string))  sort="coauth A " )
+text(band=header alignment="2" text="Coauthor's Last Name" border="0" color="0" x="23" y="8" height="52" width="475" html.valueishtml="0"  name=coauth_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="First Name" border="0" color="0" x="576" y="8" height="52" width="229" html.valueishtml="0"  name=coauthfn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Honorific" border="0" color="0" x="869" y="8" height="52" width="192" html.valueishtml="0"  name=chonorific_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="23" y="12" height="68" width="521" format="[general]" html.valueishtml="0"  name=coauth visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="581" y="12" height="68" width="233" format="[general]" html.valueishtml="0"  name=coauthfn visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1202" y="20" height="52" width="64" format="[general]" html.valueishtml="0"  name=mchar_conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1070" y="12" height="60" width="82" format="[general]" html.valueishtml="0"  name=chno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="878" y="12" height="68" width="165" format="[general]" html.valueishtml="0"  name=chonorific visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

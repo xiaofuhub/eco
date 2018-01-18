@@ -1,0 +1,69 @@
+﻿$PBExportHeader$d_book_inx_orc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=15780518 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=168 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=bkseq dbname="mchar.bkseq" )
+ column=(type=char(3) updatewhereclause=yes name=bkmed dbname="mchar.bkmed" )
+ column=(type=decimal(0) updatewhereclause=yes name=vols dbname="mchar.vols" )
+ column=(type=char(1) updatewhereclause=yes name=vols_orc dbname="vols_orc" )
+ column=(type=decimal(0) updatewhereclause=yes name=len dbname="mchar.len" )
+ column=(type=char(1) updatewhereclause=yes name=len_orc dbname="len_orc" )
+ column=(type=decimal(0) updatewhereclause=yes name=applen dbname="mchar.applen" )
+ column=(type=char(1) updatewhereclause=yes name=applen_orc dbname="applen_orc" )
+ column=(type=decimal(0) updatewhereclause=yes name=minlastside dbname="mchar.minlastside" )
+ column=(type=char(1) updatewhereclause=yes name=minlastside_orc dbname="minlastside_orc" )
+ column=(type=decimal(0) updatewhereclause=yes name=qnty dbname="mchar.qnty" )
+ column=(type=char(1) updatewhereclause=yes name=qnty_orc dbname="qnty_orc" )
+ column=(type=char(1) updatewhereclause=yes name=diff dbname="diff" )
+ column=(type=char(19) updatewhereclause=yes name=cmts dbname="cmts" )
+ column=(type=datetime updatewhereclause=yes name=update_date dbname="mchar.update_date" )
+ column=(type=datetime updatewhereclause=yes name=mod_date dbname="mod_date" )
+ retrieve="  SELECT bkseq,   
+         bkmed,   
+         vols,
+			'0' vols_orc,   
+         len,
+			'0' len_orc,   
+         applen,
+			'0' applen_orc,   
+         minlastside,
+			'0' minlastside_orc , 
+         qnty,
+			'0' qnty_orc,
+			'N' diff,
+			'                   'cmts,
+			update_date,
+			to_date('01/01/1900','MM/DD/YYYY') mod_date  
+    FROM mchar   
+" )
+text(band=header alignment="2" text="ApplenPICS/Web" border="0" color="0" x="1659" y="20" height="128" width="503" html.valueishtml="0"  name=applen_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MinlastsidePICS/Web" border="0" color="0" x="2190" y="20" height="128" width="507" html.valueishtml="0"  name=minlastside_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="QntyPICS/Web" border="0" color="0" x="2720" y="20" height="128" width="544" html.valueishtml="0"  name=qnty_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Update  Date" border="0" color="0" x="3301" y="20" height="128" width="261" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="ModifiedDate" border="0" color="0" x="3593" y="20" height="128" width="311" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="CompareComments" border="0" color="0" x="3945" y="20" height="128" width="366" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="VolsPICS/Web" border="0" color="0" x="603" y="20" height="128" width="521" html.valueishtml="0"  name=vols_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="LenPICS/Web" border="0" color="0" x="1138" y="20" height="128" width="498" html.valueishtml="0"  name=len_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="BookMed" border="0" color="0" x="119" y="20" height="128" width="183" html.valueishtml="0"  name=bkmed_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="BookNumber" border="0" color="0" x="320" y="20" height="128" width="274" html.valueishtml="0"  name=bkseq_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="5" color="0" x="1705" y="8" height="64" width="178" format="[general]" html.valueishtml="0"  name=applen visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="5" color="0" x="1952" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=applen_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  applen   <>  applen_orc  , RGB(255,255,0),if(isnull( applen  ) and (not isnull(  applen_orc  )),rgb(255,255,0),if(isnull(  applen_orc  ) and (not isnull(   applen )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="5" color="0" x="3259" y="8" height="64" width="302" format="[shortdate] " html.valueishtml="0"  name=update_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="0" x="2999" y="8" height="52" width="23" format="[general]" html.valueishtml="0"  name=diff visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="5" color="0" x="3941" y="8" height="64" width="485" format="[general]" html.valueishtml="0"  name=cmts visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="5" color="0" x="2258" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=minlastside visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="5" color="0" x="2482" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=minlastside_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  minlastside  <>  minlastside_orc  , RGB(255,255,0),if(isnull(  minlastside  ) and (not isnull( minlastside_orc   )),rgb(255,255,0),if(isnull(  minlastside_orc  ) and (not isnull(  minlastside  )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="5" color="0" x="2784" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=qnty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="5" color="0" x="3022" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=qnty_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  qnty  <>  qnty_orc  , RGB(255,255,0),if(isnull( qnty  ) and (not isnull(  qnty_orc   )),rgb(255,255,0),if(isnull(   qnty_orc  ) and (not isnull(  qnty  )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="5" color="0" x="1385" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=len_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  len   <>   len_orc  , RGB(255,255,0),if(isnull( len  ) and (not isnull( len_orc )),rgb(255,255,0),if(isnull(  len_orc  ) and (not isnull(  len  )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="0" x="1161" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="5" color="0" x="923" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=vols_orc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1090519039~tif(  vols  <>  vols_orc , RGB(255,255,0),if(isnull( vols ) and (not isnull( vols_orc  )),rgb(255,255,0),if(isnull(  vols_orc ) and (not isnull(  vols )),rgb(255,255,0), RGB(255,255,255))))" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="5" color="0" x="686" y="8" height="64" width="151" format="[general]" html.valueishtml="0"  name=vols visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="0" x="311" y="8" height="64" width="270" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="5" color="0" x="123" y="8" height="64" width="137" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="0" x="3616" y="16" height="52" width="274" format="[general]" html.valueishtml="0"  name=mod_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,57 @@
+﻿$PBExportHeader$d_manu_ext.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=192 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="553648127" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=ext_bkseq dbname="ext.bkseq" )
+ column=(type=char(3) update=yes updatewhereclause=yes key=yes name=ext_bkmed dbname="ext.bkmed" )
+ column=(type=char(7) update=yes updatewhereclause=yes key=yes name=ext_cntr dbname="ext.cntr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=ext_ext dbname="ext.ext" validationmsg="~"Number of days is a required field for extension.~"" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=ext_extpcdt dbname="ext.extpcdt" validationmsg="~"A date that is contract is extended to, is a required field for extention.~"" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=ext_extrsn dbname="ext.extrsn" validationmsg="~"Extension is required OR maximum limit exceeded.~"" )
+ column=(type=datetime update=yes updatewhereclause=yes name=ext_extdt dbname="ext.extdt" validationmsg="~"Extension date  is a required field for extention.~"" )
+ retrieve="  SELECT ext.bkseq,   
+         ext.bkmed,   
+         ext.cntr,   
+         ext.ext,   
+         ext.extpcdt,   
+         ext.extrsn,   
+         ext.extdt  
+    FROM ext  
+   WHERE ext.bkseq = :Lbkseq  AND  
+         ext.cntr = :Lcntr   AND  
+         ext.bkmed = :Lmed    
+ORDER BY ext.extpcdt ASC   
+" update="ext" updatewhere=1 updatekeyinplace=yes retrieve.asneeded=yes arguments=(("Lbkseq", number),("Lcntr", string),("Lmed", string)) )
+text(band=header alignment="0" text="Extension Information" border="0" color="0" x="567" y="0" height="56" width="553" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="rgb(192,192,192)"border="0" color="0" x="4480" y="216" height="76" width="261" format="[general]" html.valueishtml="0"  name=backcolor visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=header alignment="0" expression="rgb(192,192,192)"border="0" color="0" x="4480" y="216" height="76" width="261" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=header alignment="0" expression="rgb(192,192,192)"border="0" color="0" x="4480" y="216" height="76" width="261" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+line(band=header x1="18" y1="188" x2="1888" y2="188"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="DaysExtended" border="0" color="0" x="46" y="76" height="104" width="206" html.valueishtml="0"  name=ext_ext_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reason" border="0" color="0" x="887" y="76" height="104" width="169" html.valueishtml="0"  name=ext_extrsn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="RevisedDue Date" border="0" color="0" x="302" y="76" height="104" width="279" html.valueishtml="0"  name=ext_extpcdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=2 alignment="0" tabsequence=32766 border="0" color="12632256" x="1426" y="124" height="52" width="18" format="[general]" html.valueishtml="0"  name=ext_bkmed visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="max(  ext_extpcdt  for all )"border="0" color="12632256" x="1321" y="124" height="52" width="23" format="[shortdate] [time]" html.valueishtml="0"  name=max_extpcdt visible="1~t0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="12632256" x="1262" y="120" height="52" width="18" format="[general]" html.valueishtml="0"  name=ext_cntr visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="rgb(192,192,192)"border="0" color="12632256" x="1184" y="120" height="52" width="23~t0" format="[general]" html.valueishtml="0"  name=backclr visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="rgb(255,255,255)"border="0" color="12632256" x="809" y="116" height="52" width="37" format="[general]" html.valueishtml="0"  name=windowcolor visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="12632256" x="1097" y="116" height="52" width="27" format="[general]" html.valueishtml="0"  name=ext_bkseq visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Extended" border="0" color="0" x="1531" y="76" height="104" width="206" html.valueishtml="0"  name=ext_extdt_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=10 border="5" color="0" x="73" y="12" height="64" width="178" format="[general]" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=ext_ext  tag="Enter the number of days for extention" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tIf(IsRowNew(),windowcolor,backcolor)" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="649" y="12" height="64" width="805" format="[general]" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=ext_extrsn visible="1" dddw.name=dddw_ext_rsn dddw.displaycolumn=ext_rsn_desc dddw.datacolumn=ext_rsn_desc dddw.percentwidth=100 dddw.lines=10 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tIf(IsRowNew(),windowcolor,backcolor)" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="0" x="274" y="12" height="64" width="347" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=ext_extpcdt  tag="Enter the date that this contract is extented to." visible="1" editmask.ddcalendar=yes editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tIf(IsRowNew(),windowcolor,backcolor)" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="1472" y="12" height="64" width="347" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tIf(IsRowNew(),0,1)"  name=ext_extdt  tag="Enter the date that this contract was extended. Default is today's date." visible="1" editmask.ddcalendar=yes editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tIf(IsRowNew(),windowcolor,backcolor)" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

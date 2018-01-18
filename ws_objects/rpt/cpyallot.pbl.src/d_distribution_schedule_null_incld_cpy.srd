@@ -1,0 +1,68 @@
+﻿$PBExportHeader$d_distribution_schedule_null_incld_cpy.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81576884 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=164 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=bkseq dbname="BKSEQ" )
+ column=(type=char(3) updatewhereclause=yes key=yes name=bkmed dbname="BKMED" )
+ column=(type=char(2) updatewhereclause=yes name=prodstage dbname="PRODSTAGE" )
+ column=(type=char(7) updatewhereclause=yes name=cntr1 dbname="CNTR1" )
+ column=(type=char(7) updatewhereclause=yes name=cntr2 dbname="CNTR2" )
+ column=(type=datetime updatewhereclause=yes name=assigndt dbname="ASSIGNDT" )
+ column=(type=datetime updatewhereclause=yes name=cabdt dbname="CABDT" )
+ column=(type=datetime update=yes updatewhereclause=yes name=dsdt dbname="DSDT" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=cascd dbname="CASCD" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=dsflag dbname="DSFLAG" )
+ column=(type=char(8) updatewhereclause=yes name=conno dbname="CONNO" )
+ column=(type=char(1) updatewhereclause=yes name=repeat dbname="REPEAT" )
+ column=(type=char(1) updatewhereclause=yes name=include1 dbname="INCLUDE1" values="	Y/	N" )
+ retrieve="  SELECT mchar.bkseq,  
+         mchar.bkmed,
+			prod.prodstage,   
+         prod.cntr cntr1,
+			prod.cntr cntr2,   
+         prod.assigndt ,
+			mchar.cabdt,
+			mchar.dsdt,
+			mchar.cascd,
+			mchar.dsflag,
+			mchar.conno,
+			'N' repeat,
+			'Y' include1
+
+    FROM mchar,   
+         prod  
+   WHERE ( mchar.bkseq = prod.bkseq ) and  
+         ( mchar.bkmed = prod.bkmed )  and
+			mchar.dsdt is null
+			   
+" update="mchar" updatewhere=0 updatekeyinplace=no  sort="bkseq A bkmed A " )
+text(band=header alignment="2" text="CASCD" border="0" color="0" x="3113" y="16" height="36" width="23" html.valueishtml="0"  name=t_2 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="DSFLAG" border="0" color="0" x="3154" y="16" height="36" width="23" html.valueishtml="0"  name=t_3 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prodstage" border="0" color="0" x="3191" y="16" height="36" width="23" html.valueishtml="0"  name=prodstage_t visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="DSDT" border="0" color="0" x="3237" y="16" height="36" width="23" html.valueishtml="0"  name=dsdt_t visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="ControlNumber" border="0" color="0" x="3273" y="16" height="36" width="23" html.valueishtml="0"  name=t_5 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="DuplicationAssign Date" border="0" color="0" x="1829" y="24" height="128" width="407" html.valueishtml="0"  name=t_assigndt visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="Repeat" border="0" color="0" x="2373" y="88" height="64" width="229" html.valueishtml="0"  name=t_repeat visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="DuplicationContract" border="0" color="0" x="1426" y="24" height="128" width="366" html.valueishtml="0"  name=t_dupcode visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="MasteringContract" border="0" color="0" x="1088" y="24" height="128" width="297" html.valueishtml="0"  name=t_cntr visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="Book Number" border="0" color="0" x="142" y="24" height="128" width="265" html.valueishtml="0"  name=t_bkno visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="2" text="CABDT" border="0" color="0" x="727" y="88" height="64" width="320" html.valueishtml="0"  name=t_cabdt visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+text(band=header alignment="0" text="Include" border="0" color="0" x="453" y="88" height="64" width="251" html.valueishtml="0"  name=t_include visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3113" y="4" height="36" width="18" format="[general]" html.valueishtml="0"  name=cascd visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3154" y="4" height="36" width="23" format="[general]" html.valueishtml="0"  name=dsflag visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3195" y="4" height="36" width="23" format="[general]" html.valueishtml="0"  name=prodstage visible="1~t0" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3232" y="4" height="36" width="23" format="[general]" html.valueishtml="0"  name=dsdt visible="1~t0" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3264" y="4" height="36" width="23" format="[general]" html.valueishtml="0"  name=conno visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1915" y="4" height="52" width="329" format="[general]" html.valueishtml="0"  name=assigndt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="2473" y="4" height="52" width="82" format="[general]" html.valueishtml="0"  name=repeat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="233" y="4" height="56" width="233" format="[general]" html.valueishtml="0"  name=bkseq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="82" y="4" height="56" width="128" format="[general]" html.valueishtml="0"  name=bkmed visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1499" y="4" height="52" width="315" format="[general]" html.valueishtml="0"  name=cntr2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1102" y="4" height="52" width="283" format="[general]" html.valueishtml="0"  name=cntr1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="718" y="4" height="52" width="329" format="[general]" html.valueishtml="0"  name=cabdt visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81576884" )
+column(band=detail id=13 alignment="0" tabsequence=10 border="5" color="0" x="503" y="4" height="52" width="73" format="[general]" html.valueishtml="0"  name=include1 visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

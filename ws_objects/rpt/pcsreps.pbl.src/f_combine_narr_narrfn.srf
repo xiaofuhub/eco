@@ -1,0 +1,37 @@
+﻿$PBExportHeader$f_combine_narr_narrfn.srf
+global type f_combine_narr_narrfn from function_object
+end type
+
+forward prototypes
+global function string f_combine_narr_narrfn (string narr, string narrfn)
+end prototypes
+
+global function string f_combine_narr_narrfn (string narr, string narrfn);string lactive,status
+SetNull(lactive)
+
+select narractive
+into :lactive
+from narrtbl
+where narr = :narr
+and narrfn = :narrfn
+using sqlservertrans;
+
+if lactive='A' or IsNull(lactive) THEN
+	status = " "
+else
+	status = " status=Inactive"
+end if
+
+ 
+IF	(Not IsNull(narr) and Not IsNull(narrfn)) THEN
+	Return (narrfn + " " + narr+ " "+ status)
+ELSEIF	(Not IsNull(narr) and (IsNull(narrfn) or narrfn = "")) THEN
+	Return (narr + " " + status)
+ELSEIF	( (IsNull(narr) or narr = "") and Not IsNull(narrfn)) THEN
+	return(narrfn + " " + status)
+ELSE 
+	return ''
+END IF
+
+end function
+

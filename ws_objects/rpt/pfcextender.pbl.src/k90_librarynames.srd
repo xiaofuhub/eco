@@ -1,0 +1,19 @@
+﻿$PBExportHeader$k90_librarynames.srd
+$PBExportComments$(K90) - PFC Extender, Holds name of new extension libraries
+release 6;
+datawindow(units=0 timer_interval=0 color=79416533 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="553648127" )
+table(column=(type=char(255) updatewhereclause=no name=libraryname dbname="libraryname" )
+ column=(type=char(3) updatewhereclause=no name=commonname dbname="commonname" )
+ column=(type=char(255) updatewhereclause=no name=origlibname dbname="origlibname" )
+ column=(type=char(255) updatewhereclause=no name=libnopath dbname="libnopath" )
+ column=(type=number updatewhereclause=no name=warned dbname="warned" initial="0" )
+ filter="Left ( commonname, 3 ) = 'pfe' or Left ( commonname, 3 ) = 'new'"  sort="commonname A libraryname A " )
+group(level=1 header.height=0 trailer.height=0 by=("commonname" ) header.color="536870912" trailer.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554432" x="105" y="4" height="60" width="5275" format="[general]"  name=libraryname edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+button(band=detail text="..."filename=""action="0" border="0" color="33554432" x="14" y="0" height="68" width="78" vtextalign="0" htextalign="0"  name=cbd_browse  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12307669" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="1" clientscriptable="0" generatejavascript="0" )
