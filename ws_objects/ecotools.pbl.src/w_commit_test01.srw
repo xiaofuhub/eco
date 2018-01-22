@@ -31,6 +31,9 @@ on w_commit_test01.destroy
 destroy(this.cb_1)
 end on
 
+event open;//09909
+end event
+
 type cb_1 from commandbutton within w_commit_test01
 integer x = 1449
 integer y = 536
