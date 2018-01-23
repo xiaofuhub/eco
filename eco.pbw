@@ -4,6 +4,7 @@ Save Format v3.0(19990112)
 @begin Targets
  0 "eco.pbt";
  1 "klk.pbt";
+ 2 "kui.pbt";
 @end;
-DefaultTarget "klk.pbt";
-DefaultRemoteTarget "klk.pbt";
+DefaultTarget "kui.pbt";
+DefaultRemoteTarget "kui.pbt";
