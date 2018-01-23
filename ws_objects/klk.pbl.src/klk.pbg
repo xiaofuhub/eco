@@ -5,5 +5,6 @@
 @begin Objects 
  "klk.sra" "klk.pbl";
  "w_aak.srw" "klk.pbl";
+ "w_ack.srw" "klk.pbl";
  "w_ook.srw" "klk.pbl";
 @end;
