@@ -1,0 +1,8 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "klk.pbl" "";
+@end;
+@begin Objects 
+ "klk.sra" "klk.pbl";
+ "w_ook.srw" "klk.pbl";
+@end;
