@@ -19,7 +19,7 @@ boolean center = true
 end type
 global w_a4 w_a4
 
-event open;//
+event open;//k
 end event
 
 on w_a4.create
