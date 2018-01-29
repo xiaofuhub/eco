@@ -19,7 +19,7 @@ boolean center = true
 end type
 global w_a5 w_a5
 
-event open;//010
+event open;//0100
 end event
 
 on w_a5.create
