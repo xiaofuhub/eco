@@ -20,6 +20,7 @@ end type
 global w_07 w_07
 
 event open;//0200
+//11
 end event
 
 on w_07.create
