@@ -19,8 +19,8 @@ boolean center = true
 end type
 global w_07 w_07
 
-event open;//0200
-//11001
+event open;//02000000
+//7701
 end event
 
 on w_07.create
