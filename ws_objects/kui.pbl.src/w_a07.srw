@@ -20,7 +20,8 @@ end type
 global w_a07 w_a07
 
 event open;//01
-//112010
+//11200
+//010202
 end event
 
 on w_a07.create
