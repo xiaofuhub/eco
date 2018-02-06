@@ -6,5 +6,5 @@ Save Format v3.0(19990112)
  1 "klk.pbt";
  2 "kui.pbt";
 @end;
-DefaultTarget "kui.pbt";
-DefaultRemoteTarget "kui.pbt";
+DefaultTarget "klk.pbt";
+DefaultRemoteTarget "klk.pbt";
